@@ -34,6 +34,36 @@ npm run verify:media      # 유튜브 링크 생존 확인 (아래 참조)
 JAZZYTORY_BASE=/Jazzytory/ npm run build
 ```
 
+## 배포
+
+### GitHub Pages (권장)
+
+`.github/workflows/deploy.yml` 이 푸시마다 타입체크 → 테스트 → 빌드 → 배포를 수행한다.
+게이트를 통과하지 못하면 배포하지 않는다.
+
+**최초 1회만 저장소 소유자가 켜야 한다:**
+
+> Settings → Pages → Build and deployment → **Source: GitHub Actions**
+
+워크플로의 `GITHUB_TOKEN` 으로는 Pages 를 켤 수 없다
+(`Resource not accessible by integration` 으로 실패한다).
+켜고 나면 다음 푸시부터, 또는 Actions 탭에서 "Deploy to GitHub Pages" 를
+수동 실행(`workflow_dispatch`)하면 즉시 배포된다.
+
+프로젝트 페이지 경로(`/Jazzytory/`)는 `configure-pages` 의 `base_path` 를
+Vite 가 요구하는 끝 슬래시 형태로 정규화해 처리한다.
+
+### 단일 페이지 번들
+
+```bash
+npm run build:artifact   # artifact-dist/ 에 CSS 인라인 + 상대경로 번들 생성
+```
+
+CSS 를 인라인하고 자산을 상대 경로로 참조하는 번들을 만든다.
+`<html>/<head>/<body>` 없이 본문만 출력하므로 페이지를 스켈레톤으로 감싸는
+호스팅(Claude Artifact 등)에 그대로 올릴 수 있다. 라우팅은 HashRouter 라
+서버 리라이트가 필요 없다.
+
 ---
 
 ## 무엇이 들어 있나

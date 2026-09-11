@@ -14,7 +14,8 @@
     "test:watch": "vitest --config vitest.config.ts",
     "verify:media": "node scripts/verify-media.mjs",
     "validate:content": "vitest run --config vitest.config.ts src/data/content.test.ts",
-    "smoke": "node scripts/smoke.mjs"
+    "smoke": "node scripts/smoke.mjs",
+    "build:artifact": "JAZZYTORY_BASE=./ vite build && node scripts/build-artifact.mjs"
   },
   "dependencies": {
     "react": "^19.3.0",
