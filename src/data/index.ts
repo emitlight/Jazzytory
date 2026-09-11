@@ -10,7 +10,7 @@
 
 import type {
   Level, Module, Tune, Album, VideoResource, Reviewer,
-  GlossaryEntry, LevelId, Drill, SkillAxis,
+  GlossaryEntry, LevelId, Drill, SkillAxis, TeachingMethod, MethodApplication,
 } from './types';
 
 import { LEVELS } from './levels';
@@ -25,6 +25,8 @@ import { FACULTY } from './faculty';
 import { GLOSSARY } from './glossary';
 import { EAR_DRILLS } from './earDrills';
 import { PLACEMENT } from './placement';
+import { TEACHING_METHODS, PRACTICE_PARAMETERS } from './pedagogy';
+import { METHOD_APPLICATIONS } from './pedagogyMap';
 
 /* ───────────────── 원본 컬렉션 ───────────────── */
 
@@ -61,7 +63,54 @@ export const MODULES: Module[] = RAW_MODULES.map((m) => ({
   return la - lb || a.order - b.order;
 });
 
-export { LEVELS, TUNES, ALBUMS, VIDEOS, CHANNELS, FACULTY, GLOSSARY, EAR_DRILLS, PLACEMENT };
+export {
+  LEVELS, TUNES, ALBUMS, VIDEOS, CHANNELS, FACULTY, GLOSSARY, EAR_DRILLS, PLACEMENT,
+  TEACHING_METHODS, PRACTICE_PARAMETERS, METHOD_APPLICATIONS,
+};
+
+/* ─────────────────  교수법 인덱스  ───────────────── */
+
+export const METHOD_BY_ID = new Map<string, TeachingMethod>(TEACHING_METHODS.map((m) => [m.id, m]));
+
+const applicationsByModule = (() => {
+  const m = new Map<string, MethodApplication[]>();
+  for (const a of METHOD_APPLICATIONS) {
+    const arr = m.get(a.moduleId) ?? [];
+    arr.push(a);
+    m.set(a.moduleId, arr);
+  }
+  return m;
+})();
+
+const applicationsByMethod = (() => {
+  const m = new Map<string, MethodApplication[]>();
+  for (const a of METHOD_APPLICATIONS) {
+    const arr = m.get(a.methodId) ?? [];
+    arr.push(a);
+    m.set(a.methodId, arr);
+  }
+  return m;
+})();
+
+/** 이 모듈에 적용되는 교수법들 */
+export function methodsOfModule(moduleId: string): { method: TeachingMethod; application: MethodApplication }[] {
+  return (applicationsByModule.get(moduleId) ?? [])
+    .map((application) => {
+      const method = METHOD_BY_ID.get(application.methodId);
+      return method ? { method, application } : null;
+    })
+    .filter((x): x is { method: TeachingMethod; application: MethodApplication } => !!x);
+}
+
+/** 이 교수법이 쓰이는 모듈들 */
+export function modulesOfMethod(methodId: string): { module: Module; application: MethodApplication }[] {
+  return (applicationsByMethod.get(methodId) ?? [])
+    .map((application) => {
+      const module = MODULE_BY_ID.get(application.moduleId);
+      return module ? { module, application } : null;
+    })
+    .filter((x): x is { module: Module; application: MethodApplication } => !!x);
+}
 
 /* ───────────────── 조회 헬퍼 ───────────────── */
 
@@ -140,6 +189,8 @@ export const CONTENT_STATS = {
   totalWeeks: LEVELS.reduce((s, l) => s + l.weeks, 0),
   totalHours: LEVELS.reduce((s, l) => s + l.weeks * l.hoursPerWeek, 0),
   reviewedModules: MODULES.filter((m) => m.review.status !== 'draft').length,
+  teachingMethods: TEACHING_METHODS.length,
+  methodApplications: METHOD_APPLICATIONS.length,
 };
 
 /** 검수 상태 집계 */

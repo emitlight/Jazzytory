@@ -9,6 +9,9 @@ export default function Listening() {
   const [level, setLevel] = useState<LevelId | 'all'>('all');
   const [tag, setTag] = useState<string | 'all'>('all');
   const [onlyPriority, setOnlyPriority] = useState(false);
+  // 38장의 청취 지시문을 한꺼번에 펼치면 3만 자가 넘는 벽이 된다.
+  // 기본은 접어 두고 한 장씩 열게 한다.
+  const [expanded, setExpanded] = useState<string | null>(null);
 
   const tags = useMemo(() => [...new Set(ALBUMS.flatMap((a) => a.tags))].sort(), []);
   const filtered = useMemo(() => ALBUMS.filter((a) => {
@@ -62,6 +65,7 @@ export default function Listening() {
       <div className="stack stack-16">
         {filtered.map((a) => {
           const done = state.listened.includes(a.id);
+          const isOpen = expanded === a.id;
           return (
             <article key={a.id} className="card stack stack-12">
               <div className="row-between">
@@ -87,8 +91,16 @@ export default function Listening() {
               </div>
 
               <div className="stack stack-8">
-                <div className="eyebrow">무엇을 들을 것인가</div>
-                {a.trackNotes.map((n, i) => (
+                <button
+                  className="btn btn-sm"
+                  aria-expanded={isOpen}
+                  onClick={() => setExpanded(isOpen ? null : a.id)}
+                  style={{ alignSelf: 'flex-start' }}
+                >
+                  {isOpen ? '청취 지시 접기' : `무엇을 들을 것인가 · ${a.trackNotes.length}곡`}
+                </button>
+
+                {isOpen && a.trackNotes.map((n, i) => (
                   <div key={i} className="sunken stack stack-4">
                     <div className="row">
                       <strong className="small">{n.track}</strong>
@@ -102,6 +114,12 @@ export default function Listening() {
                     <p className="small" style={{ margin: 0 }}>{n.listenFor}</p>
                   </div>
                 ))}
+
+                {!isOpen && a.trackNotes[0] && (
+                  <p className="tiny muted" style={{ margin: 0 }}>
+                    예: <strong>{a.trackNotes[0].track}</strong> — {a.trackNotes[0].listenFor.slice(0, 70)}…
+                  </p>
+                )}
               </div>
             </article>
           );

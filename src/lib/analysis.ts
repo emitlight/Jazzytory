@@ -45,6 +45,17 @@ const pcDist = (from: Note, to: Note) => (((toMidi(to) - toMidi(from)) % 12) + 1
 const ROMAN_MAJOR = ['I', 'bII', 'II', 'bIII', 'III', 'IV', '#IV', 'V', 'bVI', 'VI', 'bVII', 'VII'];
 const ROMAN_MINOR = ['i', 'bII', 'ii', 'bIII', 'iii', 'iv', '#iv', 'v', 'bVI', 'vi', 'bVII', 'vii'];
 
+/**
+ * 로마숫자의 대소문자를 코드 성질에 맞춘다.
+ * 장·증·도미넌트는 대문자, 단·감은 소문자. 임시표 접두사(b, #)는 그대로 둔다.
+ * 마이너 조성 표에 소문자로 저장된 V 를 그대로 쓰면 V7 이 v7 로 나와 도미넌트가 아닌 것처럼 보인다.
+ */
+function caseNumeral(numeral: string, upper: boolean): string {
+  const m = /^([b#]*)(.*)$/.exec(numeral);
+  if (!m) return numeral;
+  return m[1] + (upper ? m[2].toUpperCase() : m[2].toLowerCase());
+}
+
 /** 코드 성질에 따른 로마숫자 접미사 */
 function romanSuffix(chord: Chord): string {
   switch (chord.quality) {
@@ -102,6 +113,13 @@ export function analyzeProgression(symbols: string[], key: string): ChordAnalysi
   const out: ChordAnalysis[] = [];
   let group = 0;
 
+  // 블루스 판정 — 토닉 위 도미넌트 7이 두 번 이상 나오면 그 코드는 "IV 로 가는 문"이 아니라
+  // "집"이다. F 블루스의 F7 을 V7/IV 로 읽으면 학습자에게 거짓말을 하는 셈이 된다.
+  const tonicDomCount = chords.filter(
+    (c) => c && isDom(c) && pcDist(ctx.root, c.root) === 0,
+  ).length;
+  const bluesish = tonicDomCount >= 2;
+
   for (let i = 0; i < chords.length; i++) {
     const chord = chords[i];
     if (!chord) {
@@ -125,8 +143,9 @@ export function analyzeProgression(symbols: string[], key: string): ChordAnalysi
     const isDiatonic = !!diatonicQualities && diatonicQualities.includes(chord.quality);
 
     if (isDiatonic) {
-      // 로마숫자 대소문자 조정
-      if (isMinorish(chord)) roman = numerals[dist].toLowerCase() + suffix;
+      const lowercase = isMinorish(chord) || chord.quality === 'halfDim7'
+        || chord.quality === 'dim7' || chord.quality === 'dim';
+      roman = caseNumeral(numerals[dist], !lowercase) + suffix;
       if (dist === 0) { role = 'tonic'; explain = '토닉. 도착점이다.'; }
       else if (dist === 9 && ctx.mode === 'major') { role = 'tonic'; explain = '토닉 대리(vi). I 과 두 음을 공유한다.'; }
       else if (dist === 4 && ctx.mode === 'major') { role = 'tonic'; explain = '토닉 대리(iii).'; }
@@ -136,6 +155,16 @@ export function analyzeProgression(symbols: string[], key: string): ChordAnalysi
       else if (ctx.mode === 'minor' && dist === 3) { role = 'tonic'; explain = '상대 장조의 토닉(bIII). 마이너 조성의 밝은 쪽 문.'; }
       else if (ctx.mode === 'minor' && dist === 10) { role = 'subdominant'; explain = 'bVII7. 백도어로 자주 쓰인다.'; }
       else { role = 'subdominant'; explain = '다이어토닉 코드.'; }
+    } else if (isDom(chord) && bluesish && dist === 0) {
+      roman = 'I7';
+      role = 'tonic';
+      explain = '블루스의 토닉. 도미넌트 7이지만 해결해야 할 긴장이 아니라 도착점이다. '
+        + '재즈 화성의 V7 과 달리 여기서는 b7 이 색이지 추진력이 아니다.';
+    } else if (isDom(chord) && bluesish && dist === 5) {
+      roman = 'IV7';
+      role = 'subdominant';
+      explain = '블루스의 IV7. 5마디에서 화면이 한 번 밝아졌다가 다시 I7 으로 돌아온다. '
+        + '여기서 b7(IV7 의 7음)이 I7 의 근음으로 반음 하행하는 것이 블루스 사운드의 핵심이다.';
     } else if (isDom(chord)) {
       // 세컨더리 도미넌트 / 트라이톤 서브 판정
       const targetPc = (pcDist(ctx.root, chord.root) + 5) % 12;  // 5도 아래 = +5 반음
@@ -143,14 +172,14 @@ export function analyzeProgression(symbols: string[], key: string): ChordAnalysi
       const nextPc = next ? pcDist(ctx.root, next.root) : -1;
 
       if (next && nextPc === subTargetPc && !(next && nextPc === targetPc)) {
-        roman = `subV7/${numerals[subTargetPc]}`;
+        roman = `subV7/${caseNumeral(numerals[subTargetPc], true)}`;
         role = 'tritone-sub';
         localKey = noteName(next.root, true);
         explain = `트라이톤 서브. 반음 아래 ${noteName(next.root, true)} 로 미끄러진다. 원래의 ${numerals[(subTargetPc + 7) % 12]}7 과 트라이톤을 공유한다.`;
       } else if (dist === 7 && ctx.mode === 'major') {
         role = 'dominant'; explain = '조성의 V7.';
       } else if (next && nextPc === targetPc) {
-        roman = `V7/${numerals[targetPc]}`;
+        roman = `V7/${caseNumeral(numerals[targetPc], true)}`;
         role = 'secondary-dominant';
         localKey = noteName(next.root, true);
         explain = `세컨더리 도미넌트. ${numerals[targetPc]} 를 일시적 토닉으로 만든다. 스케일은 ${noteName(next.root, true)} 조성에서 가져온다.`;
@@ -161,20 +190,20 @@ export function analyzeProgression(symbols: string[], key: string): ChordAnalysi
         roman = 'subV7'; role = 'tritone-sub';
         explain = 'bII7 — V7 의 트라이톤 서브. 베이스가 반음으로 내려앉는다.';
       } else {
-        roman = `V7/${numerals[targetPc]}`;
+        roman = `V7/${caseNumeral(numerals[targetPc], true)}`;
         role = 'secondary-dominant';
-        explain = `${numerals[targetPc]} 를 향하는 도미넌트로 읽힌다. 실제 해결이 생략되었을 수 있다.`;
+        explain = `${caseNumeral(numerals[targetPc], true)} 를 향하는 도미넌트로 읽힌다. 실제 해결이 생략되었을 수 있다.`;
       }
     } else if (chord.quality === 'dim7') {
       role = 'diminished-passing';
       explain = '경과 디미니시. 대개 반음 위/아래 다이어토닉 코드로 연결된다. 3음 위의 7b9 로 바꿔 읽으면 기능이 보인다.';
     } else if (isMinorish(chord) && next && isDom(next) && pcDist(chord.root, next.root) === 5) {
-      roman = numerals[dist].toLowerCase() + suffix;
+      roman = caseNumeral(numerals[dist], false) + suffix;
       role = 'related-ii';
       localKey = noteName(next.root, true);
       explain = `다음 도미넌트의 관계 ii. ${noteName(next.root, true)}7 과 한 덩어리로 읽어라 — 두 코드가 아니라 한 문장이다.`;
     } else if (chord.quality === 'halfDim7' && next && isDom(next)) {
-      roman = numerals[dist].toLowerCase() + suffix;
+      roman = caseNumeral(numerals[dist], false) + suffix;
       role = 'related-ii';
       explain = '마이너 ii-V 의 iiø7. 뒤의 도미넌트는 대개 얼터드다.';
     } else if (ctx.mode === 'major' && (dist === 8 || dist === 10 || dist === 3 || dist === 5)) {

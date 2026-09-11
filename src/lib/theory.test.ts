@@ -405,3 +405,45 @@ describe('보이싱 밀집도 — 손에 맞는가', () => {
     expect(total / (p.length - 1)).toBeLessThan(4);
   });
 });
+
+describe('기능 분석 — 실제 곡에서 흔한 오독', () => {
+  it('블루스의 I7 을 V7/IV 로 읽지 않는다', () => {
+    const blues = ['F7', 'Bb7', 'F7', 'F7', 'Bb7', 'Bb7', 'F7', 'F7', 'G-7', 'C7', 'F7', 'C7'];
+    const a = analyzeProgression(blues, 'F');
+    expect(a[0].roman).toBe('I7');
+    expect(a[0].role).toBe('tonic');
+    expect(a[1].roman).toBe('IV7');
+    expect(a[1].role).toBe('subdominant');
+  });
+
+  it('블루스가 아닌 곳의 I7 은 여전히 V7/IV 다', () => {
+    // All of Me 3~5마디: C∆7 → E7 → A7 → D-7 처럼 토닉 도미넌트가 한 번만 나오는 경우
+    const a = analyzeProgression(['C∆7', 'C7', 'F∆7', 'C∆7'], 'C');
+    expect(a[1].roman).toBe('V7/IV');
+    expect(a[1].role).toBe('secondary-dominant');
+  });
+
+  it('마이너 조성의 V7 을 대문자로 표기한다', () => {
+    const a = analyzeProgression(['C-7', 'Aø7', 'D7b9', 'G-7'], 'G-');
+    const dom = a.find((x) => x.chord.input === 'D7b9');
+    expect(dom?.roman.startsWith('V')).toBe(true);
+    expect(dom?.roman).not.toContain('v7');
+  });
+
+  it('마이너 조성의 ø7·°7 은 소문자로 표기한다', () => {
+    const a = analyzeProgression(['Aø7', 'D7', 'G-7'], 'G-');
+    expect(a[0].roman).toBe('iiø7');
+  });
+
+  it('Autumn Leaves(G-)의 첫 8마디를 정확히 읽는다', () => {
+    const a = analyzeProgression(['C-7', 'F7', 'Bb∆7', 'Eb∆7', 'Aø7', 'D7b9', 'G-7', 'G-7'], 'G-');
+    expect(a.map((x) => x.roman)).toEqual(
+      ['iv-7', 'bVII7', 'bIII∆7', 'bVI∆7', 'iiø7', 'V7', 'i-7', 'i-7'],
+    );
+  });
+
+  it('리듬 체인지 A섹션(Bb)을 정확히 읽는다', () => {
+    const a = analyzeProgression(['Bb∆7', 'G-7', 'C-7', 'F7'], 'Bb');
+    expect(a.map((x) => x.roman)).toEqual(['I∆7', 'vi-7', 'ii-7', 'V7']);
+  });
+});

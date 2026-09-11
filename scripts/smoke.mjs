@@ -54,8 +54,9 @@ page.on('pageerror', (e) => errors.push(`[pageerror] ${e.message}`));
 
 const ROUTES = [
   '/#/', '/#/curriculum', '/#/curriculum/L1', '/#/lab/voicing', '/#/lab/progression',
-  '/#/lab/keyboard', '/#/lab/ear', '/#/lab/metronome', '/#/tunes', '/#/listening',
-  '/#/videos', '/#/progress', '/#/faculty', '/#/glossary', '/#/placement',
+  '/#/lab/keyboard', '/#/lab/ear', '/#/lab/design', '/#/lab/metronome',
+  '/#/tunes', '/#/listening', '/#/videos', '/#/pedagogy', '/#/progress',
+  '/#/faculty', '/#/glossary', '/#/placement',
 ];
 
 let failures = 0;

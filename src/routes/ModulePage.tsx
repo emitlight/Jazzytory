@@ -11,6 +11,7 @@ import ChordInspector from '../components/ChordInspector';
 import ReviewCard from '../components/ReviewCard';
 import DrillCard from '../components/DrillCard';
 import VideoCard from '../components/VideoCard';
+import MethodSection from '../components/MethodSection';
 
 export default function ModulePage() {
   const { moduleId } = useParams();
@@ -147,6 +148,9 @@ export default function ModulePage() {
         </p>
         {mod.drills.map((d) => <DrillCard key={d.id} drill={d} />)}
       </section>
+
+      {/* ───── 교수법 ───── */}
+      <MethodSection moduleId={mod.id} />
 
       {/* ───── 레퍼토리 · 청음 · 영상 ───── */}
       {tunes.length > 0 && (

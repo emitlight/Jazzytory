@@ -399,3 +399,72 @@ export interface PlacementQuestion {
   options: { label: string; correct?: boolean; value?: number }[];
   explanation: string;
 }
+
+/* ═══════════════════════  교수법 (Teaching Methods)  ═══════════════════════
+ * 재즈 교육 현장에서 **문서로 공개된** 교수법을 벤치마킹해 커리큘럼에 이식하는 층.
+ *
+ * 정직성 규칙
+ *  - 여기 기술하는 것은 해당 교육자가 **공개 출판물·공개 워크숍에서 가르친 방법**이다.
+ *  - 그 교육자가 Jazzytory 를 검수했거나 승인했다고 주장하지 않는다.
+ *    (검수는 `Reviewer` 가 담당하며 그쪽은 여전히 가상의 심사 기준이다.)
+ *  - 모든 교수법에는 출처가 붙는다. 확인되지 않은 일화·구전을 사실로 서술하지 않는다.
+ */
+
+export interface TeachingMethod {
+  id: string;
+  /** 한국어 명칭 */
+  name: string;
+  nameEn: string;
+  /** 이 교수법을 정립·보급한 실존 교육자 (공개 출판물 기준) */
+  teacher: string;
+  /** 활동 시기 */
+  era: string;
+  /** 어떤 계보에 속하는가 */
+  lineage: string;
+  /** 한 문장 핵심 주장 */
+  thesis: string;
+  /** 이 방법이 고치는 학습자의 구체적 증상 */
+  fixes: string[];
+  /** 왜 효과가 있는가 — 인지·운동학습 관점의 설명 */
+  why: string;
+  /** 오늘 당장 따라 할 수 있는 절차 (번호 없이 순서대로) */
+  protocol: string[];
+  /** 이 방법의 한계와 오용 주의 */
+  caveats: string[];
+  /** 이 교수법이 유효한 레벨 */
+  levels: LevelId[];
+  axis: SkillAxis[];
+  /** 이 교수법이 특히 중요한 모듈 */
+  relatedModules: string[];
+  sources: SourceRef[];
+  /** 실존 교육자의 공개된 교수법이지만 Jazzytory 를 검수하지는 않았음을 명시 */
+  endorsedJazzytory: false;
+}
+
+/** 특정 모듈에서 특정 교수법을 어떻게 쓰는가 */
+export interface MethodApplication {
+  id: string;
+  moduleId: string;
+  methodId: string;
+  /** 이 모듈의 내용에 이 교수법을 적용하는 구체적 방법 */
+  howToApply: string;
+  /** 이 교수법이 이 모듈에서 만들어 내는 추가 연습 */
+  drill: {
+    title: string;
+    instruction: string;
+    minutes: number;
+  };
+  /** 적용했을 때 학습자가 느끼는 변화 */
+  expectedShift: string;
+}
+
+/** 연습 세션을 설계하는 파라미터 (Hal Crook 계열 매개변수 연습) */
+export interface PracticeParameter {
+  id: string;
+  label: string;
+  labelEn: string;
+  /** 이 파라미터를 조절한다는 것이 무슨 뜻인가 */
+  description: string;
+  /** 가장 단순 → 가장 복잡 */
+  values: string[];
+}

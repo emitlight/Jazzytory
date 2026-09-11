@@ -12,6 +12,7 @@ import Keyboard, { voicingToMarks } from '../components/Keyboard';
 import ChordInspector from '../components/ChordInspector';
 import Transport from '../components/Transport';
 import EarTrainer from '../components/EarTrainer';
+import PracticeDesigner from '../components/PracticeDesigner';
 import { useApp } from '../state';
 
 const TABS = [
@@ -19,6 +20,7 @@ const TABS = [
   { id: 'progression', label: '진행 · 반주' },
   { id: 'keyboard',    label: '코드 탐색' },
   { id: 'ear',         label: '청음 훈련' },
+  { id: 'design',      label: '연습 설계' },
   { id: 'metronome',   label: '메트로놈' },
 ] as const;
 
@@ -55,6 +57,7 @@ export default function Lab() {
       {active === 'progression' && <ProgressionLab />}
       {active === 'keyboard' && <ChordExplorer />}
       {active === 'ear' && <EarTrainer />}
+      {active === 'design' && <PracticeDesigner />}
       {active === 'metronome' && <Metronome />}
     </div>
   );

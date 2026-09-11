@@ -286,3 +286,4 @@ describe('커리큘럼 커버리지', () => {
     expect(ALBUMS.filter((a) => !a.relatedModules.length).map((a) => a.id)).toEqual([]);
   });
 });
+

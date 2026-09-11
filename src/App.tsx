@@ -15,10 +15,12 @@ const Progress   = lazy(() => import('./routes/Progress'));
 const Faculty    = lazy(() => import('./routes/Faculty'));
 const Glossary   = lazy(() => import('./routes/Glossary'));
 const Placement  = lazy(() => import('./routes/Placement'));
+const Pedagogy   = lazy(() => import('./routes/Pedagogy'));
 
 const NAV = [
   { to: '/curriculum', label: '커리큘럼' },
   { to: '/lab',        label: '연습 랩' },
+  { to: '/pedagogy',   label: '교수법' },
   { to: '/tunes',      label: '레퍼토리' },
   { to: '/listening',  label: '필청 명반' },
   { to: '/videos',     label: '영상 강의' },
@@ -99,6 +101,7 @@ export default function App() {
             <Route path="/faculty" element={<Faculty />} />
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/placement" element={<Placement />} />
+            <Route path="/pedagogy" element={<Pedagogy />} />
             <Route path="*" element={
               <div className="stack stack-16">
                 <h1>없는 페이지입니다</h1>
@@ -114,6 +117,7 @@ export default function App() {
         <div className="wrap stack stack-8">
           <div className="row" style={{ gap: 16 }}>
             <Link to="/glossary">용어집</Link>
+            <Link to="/pedagogy">교수법</Link>
             <Link to="/faculty">검수 정책</Link>
             <Link to="/placement">배치고사</Link>
           </div>

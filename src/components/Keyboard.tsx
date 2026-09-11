@@ -26,8 +26,18 @@ interface Props {
 const WHITE_PC = [0, 2, 4, 5, 7, 9, 11];
 const isWhite = (midi: number) => WHITE_PC.includes(((midi % 12) + 12) % 12);
 
-/** 검은 건반이 흰 건반 사이 어디에 놓이는가 (흰건반 폭 대비 비율) */
-const BLACK_OFFSET: Record<number, number> = { 1: 0.65, 3: 0.35, 6: 0.7, 8: 0.5, 10: 0.3 };
+/**
+ * 검은 건반의 미세 보정 (흰건반 폭 대비).
+ * 실제 피아노에서 검은 건반은 두 흰 건반의 정확한 경계에 있지 않다 —
+ * C♯ 는 C 쪽으로, D♯ 는 D 쪽으로 치우쳐 있다. 0 이면 경계 정중앙.
+ */
+const BLACK_NUDGE: Record<number, number> = {
+  1: -0.09,   // C#
+  3: 0.09,    // D#
+  6: -0.11,   // F#
+  8: 0,       // G#
+  10: 0.11,   // A#
+};
 
 export default function Keyboard({
   range = [48, 84], marks = [], onKeyDown, playable = true, height = 132, ariaLabel = '피아노 건반',
@@ -89,11 +99,16 @@ export default function Keyboard({
         {/* 검은 건반은 흰 건반 위에 절대 배치 */}
         {(() => {
           const nodes: React.ReactNode[] = [];
-          let whiteIndex = 0;
+          // 흰 건반은 1px 씩 겹쳐 그리므로 실제 이동 폭은 whiteW - 1 이다.
+          const step = whiteW - 1;
+          let whitesBefore = 0;
           for (let midi = lo; midi <= hi; midi++) {
-            if (isWhite(midi)) { whiteIndex++; continue; }
+            if (isWhite(midi)) { whitesBefore++; continue; }
+            // 화면 왼쪽 끝이 검은 건반으로 시작하면 걸칠 흰 건반이 없다
+            if (whitesBefore === 0) continue;
             const pc = ((midi % 12) + 12) % 12;
-            const left = (whiteIndex - 1) * (whiteW - 1) + (BLACK_OFFSET[pc] ?? 0.5) * whiteW + whiteW * 0.33;
+            // 바로 아래 흰 건반의 오른쪽 경계에 중심을 맞추고 건반별로 미세 보정
+            const left = whitesBefore * step - blackW / 2 + (BLACK_NUDGE[pc] ?? 0) * whiteW;
             const mark = markMap.get(midi);
             const n = midiToNote(midi);
             nodes.push(

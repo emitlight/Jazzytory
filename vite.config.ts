@@ -3,7 +3,10 @@ import react from '@vitejs/plugin-react';
 
 // 정적 호스팅에서 서브패스로 배포할 때는 JAZZYTORY_BASE 로 base 를 넘긴다.
 //   JAZZYTORY_BASE=/Jazzytory/ npm run build
-const base = process.env.JAZZYTORY_BASE ?? '/';
+// GitHub Pages 의 configure-pages 액션은 base_path 를 "/Jazzytory" 처럼
+// 끝 슬래시 없이 내보낸다. Vite 는 끝 슬래시를 요구하므로 정규화한다.
+const raw = process.env.JAZZYTORY_BASE?.trim();
+const base = !raw || raw === '/' ? '/' : `${raw.replace(/\/+$/, '')}/`;
 
 export default defineConfig({
   plugins: [react()],
