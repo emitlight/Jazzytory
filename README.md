@@ -41,6 +41,7 @@ JAZZYTORY_BASE=/Jazzytory/ npm run build
 | 영역 | 내용 |
 |---|---|
 | **커리큘럼** | 9레벨 · 51모듈. 각 모듈에 개념·드릴·레퍼토리·필청·영상·평가·검수기록 |
+| **교수법** | 공개 출판물로 검증되는 재즈 교수법 18가지를 51개 모듈 전체에 84건으로 이식 |
 | **이론 엔진** | 코드 심볼 파서, 철자 보존 이조, 기능 기반 코드 스케일 판정, 로마숫자 분석, ii‑V 감지 |
 | **보이싱 엔진** | 셸 / 가이드톤 / 루트리스 A·B / 드롭2 / 쿼탈 / 어퍼스트럭처 / 블록 / 스프레드 — 음역 제약과 성부 진행 최소화 포함 |
 | **오디오** | Web Audio 합성 피아노·더블베이스·드럼, 룩어헤드 스케줄러, 워킹베이스·컴핑 자동 생성 |
@@ -48,6 +49,7 @@ JAZZYTORY_BASE=/Jazzytory/ npm run build
 | **레퍼토리** | 스탠다드 코드 차트 + Jazzytory 오리지널 연습곡. 이조·반주·마디별 분석·난구간 해법 |
 | **청음** | 필청 명반 + **트랙 단위 청취 지시문** (목록이 아니라 듣는 법) |
 | **진도** | 8축 숙련도, 간격 반복 복습, 인터리빙 세션 생성, 연습 로그 |
+| **연습 설계** | 매개변수를 하나만 고정해 연습하는 랩(밀도·음역·여백 등 8종) |
 
 ---
 
@@ -55,7 +57,7 @@ JAZZYTORY_BASE=/Jazzytory/ npm run build
 
 이 저장소가 감추지 않는 세 가지.
 
-### 1. 실제 대학 교수의 검수는 받지 않았다
+### 1. 실제 대학 교수의 검수는 받지 않았다 — 교수법 인용과는 다른 이야기다
 
 원 기획은 "버클리음대 등 유수 교수의 검수"를 포함했다. 실제로 구현한 것은:
 
@@ -67,7 +69,12 @@ JAZZYTORY_BASE=/Jazzytory/ npm run build
 `src/data/content.test.ts` 가 이 정직성 규칙을 빌드 게이트에서 강제한다 —
 검수자를 실존 인물로 표기하거나 실제 대학 소속으로 적으면 **테스트가 실패한다**.
 
-자세한 내용: [`docs/04-REVIEW-PROTOCOL.md`](docs/04-REVIEW-PROTOCOL.md)
+교수법 페이지에 인용된 배리 해리스·트리스타노·갤퍼 등은 **공개 출판물의 저자**일 뿐
+이 서비스를 승인하지 않았다. `TeachingMethod.endorsedJazzytory` 가 타입상 `false` 로
+고정되어 있어 반대로 표기할 수 없다.
+
+자세한 내용: [`docs/04-REVIEW-PROTOCOL.md`](docs/04-REVIEW-PROTOCOL.md) ·
+[`docs/09-PEDAGOGY.md`](docs/09-PEDAGOGY.md)
 
 ### 2. 멜로디를 배포하지 않는다
 
@@ -127,6 +134,8 @@ scripts/         미디어 검증
 | [`docs/05-ARCHITECTURE.md`](docs/05-ARCHITECTURE.md) | 아키텍처와 핵심 설계 결정 |
 | [`docs/06-SOURCES.md`](docs/06-SOURCES.md) | 참고 문헌 · 인용 정책 · 저작권 |
 | [`docs/07-ROADMAP.md`](docs/07-ROADMAP.md) | 로드맵 (v2 = MIDI 입력 채점) |
+| [`docs/08-DESIGN-SYSTEM.md`](docs/08-DESIGN-SYSTEM.md) | 디자인 시스템 — 토큰·타이포·표면·모션·접근성 |
+| [`docs/09-PEDAGOGY.md`](docs/09-PEDAGOGY.md) | 교수법 레이어 — 18가지 방법과 모듈 이식 규칙 |
 
 ---
 

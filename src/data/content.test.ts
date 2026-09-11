@@ -14,7 +14,8 @@ import { describe, it, expect } from 'vitest';
 import {
   LEVELS, MODULES, TUNES, ALBUMS, VIDEOS, CHANNELS, FACULTY, GLOSSARY,
   EAR_DRILLS, PLACEMENT, ALL_DRILLS, MODULE_BY_ID, TUNE_BY_ID, ALBUM_BY_ID,
-  VIDEO_BY_ID, REVIEWER_BY_ID,
+  VIDEO_BY_ID, REVIEWER_BY_ID, TEACHING_METHODS, METHOD_APPLICATIONS,
+  PRACTICE_PARAMETERS, METHOD_BY_ID, methodsOfModule,
 } from './index';
 import { parseChord, parseIntervalName } from '../lib/theory';
 import { flattenChart } from '../lib/playalong';
@@ -287,3 +288,69 @@ describe('커리큘럼 커버리지', () => {
   });
 });
 
+describe('교수법 레이어', () => {
+  it('교수법 id 가 중복되지 않는다', () => {
+    expect(dupes(TEACHING_METHODS.map((m) => m.id))).toEqual([]);
+  });
+
+  it('적용 id 가 중복되지 않는다', () => {
+    expect(dupes(METHOD_APPLICATIONS.map((a) => a.id))).toEqual([]);
+  });
+
+  it('모든 적용이 실존 교수법과 실존 모듈을 가리킨다', () => {
+    const bad: string[] = [];
+    for (const a of METHOD_APPLICATIONS) {
+      if (!METHOD_BY_ID.has(a.methodId)) bad.push(`${a.id} → method:${a.methodId}`);
+      if (!MODULE_BY_ID.has(a.moduleId)) bad.push(`${a.id} → module:${a.moduleId}`);
+    }
+    expect(bad).toEqual([]);
+  });
+
+  it('교수법의 relatedModules 가 실존한다', () => {
+    const bad: string[] = [];
+    for (const m of TEACHING_METHODS) {
+      for (const id of m.relatedModules) if (!MODULE_BY_ID.has(id)) bad.push(`${m.id} → ${id}`);
+    }
+    expect(bad).toEqual([]);
+  });
+
+  it('모든 모듈에 최소 한 개의 교수법이 붙는다', () => {
+    const missing = MODULES.filter((m) => methodsOfModule(m.id).length === 0).map((m) => m.id);
+    expect(missing).toEqual([]);
+  });
+
+  it('모든 교수법에 절차·한계·출처가 있다', () => {
+    const bad: string[] = [];
+    for (const m of TEACHING_METHODS) {
+      if (m.protocol.length < 3) bad.push(`${m.id}: 절차 ${m.protocol.length}단계`);
+      if (!m.caveats.length) bad.push(`${m.id}: 한계 없음`);
+      if (!m.sources.length) bad.push(`${m.id}: 출처 없음`);
+      if (!m.fixes.length) bad.push(`${m.id}: 고치는 증상 없음`);
+    }
+    expect(bad).toEqual([]);
+  });
+
+  it('어떤 교육자도 Jazzytory 를 승인한 것으로 표기되지 않는다', () => {
+    expect(TEACHING_METHODS.filter((m) => m.endorsedJazzytory !== false).map((m) => m.id)).toEqual([]);
+  });
+
+  it('한 교수법이 전체 모듈의 절반을 넘게 차지하지 않는다', () => {
+    const counts = new Map<string, number>();
+    for (const a of METHOD_APPLICATIONS) counts.set(a.methodId, (counts.get(a.methodId) ?? 0) + 1);
+    const over = [...counts.entries()]
+      .filter(([, n]) => n > MODULES.length / 2)
+      .map(([id, n]) => `${id}: ${n}/${MODULES.length}`);
+    expect(over).toEqual([]);
+  });
+
+  it('연습 파라미터의 값이 2개 이상이다', () => {
+    expect(PRACTICE_PARAMETERS.filter((p) => p.values.length < 2).map((p) => p.id)).toEqual([]);
+  });
+
+  it('적용 드릴의 시간이 현실적이다 (3~40분)', () => {
+    const bad = METHOD_APPLICATIONS
+      .filter((a) => a.drill.minutes < 3 || a.drill.minutes > 40)
+      .map((a) => `${a.id}: ${a.drill.minutes}분`);
+    expect(bad).toEqual([]);
+  });
+});
