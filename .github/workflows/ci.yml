@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: 타입 검사
+        run: npm run typecheck
+      - name: 단위 테스트 + 콘텐츠 정합성
+        run: npm run test
+      - name: 빌드
+        run: npm run build
+      - name: 브라우저 스모크 테스트
+        run: |
+          npx playwright install --with-deps chromium
+          npm run smoke
+
+      - name: 번들 크기 보고
+        run: |
+          echo "### 번들 크기" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          du -sh dist >> $GITHUB_STEP_SUMMARY
+          find dist/assets -name '*.js' -exec sh -c 'printf "%s  %s\n" "$(gzip -c "$1" | wc -c | awk "{printf \"%.0f KB gz\", \$1/1024}")" "$(basename "$1")"' _ {} \; >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
