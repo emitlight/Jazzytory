@@ -1,5 +1,6 @@
 import { REVIEW_STATUS_LABEL, type ReviewRecord } from '../data/types';
 import { REVIEWER_BY_ID } from '../data';
+import { RichText } from './Prose';
 
 const RUBRIC_LABEL: Record<string, string> = {
   accuracy: '이론 정확성', terminology: '용어 표준성', sequencing: '난이도 계열성',
@@ -64,8 +65,8 @@ export default function ReviewCard({ review }: { review: ReviewRecord }) {
                   <span className={`badge tiny ${SEV_CLASS[c.severity]}`}>{c.severity}</span>
                   <span className="tiny muted">{r?.name ?? c.reviewerId}</span>
                 </div>
-                <p className="small" style={{ margin: 0 }}><strong>지적:</strong> {c.issue}</p>
-                <p className="small dim" style={{ margin: 0 }}><strong>반영:</strong> {c.resolution}</p>
+                <p className="small" style={{ margin: 0 }}><strong>지적:</strong> <RichText text={c.issue} /></p>
+                <p className="small dim" style={{ margin: 0 }}><strong>반영:</strong> <RichText text={c.resolution} /></p>
               </div>
             );
           })}

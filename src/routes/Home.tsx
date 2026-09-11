@@ -4,6 +4,7 @@ import { useApp } from '../state';
 import { dueDrills, practiceStreak } from '../lib/mastery';
 import { practiceDates, totalPracticeMinutes } from '../lib/storage';
 import HeroDemo from '../components/HeroDemo';
+import { RichText } from '../components/Prose';
 
 export default function Home() {
   const { state } = useApp();
@@ -140,7 +141,7 @@ export default function Home() {
                   <span className="tiny muted">{l.weeks}주</span>
                 </div>
                 <strong>{l.title}</strong>
-                <p className="small dim" style={{ margin: 0 }}>{l.promise}</p>
+                <p className="small dim" style={{ margin: 0 }}><RichText text={l.promise} /></p>
                 <div className="bar" aria-label={`${done}/${mods.length} 모듈 완료`}>
                   <span style={{ width: `${mods.length ? (done / mods.length) * 100 : 0}%` }} />
                 </div>

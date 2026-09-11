@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { VideoResource } from '../data/types';
+import { RichText } from './Prose';
 
 /**
  * 영상 카드 — 임베드 정책
@@ -54,8 +55,8 @@ export default function VideoCard({ video }: { video: VideoResource }) {
         </a>
       )}
 
-      <p className="small dim" style={{ margin: 0 }}>{video.takeaway}</p>
-      {video.prereq && <p className="tiny muted" style={{ margin: 0 }}>먼저 알아야 할 것: {video.prereq}</p>}
+      <p className="small dim" style={{ margin: 0 }}><RichText text={video.takeaway} /></p>
+      {video.prereq && <p className="tiny muted" style={{ margin: 0 }}>먼저 알아야 할 것: <RichText text={video.prereq} /></p>}
 
       {!canEmbed && (
         <p className="tiny muted" style={{ margin: 0 }}>

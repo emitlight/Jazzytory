@@ -4,6 +4,7 @@ import { parseChord, chordNotes, toFrequency, transposeChord, parseIntervalName,
 import { ensureAudio, strikeChord, strike, playNote } from '../lib/audio';
 import { makeVoicing } from '../lib/voicing';
 import { useApp } from '../state';
+import { RichText } from './Prose';
 
 
 export default function EarTrainer() {
@@ -80,7 +81,7 @@ export default function EarTrainer() {
             ))}
           </select>
         </div>
-        <p className="small dim" style={{ margin: 0 }}>{drill?.description}</p>
+        <p className="small dim" style={{ margin: 0 }}>{drill && <RichText text={drill.description} />}</p>
         <div className="btn-row">
           <button className="btn btn-primary" onClick={nextQuestion}>
             {current ? '다음 문제' : '시작하기'}

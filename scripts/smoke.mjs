@@ -66,14 +66,26 @@ for (const route of ROUTES) {
   await page.goto(`http://localhost:${PORT}${route}`, { waitUntil: 'networkidle' });
   await page.waitForTimeout(300);
   const h1 = (await page.locator('h1').first().textContent().catch(() => '')) ?? '';
-  const chars = (await page.locator('#main').innerText().catch(() => '')).length;
+  const body = (await page.locator('#main').innerText().catch(() => ''));
+  const chars = body.length;
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
   const newErrors = errors.length - before;
-  // 빈 화면(본문 200자 미만)도 실패로 본다 — 렌더는 됐는데 내용이 없는 경우를 잡는다
-  const ok = newErrors === 0 && !overflow && chars > 150 && h1.trim().length > 0;
+  // 콘텐츠 마크다운이 렌더되지 않고 새어 나오는지 검사한다.
+  // **굵게** 와 `코드` 는 RichText 를 통과해야 하며, 화면에 별표가 보이면 그 자리를 빠뜨린 것이다.
+  const leaks = [...body.matchAll(/\*\*[^*\n]{1,40}\*\*/g)].map((m) => m[0]).slice(0, 3);
+  // 빈 화면(본문 150자 미만)도 실패로 본다 — 렌더는 됐는데 내용이 없는 경우를 잡는다
+  const ok = newErrors === 0 && !overflow && chars > 150 && h1.trim().length > 0 && leaks.length === 0;
   if (!ok) failures++;
-  rows.push(`${ok ? 'ok  ' : 'FAIL'} ${route.padEnd(22)} h1="${h1.trim().slice(0, 26)}" chars=${String(chars).padStart(6)}${overflow ? ' H-OVERFLOW' : ''}${newErrors ? ` errors=${newErrors}` : ''}`);
+  rows.push(`${ok ? 'ok  ' : 'FAIL'} ${route.padEnd(22)} h1="${h1.trim().slice(0, 26)}" chars=${String(chars).padStart(6)}${overflow ? ' H-OVERFLOW' : ''}${newErrors ? ` errors=${newErrors}` : ''}${leaks.length ? ` MD-LEAK ${leaks.join(' ')}` : ''}`);
   if (SHOTS) await page.screenshot({ path: join(SHOTS, `${route.replace(/[^a-z0-9]+/gi, '_') || 'home'}.png`) });
+}
+
+// 펼쳐진 상태에서도 마크다운이 새지 않는지 — 라우트 첫 화면만으로는 못 잡는다
+const deepLeaks = [];
+async function checkLeaks(label) {
+  const body = await page.locator('#main').innerText().catch(() => '');
+  const found = [...body.matchAll(/\*\*[^*\n]{1,40}\*\*/g)].map((m) => m[0]).slice(0, 3);
+  if (found.length) deepLeaks.push(`${label}: ${found.join(' ')}`);
 }
 
 // 핵심 인터랙션
@@ -90,7 +102,22 @@ if (await modLink.count()) {
     await page.waitForTimeout(500);
     moduleOk = moduleOk && (await page.locator('.keyboard').count()) > 0;
   }
+  await checkLeaks('모듈 상세');
 }
+
+// 필청 — 청취 지시문 펼친 상태
+await page.goto(`http://localhost:${PORT}/#/listening`, { waitUntil: 'networkidle' });
+const expandAlbum = page.locator('button', { hasText: '무엇을 들을 것인가' }).first();
+if (await expandAlbum.count()) {
+  await expandAlbum.click();
+  await page.waitForTimeout(400);
+  await checkLeaks('필청 펼침');
+}
+
+// 교수법 — 연습 절차 펼친 상태
+await page.goto(`http://localhost:${PORT}/#/pedagogy`, { waitUntil: 'networkidle' });
+await page.waitForTimeout(400);
+await checkLeaks('교수법 펼침');
 
 await page.goto(`http://localhost:${PORT}/#/tunes`, { waitUntil: 'networkidle' });
 const tuneLink = page.locator('a[href*="#/tunes/t-"]').first();
@@ -99,6 +126,7 @@ if (await tuneLink.count()) {
   await tuneLink.click();
   await page.waitForTimeout(600);
   bars = await page.locator('.ls-bar').count();
+  await checkLeaks('곡 상세');
 }
 
 // 모바일 400px
@@ -116,12 +144,16 @@ console.log('\n=== 인터랙션 ===');
 console.log(`모듈 → 건반 예제: ${moduleOk ? 'ok' : 'FAIL'}`);
 console.log(`곡 → 리드시트:    ${bars > 0 ? `ok (${bars}마디)` : 'FAIL'}`);
 console.log(`모바일 400px 가로 스크롤: ${mobileOverflow.length ? mobileOverflow.join(', ') : '없음'}`);
+console.log('\n=== 마크다운 누출 (펼친 상태) ===');
+console.log(deepLeaks.length ? deepLeaks.join('\n') : '없음');
+
 console.log('\n=== 콘솔 에러 ===');
 console.log(errors.length ? errors.slice(0, 15).join('\n') : '없음');
 
 await browser.close();
 server.close();
 
-const failed = failures > 0 || !moduleOk || bars === 0 || mobileOverflow.length > 0 || errors.length > 0;
+const failed = failures > 0 || !moduleOk || bars === 0 || mobileOverflow.length > 0
+  || errors.length > 0 || deepLeaks.length > 0;
 console.log(`\n${failed ? '실패' : '전부 통과'}`);
 process.exit(failed ? 1 : 0);

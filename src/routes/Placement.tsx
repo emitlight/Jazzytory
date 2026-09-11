@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { PLACEMENT, LEVELS, MODULES } from '../data';
 import { useApp } from '../state';
 import { SKILL_AXIS_LABEL, type LevelId } from '../data/types';
+import { RichText } from '../components/Prose';
 
 const LEVEL_ORDER: LevelId[] = ['L0', 'L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7', 'L8'];
 
@@ -50,14 +51,14 @@ export default function Placement() {
         <header className="stack stack-12">
           <span className="eyebrow">배치 결과</span>
           <h1 style={{ margin: 0 }}>{level.id} · {level.title}</h1>
-          <p className="lead">{level.promise}</p>
+          <p className="lead"><RichText text={level.promise} /></p>
         </header>
         <div className="card stack stack-12">
           <div className="level-strip" style={{ background: level.accentColor }} />
-          <p className="small dim" style={{ margin: 0 }}>{level.description}</p>
+          <p className="small dim" style={{ margin: 0 }}><RichText text={level.description} /></p>
           <div className="eyebrow">이 레벨의 수료 기준</div>
           <ul className="small" style={{ margin: 0 }}>
-            {level.exitCriteria.map((c, i) => <li key={i}>{c}</li>)}
+            {level.exitCriteria.map((c, i) => <li key={i}><RichText text={c} /></li>)}
           </ul>
           {!result.confident && (
             <div className="note small">
@@ -113,7 +114,7 @@ export default function Placement() {
           })}
         </div>
         {answered && (
-          <div className="note small">{q.explanation}</div>
+          <div className="note small"><RichText text={q.explanation} /></div>
         )}
         <div className="row-between">
           <button className="btn btn-ghost btn-sm" disabled={idx === 0} onClick={() => setIdx(idx - 1)}>← 이전</button>

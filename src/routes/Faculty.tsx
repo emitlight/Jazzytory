@@ -1,6 +1,7 @@
 import { FACULTY, MODULES, reviewSummary, CONTENT_STATS } from '../data';
 import { REVIEW_STATUS_LABEL, type ReviewStatus } from '../data/types';
 import { Link } from 'react-router-dom';
+import { RichText } from '../components/Prose';
 
 const RUBRIC_LABEL: Record<string, string> = {
   accuracy: '이론 정확성', terminology: '용어 표준성', sequencing: '난이도 계열성',
@@ -106,9 +107,9 @@ export default function Faculty() {
                 <span className="badge tiny">가상 기준</span>
               </div>
               <span className="tiny muted">{r.affiliation}</span>
-              <p className="small dim" style={{ margin: 0 }}>{r.bio}</p>
+              <p className="small dim" style={{ margin: 0 }}><RichText text={r.bio} /></p>
               <div className="eyebrow" style={{ marginTop: 4 }}>계보</div>
-              <p className="tiny dim" style={{ margin: 0 }}>{r.lineage}</p>
+              <p className="tiny dim" style={{ margin: 0 }}><RichText text={r.lineage} /></p>
               <div className="chips">
                 {r.scope.map((s, i) => <span key={i} className="badge tiny">{s}</span>)}
               </div>

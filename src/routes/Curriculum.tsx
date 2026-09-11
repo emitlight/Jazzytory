@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { LEVELS, MODULES, CONTENT_STATS } from '../data';
 import { useApp } from '../state';
 import { REVIEW_STATUS_LABEL } from '../data/types';
+import { RichText } from '../components/Prose';
 
 export default function Curriculum() {
   const { state } = useApp();
@@ -31,7 +32,7 @@ export default function Curriculum() {
                   <h2 style={{ margin: 0 }}>{level.title}</h2>
                   <span className="tiny muted">{level.titleEn}</span>
                 </div>
-                <p className="dim small" style={{ margin: 0 }}>{level.promise}</p>
+                <p className="dim small" style={{ margin: 0 }}><RichText text={level.promise} /></p>
               </div>
               <Link className="btn btn-sm" to={`/curriculum/${level.id}`}>레벨 상세</Link>
             </div>
@@ -54,7 +55,7 @@ export default function Curriculum() {
                         : <span className="badge tiny">{REVIEW_STATUS_LABEL[m.review.status]}</span>}
                     </div>
                     <strong className="small">{m.title}</strong>
-                    <p className="tiny dim" style={{ margin: 0 }}>{m.summary}</p>
+                    <p className="tiny dim" style={{ margin: 0 }}><RichText text={m.summary} /></p>
                     <div className="row tiny muted" style={{ gap: 8 }}>
                       <span>개념 {m.concepts.length}</span>
                       <span>드릴 {m.drills.length}</span>

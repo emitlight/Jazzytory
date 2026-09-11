@@ -1,4 +1,14 @@
-/** 제한적 마크다운 렌더러 — **굵게**, `코드`, "- " 목록, 문단 분리만 지원한다. */
+import type { ReactNode } from 'react';
+
+/**
+ * 콘텐츠 데이터의 제한적 마크다운 렌더러.
+ *
+ * 콘텐츠 집필 규약상 본문에는 `**굵게**`, `` `코드` ``, "- " 목록만 쓴다.
+ * 이 두 컴포넌트를 거치지 않고 문자열을 그대로 뿌리면 화면에 별표가 노출된다 —
+ * 실제로 그렇게 새던 자리가 많았다. 콘텐츠 문자열은 반드시 여기를 통과시킨다.
+ */
+
+/** 문단·목록까지 처리하는 블록 렌더러 */
 export default function Prose({ text }: { text: string }) {
   const blocks = text.split(/\n\n+/);
   return (
@@ -18,9 +28,17 @@ export default function Prose({ text }: { text: string }) {
   );
 }
 
-function inline(s: string): React.ReactNode[] {
-  const out: React.ReactNode[] = [];
-  const re = /(\*\*[^*]+\*\*|`[^`]+`)/g;
+/**
+ * 인라인 전용 렌더러. `<p>`, `<li>`, 칩 안 등 이미 블록이 정해진 자리에 쓴다.
+ * 줄바꿈(\n)은 그대로 살린다 — 호출부에서 `white-space: pre-line` 을 함께 쓰면 된다.
+ */
+export function RichText({ text }: { text: string }) {
+  return <>{inline(text)}</>;
+}
+
+function inline(s: string): ReactNode[] {
+  const out: ReactNode[] = [];
+  const re = /(\*\*[^*\n]+\*\*|`[^`\n]+`)/g;
   let last = 0;
   let m: RegExpExecArray | null;
   let key = 0;

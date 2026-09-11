@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { TEACHING_METHODS, LEVELS, modulesOfMethod, CONTENT_STATS } from '../data';
 import { SKILL_AXIS_LABEL, type LevelId } from '../data/types';
+import { RichText } from '../components/Prose';
 
 export default function Pedagogy() {
   const [levelFilter, setLevelFilter] = useState<LevelId | 'all'>('all');
@@ -65,12 +66,12 @@ export default function Pedagogy() {
                 </button>
               </div>
 
-              <p className="lead" style={{ margin: 0, fontSize: '1rem' }}>{m.thesis}</p>
+              <p className="lead" style={{ margin: 0, fontSize: '1rem' }}><RichText text={m.thesis} /></p>
 
               <div className="stack stack-4">
                 <div className="eyebrow">이 방법이 고치는 증상</div>
                 <ul className="small dim" style={{ margin: 0 }}>
-                  {m.fixes.map((f, i) => <li key={i}>{f}</li>)}
+                  {m.fixes.map((f, i) => <li key={i}><RichText text={f} /></li>)}
                 </ul>
               </div>
 
@@ -78,13 +79,13 @@ export default function Pedagogy() {
                 <div className="stack stack-16">
                   <div className="sunken stack stack-8">
                     <div className="eyebrow">왜 효과가 있는가</div>
-                    <p className="small" style={{ margin: 0 }}>{m.why}</p>
+                    <p className="small" style={{ margin: 0 }}><RichText text={m.why} /></p>
                   </div>
 
                   <div className="stack stack-8">
                     <div className="eyebrow">오늘 당장 하는 법</div>
                     <ol className="small" style={{ margin: 0 }}>
-                      {m.protocol.map((p, i) => <li key={i} style={{ marginBottom: '.5em' }}>{p}</li>)}
+                      {m.protocol.map((p, i) => <li key={i} style={{ marginBottom: '.5em' }}><RichText text={p} /></li>)}
                     </ol>
                   </div>
 
@@ -92,7 +93,7 @@ export default function Pedagogy() {
                     <div className="note note-warn stack stack-4">
                       <strong>이 방법의 한계</strong>
                       <ul className="small" style={{ margin: 0 }}>
-                        {m.caveats.map((c, i) => <li key={i}>{c}</li>)}
+                        {m.caveats.map((c, i) => <li key={i}><RichText text={c} /></li>)}
                       </ul>
                     </div>
                   )}

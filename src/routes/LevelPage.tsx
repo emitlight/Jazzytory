@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { LEVELS, MODULES, tunesOfLevel, albumsOfLevel } from '../data';
 import { useApp } from '../state';
 import { SKILL_AXIS_LABEL, type SkillAxis } from '../data/types';
+import { RichText } from '../components/Prose';
 
 export default function LevelPage() {
   const { levelId } = useParams();
@@ -25,8 +26,8 @@ export default function LevelPage() {
         </div>
         <h1 style={{ margin: 0 }}>{level.title}</h1>
         <p className="tiny muted" style={{ margin: 0 }}>{level.titleEn}</p>
-        <p className="lead" style={{ maxWidth: '60ch' }}>{level.promise}</p>
-        <p className="dim" style={{ maxWidth: '62ch' }}>{level.description}</p>
+        <p className="lead" style={{ maxWidth: '60ch' }}><RichText text={level.promise} /></p>
+        <p className="dim" style={{ maxWidth: '62ch' }}><RichText text={level.description} /></p>
         <div className="bar" style={{ maxWidth: 360 }}>
           <span style={{ width: `${mods.length ? (done / mods.length) * 100 : 0}%` }} />
         </div>
@@ -37,7 +38,7 @@ export default function LevelPage() {
         <section className="card stack stack-8">
           <h2 style={{ margin: 0, fontSize: '1.05rem' }}>들어오기 전에</h2>
           <ul className="small dim" style={{ margin: 0 }}>
-            {level.prerequisites.map((p, i) => <li key={i}>{p}</li>)}
+            {level.prerequisites.map((p, i) => <li key={i}><RichText text={p} /></li>)}
           </ul>
           <div className="eyebrow" style={{ marginTop: 8 }}>대응 과정</div>
           <div className="chips">
@@ -49,7 +50,7 @@ export default function LevelPage() {
           <h2 style={{ margin: 0, fontSize: '1.05rem' }}>수료 기준 (Jury)</h2>
           <p className="tiny muted" style={{ margin: 0 }}>전부 충족해야 다음 레벨로 넘어갑니다.</p>
           <ul className="small" style={{ margin: 0 }}>
-            {level.exitCriteria.map((c, i) => <li key={i}>{c}</li>)}
+            {level.exitCriteria.map((c, i) => <li key={i}><RichText text={c} /></li>)}
           </ul>
         </section>
       </div>
@@ -83,7 +84,7 @@ export default function LevelPage() {
                 </div>
                 {state.completedModules.includes(m.id) && <span className="badge badge-ok">완료</span>}
               </div>
-              <p className="small dim" style={{ margin: 0 }}>{m.summary}</p>
+              <p className="small dim" style={{ margin: 0 }}><RichText text={m.summary} /></p>
               <div className="row tiny muted" style={{ gap: 10 }}>
                 <span>개념 {m.concepts.length}</span>
                 <span>드릴 {m.drills.length}</span>

@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { PRACTICE_PARAMETERS, TEACHING_METHODS } from '../data';
 import { useApp } from '../state';
+import { RichText } from './Prose';
 
 /**
  * 매개변수 연습 설계기 (Hal Crook 계열)
@@ -88,7 +89,7 @@ export default function PracticeDesigner() {
                     <span className="tiny muted">{p.labelEn}</span>
                   </div>
                   <strong style={{ fontSize: '1.15rem' }}>{value}</strong>
-                  <p className="tiny dim" style={{ margin: 0 }}>{p.description}</p>
+                  <p className="tiny dim" style={{ margin: 0 }}><RichText text={p.description} /></p>
                 </div>
               );
             })}
@@ -127,7 +128,7 @@ export default function PracticeDesigner() {
                 <strong className="small">{p.label}</strong>
                 <span className="tiny muted">{p.labelEn}</span>
               </div>
-              <p className="tiny dim" style={{ margin: 0 }}>{p.description}</p>
+              <p className="tiny dim" style={{ margin: 0 }}><RichText text={p.description} /></p>
               <div className="chips">
                 {p.values.map((v, i) => <span key={i} className="badge tiny">{v}</span>)}
               </div>

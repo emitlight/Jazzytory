@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ALBUMS, LEVELS, MODULE_BY_ID } from '../data';
 import { useApp } from '../state';
 import type { LevelId } from '../data/types';
+import { RichText } from '../components/Prose';
 
 export default function Listening() {
   const { state, toggleListened } = useApp();
@@ -84,7 +85,7 @@ export default function Listening() {
                 </button>
               </div>
 
-              <p className="small dim" style={{ margin: 0 }}>{a.why}</p>
+              <p className="small dim" style={{ margin: 0 }}><RichText text={a.why} /></p>
 
               <div className="chips">
                 {a.tags.map((t) => <span key={t} className="badge tiny">{t}</span>)}
@@ -111,13 +112,13 @@ export default function Listening() {
                         </Link>
                       )}
                     </div>
-                    <p className="small" style={{ margin: 0 }}>{n.listenFor}</p>
+                    <p className="small" style={{ margin: 0 }}><RichText text={n.listenFor} /></p>
                   </div>
                 ))}
 
                 {!isOpen && a.trackNotes[0] && (
                   <p className="tiny muted" style={{ margin: 0 }}>
-                    예: <strong>{a.trackNotes[0].track}</strong> — {a.trackNotes[0].listenFor.slice(0, 70)}…
+                    예: <strong>{a.trackNotes[0].track}</strong> — <RichText text={a.trackNotes[0].listenFor.replace(/\*\*/g, '').slice(0, 70)} />…
                   </p>
                 )}
               </div>

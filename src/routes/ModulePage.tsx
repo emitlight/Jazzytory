@@ -6,7 +6,7 @@ import {
 } from '../data';
 import { useApp } from '../state';
 import { SKILL_AXIS_LABEL } from '../data/types';
-import Prose from '../components/Prose';
+import Prose, { RichText } from '../components/Prose';
 import ChordInspector from '../components/ChordInspector';
 import ReviewCard from '../components/ReviewCard';
 import DrillCard from '../components/DrillCard';
@@ -44,7 +44,7 @@ export default function ModulePage() {
         </div>
         <h1 style={{ margin: 0 }}>{mod.title}</h1>
         <p className="tiny muted" style={{ margin: 0 }}>{mod.titleEn}</p>
-        <p className="lead" style={{ maxWidth: '60ch' }}>{mod.summary}</p>
+        <p className="lead" style={{ maxWidth: '60ch' }}>{<RichText text={mod.summary} />}</p>
         <div className="chips">
           {mod.axis.map((a) => <span key={a} className="badge tiny">{SKILL_AXIS_LABEL[a]}</span>)}
         </div>
@@ -53,7 +53,7 @@ export default function ModulePage() {
       <section className="panel stack stack-8">
         <div className="eyebrow">이 모듈을 마치면</div>
         <ul className="small" style={{ margin: 0 }}>
-          {mod.objectives.map((o, i) => <li key={i}>{o}</li>)}
+          {mod.objectives.map((o, i) => <li key={i}><RichText text={o} /></li>)}
         </ul>
         {mod.requires && mod.requires.length > 0 && (
           <p className="tiny muted" style={{ margin: '6px 0 0' }}>
@@ -91,7 +91,7 @@ export default function ModulePage() {
                         {open ? '닫기' : '건반에서 보기'}
                       </button>
                     </div>
-                    {ex.caption && <p className="tiny dim" style={{ margin: 0 }}>{ex.caption}</p>}
+                    {ex.caption && <p className="tiny dim" style={{ margin: 0 }}><RichText text={ex.caption} /></p>}
                     {open && (
                       <div className="stack stack-12">
                         {ex.chords.map((ch, j) => (
@@ -123,7 +123,7 @@ export default function ModulePage() {
             <div className="note note-warn stack stack-4">
               <strong>여기서 대부분 이렇게 틀립니다</strong>
               <ul className="small" style={{ margin: 0 }}>
-                {c.pitfalls.map((p, i) => <li key={i}>{p}</li>)}
+                {c.pitfalls.map((p, i) => <li key={i}><RichText text={p} /></li>)}
               </ul>
             </div>
           )}
@@ -183,7 +183,7 @@ export default function ModulePage() {
                   {note && (
                     <p className="small dim" style={{ margin: 0 }}>
                       <span className="badge tiny">{note.track}{note.at ? ` ${note.at}` : ''}</span>{' '}
-                      {note.listenFor}
+                      <RichText text={note.listenFor} />
                     </p>
                   )}
                 </div>
@@ -206,13 +206,13 @@ export default function ModulePage() {
       <section className="card stack stack-12">
         <h2 style={{ margin: 0, fontSize: '1.05rem' }}>통과 기준</h2>
         <ul className="small" style={{ margin: 0 }}>
-          {mod.assessment.criteria.map((c, i) => <li key={i}>{c}</li>)}
+          {mod.assessment.criteria.map((c, i) => <li key={i}><RichText text={c} /></li>)}
         </ul>
         <div className="eyebrow" style={{ marginTop: 6 }}>실기 과제</div>
-        <p className="small dim" style={{ margin: 0 }}>{mod.assessment.performanceTask}</p>
+        <p className="small dim" style={{ margin: 0 }}><RichText text={mod.assessment.performanceTask} /></p>
         <div className="eyebrow" style={{ marginTop: 6 }}>자가 점검</div>
         <ul className="small dim" style={{ margin: 0 }}>
-          {mod.assessment.selfCheck.map((c, i) => <li key={i}>{c}</li>)}
+          {mod.assessment.selfCheck.map((c, i) => <li key={i}><RichText text={c} /></li>)}
         </ul>
       </section>
 

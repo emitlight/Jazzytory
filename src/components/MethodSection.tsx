@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { methodsOfModule } from '../data';
 import { useApp } from '../state';
+import { RichText } from './Prose';
 
 /** 모듈 페이지의 "이 모듈은 이렇게 연습한다" 섹션 */
 export default function MethodSection({ moduleId }: { moduleId: string }) {
@@ -31,11 +32,11 @@ export default function MethodSection({ moduleId }: { moduleId: string }) {
             <Link className="btn btn-sm btn-ghost" to="/pedagogy">교수법 전체 →</Link>
           </div>
 
-          <p className="small dim" style={{ margin: 0 }}>{method.thesis}</p>
+          <p className="small dim" style={{ margin: 0 }}><RichText text={method.thesis} /></p>
 
           <div className="sunken stack stack-8">
             <div className="eyebrow">이 모듈에 적용하면</div>
-            <p className="small" style={{ margin: 0 }}>{application.howToApply}</p>
+            <p className="small" style={{ margin: 0 }}><RichText text={application.howToApply} /></p>
           </div>
 
           <div className="stack stack-8">
@@ -43,12 +44,12 @@ export default function MethodSection({ moduleId }: { moduleId: string }) {
               <div className="eyebrow">연습 {application.drill.minutes}분</div>
               <span className="badge tiny">{application.drill.title}</span>
             </div>
-            <p className="small" style={{ margin: 0, whiteSpace: 'pre-line' }}>{application.drill.instruction}</p>
+            <p className="small" style={{ margin: 0, whiteSpace: 'pre-line' }}><RichText text={application.drill.instruction} /></p>
           </div>
 
           <div className="row-between">
             <p className="tiny muted" style={{ margin: 0, flex: 1, minWidth: 200 }}>
-              일주일 뒤 달라지는 것 — {application.expectedShift}
+              일주일 뒤 달라지는 것 — <RichText text={application.expectedShift} />
             </p>
             <button
               className={`btn btn-sm ${done === application.id ? '' : 'btn-primary'}`}

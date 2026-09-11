@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { GLOSSARY, MODULE_BY_ID } from '../data';
+import { RichText } from '../components/Prose';
 
 export default function Glossary() {
   const [q, setQ] = useState('');
@@ -31,8 +32,8 @@ export default function Glossary() {
               <span className="tiny muted">{g.termEn}</span>
               {g.aka?.map((a) => <span key={a} className="badge tiny">{a}</span>)}
             </div>
-            <p className="small" style={{ margin: 0 }}>{g.definition}</p>
-            {g.example && <p className="small dim mono" style={{ margin: 0 }}>예: {g.example}</p>}
+            <p className="small" style={{ margin: 0 }}><RichText text={g.definition} /></p>
+            {g.example && <p className="small dim mono" style={{ margin: 0 }}>예: <RichText text={g.example} /></p>}
             {g.relatedModules.length > 0 && (
               <div className="chips">
                 {g.relatedModules.slice(0, 3).map((m) => {

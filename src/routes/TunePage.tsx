@@ -8,6 +8,7 @@ import ChordInspector from '../components/ChordInspector';
 import ReviewCard from '../components/ReviewCard';
 import { flattenChart } from '../lib/playalong';
 import { summarizeCadences, analyzeProgression } from '../lib/analysis';
+import { RichText } from '../components/Prose';
 
 const KEY_SEMITONE: Record<string, number> = { C: 0, Db: 1, D: 2, Eb: 3, E: 4, F: 5, Gb: 6, G: 7, Ab: 8, A: 9, Bb: 10, B: 11 };
 const KEYS = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
@@ -69,9 +70,9 @@ export default function TunePage() {
 
       <section className="card stack stack-8">
         <h2 style={{ margin: 0, fontSize: '1.05rem' }}>오늘 무엇부터 할 것인가</h2>
-        <p className="small" style={{ margin: 0, whiteSpace: 'pre-line' }}>{tune.approach}</p>
+        <p className="small" style={{ margin: 0, whiteSpace: 'pre-line' }}><RichText text={tune.approach} /></p>
         <div className="chips" style={{ marginTop: 6 }}>
-          {tune.teaches.map((t, i) => <span key={i} className="badge tiny">{t}</span>)}
+          {tune.teaches.map((t, i) => <span key={i} className="badge tiny"><RichText text={t} /></span>)}
         </div>
       </section>
 
@@ -165,8 +166,8 @@ export default function TunePage() {
           {tune.hotspots.map((h, i) => (
             <div key={i} className="card card-tight stack stack-4">
               <div className="row"><span className="badge badge-warn tiny">{h.at}</span></div>
-              <p className="small" style={{ margin: 0 }}><strong>문제:</strong> {h.issue}</p>
-              <p className="small dim" style={{ margin: 0 }}><strong>해법:</strong> {h.solution}</p>
+              <p className="small" style={{ margin: 0 }}><strong>문제:</strong> <RichText text={h.issue} /></p>
+              <p className="small dim" style={{ margin: 0 }}><strong>해법:</strong> <RichText text={h.solution} /></p>
             </div>
           ))}
         </section>

@@ -4,6 +4,7 @@ import type { Drill } from '../data/types';
 import { SKILL_AXIS_LABEL } from '../data/types';
 import { useApp } from '../state';
 import { MASTERY_THRESHOLD, shouldStepBack } from '../lib/mastery';
+import { RichText } from './Prose';
 
 export default function DrillCard({ drill }: { drill: Drill }) {
   const { state, logDrill } = useApp();
@@ -38,7 +39,7 @@ export default function DrillCard({ drill }: { drill: Drill }) {
         </div>
       </div>
 
-      <p className="small dim" style={{ margin: 0, whiteSpace: 'pre-line' }}>{drill.instruction}</p>
+      <p className="small dim" style={{ margin: 0, whiteSpace: 'pre-line' }}><RichText text={drill.instruction} /></p>
 
       {st && shouldStepBack(st) && (
         <div className="note note-warn small">
