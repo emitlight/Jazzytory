@@ -10,10 +10,17 @@
  *   2) verify   videoId 생존 확인 (oEmbed, 키 불필요)
  *
  * 사용법
- *   npm run verify:media                       이미 채워진 ID만 생존 확인 (읽기 전용)
- *   npm run verify:media -- --write            확인 결과를 videos.ts 에 반영
- *   npm run verify:media -- --resolve          검색어로 후보 ID 찾기 (미리보기)
- *   npm run verify:media -- --resolve --write  찾아서 검증하고 반영
+ *   npm run verify:media                        이미 채워진 ID만 생존 확인 (읽기 전용)
+ *   npm run verify:media -- --write             확인 결과를 videos.ts 에 반영
+ *   npm run verify:media -- --resolve           검색해서 후보를 찾고 캐시에 저장 (API 소모)
+ *   npm run verify:media -- --rejudge           캐시로 다시 판정 (API 소모 없음)
+ *   npm run verify:media -- --rejudge --write   캐시로 판정하고 반영
+ *
+ * *** 검색과 판정을 분리한 이유 ***
+ * search.list 는 1회 100 units, 일일 무료 할당량은 10,000 units 다.
+ * 58개 항목이면 한 번 돌릴 때마다 5,800 units — 하루에 두 번이면 초과한다.
+ * 그래서 --resolve 가 API 응답을 scripts/media-candidates.json 에 캐시하고,
+ * 가드를 손볼 때는 --rejudge 로 캐시만 다시 판정한다. 할당량을 쓰지 않는다.
  *
  * --resolve 는 YouTube Data API 키가 필요하다. --key=... 인자 또는 환경변수 YOUTUBE_API_KEY.
  * 인자로 넘기면 npm 배너와 셸 히스토리에 키가 남는다. 유튜브 읽기 전용 키라 위험은 낮지만,
@@ -38,8 +45,10 @@ const WRITE = process.argv.includes('--write');
 const RESOLVE = process.argv.includes('--resolve');
 // 키는 --key=... 인자로도, 환경변수로도 받는다.
 // 윈도우 CMD 는 `VAR=value cmd` 문법이 없어 환경변수만 지원하면 진입 장벽이 된다.
+const REJUDGE = process.argv.includes('--rejudge');
 const KEY_ARG = process.argv.find((a) => a.startsWith('--key='))?.slice('--key='.length);
 const API_KEY = KEY_ARG || process.env.YOUTUBE_API_KEY;
+const CACHE = new URL('./media-candidates.json', import.meta.url);
 
 let src = await readFile(FILE, 'utf8');
 
@@ -101,14 +110,34 @@ function conceptTerms(query, channel) {
 }
 
 /**
+ * 개념어의 희소성 — 58개 검색어 전체에서 몇 번 쓰였는가.
+ * 'quartal' 은 한 항목에만 나오므로 그 한 번의 일치가 결정적이고,
+ * 'modern' 'chords' 는 여러 항목에 나오므로 혼자서는 근거가 못 된다.
+ */
+function buildRarity(entries) {
+  const df = new Map();
+  for (const e of entries) {
+    for (const t of new Set(conceptTerms(e.searchQuery, e.channel))) {
+      df.set(t, (df.get(t) ?? 0) + 1);
+    }
+  }
+  return df;
+}
+
+/** 통과 문턱. 희소어 한 개 또는 일반어 두 개 이상이어야 한다. */
+const TOPIC_THRESHOLD = 2;
+
+/**
  * 주제 일치 점수 — 검색어의 개념어가 제목에 몇 개나 나타나는가.
  * 채널이 같아도 주제가 다른 영상을 걸러내기 위한 관문이다.
+ * 희소한 개념어의 일치는 2점, 흔한 개념어는 1점으로 센다.
  */
-function topicMatch(query, channel, title) {
+function topicMatch(query, channel, title, rarity) {
   const terms = conceptTerms(query, channel);
   const t = (title ?? '').toLowerCase();
   const hits = terms.filter((term) => t.includes(term));
-  return { hits, terms, score: terms.length ? hits.length / terms.length : 0 };
+  const score = hits.reduce((sum, term) => sum + ((rarity?.get(term) ?? 9) === 1 ? 2 : 1), 0);
+  return { hits, terms, score };
 }
 
 async function searchYouTube(query) {
@@ -133,99 +162,153 @@ async function searchYouTube(query) {
 }
 
 const resolved = [];
-if (RESOLVE) {
-  if (!API_KEY) {
-    console.error('--resolve 에는 YouTube Data API 키가 필요합니다.\n');
-    console.error('가장 간단한 방법 — 키를 인자로 직접 넘기세요 (OS 무관):');
-    console.error('  npm run verify:media -- --resolve --write --key=여기에_키\n');
-    console.error('환경변수로 주려면:');
-    console.error('  Windows CMD         set YOUTUBE_API_KEY=여기에_키');
-    console.error('  Windows PowerShell  $env:YOUTUBE_API_KEY="여기에_키"');
-    console.error('  macOS / Linux       export YOUTUBE_API_KEY=여기에_키\n');
-    console.error('키 발급: https://console.cloud.google.com');
-    console.error('  → 프로젝트 생성 → "YouTube Data API v3" 검색해 사용 설정');
-    console.error('  → 사용자 인증 정보 → 사용자 인증 정보 만들기 → API 키');
-    process.exit(2);
-  }
-  const targets = entries.filter((e) => !e.videoId);
-  console.log(`검색어로 후보를 찾는 중… (${targets.length}개, search.list ${targets.length * 100} units)\n`);
+const rarity = buildRarity(entries);
 
-  // videoId → 이미 채택한 항목. 한 영상이 여러 차시에 붙는 것을 막는다.
+/** 캐시에서 검색 결과를 읽는다. 없으면 null. */
+async function loadCache() {
+  try {
+    const raw = await readFile(CACHE, 'utf8');
+    const data = JSON.parse(raw);
+    console.log(`캐시 사용 — ${data.fetchedAt} 에 받은 검색 결과 ${Object.keys(data.results).length}건\n`);
+    return data.results;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * 관문 1~3 을 적용해 채택 목록을 만든다.
+ * 순수 함수라 API 를 쓰지 않는다 — 가드를 고칠 때마다 공짜로 다시 돌릴 수 있다.
+ */
+function judge(targets, searchResults) {
   const claimed = new Map();
   const rejected = [];
+  const picked = [];
 
   for (const e of targets) {
-    try {
-      const results = await searchYouTube(e.searchQuery);
+    const results = searchResults[e.id];
+    if (!results) { rejected.push({ id: e.id, why: '검색 결과 없음 (캐시 미수집)' }); continue; }
 
-      // 관문 1 — 채널 일치
-      const sameChannel = results.filter((r) =>
-        norm(r.channel) === norm(e.channel)
-        || norm(r.channel).includes(norm(e.channel))
-        || norm(e.channel).includes(norm(r.channel)));
+    // 관문 1 — 채널 일치
+    const sameChannel = results.filter((r) =>
+      norm(r.channel) === norm(e.channel)
+      || norm(r.channel).includes(norm(e.channel))
+      || norm(e.channel).includes(norm(r.channel)));
+    if (!sameChannel.length) {
+      const top = results[0];
+      rejected.push({ id: e.id, why: `채널 불일치 (선언: ${e.channel}${top ? ` / 1등: ${top.channel}` : ''})` });
+      continue;
+    }
 
-      if (!sameChannel.length) {
-        const top = results[0];
-        rejected.push({ id: e.id, why: `채널 불일치 (선언: ${e.channel}${top ? ` / 1등: ${top.channel}` : ' / 결과 없음'})` });
+    // 관문 2 — 주제 일치. 희소 개념어 1개 또는 일반 개념어 2개 이상.
+    const scored = sameChannel
+      .map((r) => ({ ...r, ...topicMatch(e.searchQuery, e.channel, r.title, rarity) }))
+      .sort((a, b) => b.score - a.score);
+    const best = scored[0];
+    if (!best || best.score < TOPIC_THRESHOLD) {
+      const terms = conceptTerms(e.searchQuery, e.channel).slice(0, 4).join(', ');
+      rejected.push({
+        id: e.id,
+        why: `주제 근거 약함 (점수 ${best?.score ?? 0}/${TOPIC_THRESHOLD}, 개념어 [${terms}]${best ? ` / 후보: ${best.title.slice(0, 45)}` : ''})`,
+      });
+      continue;
+    }
+
+    // 관문 3 — 중복 배제. 점수가 높은 쪽이 가져간다.
+    const prior = claimed.get(best.videoId);
+    if (prior) {
+      if (best.score > prior.score) {
+        rejected.push({ id: prior.id, why: `중복 — 같은 영상을 ${e.id} 가 더 잘 맞아 양보` });
+        const i = picked.findIndex((x) => x.id === prior.id);
+        if (i >= 0) picked.splice(i, 1);
+      } else {
+        rejected.push({ id: e.id, why: `중복 — 같은 영상이 이미 ${prior.id} 에 쓰임` });
         continue;
-      }
-
-      // 관문 2 — 주제 일치. 같은 채널 결과 중 개념어가 가장 많이 겹치는 것을 고른다.
-      const scored = sameChannel
-        .map((r) => ({ ...r, ...topicMatch(e.searchQuery, e.channel, r.title) }))
-        .sort((a, b) => b.hits.length - a.hits.length);
-      const best = scored[0];
-
-      if (!best || best.hits.length === 0) {
-        rejected.push({ id: e.id, why: `주제 불일치 (제목에 "${conceptTerms(e.searchQuery, e.channel).slice(0, 4).join(', ')}" 없음 / 1등: ${best?.title?.slice(0, 50) ?? '-'})` });
-        continue;
-      }
-
-      // 관문 3 — 중복 배제. 이미 쓰인 영상이면 점수가 높은 쪽이 가져간다.
-      const prior = claimed.get(best.videoId);
-      if (prior) {
-        if (best.hits.length > prior.hits.length) {
-          rejected.push({ id: prior.id, why: `중복 — 같은 영상을 ${e.id} 가 더 잘 맞아 양보` });
-          const idx = resolved.findIndex((r) => r.id === prior.id);
-          if (idx >= 0) resolved.splice(idx, 1);
-        } else {
-          rejected.push({ id: e.id, why: `중복 — 같은 영상이 이미 ${prior.id} 에 쓰임` });
-          continue;
-        }
-      }
-
-      claimed.set(best.videoId, { id: e.id, hits: best.hits });
-      resolved.push({ ...e, videoId: best.videoId, foundTitle: best.title, foundChannel: best.channel });
-      console.log(`  ✓ ${e.id}  [${best.hits.join(', ')}]`);
-      console.log(`      ${best.channel} — ${best.title}`);
-      console.log(`      ${best.videoId}`);
-    } catch (err) {
-      rejected.push({ id: e.id, why: `검색 실패: ${err.message.slice(0, 80)}` });
-      if (/HTTP 400/.test(err.message) && /API_KEY_INVALID|API key not valid/i.test(err.message)) {
-        console.error('\n키가 유효하지 않습니다. 앞뒤 공백이나 따옴표가 섞이지 않았는지 확인하세요.');
-        process.exit(2);
-      }
-      if (/HTTP 40[13]/.test(err.message)) {
-        console.error('\nAPI 키가 거부되었습니다. 다음을 확인하세요:');
-        console.error('  · 키를 정확히 붙여넣었는가 (앞뒤 공백·따옴표 없이)');
-        console.error('  · Google Cloud 콘솔에서 "YouTube Data API v3" 를 사용 설정했는가');
-        console.error('  · 키에 API 제한을 걸었다면 YouTube Data API v3 가 허용 목록에 있는가');
-        process.exit(2);
-      }
-      if (/HTTP 429|quota/i.test(err.message)) {
-        console.error('\n일일 할당량을 초과했습니다. 내일 다시 시도하거나 다른 프로젝트의 키를 쓰세요.');
-        process.exit(2);
       }
     }
-    await new Promise((r) => setTimeout(r, 120));
+
+    claimed.set(best.videoId, { id: e.id, score: best.score });
+    picked.push({ ...e, videoId: best.videoId, foundTitle: best.title, foundChannel: best.channel, score: best.score, hits: best.hits });
+  }
+  return { picked, rejected };
+}
+
+if (RESOLVE || REJUDGE) {
+  const targets = entries.filter((e) => !e.videoId);
+  let searchResults = await loadCache();
+
+  if (REJUDGE && !searchResults) {
+    console.error('--rejudge 에 쓸 캐시가 없습니다. 먼저 --resolve 로 한 번 검색해야 합니다.');
+    process.exit(2);
   }
 
+  if (RESOLVE && !searchResults) {
+    if (!API_KEY) {
+      console.error('--resolve 에는 YouTube Data API 키가 필요합니다.\n');
+      console.error('가장 간단한 방법 — 키를 인자로 직접 넘기세요 (OS 무관):');
+      console.error('  npm run verify:media -- --resolve --write --key=여기에_키\n');
+      console.error('환경변수로 주려면:');
+      console.error('  Windows CMD         set YOUTUBE_API_KEY=여기에_키');
+      console.error('  Windows PowerShell  $env:YOUTUBE_API_KEY="여기에_키"');
+      console.error('  macOS / Linux       export YOUTUBE_API_KEY=여기에_키\n');
+      console.error('키 발급: https://console.cloud.google.com');
+      console.error('  → 프로젝트 생성 → "YouTube Data API v3" 검색해 사용 설정');
+      console.error('  → 사용자 인증 정보 → 사용자 인증 정보 만들기 → API 키');
+      process.exit(2);
+    }
+
+    console.log(`검색 중… (${targets.length}개 · search.list ${targets.length * 100} units)`);
+    console.log('결과는 캐시에 저장되므로 가드를 고쳐도 다시 검색하지 않습니다.\n');
+
+    searchResults = {};
+    let quotaHit = false;
+    for (const e of targets) {
+      try {
+        searchResults[e.id] = await searchYouTube(e.searchQuery);
+        process.stdout.write('.');
+      } catch (err) {
+        if (/HTTP 400/.test(err.message) && /API_KEY_INVALID|API key not valid/i.test(err.message)) {
+          console.error('\n키가 유효하지 않습니다. 앞뒤 공백이나 따옴표가 섞이지 않았는지 확인하세요.');
+          process.exit(2);
+        }
+        if (/HTTP 40[13]/.test(err.message)) {
+          console.error('\nAPI 키가 거부되었습니다. 키가 유효한지, YouTube Data API v3 가 사용 설정되었는지,');
+          console.error('키에 API 제한을 걸었다면 YouTube Data API v3 가 허용 목록에 있는지 확인하세요.');
+          process.exit(2);
+        }
+        if (/HTTP 429|quota/i.test(err.message)) {
+          quotaHit = true;
+          console.log(`\n\n일일 할당량을 소진했습니다 (${Object.keys(searchResults).length}/${targets.length} 수집).`);
+          console.log('여기까지 받은 결과는 캐시에 저장합니다 — 내일 이어서 받으면 됩니다.');
+          break;
+        }
+        searchResults[e.id] = [];
+      }
+      await new Promise((r) => setTimeout(r, 120));
+    }
+    if (!quotaHit) console.log('\n');
+
+    // 부분 수집이라도 캐시에 남긴다. 할당량을 두 번 태우지 않기 위해서다.
+    await writeFile(CACHE, JSON.stringify({
+      fetchedAt: new Date().toISOString(),
+      note: '유튜브 검색 결과 캐시. 공개 메타데이터만 담으며 API 키는 포함하지 않는다.',
+      results: searchResults,
+    }, null, 2), 'utf8');
+    console.log(`캐시 저장: scripts/media-candidates.json (${Object.keys(searchResults).length}건)\n`);
+  }
+
+  const { picked, rejected } = judge(targets, searchResults ?? {});
+  for (const r of picked) {
+    console.log(`  ✓ ${r.id}  [${r.hits.join(', ')}] 점수 ${r.score}`);
+    console.log(`      ${r.foundChannel} — ${r.foundTitle}`);
+    console.log(`      ${r.videoId}`);
+  }
   if (rejected.length) {
     console.log('\n보류한 항목:');
     for (const r of rejected) console.log(`  – ${r.id}  ${r.why}`);
   }
-
-  console.log(`\n채택 ${resolved.length} / 보류 ${targets.length - resolved.length}\n`);
+  resolved.push(...picked);
+  console.log(`\n채택 ${picked.length} / 보류 ${rejected.length}\n`);
 }
 
 /* ─────────────────  2단계: verify (oEmbed)  ───────────────── */
