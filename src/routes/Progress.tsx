@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { LEVELS, MODULES, ALL_DRILLS, DRILL_BY_ID, DRILL_AXIS_MAP, TUNES } from '../data';
+import { LEVELS, MODULES, ALL_DRILLS, DRILL_BY_ID, DRILL_AXIS_MAP, TUNES, lessonPathOfModule } from '../data';
 import { useApp } from '../state';
 import { axisScores, dueDrills, practiceStreak, buildSession, MASTERY_THRESHOLD } from '../lib/mastery';
 import { practiceDates, totalPracticeMinutes, exportState, importState } from '../lib/storage';
@@ -44,7 +44,7 @@ export default function Progress() {
       <section className="grid grid-4">
         <Stat label="연습 스트릭" value={`${streak}일`} />
         <Stat label="누적 연습" value={`${Math.round(minutes / 60)}시간 ${minutes % 60}분`} />
-        <Stat label="완료 모듈" value={`${state.completedModules.length} / ${MODULES.length}`} />
+        <Stat label="완료 차시" value={`${state.completedModules.length} / ${MODULES.length}`} />
         <Stat label="내 레퍼토리" value={`${state.favoriteTunes.length} / ${TUNES.length}곡`} />
       </section>
 
@@ -75,7 +75,7 @@ export default function Progress() {
           })}
         </div>
         <p className="tiny muted" style={{ margin: 0 }}>
-          세로 눈금은 현재 배정 레벨의 목표치입니다. 드릴을 기록해야 숫자가 움직입니다.
+          세로 눈금은 현재 배정 강좌의 목표치입니다. 드릴을 기록해야 숫자가 움직입니다.
         </p>
       </section>
 
@@ -95,7 +95,7 @@ export default function Progress() {
         </p>
         {session.length === 0 ? (
           <p className="muted small">
-            아직 기록이 없습니다. <Link to="/curriculum">커리큘럼</Link>에서 모듈을 열고 드릴을 시작하세요.
+            아직 기록이 없습니다. <Link to="/courses">강의실</Link>에서 차시를 열고 드릴을 시작하세요.
           </p>
         ) : (
           <ol className="small" style={{ margin: 0 }}>
@@ -104,7 +104,7 @@ export default function Progress() {
               return (
                 <li key={i}>
                   <strong>{s.minutes}분</strong> — {d?.title}{' '}
-                  <Link className="tiny" to={`/module/${d?.moduleId}`}>모듈 열기</Link>
+                  <Link className="tiny" to={lessonPathOfModule(d?.moduleId ?? '') ?? '/courses'}>차시 열기</Link>
                 </li>
               );
             })}
@@ -123,10 +123,10 @@ export default function Progress() {
       )}
 
       <section className="stack stack-12">
-        <h2>레벨별 진행</h2>
+        <h2>강좌별 진행</h2>
         <div className="table-scroll">
           <table className="data">
-            <thead><tr><th>레벨</th><th>모듈</th><th>드릴 통과</th><th>진행</th></tr></thead>
+            <thead><tr><th>강좌</th><th>차시</th><th>드릴 통과</th><th>진행</th></tr></thead>
             <tbody>
               {LEVELS.map((l) => {
                 const mods = MODULES.filter((m) => m.levelId === l.id);
@@ -136,7 +136,7 @@ export default function Progress() {
                 const pct = mods.length ? Math.round((done / mods.length) * 100) : 0;
                 return (
                   <tr key={l.id}>
-                    <td><Link to={`/curriculum/${l.id}`}>{l.id} {l.title}</Link></td>
+                    <td><Link to={`/course/${l.id}`}>{l.id} {l.title}</Link></td>
                     <td className="mono">{done}/{mods.length}</td>
                     <td className="mono">{passed}/{drills.length}</td>
                     <td style={{ minWidth: 120 }}>

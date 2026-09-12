@@ -53,10 +53,12 @@ page.on('console', (m) => { if (m.type() === 'error') errors.push(`[console] ${m
 page.on('pageerror', (e) => errors.push(`[pageerror] ${e.message}`));
 
 const ROUTES = [
-  '/#/', '/#/curriculum', '/#/curriculum/L1', '/#/lab/voicing', '/#/lab/progression',
-  '/#/lab/keyboard', '/#/lab/ear', '/#/lab/design', '/#/lab/metronome',
-  '/#/tunes', '/#/listening', '/#/videos', '/#/pedagogy', '/#/progress',
-  '/#/faculty', '/#/glossary', '/#/placement',
+  '/#/', '/#/courses', '/#/course/L1', '/#/course/L1/lesson/1', '/#/course/L4/lesson/2',
+  '/#/lab/voicing', '/#/lab/progression', '/#/lab/keyboard', '/#/lab/ear',
+  '/#/lab/design', '/#/lab/metronome',
+  '/#/library/tunes', '/#/library/listening', '/#/library/videos',
+  '/#/library/pedagogy', '/#/library/glossary', '/#/library/review',
+  '/#/progress', '/#/placement',
 ];
 
 let failures = 0;
@@ -89,8 +91,8 @@ async function checkLeaks(label) {
 }
 
 // 핵심 인터랙션
-await page.goto(`http://localhost:${PORT}/#/curriculum`, { waitUntil: 'networkidle' });
-const modLink = page.locator('a[href*="#/module/"]').first();
+await page.goto(`http://localhost:${PORT}/#/course/L1`, { waitUntil: 'networkidle' });
+const modLink = page.locator('a[href*="/lesson/"]').first();
 let moduleOk = false;
 if (await modLink.count()) {
   await modLink.click();
@@ -102,11 +104,11 @@ if (await modLink.count()) {
     await page.waitForTimeout(500);
     moduleOk = moduleOk && (await page.locator('.keyboard').count()) > 0;
   }
-  await checkLeaks('모듈 상세');
+  await checkLeaks('차시 상세');
 }
 
 // 필청 — 청취 지시문 펼친 상태
-await page.goto(`http://localhost:${PORT}/#/listening`, { waitUntil: 'networkidle' });
+await page.goto(`http://localhost:${PORT}/#/library/listening`, { waitUntil: 'networkidle' });
 const expandAlbum = page.locator('button', { hasText: '무엇을 들을 것인가' }).first();
 if (await expandAlbum.count()) {
   await expandAlbum.click();
@@ -115,11 +117,11 @@ if (await expandAlbum.count()) {
 }
 
 // 교수법 — 연습 절차 펼친 상태
-await page.goto(`http://localhost:${PORT}/#/pedagogy`, { waitUntil: 'networkidle' });
+await page.goto(`http://localhost:${PORT}/#/library/pedagogy`, { waitUntil: 'networkidle' });
 await page.waitForTimeout(400);
 await checkLeaks('교수법 펼침');
 
-await page.goto(`http://localhost:${PORT}/#/tunes`, { waitUntil: 'networkidle' });
+await page.goto(`http://localhost:${PORT}/#/library/tunes`, { waitUntil: 'networkidle' });
 const tuneLink = page.locator('a[href*="#/tunes/t-"]').first();
 let bars = 0;
 if (await tuneLink.count()) {
@@ -132,7 +134,7 @@ if (await tuneLink.count()) {
 // 모바일 400px
 const mp = await (await browser.newContext({ viewport: { width: 400, height: 820 } })).newPage();
 const mobileOverflow = [];
-for (const route of ['/#/', '/#/lab/voicing', '/#/tunes', '/#/curriculum', '/#/listening']) {
+for (const route of ['/#/', '/#/lab/voicing', '/#/library/tunes', '/#/courses', '/#/course/L1/lesson/1']) {
   await mp.goto(`http://localhost:${PORT}${route}`, { waitUntil: 'networkidle' });
   await mp.waitForTimeout(250);
   if (await mp.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1)) mobileOverflow.push(route);
@@ -141,7 +143,7 @@ for (const route of ['/#/', '/#/lab/voicing', '/#/tunes', '/#/curriculum', '/#/l
 console.log('\n=== 라우트 ===');
 console.log(rows.join('\n'));
 console.log('\n=== 인터랙션 ===');
-console.log(`모듈 → 건반 예제: ${moduleOk ? 'ok' : 'FAIL'}`);
+console.log(`차시 → 건반 예제: ${moduleOk ? 'ok' : 'FAIL'}`);
 console.log(`곡 → 리드시트:    ${bars > 0 ? `ok (${bars}마디)` : 'FAIL'}`);
 console.log(`모바일 400px 가로 스크롤: ${mobileOverflow.length ? mobileOverflow.join(', ') : '없음'}`);
 console.log('\n=== 마크다운 누출 (펼친 상태) ===');

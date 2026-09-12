@@ -29,7 +29,7 @@ export default function MethodSection({ moduleId }: { moduleId: string }) {
               <span className="badge badge-accent">{method.teacher}</span>
               <strong className="small">{method.name}</strong>
             </div>
-            <Link className="btn btn-sm btn-ghost" to="/pedagogy">교수법 전체 →</Link>
+            <Link className="btn btn-sm btn-ghost" to="/library/pedagogy">교수법 전체 →</Link>
           </div>
 
           <p className="small dim" style={{ margin: 0 }}><RichText text={method.thesis} /></p>

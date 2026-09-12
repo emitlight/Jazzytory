@@ -41,7 +41,7 @@ export default function Home() {
           ) : (
             <Link className="btn btn-primary btn-lg" to="/placement">배치고사로 시작하기</Link>
           )}
-          <Link className="btn btn-lg" to="/curriculum">커리큘럼 보기</Link>
+          <Link className="btn btn-lg" to="/courses">강의실 둘러보기</Link>
         </div>
       </section>
 
@@ -65,7 +65,7 @@ export default function Home() {
             <Stat label="배정 레벨" value={currentLevel ? `${currentLevel.id} · ${currentLevel.title}` : '미배정'} />
             <Stat label="연습 스트릭" value={`${streak}일`} sub={`누적 ${Math.round(minutes / 60)}시간`} />
             <Stat label="오늘 복습할 드릴" value={`${due.length}개`} />
-            <Stat label="완료 모듈" value={`${state.completedModules.length} / ${MODULES.length}`} />
+            <Stat label="완료 차시" value={`${state.completedModules.length} / ${MODULES.length}`} />
           </div>
           {due.length > 0 && (
             <div className="note">
@@ -108,7 +108,7 @@ export default function Home() {
               <span className="eyebrow">Teaching Methods</span>
               <h2 style={{ margin: 0 }}>무엇을 배우느냐만큼 어떻게 연습하느냐</h2>
             </div>
-            <Link className="btn btn-sm" to="/pedagogy">교수법 {TEACHING_METHODS.length}가지</Link>
+            <Link className="btn btn-sm" to="/library/pedagogy">교수법 {TEACHING_METHODS.length}가지</Link>
           </div>
           <p className="dim small" style={{ margin: 0, maxWidth: '56ch' }}>
             배리 해리스는 화성을 움직임으로 가르쳤고, 트리스타노는 손보다 목소리를 먼저 시켰고,
@@ -117,7 +117,7 @@ export default function Home() {
           </p>
           <div className="chips">
             {TEACHING_METHODS.slice(0, 6).map((m) => (
-              <Link key={m.id} className="chip" to="/pedagogy">{m.teacher} · {m.name}</Link>
+              <Link key={m.id} className="chip" to="/library/pedagogy">{m.teacher} · {m.name}</Link>
             ))}
           </div>
         </section>
@@ -126,15 +126,15 @@ export default function Home() {
       {/* ───────────────  레벨  ─────────────── */}
       <section className="stack stack-16">
         <div className="row-between">
-          <h2 style={{ margin: 0 }}>9개 레벨</h2>
-          <Link className="btn btn-sm" to="/curriculum">커리큘럼 전체</Link>
+          <h2 style={{ margin: 0 }}>9개 강좌</h2>
+          <Link className="btn btn-sm" to="/courses">강의실</Link>
         </div>
         <div className="grid grid-3">
           {LEVELS.map((l) => {
             const mods = MODULES.filter((m) => m.levelId === l.id);
             const done = mods.filter((m) => state.completedModules.includes(m.id)).length;
             return (
-              <Link key={l.id} to={`/curriculum/${l.id}`} className="card card-link stack stack-8">
+              <Link key={l.id} to={`/course/${l.id}`} className="card card-link stack stack-8">
                 <div className="level-strip" style={{ background: l.accentColor }} />
                 <div className="row-between">
                   <span className="badge">{l.id}</span>
@@ -145,7 +145,7 @@ export default function Home() {
                 <div className="bar" aria-label={`${done}/${mods.length} 모듈 완료`}>
                   <span style={{ width: `${mods.length ? (done / mods.length) * 100 : 0}%` }} />
                 </div>
-                <span className="tiny muted">{done}/{mods.length} 모듈 · {l.collegeEquivalent}</span>
+                <span className="tiny muted">{done}/{mods.length}차시 · {l.collegeEquivalent}</span>
               </Link>
             );
           })}
@@ -155,7 +155,7 @@ export default function Home() {
       {/* ───────────────  규모  ─────────────── */}
       <section className="panel stack stack-12">
         <div className="grid grid-4">
-          <Stat label="모듈" value={`${CONTENT_STATS.modules}개`} sub={`개념 ${CONTENT_STATS.concepts}개`} />
+          <Stat label="차시" value={`${CONTENT_STATS.modules}개`} sub={`개념 ${CONTENT_STATS.concepts}개`} />
           <Stat label="연습 드릴" value={`${ALL_DRILLS.length}개`} sub="대부분 12키 순환" />
           <Stat label="레퍼토리" value={`${CONTENT_STATS.tunes}곡`} sub="코드 진행만 수록" />
           <Stat label="필청 명반" value={`${CONTENT_STATS.albums}장`} sub="트랙 단위 청취 지시" />
@@ -173,7 +173,7 @@ export default function Home() {
         <strong> 실제 대학 교수의 검수는 아직 받지 않았습니다.</strong> 검수 패널은 교수법 계보를
         대표하는 가상의 심사 기준이며 실존 인물이 아닙니다. 교수법 페이지에 인용된 교육자들 역시
         공개 출판물의 저자일 뿐 이 서비스를 승인하지 않았습니다.
-        {' '}<Link to="/faculty">검수 정책과 루브릭 보기</Link>
+        {' '}<Link to="/library/review">검수 정책과 루브릭 보기</Link>
       </section>
     </div>
   );

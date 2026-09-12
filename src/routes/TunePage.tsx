@@ -29,7 +29,7 @@ export default function TunePage() {
   }, [tune, bars]);
 
   if (!tune) {
-    return <div className="stack stack-16"><h1>없는 곡입니다</h1><Link className="btn" to="/tunes">레퍼토리로</Link></div>;
+    return <div className="stack stack-16"><h1>없는 곡입니다</h1><Link className="btn" to="/library/tunes">레퍼토리로</Link></div>;
   }
 
   const level = LEVEL_BY_ID.get(tune.levelId);
@@ -42,7 +42,7 @@ export default function TunePage() {
     <div className="stack stack-24">
       <header className="stack stack-12">
         <div className="row">
-          <Link to={`/curriculum/${tune.levelId}`} className="badge badge-accent" style={{ textDecoration: 'none' }}>
+          <Link to={`/course/${tune.levelId}`} className="badge badge-accent" style={{ textDecoration: 'none' }}>
             {tune.levelId} {level?.title}
           </Link>
           <span className="tiny muted">난이도 {tune.difficulty}/5</span>
@@ -181,7 +181,7 @@ export default function TunePage() {
               const a = ALBUM_BY_ID.get(id);
               if (!a) return null;
               return (
-                <Link key={id} to="/listening" className="card card-link card-tight stack stack-4">
+                <Link key={id} to="/library/listening" className="card card-link card-tight stack stack-4">
                   <strong className="small">{a.title}</strong>
                   <span className="tiny muted">{a.pianist} · {a.year}</span>
                 </Link>

@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { PLACEMENT, LEVELS, MODULES } from '../data';
+import { PLACEMENT, LEVELS, lessonsOfCourse } from '../data';
 import { useApp } from '../state';
 import { SKILL_AXIS_LABEL, type LevelId } from '../data/types';
 import { RichText } from '../components/Prose';
@@ -45,7 +45,7 @@ export default function Placement() {
 
   if (done) {
     const level = LEVELS.find((l) => l.id === result.level)!;
-    const firstModule = MODULES.find((m) => m.levelId === result.level);
+    const firstLesson = lessonsOfCourse(result.level)[0];
     return (
       <div className="stack stack-24">
         <header className="stack stack-12">
@@ -67,8 +67,8 @@ export default function Placement() {
             </div>
           )}
           <div className="btn-row">
-            {firstModule && <Link className="btn btn-primary" to={`/module/${firstModule.id}`}>첫 모듈 시작하기</Link>}
-            <Link className="btn" to={`/curriculum/${level.id}`}>레벨 전체 보기</Link>
+            {firstLesson && <Link className="btn btn-primary" to={firstLesson.path}>1차시 시작하기</Link>}
+            <Link className="btn" to={`/course/${level.id}`}>강좌 목차 보기</Link>
             <button className="btn btn-ghost" onClick={() => { setDone(false); setIdx(0); setAnswers({}); }}>다시 보기</button>
           </div>
         </div>
