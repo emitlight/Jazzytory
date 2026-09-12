@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { ALBUMS, LEVELS, MODULE_BY_ID } from '../data';
+import { ALBUMS, LEVELS, MODULE_BY_ID, lessonPathOfModule } from '../data';
 import { useApp } from '../state';
 import type { LevelId } from '../data/types';
 import { RichText } from '../components/Prose';
@@ -107,7 +107,7 @@ export default function Listening() {
                       <strong className="small">{n.track}</strong>
                       {n.at && <span className="badge tiny mono">{n.at}</span>}
                       {n.moduleId && MODULE_BY_ID.get(n.moduleId) && (
-                        <Link className="badge tiny" to={`/module/${n.moduleId}`} style={{ textDecoration: 'none' }}>
+                        <Link className="badge tiny" to={lessonPathOfModule(n.moduleId) ?? '/courses'} style={{ textDecoration: 'none' }}>
                           → {MODULE_BY_ID.get(n.moduleId)!.title}
                         </Link>
                       )}

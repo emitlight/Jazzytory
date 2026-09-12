@@ -1,4 +1,4 @@
-import { FACULTY, MODULES, reviewSummary, CONTENT_STATS } from '../data';
+import { FACULTY, MODULES, reviewSummary, CONTENT_STATS, lessonPathOfModule } from '../data';
 import { REVIEW_STATUS_LABEL, type ReviewStatus } from '../data/types';
 import { Link } from 'react-router-dom';
 import { RichText } from '../components/Prose';
@@ -124,7 +124,7 @@ export default function Faculty() {
           <h2>수정 요청된 모듈</h2>
           <div className="stack stack-8">
             {MODULES.filter((m) => m.review.status === 'revision-required').map((m) => (
-              <Link key={m.id} to={`/module/${m.id}`} className="card card-link card-tight row-between">
+              <Link key={m.id} to={lessonPathOfModule(m.id) ?? '/courses'} className="card card-link card-tight row-between">
                 <strong className="small">{m.levelId} · {m.title}</strong>
                 <span className="badge badge-danger tiny">수정 요청</span>
               </Link>

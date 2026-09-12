@@ -210,3 +210,67 @@ export function reviewSummary() {
     reviewedCount: rubrics.length,
   };
 }
+
+/* ─────────────────  LMS: 강좌와 차시  ─────────────────
+ * 레벨을 "강좌(course)", 모듈을 "차시(lesson)"로 다룬다.
+ * 학습자는 메뉴를 돌아다니는 대신 강좌 목차를 따라 차시를 순서대로 밟는다.
+ */
+
+export interface Lesson {
+  module: Module;
+  /** 강좌 안에서의 차시 번호 (1부터) */
+  number: number;
+  /** 몇 주차에 해당하는가 */
+  week: number;
+  path: string;
+}
+
+export function lessonsOfCourse(levelId: LevelId): Lesson[] {
+  const level = LEVEL_BY_ID.get(levelId);
+  const mods = modulesOfLevel(levelId);
+  const weeks = level?.weeks ?? mods.length;
+  return mods.map((module, i) => ({
+    module,
+    number: i + 1,
+    // 강좌 기간을 차시 수로 나눠 주차를 배정한다
+    week: Math.min(weeks, Math.floor((i * weeks) / Math.max(1, mods.length)) + 1),
+    path: `/course/${levelId}/lesson/${i + 1}`,
+  }));
+}
+
+/** 모듈 id → 차시 경로 (구 /module/:id 링크 호환용) */
+export function lessonPathOfModule(moduleId: string): string | null {
+  const mod = MODULE_BY_ID.get(moduleId);
+  if (!mod) return null;
+  const n = modulesOfLevel(mod.levelId).findIndex((m) => m.id === moduleId);
+  return n < 0 ? null : `/course/${mod.levelId}/lesson/${n + 1}`;
+}
+
+export function lessonAt(levelId: LevelId, number: number): Lesson | null {
+  return lessonsOfCourse(levelId)[number - 1] ?? null;
+}
+
+/** 전 과정을 한 줄로 편 차시 목록 — 강좌를 넘어가는 "다음 차시"에 쓴다 */
+export const ALL_LESSONS: Lesson[] = LEVELS.flatMap((l) => lessonsOfCourse(l.id));
+
+export function adjacentLessons(moduleId: string): { prev: Lesson | null; next: Lesson | null } {
+  const i = ALL_LESSONS.findIndex((l) => l.module.id === moduleId);
+  if (i < 0) return { prev: null, next: null };
+  return {
+    prev: i > 0 ? ALL_LESSONS[i - 1] : null,
+    next: i < ALL_LESSONS.length - 1 ? ALL_LESSONS[i + 1] : null,
+  };
+}
+
+/** 강좌 진도 */
+export function courseProgress(levelId: LevelId, completedModules: string[]) {
+  const lessons = lessonsOfCourse(levelId);
+  const done = lessons.filter((l) => completedModules.includes(l.module.id)).length;
+  return {
+    total: lessons.length,
+    done,
+    percent: lessons.length ? Math.round((done / lessons.length) * 100) : 0,
+    /** 아직 안 한 첫 차시 — "이어서 학습" 대상 */
+    resume: lessons.find((l) => !completedModules.includes(l.module.id)) ?? null,
+  };
+}

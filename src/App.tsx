@@ -1,31 +1,24 @@
 import { Suspense, lazy, useEffect, useRef } from 'react';
-import { Routes, Route, NavLink, useLocation, Link } from 'react-router-dom';
+import { Routes, Route, NavLink, useLocation, Link, Navigate } from 'react-router-dom';
 import { useApp } from './state';
 
-const Home       = lazy(() => import('./routes/Home'));
-const Curriculum = lazy(() => import('./routes/Curriculum'));
-const LevelPage  = lazy(() => import('./routes/LevelPage'));
-const ModulePage = lazy(() => import('./routes/ModulePage'));
-const Lab        = lazy(() => import('./routes/Lab'));
-const Tunes      = lazy(() => import('./routes/Tunes'));
-const TunePage   = lazy(() => import('./routes/TunePage'));
-const Listening  = lazy(() => import('./routes/Listening'));
-const Videos     = lazy(() => import('./routes/Videos'));
-const Progress   = lazy(() => import('./routes/Progress'));
-const Faculty    = lazy(() => import('./routes/Faculty'));
-const Glossary   = lazy(() => import('./routes/Glossary'));
-const Placement  = lazy(() => import('./routes/Placement'));
-const Pedagogy   = lazy(() => import('./routes/Pedagogy'));
+const Home           = lazy(() => import('./routes/Home'));
+const Courses        = lazy(() => import('./routes/Courses'));
+const CourseHome     = lazy(() => import('./routes/CourseHome'));
+const Lesson         = lazy(() => import('./routes/Lesson'));
+const Library        = lazy(() => import('./routes/Library'));
+const Lab            = lazy(() => import('./routes/Lab'));
+const TunePage       = lazy(() => import('./routes/TunePage'));
+const Progress       = lazy(() => import('./routes/Progress'));
+const Placement      = lazy(() => import('./routes/Placement'));
+const ModuleRedirect = lazy(() => import('./routes/ModuleRedirect'));
 
+/** 메뉴는 네 개다. 학습자가 고를 것이 많을수록 아무것도 고르지 않는다. */
 const NAV = [
-  { to: '/curriculum', label: '커리큘럼' },
-  { to: '/lab',        label: '연습 랩' },
-  { to: '/pedagogy',   label: '교수법' },
-  { to: '/tunes',      label: '레퍼토리' },
-  { to: '/listening',  label: '필청 명반' },
-  { to: '/videos',     label: '영상 강의' },
-  { to: '/progress',   label: '내 진도' },
-  { to: '/faculty',    label: '검수' },
+  { to: '/courses',  label: '강의실' },
+  { to: '/lab',      label: '연습 랩' },
+  { to: '/library',  label: '자료실' },
+  { to: '/progress', label: '내 진도' },
 ];
 
 function ThemeToggle() {
@@ -88,20 +81,35 @@ export default function App() {
         <Suspense fallback={<p className="muted" role="status">불러오는 중…</p>}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/curriculum" element={<Curriculum />} />
-            <Route path="/curriculum/:levelId" element={<LevelPage />} />
-            <Route path="/module/:moduleId" element={<ModulePage />} />
+
+            {/* 강의실 · 강좌 · 차시 */}
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/course/:levelId" element={<CourseHome />} />
+            <Route path="/course/:levelId/lesson/:lessonNo" element={<Lesson />} />
+
+            {/* 자료실 */}
+            <Route path="/library" element={<Library />} />
+            <Route path="/library/:tab" element={<Library />} />
+            <Route path="/tunes/:tuneId" element={<TunePage />} />
+
+            {/* 도구 */}
             <Route path="/lab" element={<Lab />} />
             <Route path="/lab/:tab" element={<Lab />} />
-            <Route path="/tunes" element={<Tunes />} />
-            <Route path="/tunes/:tuneId" element={<TunePage />} />
-            <Route path="/listening" element={<Listening />} />
-            <Route path="/videos" element={<Videos />} />
+
             <Route path="/progress" element={<Progress />} />
-            <Route path="/faculty" element={<Faculty />} />
-            <Route path="/glossary" element={<Glossary />} />
             <Route path="/placement" element={<Placement />} />
-            <Route path="/pedagogy" element={<Pedagogy />} />
+
+            {/* 구 경로 호환 */}
+            <Route path="/module/:moduleId" element={<ModuleRedirect />} />
+            <Route path="/curriculum" element={<Navigate to="/courses" replace />} />
+            <Route path="/curriculum/:levelId" element={<CourseRedirect />} />
+            <Route path="/tunes" element={<Navigate to="/library/tunes" replace />} />
+            <Route path="/listening" element={<Navigate to="/library/listening" replace />} />
+            <Route path="/videos" element={<Navigate to="/library/videos" replace />} />
+            <Route path="/pedagogy" element={<Navigate to="/library/pedagogy" replace />} />
+            <Route path="/glossary" element={<Navigate to="/library/glossary" replace />} />
+            <Route path="/faculty" element={<Navigate to="/library/review" replace />} />
+
             <Route path="*" element={
               <div className="stack stack-16">
                 <h1>없는 페이지입니다</h1>
@@ -116,9 +124,9 @@ export default function App() {
       <footer className="footer">
         <div className="wrap stack stack-8">
           <div className="row" style={{ gap: 16 }}>
-            <Link to="/glossary">용어집</Link>
-            <Link to="/pedagogy">교수법</Link>
-            <Link to="/faculty">검수 정책</Link>
+            <Link to="/library/glossary">용어집</Link>
+            <Link to="/library/pedagogy">교수법</Link>
+            <Link to="/library/review">검수 정책</Link>
             <Link to="/placement">배치고사</Link>
           </div>
           <p style={{ margin: 0 }}>
@@ -127,10 +135,16 @@ export default function App() {
           </p>
           <p style={{ margin: 0 }}>
             편집 검수 패널은 <strong>교수법 계보를 대표하는 가상의 심사 기준</strong>이며 실존 인물이 아닙니다.
-            실제 교수 검수는 아직 받지 않았습니다. — <Link to="/faculty">자세히</Link>
+            실제 교수 검수는 아직 받지 않았습니다. — <Link to="/library/review">자세히</Link>
           </p>
         </div>
       </footer>
     </div>
   );
+}
+
+/** 구 /curriculum/:levelId → /course/:levelId */
+function CourseRedirect() {
+  const path = window.location.hash.replace(/^#\/curriculum\//, '');
+  return <Navigate to={`/course/${path}`} replace />;
 }

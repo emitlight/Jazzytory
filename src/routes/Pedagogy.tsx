@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { TEACHING_METHODS, LEVELS, modulesOfMethod, CONTENT_STATS } from '../data';
+import { TEACHING_METHODS, LEVELS, modulesOfMethod, CONTENT_STATS, lessonPathOfModule } from '../data';
 import { SKILL_AXIS_LABEL, type LevelId } from '../data/types';
 import { RichText } from '../components/Prose';
 
@@ -103,7 +103,7 @@ export default function Pedagogy() {
                       <div className="eyebrow">이 교수법이 쓰이는 모듈 {uses.length}개</div>
                       <div className="chips">
                         {uses.map(({ module }) => (
-                          <Link key={module.id} className="chip" to={`/module/${module.id}`}>
+                          <Link key={module.id} className="chip" to={lessonPathOfModule(module.id) ?? '/courses'}>
                             {module.levelId} · {module.title}
                           </Link>
                         ))}

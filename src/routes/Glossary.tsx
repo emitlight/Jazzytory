@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { GLOSSARY, MODULE_BY_ID } from '../data';
+import { GLOSSARY, MODULE_BY_ID, lessonPathOfModule } from '../data';
 import { RichText } from '../components/Prose';
 
 export default function Glossary() {
@@ -38,7 +38,7 @@ export default function Glossary() {
               <div className="chips">
                 {g.relatedModules.slice(0, 3).map((m) => {
                   const mod = MODULE_BY_ID.get(m);
-                  return mod ? <Link key={m} className="badge tiny" to={`/module/${m}`} style={{ textDecoration: 'none' }}>{mod.title}</Link> : null;
+                  return mod ? <Link key={m} className="badge tiny" to={lessonPathOfModule(m) ?? '/courses'} style={{ textDecoration: 'none' }}>{mod.title}</Link> : null;
                 })}
               </div>
             )}
