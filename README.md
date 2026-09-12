@@ -129,12 +129,26 @@ CSS 를 인라인하고 자산을 상대 경로로 참조하는 번들을 만든
 그 ID 가 살아 있는지 확인한다(verify).
 
 ```bash
-# 1단계 + 2단계 한 번에 — YouTube Data API 키가 필요하다
-YOUTUBE_API_KEY=... npm run verify:media -- --resolve --write
+# 1단계 + 2단계 한 번에. 키는 인자로 넘기면 OS 를 가리지 않는다
+npm run verify:media -- --resolve --write --key=발급받은_키
 
-# 이미 ID 가 채워져 있다면 생존 확인만
+# 이미 ID 가 채워져 있다면 생존 확인만 (키 불필요)
 npm run verify:media -- --write
 ```
+
+환경변수로 주고 싶다면:
+
+| 셸 | 명령 |
+|---|---|
+| Windows CMD | `set YOUTUBE_API_KEY=키` |
+| Windows PowerShell | `$env:YOUTUBE_API_KEY="키"` |
+| macOS / Linux / Git Bash | `export YOUTUBE_API_KEY=키` |
+
+`VAR=value 명령` 한 줄 형태는 **Windows CMD 에서 동작하지 않는다.**
+
+키를 `--key=` 인자로 넘기면 npm 배너와 셸 히스토리에 남는다. 유튜브 읽기 전용
+키라 위험은 낮지만, 신경 쓰인다면 환경변수를 쓰거나 `npm run --silent` 로 배너를
+없애고 실행 후 히스토리를 지운다.
 
 API 키는 [Google Cloud Console](https://console.cloud.google.com) 에서
 YouTube Data API v3 를 사용 설정하고 발급한다. 무료 할당량 10,000 units/일,

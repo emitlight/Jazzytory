@@ -15,7 +15,9 @@
  *   npm run verify:media -- --resolve          검색어로 후보 ID 찾기 (미리보기)
  *   npm run verify:media -- --resolve --write  찾아서 검증하고 반영
  *
- * --resolve 는 환경변수 YOUTUBE_API_KEY 가 필요하다.
+ * --resolve 는 YouTube Data API 키가 필요하다. --key=... 인자 또는 환경변수 YOUTUBE_API_KEY.
+ * 인자로 넘기면 npm 배너와 셸 히스토리에 키가 남는다. 유튜브 읽기 전용 키라 위험은 낮지만,
+ * 신경 쓰인다면 환경변수를 쓰거나 `npm run --silent` 로 배너를 없애고 실행 후 히스토리를 지운다.
  *   https://console.cloud.google.com → YouTube Data API v3 사용 설정 → API 키 발급
  *   무료 할당량 10,000 units/일, search.list 1회당 100 units → 약 100개까지 무료.
  *
@@ -29,7 +31,10 @@ import { readFile, writeFile } from 'node:fs/promises';
 const FILE = new URL('../src/data/videos.ts', import.meta.url);
 const WRITE = process.argv.includes('--write');
 const RESOLVE = process.argv.includes('--resolve');
-const API_KEY = process.env.YOUTUBE_API_KEY;
+// 키는 --key=... 인자로도, 환경변수로도 받는다.
+// 윈도우 CMD 는 `VAR=value cmd` 문법이 없어 환경변수만 지원하면 진입 장벽이 된다.
+const KEY_ARG = process.argv.find((a) => a.startsWith('--key='))?.slice('--key='.length);
+const API_KEY = KEY_ARG || process.env.YOUTUBE_API_KEY;
 
 let src = await readFile(FILE, 'utf8');
 
@@ -94,9 +99,16 @@ async function searchYouTube(query) {
 const resolved = [];
 if (RESOLVE) {
   if (!API_KEY) {
-    console.error('--resolve 에는 YOUTUBE_API_KEY 환경변수가 필요합니다.');
-    console.error('  export YOUTUBE_API_KEY=... 후 다시 실행하세요.');
-    console.error('  키 발급: https://console.cloud.google.com → YouTube Data API v3 → 사용자 인증 정보');
+    console.error('--resolve 에는 YouTube Data API 키가 필요합니다.\n');
+    console.error('가장 간단한 방법 — 키를 인자로 직접 넘기세요 (OS 무관):');
+    console.error('  npm run verify:media -- --resolve --write --key=여기에_키\n');
+    console.error('환경변수로 주려면:');
+    console.error('  Windows CMD         set YOUTUBE_API_KEY=여기에_키');
+    console.error('  Windows PowerShell  $env:YOUTUBE_API_KEY="여기에_키"');
+    console.error('  macOS / Linux       export YOUTUBE_API_KEY=여기에_키\n');
+    console.error('키 발급: https://console.cloud.google.com');
+    console.error('  → 프로젝트 생성 → "YouTube Data API v3" 검색해 사용 설정');
+    console.error('  → 사용자 인증 정보 → 사용자 인증 정보 만들기 → API 키');
     process.exit(2);
   }
   const targets = entries.filter((e) => !e.videoId);
@@ -118,7 +130,14 @@ if (RESOLVE) {
     } catch (err) {
       console.log(`  ✗ ${e.id}  검색 실패: ${err.message}`);
       if (/HTTP 40[13]/.test(err.message)) {
-        console.error('\nAPI 키가 거부되었습니다. 키가 유효한지, YouTube Data API v3 가 사용 설정되었는지 확인하세요.');
+        console.error('\nAPI 키가 거부되었습니다. 다음을 확인하세요:');
+        console.error('  · 키를 정확히 붙여넣었는가 (앞뒤 공백·따옴표 없이)');
+        console.error('  · Google Cloud 콘솔에서 "YouTube Data API v3" 를 사용 설정했는가');
+        console.error('  · 키에 API 제한을 걸었다면 YouTube Data API v3 가 허용 목록에 있는가');
+        process.exit(2);
+      }
+      if (/HTTP 429|quota/i.test(err.message)) {
+        console.error('\n일일 할당량을 초과했습니다. 내일 다시 시도하거나 다른 프로젝트의 키를 쓰세요.');
         process.exit(2);
       }
     }
