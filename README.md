@@ -47,8 +47,12 @@ JAZZYTORY_BASE=/Jazzytory/ npm run build
 
 워크플로의 `GITHUB_TOKEN` 으로는 Pages 를 켤 수 없다
 (`Resource not accessible by integration` 으로 실패한다).
-켜고 나면 다음 푸시부터, 또는 Actions 탭에서 "Deploy to GitHub Pages" 를
-수동 실행(`workflow_dispatch`)하면 즉시 배포된다.
+
+**그리고 `github-pages` 환경은 기본적으로 기본 브랜치에서만 배포를 허용한다.**
+기능 브랜치에서 실행하면 `build` 는 통과하지만 `deploy` 잡이 스텝 하나도 실행하지
+못한 채 즉시 실패한다. 기본 브랜치에 머지하거나,
+Settings → Environments → `github-pages` → Deployment branches 에 해당 브랜치를
+추가해야 한다.
 
 프로젝트 페이지 경로(`/Jazzytory/`)는 `configure-pages` 의 `base_path` 를
 Vite 가 요구하는 끝 슬래시 형태로 정규화해 처리한다.
@@ -121,15 +125,29 @@ CSS 를 인라인하고 자산을 상대 경로로 참조하는 번들을 만든
 **깨진 임베드는 없는 것보다 나쁘므로**, 추측한 ID 를 하나도 싣지 않았다.
 현재 모든 영상은 `videoId: null` 이고 **채널명 + 정밀 검색어 딥링크**로 렌더링된다.
 
-네트워크가 열린 환경에서:
+임베드를 살리려면 **두 단계**가 필요하다. 검색어를 영상 ID 로 해석하고(resolve),
+그 ID 가 살아 있는지 확인한다(verify).
 
 ```bash
+# 1단계 + 2단계 한 번에 — YouTube Data API 키가 필요하다
+YOUTUBE_API_KEY=... npm run verify:media -- --resolve --write
+
+# 이미 ID 가 채워져 있다면 생존 확인만
 npm run verify:media -- --write
 ```
 
-유튜브 oEmbed 로 생존을 확인해 살아 있는 항목만 임베드로 승격하고, 죽은 항목은
-검색 폴백으로 되돌린다. 유튜브에 닿지 않는 환경에서는 아무것도 승격하지 않고
-정상 종료한다 — 검증 실패와 네트워크 차단을 구분하기 위해서다.
+API 키는 [Google Cloud Console](https://console.cloud.google.com) 에서
+YouTube Data API v3 를 사용 설정하고 발급한다. 무료 할당량 10,000 units/일,
+`search.list` 1회당 100 units 이므로 58개 항목이면 5,800 units — 하루치 안에 든다.
+
+**검색 1등 결과를 무조건 받아들이지 않는다.** 항목에 선언된 `channel` 과 실제 결과의
+채널명이 일치할 때만 채택하고, 불일치하면 그 항목은 검색 폴백으로 남긴다 —
+엉뚱한 영상을 임베드하는 것이 링크 없는 것보다 나쁘기 때문이다.
+
+유튜브에 닿지 않는 환경에서는 아무것도 승격하지 않고 정상 종료한다 —
+검증 실패와 네트워크 차단을 구분하기 위해서다.
+
+승격 후에는 반드시 `npm test` 와 `npm run smoke` 를 다시 돌린다.
 
 ---
 
