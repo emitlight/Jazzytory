@@ -89,13 +89,46 @@ console.log(`영상 항목 ${entries.length}개 (ID 있음 ${entries.filter((e) 
 /** 채널명 비교 — 대소문자·공백·기호 차이를 무시한다 */
 const norm = (s) => (s ?? '').toLowerCase().replace(/[^a-z0-9가-힣]/g, '');
 
+/** 채널명에서 의미 없는 연결어를 뺀 토큰 집합 */
+const CHANNEL_NOISE = new Set(['with', 'the', 'and', 'jazz', 'piano', 'music', 'official', 'tv', 'channel']);
+const channelTokens = (name) => new Set(
+  (name ?? '').toLowerCase().split(/[^a-z0-9가-힣]+/)
+    .filter((t) => t.length >= 2 && !CHANNEL_NOISE.has(t)),
+);
+
+/**
+ * 채널이 같은가.
+ * "Jazz Tutorial with Julian Bradley" 와 "Jazz Tutorial | Julian Bradley" 는 같은 채널이다.
+ * 문자열을 통째로 비교하면 'with' 하나 때문에 놓친다 — 고유 토큰의 포함 관계로 본다.
+ */
+function sameChannelName(declared, found) {
+  if (norm(declared) === norm(found)) return true;
+  const a = channelTokens(declared);
+  const b = channelTokens(found);
+  if (!a.size || !b.size) return false;
+  const [small, big] = a.size <= b.size ? [a, b] : [b, a];
+  const overlap = [...small].filter((t) => big.has(t)).length;
+  // 작은 쪽의 고유 토큰이 전부 큰 쪽에 들어 있으면 같은 채널로 본다
+  return overlap === small.size && overlap > 0;
+}
+
 /** 어느 재즈 영상에나 나오는 말 — 주제 판정에서 제외한다 */
 const STOPWORDS = new Set([
-  'jazz', 'piano', 'pianist', 'tutorial', 'lesson', 'lessons', 'music', 'video',
-  'the', 'and', 'for', 'with', 'your', 'you', 'how', 'what', 'why', 'this', 'that',
-  'from', 'into', 'over', 'about', 'every', 'basic', 'basics', 'beginner', 'intro',
-  'introduction', 'explained', 'guide', 'learn', 'learning', 'play', 'playing',
-  'practice', 'exercise', 'exercises', 'part', 'masterclass', 'improv', 'improvisation',
+  // 음악 일반 — 어느 재즈 영상 제목에나 있다
+  'jazz', 'piano', 'pianist', 'tutorial', 'lesson', 'lessons', 'music', 'musical',
+  'video', 'masterclass', 'improv', 'improvisation', 'improvise', 'improvising',
+  'practice', 'practicing', 'exercise', 'exercises', 'technique', 'techniques',
+  'basic', 'basics', 'beginner', 'beginners', 'intro', 'introduction', 'advanced',
+  'explained', 'explain', 'guide', 'learn', 'learning', 'play', 'playing', 'player',
+  'song', 'songs', 'sound', 'sounds', 'sounding', 'style', 'part', 'series',
+  // 영어 기능어·군더더기 — 의미를 구별해 주지 못한다
+  'the', 'and', 'for', 'with', 'your', 'you', 'how', 'what', 'why', 'when', 'where',
+  'this', 'that', 'these', 'those', 'from', 'into', 'onto', 'over', 'under', 'about',
+  'every', 'all', 'any', 'some', 'more', 'most', 'best', 'better', 'good', 'great',
+  'really', 'actually', 'simply', 'just', 'like', 'need', 'know', 'use', 'using',
+  'make', 'making', 'get', 'getting', 'start', 'starting', 'way', 'ways', 'step',
+  'steps', 'thing', 'things', 'stuff', 'tips', 'trick', 'tricks', 'secret', 'secrets',
+  'must', 'should', 'can', 'will', 'does', 'did', 'have', 'has', 'are', 'was',
 ]);
 
 /** 검색어에서 이 항목을 다른 항목과 구별짓는 개념어만 뽑는다 */
@@ -124,7 +157,14 @@ function buildRarity(entries) {
   return df;
 }
 
-/** 통과 문턱. 희소어 한 개 또는 일반어 두 개 이상이어야 한다. */
+/**
+ * 통과 조건.
+ *
+ * 점수만으로는 부족했다 — "shell voicings" 를 찾는데 "2-handed voicings" 가
+ * 'voicings' + 'hand' 로 2점을 따 통과했다. 둘은 다른 개념이다.
+ * 그래서 **그 항목을 다른 항목과 구별짓는 고유어(df=1)가 반드시 하나는
+ * 제목에 있어야** 통과시킨다. shell, quartal, bebop, stride, pentatonic 같은 말이다.
+ */
 const TOPIC_THRESHOLD = 2;
 
 /**
@@ -137,7 +177,9 @@ function topicMatch(query, channel, title, rarity) {
   const t = (title ?? '').toLowerCase();
   const hits = terms.filter((term) => t.includes(term));
   const score = hits.reduce((sum, term) => sum + ((rarity?.get(term) ?? 9) === 1 ? 2 : 1), 0);
-  return { hits, terms, score };
+  // 이 항목에만 등장하는 고유어가 제목에 실제로 있는가
+  const signature = hits.filter((term) => (rarity?.get(term) ?? 9) === 1);
+  return { hits, terms, score, signature };
 }
 
 async function searchYouTube(query) {
@@ -190,10 +232,7 @@ function judge(targets, searchResults) {
     if (!results) { rejected.push({ id: e.id, why: '검색 결과 없음 (캐시 미수집)' }); continue; }
 
     // 관문 1 — 채널 일치
-    const sameChannel = results.filter((r) =>
-      norm(r.channel) === norm(e.channel)
-      || norm(r.channel).includes(norm(e.channel))
-      || norm(e.channel).includes(norm(r.channel)));
+    const sameChannel = results.filter((r) => sameChannelName(e.channel, r.channel));
     if (!sameChannel.length) {
       const top = results[0];
       rejected.push({ id: e.id, why: `채널 불일치 (선언: ${e.channel}${top ? ` / 1등: ${top.channel}` : ''})` });
@@ -205,12 +244,13 @@ function judge(targets, searchResults) {
       .map((r) => ({ ...r, ...topicMatch(e.searchQuery, e.channel, r.title, rarity) }))
       .sort((a, b) => b.score - a.score);
     const best = scored[0];
-    if (!best || best.score < TOPIC_THRESHOLD) {
-      const terms = conceptTerms(e.searchQuery, e.channel).slice(0, 4).join(', ');
-      rejected.push({
-        id: e.id,
-        why: `주제 근거 약함 (점수 ${best?.score ?? 0}/${TOPIC_THRESHOLD}, 개념어 [${terms}]${best ? ` / 후보: ${best.title.slice(0, 45)}` : ''})`,
-      });
+    if (!best || best.score < TOPIC_THRESHOLD || best.signature.length === 0) {
+      const uniq = conceptTerms(e.searchQuery, e.channel).filter((t) => (rarity.get(t) ?? 9) === 1);
+      const why = !best ? '후보 없음'
+        : best.signature.length === 0
+          ? `고유어 불일치 (찾는 말 [${uniq.slice(0, 4).join(', ')}] 이 제목에 없음 / 후보: ${best.title.slice(0, 45)})`
+          : `점수 미달 ${best.score}/${TOPIC_THRESHOLD} (후보: ${best.title.slice(0, 45)})`;
+      rejected.push({ id: e.id, why });
       continue;
     }
 
@@ -228,7 +268,10 @@ function judge(targets, searchResults) {
     }
 
     claimed.set(best.videoId, { id: e.id, score: best.score });
-    picked.push({ ...e, videoId: best.videoId, foundTitle: best.title, foundChannel: best.channel, score: best.score, hits: best.hits });
+    picked.push({
+      ...e, videoId: best.videoId, foundTitle: best.title, foundChannel: best.channel,
+      score: best.score, hits: best.hits, signature: best.signature,
+    });
   }
   return { picked, rejected };
 }
@@ -299,7 +342,7 @@ if (RESOLVE || REJUDGE) {
 
   const { picked, rejected } = judge(targets, searchResults ?? {});
   for (const r of picked) {
-    console.log(`  ✓ ${r.id}  [${r.hits.join(', ')}] 점수 ${r.score}`);
+    console.log(`  ✓ ${r.id}  고유어[${r.signature.join(', ')}] + [${r.hits.filter((h) => !r.signature.includes(h)).join(', ') || '-'}] 점수 ${r.score}`);
     console.log(`      ${r.foundChannel} — ${r.foundTitle}`);
     console.log(`      ${r.videoId}`);
   }
@@ -313,18 +356,51 @@ if (RESOLVE || REJUDGE) {
 
 /* ─────────────────  2단계: verify (oEmbed)  ───────────────── */
 
-async function checkAlive(id) {
-  const url = `https://www.youtube.com/oembed?url=${encodeURIComponent(`https://www.youtube.com/watch?v=${id}`)}&format=json`;
-  try {
-    const res = await fetch(url, { signal: AbortSignal.timeout(12000) });
-    if (res.status === 200) {
-      const d = await res.json();
-      return { ok: true, title: d.title, author: d.author_name };
+/**
+ * 생존·임베드 가능 여부 확인 — YouTube Data API videos.list.
+ *
+ * oEmbed(youtube.com) 대신 Data API(googleapis.com) 를 쓰는 이유:
+ *   · oEmbed 는 youtube.com 도메인이라 사내망·CI 프록시에서 막히는 경우가 많다.
+ *     차단(403/000)을 "영상 사망"으로 오판하면 멀쩡한 영상을 폐기한다.
+ *   · Data API 는 embeddable·privacyStatus 까지 알려준다. 존재하지만 임베드가
+ *     금지된 영상을 iframe 에 넣는 사고를 막을 수 있다.
+ *   · 50개를 한 번에 조회하고 1 unit 만 쓴다 (oEmbed 는 항목마다 왕복).
+ */
+async function checkAliveBatch(ids) {
+  const out = new Map();
+  for (let i = 0; i < ids.length; i += 50) {
+    const chunk = ids.slice(i, i + 50);
+    const url = new URL('https://www.googleapis.com/youtube/v3/videos');
+    url.searchParams.set('part', 'status,snippet');
+    url.searchParams.set('id', chunk.join(','));
+    url.searchParams.set('key', API_KEY);
+    try {
+      const res = await fetch(url, { signal: AbortSignal.timeout(15000) });
+      if (!res.ok) {
+        const t = await res.text().catch(() => '');
+        throw new Error(`HTTP ${res.status} ${t.slice(0, 160)}`);
+      }
+      const data = await res.json();
+      const seen = new Set();
+      for (const it of data.items ?? []) {
+        seen.add(it.id);
+        const embeddable = it.status?.embeddable === true;
+        const isPublic = it.status?.privacyStatus === 'public';
+        out.set(it.id, {
+          ok: embeddable && isPublic,
+          title: it.snippet?.title,
+          author: it.snippet?.channelTitle,
+          reason: !isPublic ? `비공개(${it.status?.privacyStatus})` : !embeddable ? '임베드 금지' : undefined,
+        });
+      }
+      // 응답에 없는 id = 삭제되었거나 존재하지 않음
+      for (const id of chunk) if (!seen.has(id)) out.set(id, { ok: false, reason: '삭제되었거나 없는 영상' });
+    } catch (err) {
+      for (const id of chunk) out.set(id, { ok: false, reason: '확인 실패', network: true, detail: err.message });
     }
-    return { ok: false, reason: `HTTP ${res.status}` };
-  } catch (err) {
-    return { ok: false, reason: err.name === 'TimeoutError' ? 'timeout' : 'network', network: true };
+    await new Promise((r) => setTimeout(r, 150));
   }
+  return out;
 }
 
 const candidates = [
@@ -340,17 +416,18 @@ if (!candidates.length) {
   process.exit(0);
 }
 
-console.log(`생존 확인 중… (${candidates.length}개)`);
-const results = [];
-for (const c of candidates) {
-  const r = await checkAlive(c.videoId);
-  results.push({ ...c, ...r });
-  await new Promise((r2) => setTimeout(r2, 120));
+console.log(`생존·임베드 가능 확인 중… (${candidates.length}개 · videos.list ${Math.ceil(candidates.length / 50)} units)`);
+if (!API_KEY) {
+  console.log('확인에는 API 키가 필요합니다. --key= 또는 YOUTUBE_API_KEY 를 주세요.');
+  process.exit(2);
 }
+const aliveMap = await checkAliveBatch(candidates.map((c) => c.videoId));
+const results = candidates.map((c) => ({ ...c, ...(aliveMap.get(c.videoId) ?? { ok: false, reason: '응답 없음', network: true }) }));
 
 if (results.every((r) => r.network)) {
-  console.log('\n유튜브에 접근할 수 없는 환경입니다. 아무것도 승격하지 않고 종료합니다.');
-  console.log('(검증 실패가 아니라 네트워크 차단입니다 — verified 플래그는 그대로 둡니다.)');
+  console.log('\nAPI 에 접근할 수 없습니다. 아무것도 승격하지 않고 종료합니다.');
+  console.log('(검증 실패가 아니라 네트워크 문제입니다 — verified 플래그는 그대로 둡니다.)');
+  console.log(`상세: ${results[0]?.detail ?? '-'}`);
   process.exit(0);
 }
 
@@ -358,7 +435,7 @@ const alive = results.filter((r) => r.ok);
 const dead = results.filter((r) => !r.ok);
 console.log(`\n생존 ${alive.length} / 사망 ${dead.length}`);
 for (const r of alive) console.log(`  ✓ ${r.id}  ${r.author} — ${r.title}`);
-for (const r of dead) console.log(`  ✗ ${r.id}  ${r.videoId} (${r.reason})`);
+for (const r of dead) console.log(`  ✗ ${r.id}  ${r.videoId} — ${r.reason}`);
 
 if (!WRITE) {
   console.log('\n--write 를 붙이면 videos.ts 에 반영합니다.');

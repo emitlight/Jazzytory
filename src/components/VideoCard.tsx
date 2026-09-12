@@ -5,17 +5,20 @@ import { RichText } from './Prose';
 /**
  * 영상 카드 — 임베드 정책
  *  1) videoId 가 있고 verified 인 경우에만 iframe 을 띄운다.
- *  2) 그 전에 썸네일(i.ytimg.com)로 실제 생존 여부를 한 번 더 확인한다.
- *     썸네일이 깨지면 그 영상은 존재하지 않거나 비공개다 → 검색 폴백으로 전환.
- *  3) 그 외에는 채널 + 정밀 검색어 딥링크 카드로 렌더링한다.
+ *  2) 그 외에는 채널 + 정밀 검색어 딥링크 카드로 렌더링한다.
  *
  * 깨진 임베드는 없는 것보다 나쁘다. 그래서 추측한 ID 를 절대 싣지 않는다.
+ *
+ * verified 는 scripts/verify-media.mjs 가 YouTube Data API videos.list 로
+ * **embeddable && public** 을 확인했을 때만 붙는다. 예전에는 여기서 썸네일
+ * (i.ytimg.com)을 몰래 불러 생존을 재확인했지만, 이제 그 역할은 검증 단계가
+ * 확실히 하므로 없앴다 — 방화벽이 ytimg 를 막는 환경에서 멀쩡한 영상이
+ * 검색 폴백으로 떨어지고 콘솔에 오류만 남기던 코드였다.
  */
 export default function VideoCard({ video }: { video: VideoResource }) {
-  const [thumbOk, setThumbOk] = useState<boolean | null>(null);
   const [play, setPlay] = useState(false);
 
-  const canEmbed = !!video.videoId && video.verified && thumbOk !== false;
+  const canEmbed = !!video.videoId && video.verified;
   const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(video.searchQuery)}`;
 
   return (
@@ -39,15 +42,7 @@ export default function VideoCard({ video }: { video: VideoResource }) {
             />
           </div>
         ) : (
-          <button className="btn btn-sm" onClick={() => setPlay(true)}>
-            ▶ 영상 재생
-            <img
-              src={`https://i.ytimg.com/vi/${video.videoId}/default.jpg`}
-              alt="" width={1} height={1} style={{ display: 'none' }}
-              onLoad={(e) => setThumbOk((e.currentTarget.naturalWidth || 0) > 2)}
-              onError={() => setThumbOk(false)}
-            />
-          </button>
+          <button className="btn btn-sm" onClick={() => setPlay(true)}>▶ 영상 재생</button>
         )
       ) : (
         <a className="btn btn-sm" href={searchUrl} target="_blank" rel="noopener noreferrer">
