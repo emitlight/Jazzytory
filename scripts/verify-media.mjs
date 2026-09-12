@@ -129,6 +129,10 @@ if (RESOLVE) {
       }
     } catch (err) {
       console.log(`  ✗ ${e.id}  검색 실패: ${err.message}`);
+      if (/HTTP 400/.test(err.message) && /API_KEY_INVALID|API key not valid/i.test(err.message)) {
+        console.error('\n키가 유효하지 않습니다. 앞뒤 공백이나 따옴표가 섞이지 않았는지 확인하세요.');
+        process.exit(2);
+      }
       if (/HTTP 40[13]/.test(err.message)) {
         console.error('\nAPI 키가 거부되었습니다. 다음을 확인하세요:');
         console.error('  · 키를 정확히 붙여넣었는가 (앞뒤 공백·따옴표 없이)');

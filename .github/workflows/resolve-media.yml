@@ -1,0 +1,93 @@
+name: 유튜브 임베드 해석
+
+# 검색어 → 영상 ID 해석은 YouTube Data API 키가 필요하다.
+# 키는 저장소 시크릿(YOUTUBE_API_KEY)에만 두고, 이 워크플로가 대신 실행한다.
+# Actions 탭에서 "Run workflow" 로 수동 실행한다.
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: '반영하지 않고 결과만 확인'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: resolve-media
+  cancel-in-progress: false
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: 시크릿 확인
+        run: |
+          if [ -z "${{ secrets.YOUTUBE_API_KEY }}" ]; then
+            echo "::error::저장소 시크릿 YOUTUBE_API_KEY 가 없습니다."
+            echo "Settings → Secrets and variables → Actions → New repository secret" >> $GITHUB_STEP_SUMMARY
+            echo "이름은 정확히 \`YOUTUBE_API_KEY\` 로 만드세요." >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: 검색어 → 영상 ID 해석
+        id: resolve
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          set -o pipefail
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            npm run --silent verify:media -- --resolve 2>&1 | tee result.log
+          else
+            npm run --silent verify:media -- --resolve --write 2>&1 | tee result.log
+          fi
+
+      - name: 결과 요약
+        if: always()
+        run: |
+          {
+            echo "### 유튜브 임베드 해석 결과"
+            echo '```'
+            # 키가 로그에 섞여 들어갈 여지를 없앤다
+            sed -E 's/(key=)[A-Za-z0-9_-]+/\1***/g' result.log | tail -80
+            echo '```'
+          } >> $GITHUB_STEP_SUMMARY
+
+      - name: 품질 게이트
+        if: ${{ inputs.dry_run == false }}
+        run: |
+          npm run typecheck
+          npm test
+
+      - name: 변경분 반영
+        if: ${{ inputs.dry_run == false }}
+        run: |
+          if git diff --quiet src/data/videos.ts; then
+            echo "승격된 영상이 없습니다 — 커밋하지 않습니다." >> $GITHUB_STEP_SUMMARY
+            exit 0
+          fi
+          PROMOTED=$(grep -c "verified: true" src/data/videos.ts || echo 0)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/videos.ts
+          git commit -m "chore(media): 유튜브 임베드 ${PROMOTED}편 승격
+
+검색어로 후보를 찾아 oEmbed 로 생존을 확인한 결과를 반영한다.
+선언된 채널과 검색 결과 채널이 일치한 항목만 채택했고,
+불일치·사망 항목은 검색 폴백으로 남는다.
+
+워크플로: resolve-media.yml"
+          git push origin main
+          echo "**임베드 ${PROMOTED}편 승격, main 에 반영했습니다.** 배포가 자동으로 돕니다." >> $GITHUB_STEP_SUMMARY
