@@ -24,6 +24,8 @@ export interface UserState {
   completedModules: string[];
   favoriteTunes: string[];
   listened: string[];
+  /** 끝까지(90% 이상) 본 오리지널 강의 id. 예전 저장본에는 없다 → 불러올 때 [] 로 채운다. */
+  watchedLectures: string[];
   practiceLog: PracticeLogEntry[];
   settings: {
     theme: 'light' | 'dark' | 'system';
@@ -41,6 +43,7 @@ export const DEFAULT_STATE: UserState = {
   completedModules: [],
   favoriteTunes: [],
   listened: [],
+  watchedLectures: [],
   practiceLog: [],
   settings: { theme: 'system', bpm: 120, swing: 1, showRomanNumerals: true, notation: 'symbol' },
 };
@@ -55,6 +58,7 @@ export function loadState(): UserState {
       ...parsed,
       settings: { ...DEFAULT_STATE.settings, ...(parsed.settings ?? {}) },
       drills: parsed.drills ?? {},
+      watchedLectures: Array.isArray(parsed.watchedLectures) ? parsed.watchedLectures : [],
     };
   } catch {
     return { ...DEFAULT_STATE };
@@ -90,7 +94,12 @@ export function importState(json: string): UserState | null {
   try {
     const parsed = JSON.parse(json) as Partial<UserState>;
     if (typeof parsed !== 'object' || parsed === null) return null;
-    return { ...DEFAULT_STATE, ...parsed, settings: { ...DEFAULT_STATE.settings, ...(parsed.settings ?? {}) } };
+    return {
+      ...DEFAULT_STATE,
+      ...parsed,
+      settings: { ...DEFAULT_STATE.settings, ...(parsed.settings ?? {}) },
+      watchedLectures: Array.isArray(parsed.watchedLectures) ? parsed.watchedLectures : [],
+    };
   } catch {
     return null;
   }

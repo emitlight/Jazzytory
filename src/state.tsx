@@ -11,6 +11,7 @@ interface Ctx {
   toggleModuleComplete: (moduleId: string) => void;
   toggleFavoriteTune: (tuneId: string) => void;
   toggleListened: (albumId: string) => void;
+  markLectureWatched: (lectureId: string) => void;
   reset: () => void;
 }
 
@@ -76,11 +77,17 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }));
   }, []);
 
+  const markLectureWatched = useCallback((lectureId: string) => {
+    setState((s) => (s.watchedLectures.includes(lectureId)
+      ? s
+      : { ...s, watchedLectures: [...s.watchedLectures, lectureId] }));
+  }, []);
+
   const reset = useCallback(() => setState({ ...DEFAULT_STATE }), []);
 
   const value = useMemo<Ctx>(
-    () => ({ state, update, logDrill, logSession, toggleModuleComplete, toggleFavoriteTune, toggleListened, reset }),
-    [state, update, logDrill, logSession, toggleModuleComplete, toggleFavoriteTune, toggleListened, reset],
+    () => ({ state, update, logDrill, logSession, toggleModuleComplete, toggleFavoriteTune, toggleListened, markLectureWatched, reset }),
+    [state, update, logDrill, logSession, toggleModuleComplete, toggleFavoriteTune, toggleListened, markLectureWatched, reset],
   );
 
   return <AppCtx.Provider value={value}>{children}</AppCtx.Provider>;

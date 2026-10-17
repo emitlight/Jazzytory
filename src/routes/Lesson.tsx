@@ -12,6 +12,8 @@ import ReviewCard from '../components/ReviewCard';
 import DrillCard from '../components/DrillCard';
 import VideoCard from '../components/VideoCard';
 import MethodSection from '../components/MethodSection';
+import LecturePlayer from '../components/LecturePlayer';
+import { lectureOfModule } from '../data/lectures';
 
 /**
  * 차시(Lesson) — LMS 의 한 강의 단원.
@@ -46,6 +48,7 @@ export default function Lesson() {
   const tunes = tunesOfModule(mod.id);
   const albums = albumsOfModule(mod.id);
   const videos = videosOfModule(mod.id);
+  const lecture = lectureOfModule(mod.id);
 
   let step = 0;
   const stepNo = () => String(++step).padStart(2, '0');
@@ -114,6 +117,9 @@ export default function Lesson() {
           {mod.axis.map((a) => <span key={a} className="badge tiny">{SKILL_AXIS_LABEL[a]}</span>)}
         </div>
       </header>
+
+      {/* ───── 강의 영상 (오리지널 강의가 있는 차시만) ───── */}
+      {lecture && <LecturePlayer key={lecture.id} lecture={lecture} />}
 
       {/* ───── 01 학습 목표 ───── */}
       <section className="panel stack stack-8">

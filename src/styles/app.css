@@ -1634,6 +1634,66 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--accent); }
 }
 
 /* ==========================================================================
+   16b. 오리지널 강의 플레이어
+   ========================================================================== */
+
+/* 메타데이터가 오기 전에도 16:9 자리를 잡아 둔다 (레이아웃 밀림 없음) */
+/* 가로로 눕힌 iPad 에서 영상이 화면보다 커지지 않도록 높이 70% 를 상한으로 둔다 */
+.lecture-frame {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  max-width: calc(70dvh * 16 / 9);
+  margin-inline: auto;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--pure-black);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+.lecture-frame video { display: block; width: 100%; height: 100%; max-width: none; object-fit: contain; background: var(--pure-black); }
+
+.lecture-chapters, .lecture-script { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.lecture-chapters { grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+.lecture-chapters li, .lecture-script li { margin: 0; }
+.lecture-chapters button, .lecture-script button {
+  display: flex; align-items: baseline; gap: 10px;
+  width: 100%; min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid transparent; border-radius: var(--radius-sm);
+  background: transparent; color: var(--text-2);
+  text-align: left; cursor: pointer;
+  transition: background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+}
+.lecture-chapters button:hover, .lecture-script button:hover { background: var(--surface-3); color: var(--text); }
+.lecture-chapters button .mono { flex: 0 0 auto; color: var(--text-3); }
+/* 지금 재생 중 — 색 + 왼쪽 레일 */
+.lecture-chapters button.active, .lecture-script button.active {
+  background: var(--accent-soft); border-color: var(--accent-border); color: var(--text);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.lecture-script {
+  max-height: 340px; overflow-y: auto; overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px;
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  background: var(--bg-sunken);
+}
+.lecture-script button { font-size: .95rem; line-height: 1.6; }
+.lecture-script button .mono { flex: 0 0 auto; }
+
+/* 자료실 강의 목록 — 한 레벨에 한두 편뿐이어도 카드가 화면 폭으로 늘어나지 않게 auto-fill */
+.lecture-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 232px), 1fr)); }
+
+/* 자료실 강의 목록 썸네일 */
+.lecture-thumb {
+  position: relative; display: block;
+  aspect-ratio: 16 / 9; width: 100%;
+  border-radius: var(--radius-sm); overflow: hidden;
+  background: var(--surface-3);
+}
+.lecture-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.lecture-thumb .badge { position: absolute; right: 8px; bottom: 8px; background: rgb(0 0 0 / .72); color: var(--pure-white); border-color: transparent; }
+
+/* ==========================================================================
    17. 반응형 — 400px 에서 가로 스크롤은 절대 생기지 않는다
    ========================================================================== */
 
@@ -1693,6 +1753,7 @@ a, button, summary, label, [role='button'] { touch-action: manipulation; }
   .btn, .chip { min-width: 44px; justify-content: center; }
   .switch input[type='checkbox'] { width: 20px; height: 20px; }
   table.data td a, .data td a { display: inline-flex; align-items: center; min-height: 44px; }
+  .lecture-title { display: flex; align-items: center; min-height: 44px; }
   .topbar .btn { min-width: 44px; }
   .btn-icon { width: 44px; height: 44px; }
   a.badge { min-height: 44px; }

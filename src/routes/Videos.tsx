@@ -1,6 +1,58 @@
 import { useState, useMemo } from 'react';
-import { VIDEOS, CHANNELS, LEVELS, MODULE_BY_ID } from '../data';
+import { Link } from 'react-router-dom';
+import { VIDEOS, CHANNELS, LEVELS, MODULE_BY_ID, lessonPathOfModule } from '../data';
+import { LECTURES, formatTime } from '../data/lectures';
+import { useApp } from '../state';
 import VideoCard from '../components/VideoCard';
+
+/** 오리지널 강의 — 레벨 순, 레벨 안에서는 커리큘럼 순서대로 */
+function OriginalLectures() {
+  const { state } = useApp();
+  const byLevel = LEVELS.map((l) => ({
+    level: l,
+    items: LECTURES
+      .map((lec) => ({ lec, mod: MODULE_BY_ID.get(lec.moduleId), path: lessonPathOfModule(lec.moduleId) }))
+      .filter((x) => x.mod?.levelId === l.id)
+      .sort((a, b) => (a.path ?? '').localeCompare(b.path ?? '', undefined, { numeric: true })),
+  })).filter((g) => g.items.length > 0);
+
+  return (
+    <section className="stack stack-16" aria-labelledby="orig-lec">
+      <div className="stack stack-4">
+        <span className="eyebrow-accent">Original</span>
+        <h2 id="orig-lec" style={{ margin: 0 }}>Jazzytory 오리지널 강의 {LECTURES.length}편</h2>
+        <p className="small dim" style={{ margin: 0 }}>
+          차시마다 직접 만든 해설 영상입니다. 차시 페이지에서 챕터·스크립트와 함께 볼 수 있습니다.
+        </p>
+      </div>
+      {byLevel.map(({ level, items }) => (
+        <div key={level.id} className="stack stack-8">
+          <span className="eyebrow">{level.id} {level.title}</span>
+          <div className="lecture-grid">
+            {items.map(({ lec, mod, path }) => {
+              const to = path ?? '/courses';
+              return (
+                <article key={lec.id} className="card card-tight stack stack-8">
+                  <Link to={to} className="lecture-thumb" aria-label={`${lec.title} 보기`}>
+                    <img src={lec.poster} alt="" loading="lazy" decoding="async" width={640} height={360} />
+                    <span className="badge tiny mono">{formatTime(lec.durationSec)}</span>
+                  </Link>
+                  <Link to={to} className="small lecture-title" style={{ fontWeight: 700, color: 'var(--text)', textDecoration: 'none' }}>
+                    {lec.title}
+                  </Link>
+                  <div className="row" style={{ gap: 6 }}>
+                    {mod && <Link to={to} className="badge tiny">{mod.title}</Link>}
+                    {state.watchedLectures.includes(lec.id) && <span className="badge badge-ok tiny">✓ 시청</span>}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </section>
+  );
+}
 
 export default function Videos() {
   const [q, setQ] = useState('');
@@ -36,6 +88,8 @@ export default function Videos() {
           자동으로 임베드로 승격합니다.
         </div>
       </header>
+
+      {LECTURES.length > 0 && <OriginalLectures />}
 
       <div className="panel stack stack-12">
         <div className="field">
