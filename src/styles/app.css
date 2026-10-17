@@ -154,6 +154,7 @@
   /* ── 레이아웃 ─────────────────────────────────────────────────────── */
   --maxw: 1180px;
   --gutter: 20px;
+  --topbar-h: 63px;          /* .topbar-inner 62px + 하단 1px 선 — 고정 요소의 top 기준 */
 }
 
 /* ==========================================================================
@@ -1708,6 +1709,66 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--accent); }
 .lecture-upcoming a .badge { flex: 0 0 auto; opacity: .8; }
 .level-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex: 0 0 auto; }
 
+/* 신규 — 오리지널 강의 레벨 필터 바. 헤더 바로 아래에 붙어 따라오고, 폰에서는 가로로 넘긴다 */
+.lvl-bar {
+  position: sticky; top: calc(var(--topbar-h) + env(safe-area-inset-top)); z-index: 30;
+  display: flex; gap: 6px; align-items: center;
+  margin-inline: calc(-1 * var(--gutter)); padding: 8px var(--gutter);
+  max-width: none; min-width: 0;
+  overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  background: var(--bg);
+  box-shadow: 0 1px 0 var(--border);
+}
+.lvl-bar::-webkit-scrollbar { display: none; }
+.lvl-chip {
+  flex: 0 0 auto;
+  display: inline-flex; align-items: center; gap: 7px;
+  min-height: 44px; padding: 6px 12px 6px 11px;
+  border: 1px solid var(--border); border-radius: var(--radius-pill);
+  background: var(--surface-2); color: var(--text-2);
+  font: inherit; font-size: .84rem; font-weight: 700; line-height: 1.3; white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+}
+.lvl-chip:hover { border-color: var(--border-strong); color: var(--text); background: var(--surface-3); }
+.lvl-chip.active {
+  background: var(--accent-soft); border-color: var(--accent-border); color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent-border);
+}
+.lvl-chip.empty:not(.active) { color: var(--text-3); }
+.lvl-chip.empty:not(.active) .level-dot { opacity: .45; }
+.lvl-chip .level-dot { width: 8px; height: 8px; }
+.lvl-chip-title { font-weight: 600; color: inherit; opacity: .85; }
+.lvl-chip-count {
+  font-size: .7rem; font-weight: 600; line-height: 1;
+  padding: 3px 6px; border-radius: 999px;
+  background: var(--surface-4); color: var(--text-2);
+}
+.lvl-chip.active .lvl-chip-count { background: var(--accent); color: var(--on-accent); }
+
+.lvl-section { scroll-margin-top: calc(var(--topbar-h) + env(safe-area-inset-top) + 68px); }
+.lvl-head { min-height: 32px; }
+.lvl-head-btn {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  width: 100%; min-height: 44px; margin: 0; padding: 4px 8px 4px 0;
+  border: 0; border-radius: var(--radius-sm); background: transparent;
+  font: inherit; text-align: left; color: inherit; cursor: pointer;
+}
+.lvl-head-btn:hover { background: var(--surface-2); }
+.lvl-head-btn .lvl-only { margin-left: auto; color: var(--accent); font-weight: 700; white-space: nowrap; }
+.lvl-pending-toggle { align-self: flex-start; color: var(--text-2); }
+.lvl-pending-toggle span[aria-hidden] { color: var(--text-3); }
+
+/* 차시 상단 이전·다음 — 작게, 손가락 기준 44px 은 터치 규칙(.btn-sm)이 보장한다 */
+.lesson-nav-top { gap: 8px; margin-top: 4px; }
+.lesson-nav-top .btn-sm { min-height: 44px; }
+
+@media (max-width: 720px) {
+  .lvl-chip-title { display: none; }
+  .lvl-chip { padding-inline: 10px; }
+}
+
 /* 강의 영상 자리 표시 — 영상이 아직 없는 차시의 16:9 자리 */
 .lecture-placeholder {
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
@@ -1724,7 +1785,7 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--accent); }
 }
 
 @media (max-width: 720px) {
-  :root { --gutter: 16px; }
+  :root { --gutter: 16px; --topbar-h: 57px; }
   .topbar-inner { height: 56px; gap: 6px; }
   .topbar .menu-toggle { display: inline-flex; }
   .nav { display: none; }

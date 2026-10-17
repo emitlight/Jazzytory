@@ -92,13 +92,40 @@ async function checkLeaks(label) {
   if (found.length) deepLeaks.push(`${label}: ${found.join(' ')}`);
 }
 
-// 강의 페이지 — 영상이 있는 차시(L1 2차시)는 16:9 프레임 안에 <video> 하나, 없는 차시(L4 2차시)는 <video> 가 없어야 한다
+// 강의 페이지 — 영상이 있는 차시(L1 2차시)는 16:9 프레임 안에 <video> 하나, 없는 차시는 <video> 가 없어야 한다.
+// "없는 차시"는 게시 파이프라인이 lectures.json 을 채울 때마다 바뀌므로 데이터에서 고른다 (모듈 id = m-l{레벨}-{차시}-…).
+const lectureIds = JSON.parse(await readFile(resolve(import.meta.dirname, '../src/data/lectures.json'), 'utf8')).map((l) => l.moduleId);
+let noLecture = null;
+for (let lv = 1; lv <= 8 && !noLecture; lv++) {
+  for (let n = 1; n <= 6; n++) {
+    if (!lectureIds.some((id) => id.startsWith(`m-l${lv}-${String(n).padStart(2, '0')}-`))) { noLecture = `/#/course/L${lv}/lesson/${n}`; break; }
+  }
+}
 await page.goto(`http://localhost:${PORT}/#/course/L1/lesson/2`, { waitUntil: 'networkidle' });
 await page.waitForTimeout(300);
 let lectureOk = (await page.locator('.lecture-frame video').count()) === 1;
-await page.goto(`http://localhost:${PORT}/#/course/L4/lesson/2`, { waitUntil: 'networkidle' });
+if (noLecture) {
+  await page.goto(`http://localhost:${PORT}${noLecture}`, { waitUntil: 'networkidle' });
+  await page.waitForTimeout(300);
+  const h1NoLecture = ((await page.locator('h1').first().textContent()) ?? '').trim();
+  if ((await page.locator('video').count()) !== 0 || h1NoLecture === '없는 차시입니다') lectureOk = false;
+}
+
+// 강의 목록 — 레벨 필터 바: 기본은 한 레벨만, 「전체」를 누르면 9개 섹션, 「곧 게시」는 접혀 있다가 토글로 펼쳐진다
+await page.goto(`http://localhost:${PORT}/#/?level=L1`, { waitUntil: 'networkidle' });
 await page.waitForTimeout(300);
-if ((await page.locator('video').count()) !== 0) lectureOk = false;
+let filterOk = (await page.locator('.lvl-section').count()) === 1
+  && (await page.locator('.lvl-chip[aria-checked="true"] .lvl-chip-id').textContent()) === 'L1';
+await page.locator('.lvl-chip', { hasText: '전체' }).click();
+await page.waitForTimeout(300);
+filterOk = filterOk && (await page.locator('.lvl-section').count()) === 9 && page.url().includes('level=all')
+  && (await page.locator('.lecture-upcoming').count()) === 0;
+const pendingToggle = page.locator('.lvl-pending-toggle').first();
+if (await pendingToggle.count()) {
+  await pendingToggle.click();
+  await page.waitForTimeout(200);
+  filterOk = filterOk && (await page.locator('.lecture-upcoming li').count()) > 0;
+}
 
 // 핵심 인터랙션
 await page.goto(`http://localhost:${PORT}/#/course/L1`, { waitUntil: 'networkidle' });
@@ -163,6 +190,7 @@ console.log('\n=== 라우트 ===');
 console.log(rows.join('\n'));
 console.log('\n=== 인터랙션 ===');
 console.log(`강의 페이지 프레임:  ${lectureOk ? 'ok' : 'FAIL'}`);
+console.log(`강의 레벨 필터·곧 게시 토글: ${filterOk ? 'ok' : 'FAIL'}`);
 console.log(`차시 → 건반 예제: ${moduleOk ? 'ok' : 'FAIL'}`);
 console.log(`곡 → 리드시트:    ${bars > 0 ? `ok (${bars}마디)` : 'FAIL'}`);
 console.log(`모바일 375px 가로 스크롤: ${mobileOverflow.length ? mobileOverflow.join(', ') : '없음'}`);
@@ -176,7 +204,7 @@ console.log(errors.length ? errors.slice(0, 15).join('\n') : '없음');
 await browser.close();
 server.close();
 
-const failed = failures > 0 || !moduleOk || !lectureOk || bars === 0 || mobileOverflow.length > 0 || !menuOk
+const failed = failures > 0 || !moduleOk || !lectureOk || !filterOk || bars === 0 || mobileOverflow.length > 0 || !menuOk
   || errors.length > 0 || deepLeaks.length > 0;
 console.log(`\n${failed ? '실패' : '전부 통과'}`);
 process.exit(failed ? 1 : 0);

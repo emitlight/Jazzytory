@@ -37,6 +37,15 @@ function SimpleLesson({ level, lesson, lecture, albums, videos, prev, next }: {
         </nav>
         <h1 style={{ margin: 0 }}>{mod.title}</h1>
         <p className="tiny muted" style={{ margin: 0 }}>{mod.titleEn}</p>
+        {/* 위쪽 이전·다음 — 영상을 보기 전에 넘어갈 수 있게. 아래쪽 제목 포함 내비는 그대로 둔다 */}
+        <nav className="row lesson-nav-top" aria-label="이전·다음 강의 (상단)">
+          {prev
+            ? <Link className="btn btn-sm" to={prev.path} aria-label={`이전 강의: ${prev.module.title}`}>← 이전 강의</Link>
+            : <span className="btn btn-sm" aria-disabled="true" style={{ opacity: .45, pointerEvents: 'none' }}>← 이전 강의</span>}
+          {next
+            ? <Link className="btn btn-sm" to={next.path} aria-label={`다음 강의: ${next.module.title}`}>다음 강의 →</Link>
+            : <Link className="btn btn-sm" to="/">강의 목록 →</Link>}
+        </nav>
       </header>
 
       {lecture ? (
