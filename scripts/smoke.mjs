@@ -70,7 +70,8 @@ for (const route of ROUTES) {
   const h1 = (await page.locator('h1').first().textContent().catch(() => '')) ?? '';
   const body = (await page.locator('#main').innerText().catch(() => ''));
   const chars = body.length;
-  const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
+  // html 의 overflow-x: clip 이 documentElement.scrollWidth 를 가리므로 body 도 본다
+  const overflow = await page.evaluate(() => Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) > window.innerWidth + 1);
   const newErrors = errors.length - before;
   // 콘텐츠 마크다운이 렌더되지 않고 새어 나오는지 검사한다.
   // **굵게** 와 `코드` 는 RichText 를 통과해야 하며, 화면에 별표가 보이면 그 자리를 빠뜨린 것이다.
@@ -131,13 +132,22 @@ if (await tuneLink.count()) {
   await checkLeaks('곡 상세');
 }
 
-// 모바일 400px
-const mp = await (await browser.newContext({ viewport: { width: 400, height: 820 } })).newPage();
+// 모바일 375px (iPhone) — 터치 기기로 띄운다
+const mp = await (await browser.newContext({ viewport: { width: 375, height: 812 }, isMobile: true, hasTouch: true })).newPage();
 const mobileOverflow = [];
-for (const route of ['/#/', '/#/lab/voicing', '/#/library/tunes', '/#/courses', '/#/course/L1/lesson/1']) {
+for (const route of ['/#/', '/#/lab/voicing', '/#/lab/keyboard', '/#/library/tunes', '/#/library/pedagogy', '/#/courses', '/#/course/L1/lesson/1', '/#/tunes/t-autumn-leaves']) {
   await mp.goto(`http://localhost:${PORT}${route}`, { waitUntil: 'networkidle' });
   await mp.waitForTimeout(250);
-  if (await mp.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1)) mobileOverflow.push(route);
+  if (await mp.evaluate(() => Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) > window.innerWidth + 1)) mobileOverflow.push(route);
+}
+// 폰 메뉴 — 열고, 항목을 누르면 이동하고 닫힌다
+await mp.goto(`http://localhost:${PORT}/#/`, { waitUntil: 'networkidle' });
+let menuOk = false;
+if (await mp.locator('.menu-toggle').isVisible()) {
+  await mp.locator('.menu-toggle').tap();
+  await mp.locator('#main-nav a', { hasText: '연습 랩' }).tap();
+  await mp.waitForTimeout(400);
+  menuOk = mp.url().includes('#/lab') && !(await mp.locator('#main-nav').isVisible());
 }
 
 console.log('\n=== 라우트 ===');
@@ -145,7 +155,8 @@ console.log(rows.join('\n'));
 console.log('\n=== 인터랙션 ===');
 console.log(`차시 → 건반 예제: ${moduleOk ? 'ok' : 'FAIL'}`);
 console.log(`곡 → 리드시트:    ${bars > 0 ? `ok (${bars}마디)` : 'FAIL'}`);
-console.log(`모바일 400px 가로 스크롤: ${mobileOverflow.length ? mobileOverflow.join(', ') : '없음'}`);
+console.log(`모바일 375px 가로 스크롤: ${mobileOverflow.length ? mobileOverflow.join(', ') : '없음'}`);
+console.log(`폰 메뉴 열기 → 이동 → 닫힘: ${menuOk ? 'ok' : 'FAIL'}`);
 console.log('\n=== 마크다운 누출 (펼친 상태) ===');
 console.log(deepLeaks.length ? deepLeaks.join('\n') : '없음');
 
@@ -155,7 +166,7 @@ console.log(errors.length ? errors.slice(0, 15).join('\n') : '없음');
 await browser.close();
 server.close();
 
-const failed = failures > 0 || !moduleOk || bars === 0 || mobileOverflow.length > 0
+const failed = failures > 0 || !moduleOk || bars === 0 || mobileOverflow.length > 0 || !menuOk
   || errors.length > 0 || deepLeaks.length > 0;
 console.log(`\n${failed ? '실패' : '전부 통과'}`);
 process.exit(failed ? 1 : 0);

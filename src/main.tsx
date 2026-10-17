@@ -4,6 +4,9 @@ import { HashRouter } from 'react-router-dom';
 import App from './App';
 import { AppProvider } from './state';
 import './styles/app.css';
+import { installAudioUnlock } from './lib/audio';
+
+installAudioUnlock();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

@@ -30,9 +30,41 @@ export function ensureAudio(): AudioContext {
     master.gain.value = 0.85;
     comp.connect(master);
     master.connect(ctx.destination);
+    // iOS 17+: 무음 스위치가 켜져 있어도 소리가 나도록 '재생' 세션으로 둔다.
+    // 기본값(auto)은 Web Audio 를 효과음 취급해 무음 모드에서 아예 묵음 처리한다.
+    const session = (navigator as unknown as { audioSession?: { type: string } }).audioSession;
+    if (session) { try { session.type = 'playback'; } catch { /* 미지원 */ } }
   }
-  if (ctx.state === 'suspended') void ctx.resume();
+  // iOS 는 통화·다른 앱 재생 뒤 'interrupted' 상태로 둔다. suspended 와 똑같이 깨운다.
+  if (ctx.state !== 'running' && ctx.state !== 'closed') void ctx.resume().catch(() => {});
   return ctx;
+}
+
+/**
+ * iOS Safari 오디오 잠금 해제.
+ * iOS 는 touchend/click/keydown 같은 "활성화" 이벤트 안에서만 resume 을 허락한다
+ * (터치의 pointerdown 은 해당하지 않는다). 그래서 첫 터치 때 만든 컨텍스트가
+ * suspended 로 남는 경우가 있다 — 이후의 모든 제스처에서 조용히 깨운다.
+ * 컨텍스트를 새로 만들지는 않는다 (소리를 쓰지 않는 화면에서 오디오를 켜지 않는다).
+ */
+let unlockInstalled = false;
+export function installAudioUnlock(): void {
+  if (unlockInstalled || typeof document === 'undefined') return;
+  unlockInstalled = true;
+  const wake = () => {
+    if (!ctx || ctx.state === 'running' || ctx.state === 'closed') return;
+    void ctx.resume().catch(() => {});
+    // 구형 iOS 는 resume 만으로 풀리지 않는다 — 제스처 안에서 무음 1샘플을 재생해야 한다.
+    try {
+      const src = ctx.createBufferSource();
+      src.buffer = ctx.createBuffer(1, 1, 22050);
+      src.connect(ctx.destination);
+      src.start(0);
+    } catch { /* noop */ }
+  };
+  for (const type of ['touchend', 'pointerup', 'click', 'keydown'] as const) {
+    document.addEventListener(type, wake, { capture: true, passive: true });
+  }
 }
 
 export function audioReady(): boolean { return ctx !== null && ctx.state === 'running'; }

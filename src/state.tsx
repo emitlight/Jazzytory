@@ -27,6 +27,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const root = document.documentElement;
     if (t === 'system') root.removeAttribute('data-theme');
     else root.setAttribute('data-theme', t);
+    // 브라우저 툴바·상태 표시줄 색 (iOS Safari) 도 수동 테마를 따른다
+    const BG = { light: '#f4f6f9', dark: '#0a0b0e' } as const;
+    document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]').forEach((m) => {
+      const scheme = m.media.includes('light') ? 'light' : 'dark';
+      m.content = t === 'system' ? BG[scheme] : BG[t];
+    });
   }, [state.settings.theme]);
 
   const update = useCallback((fn: (s: UserState) => UserState) => setState(fn), []);

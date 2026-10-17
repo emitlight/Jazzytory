@@ -1,4 +1,4 @@
-import { useMemo, useCallback } from 'react';
+import { useMemo, useCallback, useRef } from 'react';
 import { type Note, toMidi, midiToNote, noteName, noteNameKo, toFrequency } from '../lib/theory';
 import { strike, ensureAudio } from '../lib/audio';
 
@@ -61,6 +61,26 @@ export default function Keyboard({
     onKeyDown?.(n);
   }, [onKeyDown, playable]);
 
+  // 터치는 손을 뗄 때 친다. 건반 줄을 옆으로 밀어 스크롤하는 동안 음이 새지 않게 하고,
+  // iOS 가 오디오를 허락하는 활성화 이벤트(touchend/pointerup)와 맞추기 위해서다.
+  // 마우스·펜은 지연이 없도록 누르는 순간 친다.
+  const touchStart = useRef<{ id: number; x: number; y: number } | null>(null);
+  const onPointerDown = (e: React.PointerEvent, midi: number) => {
+    if (e.pointerType === 'touch') {
+      touchStart.current = { id: e.pointerId, x: e.clientX, y: e.clientY };
+      return;
+    }
+    if (e.button === 0) press(midi);
+  };
+  const onPointerUp = (e: React.PointerEvent, midi: number) => {
+    const t = touchStart.current;
+    touchStart.current = null;
+    if (e.pointerType !== 'touch' || !t || t.id !== e.pointerId) return;
+    if (Math.abs(e.clientX - t.x) > 10 || Math.abs(e.clientY - t.y) > 10) return;
+    press(midi);
+  };
+  const onPointerCancel = () => { touchStart.current = null; };
+
   const onKeyPress = (e: React.KeyboardEvent, midi: number) => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); press(midi); }
   };
@@ -86,7 +106,10 @@ export default function Keyboard({
               type="button"
               className={`key-white${mark ? ` key-on key-role-${mark.role ?? 'R'}` : ''}`}
               style={{ height, width: whiteW, zIndex: 1 }}
-              onPointerDown={() => press(midi)}
+              onPointerDown={(e) => onPointerDown(e, midi)}
+              onPointerUp={(e) => onPointerUp(e, midi)}
+              onPointerCancel={onPointerCancel}
+              onContextMenu={(e) => e.preventDefault()}
               onKeyDown={(e) => onKeyPress(e, midi)}
               aria-label={`${noteNameKo(n)}${mark ? `, ${mark.label ?? mark.role}` : ''}`}
               aria-pressed={!!mark}
@@ -117,7 +140,10 @@ export default function Keyboard({
                 type="button"
                 className={`key-black${mark ? ` key-on key-role-${mark.role ?? 'R'}` : ''}`}
                 style={{ left, width: blackW, height: height * 0.63 }}
-                onPointerDown={() => press(midi)}
+                onPointerDown={(e) => onPointerDown(e, midi)}
+              onPointerUp={(e) => onPointerUp(e, midi)}
+              onPointerCancel={onPointerCancel}
+              onContextMenu={(e) => e.preventDefault()}
                 onKeyDown={(e) => onKeyPress(e, midi)}
                 aria-label={`${noteNameKo(n)}${mark ? `, ${mark.label ?? mark.role}` : ''}`}
                 aria-pressed={!!mark}

@@ -426,6 +426,9 @@ details[open] > summary { color: var(--text-2); }
   max-width: var(--maxw);
   margin-inline: auto;
   padding-inline: var(--gutter);
+  /* 가로로 눕힌 iPhone 의 노치·라운드 코너 (viewport-fit=cover) */
+  padding-left: max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
   min-width: 0;
 }
 
@@ -492,7 +495,7 @@ details[open] > summary { color: var(--text-2); }
   height: 1px; border: 0; margin: 0;
   background: linear-gradient(90deg, var(--accent-border), transparent 72%);
 }
-.sticky-top { position: sticky; top: 74px; z-index: 5; }
+.sticky-top { position: sticky; top: calc(74px + env(safe-area-inset-top)); z-index: 5; }
 
 /* ==========================================================================
    4. 표면 — 깊이는 그림자가 아니라 "레이어"로 만든다
@@ -635,6 +638,8 @@ details[open] > summary { color: var(--text-2); }
 
 .topbar {
   position: sticky; top: 0; z-index: 40;
+  /* 홈 화면 앱(black-translucent)에서는 상태 표시줄 밑까지 그려진다 */
+  padding-top: env(safe-area-inset-top);
   background: var(--scrim);
   backdrop-filter: saturate(170%) blur(14px);
   -webkit-backdrop-filter: saturate(170%) blur(14px);
@@ -702,9 +707,29 @@ details[open] > summary { color: var(--text-2); }
   background: var(--accent);
 }
 
+.topbar .menu-toggle { display: none; min-width: 44px; }
+.menu-icon {
+  position: relative; width: 16px; height: 2px; border-radius: 2px;
+  background: currentColor;
+  box-shadow: 0 -5px 0 currentColor, 0 5px 0 currentColor;
+}
+.menu-open .menu-icon { background: transparent; box-shadow: none; }
+.menu-open .menu-icon::before, .menu-open .menu-icon::after {
+  content: ''; position: absolute; inset: 0; border-radius: 2px; background: currentColor; rotate: 45deg;
+}
+.menu-open .menu-icon::after { rotate: -45deg; }
+.nav-extra { display: none; }
+/* 헤더는 backdrop-filter 때문에 fixed 자손의 기준이 된다 → absolute 로 화면 아래를 덮는다 */
+.menu-scrim {
+  position: absolute; top: 100%; left: 0; right: 0; z-index: 1;
+  height: 100dvh;
+  background: rgb(0 0 0 / .35);
+}
+
 .footer {
   border-top: 1px solid var(--border);
   padding-block: 32px 44px;
+  padding-bottom: calc(44px + env(safe-area-inset-bottom));
   color: var(--text-2);
   font-size: .85rem;
   background: var(--bg-sunken);
@@ -858,6 +883,11 @@ details[open] > summary { color: var(--text-2); }
   content: '✓';
   font-size: .82em; font-weight: 800; line-height: 1;
 }
+
+/* 문장형 배지·칩(학습 포인트, 교수법 링크, 출처)은 폭이 좁으면 줄을 바꾼다.
+   짧은 배지는 감싸는 행이 flex-wrap 이라 줄바꿈 대신 다음 줄로 넘어간다.
+   nowrap 그대로 두면 400px 에서 카드 밖으로 밀려나 iOS 가 페이지를 옆으로 끈다. */
+.badge, .chip { max-width: 100%; white-space: normal; text-align: left; }
 
 /* 신규 — 상태 알약 (라이브 표시 등) */
 .pill {
@@ -1102,10 +1132,17 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--accent); }
 /* 신규 — 분절 컨트롤 */
 .seg {
   display: inline-flex; padding: 3px; gap: 2px;
+  max-width: 100%;
+  overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
   border: 1px solid var(--border); border-radius: var(--radius-sm);
   background: var(--surface-2);
 }
+.seg::-webkit-scrollbar { display: none; }
 .seg-item {
+  flex: 0 0 auto;
+  display: inline-flex; align-items: center;
+  white-space: nowrap; text-decoration: none;
   padding: 6px 12px; border: 0; border-radius: 6px;
   background: transparent; color: var(--text-2);
   font-size: .82rem; font-weight: 700; cursor: pointer;
@@ -1166,9 +1203,12 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--accent); }
 .keyboard {
   position: relative;
   display: flex;
+  -webkit-user-select: none;
   user-select: none;
+  -webkit-touch-callout: none;
   touch-action: manipulation;
 }
+.key-white, .key-black { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 
 /* 흰 건반 — 위쪽 하이라이트, 아래쪽 그림자, 눌림 */
 .key-white {
@@ -1603,8 +1643,23 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--accent); }
 
 @media (max-width: 720px) {
   :root { --gutter: 16px; }
-  .topbar-inner { height: auto; padding-block: 10px; flex-wrap: wrap; row-gap: 6px; }
-  .nav { width: 100%; order: 3; padding-bottom: 2px; }
+  .topbar-inner { height: 56px; gap: 6px; }
+  .topbar .menu-toggle { display: inline-flex; }
+  .nav { display: none; }
+  .topbar.menu-open .nav {
+    display: flex; flex-direction: column; gap: 2px;
+    position: absolute; top: 100%; left: 0; right: 0; z-index: 2;
+    padding: 8px max(var(--gutter), env(safe-area-inset-right)) 12px max(var(--gutter), env(safe-area-inset-left));
+    max-height: calc(100dvh - 56px - env(safe-area-inset-top));
+    overflow-y: auto; overscroll-behavior: contain;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-2);
+  }
+  .topbar.menu-open .nav a { padding: 12px 14px; font-size: 1rem; min-height: 48px; display: flex; align-items: center; }
+  .topbar.menu-open .nav a.active::after { left: 0; right: auto; top: 12px; bottom: 12px; width: 3px; height: auto; }
+  .topbar.menu-open .nav-extra { display: flex; }
+  .topbar.menu-open span.nav-extra { height: 1px; min-height: 0; margin: 6px 0; padding: 0; background: var(--border); }
   .page { padding-block: 26px 72px; }
   .card { padding: 16px; }
   .card-tight { padding: 13px; }
@@ -1624,6 +1679,59 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--accent); }
   .ls-chord { font-size: .98rem; }
   .card-feature { border-radius: var(--radius); }
   .keyboard-scroll { padding: 10px 10px 12px; }
+}
+
+
+/* ==========================================================================
+   17b. 터치 기기 (iPhone · iPad) — 손가락 기준 44px, 확대 없는 입력, 끈적한 호버 제거
+   ========================================================================== */
+
+a, button, summary, label, [role='button'] { touch-action: manipulation; }
+
+@media (pointer: coarse), (max-width: 720px) {
+  .btn, .btn-sm, .chip, .seg-item, .nav a, .brand, .switch { min-height: 44px; }
+  .btn, .chip { min-width: 44px; justify-content: center; }
+  .switch input[type='checkbox'] { width: 20px; height: 20px; }
+  table.data td a, .data td a { display: inline-flex; align-items: center; min-height: 44px; }
+  .topbar .btn { min-width: 44px; }
+  .btn-icon { width: 44px; height: 44px; }
+  a.badge { min-height: 44px; }
+  /* 경로(브레드크럼) 링크도 손가락으로 누를 수 있게 */
+  nav[aria-label='경로'] a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; }
+  details > summary { min-height: 44px; display: flex; align-items: center; }
+  details > summary::marker { content: ''; }
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary::before { content: '▸'; margin-right: 6px; color: var(--text-3); }
+  details[open] > summary::before { content: '▾'; }
+
+  /* iOS 는 16px 미만 입력란에 포커스하면 화면을 확대한다 */
+  input[type='text'], input[type='number'], input[type='search'], select, textarea { font-size: 16px; min-height: 44px; }
+  /* WebKit 기본 select 는 높이·여백을 무시한다 → 모양을 직접 그린다 */
+  select {
+    -webkit-appearance: none; appearance: none;
+    padding-right: 34px;
+    background-image: linear-gradient(45deg, transparent 50%, var(--text-2) 50%), linear-gradient(135deg, var(--text-2) 50%, transparent 50%);
+    background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+  }
+  input[type='checkbox'], input[type='radio'] { width: 22px; height: 22px; }
+  input[type='range'] { height: 44px; }
+  input[type='range']::-webkit-slider-thumb { width: 26px; height: 26px; margin-top: -10px; }
+
+  /* 읽을 수 있는 최소 글자 크기 */
+  .eyebrow, .eyebrow-accent { font-size: .78rem; }
+  .badge { font-size: .78rem; }
+  .ls-section-label { font-size: .78rem; }
+  .ls-bar-num { font-size: .75rem; }
+  table.data th, .data th { font-size: .76rem; }
+  .roman { font-size: max(.78rem, 12px); }
+}
+
+/* 터치에서는 탭한 뒤 호버 상태가 남는다 → 떠오르는 효과를 끈다 */
+@media (hover: none) {
+  .card-link:hover, .ls-bar:hover, .lift:hover { transform: none; }
+  .key-white:hover, .key-black:hover { filter: none; }
 }
 
 /* ==========================================================================

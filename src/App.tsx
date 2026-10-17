@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useRef } from 'react';
+import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { Routes, Route, NavLink, useLocation, Link, Navigate } from 'react-router-dom';
 import { useApp } from './state';
 
@@ -44,10 +44,23 @@ function ThemeToggle() {
 export default function App() {
   const location = useLocation();
   const mainRef = useRef<HTMLElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // 폰 메뉴는 이동하면 닫힌다
+  useEffect(() => { setMenuOpen(false); }, [location.pathname]);
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenuOpen(false); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [menuOpen]);
 
   // 라우트 전환 시 스크롤 최상단 + 포커스 이동 (접근성)
+  // 첫 진입에는 포커스를 옮기지 않는다 — Safari 는 이때 h1 에 포커스 링을 그린다.
+  const firstRoute = useRef(true);
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (firstRoute.current) { firstRoute.current = false; return; }
     const h1 = mainRef.current?.querySelector('h1');
     if (h1 instanceof HTMLElement) {
       h1.setAttribute('tabindex', '-1');
@@ -59,22 +72,37 @@ export default function App() {
     <div className="shell">
       <a className="skip" href="#main">본문으로 건너뛰기</a>
 
-      <header className="topbar">
+      <header className={`topbar${menuOpen ? ' menu-open' : ''}`}>
         <div className="wrap topbar-inner">
           <Link to="/" className="brand">
             <span className="brand-mark" aria-hidden="true">J</span>
             Jazzytory
           </Link>
-          <nav className="nav" aria-label="주요 메뉴">
+          <nav id="main-nav" className="nav" aria-label="주요 메뉴">
             {NAV.map((n) => (
               <NavLink key={n.to} to={n.to} className={({ isActive }) => (isActive ? 'active' : '')}>
                 {n.label}
               </NavLink>
             ))}
+            {/* 폰 메뉴에서만 보이는 보조 링크 — 데스크톱은 푸터에 있다 */}
+            <span className="nav-extra" aria-hidden="true" />
+            <NavLink to="/library/glossary" className="nav-extra">용어집</NavLink>
+            <NavLink to="/placement" className="nav-extra">배치고사</NavLink>
           </nav>
           <span className="spacer" />
           <ThemeToggle />
+          <button
+            type="button"
+            className="btn btn-sm btn-ghost menu-toggle"
+            aria-expanded={menuOpen}
+            aria-controls="main-nav"
+            onClick={() => setMenuOpen((o) => !o)}
+          >
+            <span aria-hidden="true" className="menu-icon" />
+            {menuOpen ? '닫기' : '메뉴'}
+          </button>
         </div>
+        {menuOpen && <div className="menu-scrim" aria-hidden="true" onClick={() => setMenuOpen(false)} />}
       </header>
 
       <main id="main" ref={mainRef} className="page wrap">

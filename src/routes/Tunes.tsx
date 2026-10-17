@@ -80,7 +80,7 @@ export default function Tunes() {
                     aria-label={fav ? '레퍼토리에서 제거' : '내 레퍼토리에 추가'}
                     onClick={() => toggleFavoriteTune(t.id)}>{fav ? '★' : '☆'}</button>
                 </div>
-                <Link to={`/tunes/${t.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link to={`/tunes/${t.id}`} style={{ textDecoration: 'none', color: 'inherit', display: 'block', paddingBlock: 8, marginBlock: -8 }}>
                   <strong>{t.title}</strong>
                 </Link>
                 <span className="tiny muted">{t.composer}{t.year ? ` · ${t.year}` : ''}</span>
