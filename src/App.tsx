@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { Routes, Route, NavLink, useLocation, Link, Navigate } from 'react-router-dom';
 import { useApp } from './state';
+import { SIMPLE_UI } from './config';
 
 const Home           = lazy(() => import('./routes/Home'));
 const Courses        = lazy(() => import('./routes/Courses'));
@@ -14,12 +15,19 @@ const Placement      = lazy(() => import('./routes/Placement'));
 const ModuleRedirect = lazy(() => import('./routes/ModuleRedirect'));
 
 /** 메뉴는 네 개다. 학습자가 고를 것이 많을수록 아무것도 고르지 않는다. */
-const NAV = [
-  { to: '/courses',  label: '강의실' },
-  { to: '/lab',      label: '연습 랩' },
-  { to: '/library',  label: '자료실' },
-  { to: '/progress', label: '내 진도' },
-];
+const NAV = SIMPLE_UI
+  ? [
+    { to: '/',                  label: '강의', end: true },
+    { to: '/library/listening', label: '필청 명반' },
+    { to: '/lab',               label: '연습 랩' },
+    { to: '/progress',          label: '내 진도' },
+  ]
+  : [
+    { to: '/courses',  label: '강의실' },
+    { to: '/lab',      label: '연습 랩' },
+    { to: '/library',  label: '자료실' },
+    { to: '/progress', label: '내 진도' },
+  ];
 
 function ThemeToggle() {
   const { state, update } = useApp();
@@ -80,14 +88,18 @@ export default function App() {
           </Link>
           <nav id="main-nav" className="nav" aria-label="주요 메뉴">
             {NAV.map((n) => (
-              <NavLink key={n.to} to={n.to} className={({ isActive }) => (isActive ? 'active' : '')}>
+              <NavLink key={n.to} to={n.to} end={'end' in n && n.end} className={({ isActive }) => (isActive ? 'active' : '')}>
                 {n.label}
               </NavLink>
             ))}
-            {/* 폰 메뉴에서만 보이는 보조 링크 — 데스크톱은 푸터에 있다 */}
-            <span className="nav-extra" aria-hidden="true" />
-            <NavLink to="/library/glossary" className="nav-extra">용어집</NavLink>
-            <NavLink to="/placement" className="nav-extra">배치고사</NavLink>
+            {/* 폰 메뉴에서만 보이는 보조 링크 — 데스크톱은 푸터에 있다. 간단 보기에서는 숨긴다 */}
+            {!SIMPLE_UI && (
+              <>
+                <span className="nav-extra" aria-hidden="true" />
+                <NavLink to="/library/glossary" className="nav-extra">용어집</NavLink>
+                <NavLink to="/placement" className="nav-extra">배치고사</NavLink>
+              </>
+            )}
           </nav>
           <span className="spacer" />
           <ThemeToggle />
@@ -151,20 +163,24 @@ export default function App() {
 
       <footer className="footer">
         <div className="wrap stack stack-8">
-          <div className="row" style={{ gap: 16 }}>
-            <Link to="/library/glossary">용어집</Link>
-            <Link to="/library/pedagogy">교수법</Link>
-            <Link to="/library/review">검수 정책</Link>
-            <Link to="/placement">배치고사</Link>
-          </div>
+          {!SIMPLE_UI && (
+            <div className="row" style={{ gap: 16 }}>
+              <Link to="/library/glossary">용어집</Link>
+              <Link to="/library/pedagogy">교수법</Link>
+              <Link to="/library/review">검수 정책</Link>
+              <Link to="/placement">배치고사</Link>
+            </div>
+          )}
           <p style={{ margin: 0 }}>
             Jazzytory 는 학습용 도구입니다. 스탠다드는 <strong>화성 진행(코드)만</strong> 수록하며
             멜로디·가사·채보 솔로를 포함하지 않습니다. 음원은 호스팅하지 않습니다.
           </p>
-          <p style={{ margin: 0 }}>
-            편집 검수 패널은 <strong>교수법 계보를 대표하는 가상의 심사 기준</strong>이며 실존 인물이 아닙니다.
-            실제 교수 검수는 아직 받지 않았습니다. — <Link to="/library/review">자세히</Link>
-          </p>
+          {!SIMPLE_UI && (
+            <p style={{ margin: 0 }}>
+              편집 검수 패널은 <strong>교수법 계보를 대표하는 가상의 심사 기준</strong>이며 실존 인물이 아닙니다.
+              실제 교수 검수는 아직 받지 않았습니다. — <Link to="/library/review">자세히</Link>
+            </p>
+          )}
         </div>
       </footer>
     </div>

@@ -1,21 +1,11 @@
 import { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { VIDEOS, CHANNELS, LEVELS, MODULE_BY_ID, lessonPathOfModule } from '../data';
-import { LECTURES, formatTime } from '../data/lectures';
-import { useApp } from '../state';
+import { VIDEOS, CHANNELS, LEVELS, MODULE_BY_ID } from '../data';
+import { LECTURES } from '../data/lectures';
 import VideoCard from '../components/VideoCard';
+import LectureCatalog from '../components/LectureCatalog';
 
-/** 오리지널 강의 — 레벨 순, 레벨 안에서는 커리큘럼 순서대로 */
+/** 오리지널 강의 — 게시된 편만 (로드맵 「곧 게시」는 첫 화면·자료실 「강의」 탭이 맡는다) */
 function OriginalLectures() {
-  const { state } = useApp();
-  const byLevel = LEVELS.map((l) => ({
-    level: l,
-    items: LECTURES
-      .map((lec) => ({ lec, mod: MODULE_BY_ID.get(lec.moduleId), path: lessonPathOfModule(lec.moduleId) }))
-      .filter((x) => x.mod?.levelId === l.id)
-      .sort((a, b) => (a.path ?? '').localeCompare(b.path ?? '', undefined, { numeric: true })),
-  })).filter((g) => g.items.length > 0);
-
   return (
     <section className="stack stack-16" aria-labelledby="orig-lec">
       <div className="stack stack-4">
@@ -25,31 +15,7 @@ function OriginalLectures() {
           차시마다 직접 만든 해설 영상입니다. 차시 페이지에서 챕터·스크립트와 함께 볼 수 있습니다.
         </p>
       </div>
-      {byLevel.map(({ level, items }) => (
-        <div key={level.id} className="stack stack-8">
-          <span className="eyebrow">{level.id} {level.title}</span>
-          <div className="lecture-grid">
-            {items.map(({ lec, mod, path }) => {
-              const to = path ?? '/courses';
-              return (
-                <article key={lec.id} className="card card-tight stack stack-8">
-                  <Link to={to} className="lecture-thumb" aria-label={`${lec.title} 보기`}>
-                    <img src={lec.poster} alt="" loading="lazy" decoding="async" width={640} height={360} />
-                    <span className="badge tiny mono">{formatTime(lec.durationSec)}</span>
-                  </Link>
-                  <Link to={to} className="small lecture-title" style={{ fontWeight: 700, color: 'var(--text)', textDecoration: 'none' }}>
-                    {lec.title}
-                  </Link>
-                  <div className="row" style={{ gap: 6 }}>
-                    {mod && <Link to={to} className="badge tiny">{mod.title}</Link>}
-                    {state.watchedLectures.includes(lec.id) && <span className="badge badge-ok tiny">✓ 시청</span>}
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      ))}
+      <LectureCatalog upcoming={false} />
     </section>
   );
 }

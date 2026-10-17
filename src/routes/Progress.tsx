@@ -6,6 +6,36 @@ import { axisScores, dueDrills, practiceStreak, buildSession, MASTERY_THRESHOLD 
 import { practiceDates, totalPracticeMinutes, exportState, importState } from '../lib/storage';
 import { SKILL_AXIS_LABEL, type SkillAxis } from '../data/types';
 import DrillCard from '../components/DrillCard';
+import { LECTURES, formatTime } from '../data/lectures';
+
+/** 시청한 강의 — 진도 화면의 첫 블록. 강의 영상이 학습의 중심이므로 드릴·숙련도보다 앞에 둔다. */
+function WatchedLectures({ watched }: { watched: string[] }) {
+  const seen = LECTURES.filter((l) => watched.includes(l.id));
+  const pct = LECTURES.length ? Math.round((seen.length / LECTURES.length) * 100) : 0;
+  return (
+    <section className="card card-feature stack stack-12" aria-labelledby="watched-h">
+      <div className="row-between">
+        <h2 id="watched-h" style={{ margin: 0, fontSize: '1.05rem' }}>시청한 강의</h2>
+        <span className="badge badge-accent">{seen.length} / {LECTURES.length}편</span>
+      </div>
+      <div className="bar" aria-label={`강의 ${seen.length}/${LECTURES.length}편 시청`}><span style={{ width: `${pct}%` }} /></div>
+      {seen.length === 0 ? (
+        <p className="small muted" style={{ margin: 0 }}>
+          아직 시청한 강의가 없습니다. 영상의 90% 이상을 보면 자동으로 기록됩니다. <Link to="/">강의 보러 가기 →</Link>
+        </p>
+      ) : (
+        <ul className="stack stack-4" style={{ margin: 0, paddingLeft: 0, listStyle: 'none' }}>
+          {seen.map((l) => (
+            <li key={l.id} className="row-between" style={{ gap: 10 }}>
+              <Link className="small" to={lessonPathOfModule(l.moduleId) ?? '/'}>{l.title}</Link>
+              <span className="tiny muted mono">{formatTime(l.durationSec)}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  );
+}
 
 export default function Progress() {
   const { state, update, reset } = useApp();
@@ -40,6 +70,8 @@ export default function Progress() {
           동시에 보고 계산합니다. 하루에 몰아치면 숫자가 오르지 않습니다.
         </p>
       </header>
+
+      <WatchedLectures watched={state.watchedLectures} />
 
       <section className="grid grid-4">
         <Stat label="연습 스트릭" value={`${streak}일`} />

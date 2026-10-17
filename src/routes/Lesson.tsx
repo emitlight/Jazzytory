@@ -13,7 +13,98 @@ import DrillCard from '../components/DrillCard';
 import VideoCard from '../components/VideoCard';
 import MethodSection from '../components/MethodSection';
 import LecturePlayer from '../components/LecturePlayer';
-import { lectureOfModule } from '../data/lectures';
+import { lectureOfModule, type Lecture } from '../data/lectures';
+import { SIMPLE_UI } from '../config';
+import type { Lesson as LessonRef } from '../data';
+import type { Album, Level, VideoResource } from '../data/types';
+
+/**
+ * 간단 보기 차시 — 강의 영상과 그 강의에 딸린 명반·추천 영상만.
+ * 개념 본문·드릴·평가·검수는 아래 Lesson() 의 전체 보기에 그대로 있고, SIMPLE_UI=false 면 다시 나온다.
+ */
+function SimpleLesson({ level, lesson, lecture, albums, videos, prev, next }: {
+  level: Level; lesson: LessonRef; lecture: Lecture | undefined;
+  albums: Album[]; videos: VideoResource[]; prev: LessonRef | null; next: LessonRef | null;
+}) {
+  const mod = lesson.module;
+  return (
+    <div className="stack stack-32">
+      <header className="stack stack-8">
+        <nav className="row tiny muted" aria-label="경로">
+          <Link to="/">강의</Link><span>›</span>
+          <span>{level.id} {level.title}</span><span>›</span>
+          <span>{lesson.number}차시</span>
+        </nav>
+        <h1 style={{ margin: 0 }}>{mod.title}</h1>
+        <p className="tiny muted" style={{ margin: 0 }}>{mod.titleEn}</p>
+      </header>
+
+      {lecture ? (
+        <LecturePlayer key={lecture.id} lecture={lecture} />
+      ) : (
+        <section className="lecture card card-feature stack stack-12" aria-label="강의 영상">
+          <div className="row" style={{ gap: 8 }}>
+            <span className="badge">강의 영상</span>
+            <span className="tiny muted">Jazzytory 오리지널</span>
+          </div>
+          <div className="lecture-frame lecture-placeholder" role="img" aria-label="강의 영상 준비 중">
+            <span className="badge badge-lg">강의 영상 준비 중</span>
+            <span className="small">{mod.title}</span>
+          </div>
+          <p className="small dim" style={{ margin: 0 }}><RichText text={mod.summary} /></p>
+        </section>
+      )}
+
+      <section className="stack stack-12" aria-labelledby="lesson-albums">
+        <h2 id="lesson-albums" style={{ margin: 0, fontSize: '1.05rem' }}>이 강의의 필청 명반</h2>
+        {albums.length === 0 ? (
+          <p className="small muted" style={{ margin: 0 }}>이 차시에 연결된 명반이 없습니다. <Link to="/library/listening">전체 명반 보기</Link></p>
+        ) : (
+          <div className="stack stack-8">
+            {albums.map((a) => {
+              const note = a.trackNotes.find((x) => x.moduleId === mod.id) ?? a.trackNotes[0];
+              return (
+                <div key={a.id} className="card card-tight stack stack-4">
+                  <div className="row-between">
+                    <strong className="small">{a.title}</strong>
+                    <span className="tiny muted">{a.pianist} · {a.year}</span>
+                  </div>
+                  {note && (
+                    <p className="small dim" style={{ margin: 0 }}>
+                      <span className="badge tiny">{note.track}{note.at ? ` ${note.at}` : ''}</span>{' '}
+                      <RichText text={note.listenFor} />
+                    </p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </section>
+
+      <section className="stack stack-12" aria-labelledby="lesson-videos">
+        <h2 id="lesson-videos" style={{ margin: 0, fontSize: '1.05rem' }}>이 강의의 추천 영상</h2>
+        {videos.length === 0 ? (
+          <p className="small muted" style={{ margin: 0 }}>이 차시에 연결된 추천 영상이 없습니다.</p>
+        ) : (
+          <div className="grid grid-2">
+            {videos.map((v) => <VideoCard key={v.id} video={v} />)}
+          </div>
+        )}
+      </section>
+
+      <nav className="row-between" style={{ gap: 10 }} aria-label="이전·다음 강의">
+        {prev
+          ? <Link className="btn btn-sm" to={prev.path}>← {prev.module.title}</Link>
+          : <span />}
+        <Link className="btn btn-sm btn-ghost" to="/">강의 목록</Link>
+        {next
+          ? <Link className="btn btn-sm btn-primary" to={next.path}>{next.module.title} →</Link>
+          : <Link className="btn btn-sm btn-primary" to="/">강의 목록으로 →</Link>}
+      </nav>
+    </div>
+  );
+}
 
 /**
  * 차시(Lesson) — LMS 의 한 강의 단원.
@@ -30,12 +121,12 @@ export default function Lesson() {
   const n = Number(lessonNo);
   const lesson = level && Number.isFinite(n) ? lessonAt(level.id as LevelId, n) : null;
 
-  if (!level) return <Navigate to="/courses" replace />;
+  if (!level) return <Navigate to={SIMPLE_UI ? '/' : '/courses'} replace />;
   if (!lesson) {
     return (
       <div className="stack stack-16">
         <h1>없는 차시입니다</h1>
-        <Link className="btn" to={`/course/${level.id}`}>강좌 목차로</Link>
+        <Link className="btn" to={SIMPLE_UI ? '/' : `/course/${level.id}`}>{SIMPLE_UI ? '강의 목록으로' : '강좌 목차로'}</Link>
       </div>
     );
   }
@@ -49,6 +140,10 @@ export default function Lesson() {
   const albums = albumsOfModule(mod.id);
   const videos = videosOfModule(mod.id);
   const lecture = lectureOfModule(mod.id);
+
+  if (SIMPLE_UI) {
+    return <SimpleLesson level={level} lesson={lesson} lecture={lecture} albums={albums} videos={videos} prev={prev} next={next} />;
+  }
 
   let step = 0;
   const stepNo = () => String(++step).padStart(2, '0');

@@ -5,8 +5,58 @@ import { dueDrills, practiceStreak } from '../lib/mastery';
 import { practiceDates, totalPracticeMinutes } from '../lib/storage';
 import HeroDemo from '../components/HeroDemo';
 import { RichText } from '../components/Prose';
+import LectureCatalog from '../components/LectureCatalog';
+import { AlbumShelf } from './Listening';
+import { LECTURES } from '../data/lectures';
+import { ALBUMS } from '../data';
+import { SIMPLE_UI } from '../config';
 
 export default function Home() {
+  return SIMPLE_UI ? <SimpleHome /> : <FullHome />;
+}
+
+/** 간단 보기 — 오리지널 강의와 필청 명반만. 텍스트 설명·통계·원칙은 FullHome 에 그대로 남아 있다. */
+function SimpleHome() {
+  const { state } = useApp();
+  const watched = LECTURES.filter((l) => state.watchedLectures.includes(l.id)).length;
+  return (
+    <div className="stack stack-32">
+      <section className="hero stack stack-8">
+        <span className="eyebrow">재즈피아노 연주 전공 커리큘럼</span>
+        <h1 className="display" style={{ margin: 0 }}>
+          리얼북 한 장으로 즉흥 연주까지 <span className="muted">·</span> 영상으로 배운다
+        </h1>
+      </section>
+
+      <section className="stack stack-16" aria-labelledby="home-lectures">
+        <div className="row-between">
+          <div className="stack stack-4">
+            <span className="eyebrow-accent">Original</span>
+            <h2 id="home-lectures" style={{ margin: 0 }}>오리지널 강의</h2>
+          </div>
+          <span className="tiny muted">{LECTURES.length}편 게시 · {MODULES.length}차시 로드맵{watched ? ` · 시청 ${watched}편` : ''}</span>
+        </div>
+        <LectureCatalog />
+      </section>
+
+      <section className="stack stack-16" aria-labelledby="home-albums">
+        <div className="row-between">
+          <div className="stack stack-4">
+            <span className="eyebrow-accent">Essential Listening</span>
+            <h2 id="home-albums" style={{ margin: 0 }}>필청 명반</h2>
+          </div>
+          <span className="tiny muted">{ALBUMS.length}장 · 들은 앨범 {state.listened.length}</span>
+        </div>
+        <p className="small dim" style={{ margin: 0, maxWidth: '58ch' }}>
+          앨범 이름이 아니라 각 트랙에 붙은 <strong>청취 지시문</strong>이 핵심입니다. 「무엇을 들을 것인가」를 열어 보세요.
+        </p>
+        <AlbumShelf groupByLevel />
+      </section>
+    </div>
+  );
+}
+
+function FullHome() {
   const { state } = useApp();
   const placed = state.placedLevel;
   const streak = practiceStreak(practiceDates(state));

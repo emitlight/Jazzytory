@@ -56,10 +56,11 @@ const ROUTES = [
   '/#/', '/#/courses', '/#/course/L1', '/#/course/L1/lesson/1', '/#/course/L4/lesson/2',
   '/#/lab/voicing', '/#/lab/progression', '/#/lab/keyboard', '/#/lab/ear',
   '/#/lab/design', '/#/lab/metronome',
-  '/#/library/tunes', '/#/library/listening', '/#/library/videos',
+  '/#/library/lectures', '/#/library/tunes', '/#/library/listening', '/#/library/videos',
   '/#/library/pedagogy', '/#/library/glossary', '/#/library/review',
   '/#/progress', '/#/placement',
 ];
+// 숨긴 경로(강의실·레퍼토리·영상·교수법·용어집·검수·배치고사)도 간단 보기 모드에서 직접 링크로 열려야 한다 — 위 목록이 그 검사다.
 
 let failures = 0;
 const rows = [];
@@ -90,6 +91,14 @@ async function checkLeaks(label) {
   const found = [...body.matchAll(/\*\*[^*\n]{1,40}\*\*/g)].map((m) => m[0]).slice(0, 3);
   if (found.length) deepLeaks.push(`${label}: ${found.join(' ')}`);
 }
+
+// 강의 페이지 — 영상이 있는 차시(L1 2차시)는 16:9 프레임 안에 <video> 하나, 없는 차시(L4 2차시)는 <video> 가 없어야 한다
+await page.goto(`http://localhost:${PORT}/#/course/L1/lesson/2`, { waitUntil: 'networkidle' });
+await page.waitForTimeout(300);
+let lectureOk = (await page.locator('.lecture-frame video').count()) === 1;
+await page.goto(`http://localhost:${PORT}/#/course/L4/lesson/2`, { waitUntil: 'networkidle' });
+await page.waitForTimeout(300);
+if ((await page.locator('video').count()) !== 0) lectureOk = false;
 
 // 핵심 인터랙션
 await page.goto(`http://localhost:${PORT}/#/course/L1`, { waitUntil: 'networkidle' });
@@ -153,6 +162,7 @@ if (await mp.locator('.menu-toggle').isVisible()) {
 console.log('\n=== 라우트 ===');
 console.log(rows.join('\n'));
 console.log('\n=== 인터랙션 ===');
+console.log(`강의 페이지 프레임:  ${lectureOk ? 'ok' : 'FAIL'}`);
 console.log(`차시 → 건반 예제: ${moduleOk ? 'ok' : 'FAIL'}`);
 console.log(`곡 → 리드시트:    ${bars > 0 ? `ok (${bars}마디)` : 'FAIL'}`);
 console.log(`모바일 375px 가로 스크롤: ${mobileOverflow.length ? mobileOverflow.join(', ') : '없음'}`);
@@ -166,7 +176,7 @@ console.log(errors.length ? errors.slice(0, 15).join('\n') : '없음');
 await browser.close();
 server.close();
 
-const failed = failures > 0 || !moduleOk || bars === 0 || mobileOverflow.length > 0 || !menuOk
+const failed = failures > 0 || !moduleOk || !lectureOk || bars === 0 || mobileOverflow.length > 0 || !menuOk
   || errors.length > 0 || deepLeaks.length > 0;
 console.log(`\n${failed ? '실패' : '전부 통과'}`);
 process.exit(failed ? 1 : 0);
