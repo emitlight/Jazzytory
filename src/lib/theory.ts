@@ -282,9 +282,10 @@ export function parseChord(input: string, rootOctave = 4): Chord | null {
   const labels: string[] = [];
   let alteredFifth: number | null = null;
   const scan = (segment: string) => {
-    TENSION_RE.lastIndex = 0;
+    // 괄호 안을 재귀로 훑을 때 전역 정규식의 lastIndex 가 되감겨 무한 루프가 났다(`D7(b9)`) — 호출마다 새 인스턴스를 쓴다
+    const re = new RegExp(TENSION_RE.source, 'g');
     let m: RegExpExecArray | null;
-    while ((m = TENSION_RE.exec(segment)) !== null) {
+    while ((m = re.exec(segment)) !== null) {
       if (m[1] !== undefined) { scan(m[1]); continue; }
       if (m[4] !== undefined) {
         const deg = Number(m[4]) === 4 ? 11 : Number(m[4]) === 2 ? 9 : Number(m[4]);

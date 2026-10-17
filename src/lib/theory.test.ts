@@ -447,3 +447,12 @@ describe('기능 분석 — 실제 곡에서 흔한 오독', () => {
     expect(a.map((x) => x.roman)).toEqual(['I∆7', 'vi-7', 'ii-7', 'V7']);
   });
 });
+
+describe('괄호 텐션', () => {
+  it('D7(b9) 를 멈추지 않고 파싱한다', () => {
+    const c = parseChord('D7(b9)');
+    expect(c?.quality).toBe('dom7');
+    expect(c?.tensionLabels).toEqual(['b9']);
+    expect(parseChord('C7(b9,#11)')?.tensionLabels).toEqual(['b9', '#11']);
+  });
+});
