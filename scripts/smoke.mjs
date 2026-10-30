@@ -53,7 +53,7 @@ page.on('console', (m) => { if (m.type() === 'error') errors.push(`[console] ${m
 page.on('pageerror', (e) => errors.push(`[pageerror] ${e.message}`));
 
 const ROUTES = [
-  '/#/', '/#/courses', '/#/course/L1', '/#/course/L1/lesson/1', '/#/course/L4/lesson/2',
+  '/#/', '/#/guide', '/#/courses', '/#/course/L1', '/#/course/L1/lesson/1', '/#/course/L4/lesson/2',
   '/#/lab/voicing', '/#/lab/progression', '/#/lab/keyboard', '/#/lab/ear',
   '/#/lab/design', '/#/lab/metronome',
   '/#/library/lectures', '/#/library/tunes', '/#/library/listening', '/#/library/videos',

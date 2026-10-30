@@ -4,6 +4,7 @@ import { useApp } from './state';
 import { SIMPLE_UI } from './config';
 
 const Home           = lazy(() => import('./routes/Home'));
+const Guide          = lazy(() => import('./routes/Guide'));
 const Courses        = lazy(() => import('./routes/Courses'));
 const CourseHome     = lazy(() => import('./routes/CourseHome'));
 const Lesson         = lazy(() => import('./routes/Lesson'));
@@ -121,6 +122,7 @@ export default function App() {
         <Suspense fallback={<p className="muted" role="status">불러오는 중…</p>}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/guide" element={<Guide />} />
 
             {/* 강의실 · 강좌 · 차시 */}
             <Route path="/courses" element={<Courses />} />

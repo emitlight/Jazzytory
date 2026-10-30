@@ -7,7 +7,8 @@ import HeroDemo from '../components/HeroDemo';
 import { RichText } from '../components/Prose';
 import LectureCatalog from '../components/LectureCatalog';
 import { AlbumShelf } from './Listening';
-import { LECTURES } from '../data/lectures';
+import { LECTURES, formatTime } from '../data/lectures';
+import { GUIDE } from '../data/guide';
 import { ALBUMS } from '../data';
 import { SIMPLE_UI } from '../config';
 
@@ -27,6 +28,8 @@ function SimpleHome() {
           리얼북 한 장으로 즉흥 연주까지 <span className="muted">·</span> 영상으로 배운다
         </h1>
       </section>
+
+      <GuideCard />
 
       <section className="stack stack-16" aria-labelledby="home-lectures">
         <div className="row-between">
@@ -53,6 +56,32 @@ function SimpleHome() {
         <AlbumShelf groupByLevel />
       </section>
     </div>
+  );
+}
+
+/** 처음 온 사람을 위한 자리 — 이미 본 뒤에는 한 줄로 접힌다. */
+function GuideCard() {
+  const { state } = useApp();
+  const seen = state.watchedLectures.includes(GUIDE.id);
+  if (seen) {
+    return (
+      <p className="tiny muted" style={{ margin: 0 }}>
+        <Link to="/guide">Jazzytory 사용법 다시 보기 ({formatTime(GUIDE.durationSec)})</Link>
+      </p>
+    );
+  }
+  return (
+    <section className="card card-feature stack stack-12" aria-labelledby="home-guide">
+      <div className="row" style={{ gap: 8 }}>
+        <span className="badge badge-accent">처음이신가요?</span>
+        <span className="tiny muted">{formatTime(GUIDE.durationSec)}</span>
+      </div>
+      <h2 id="home-guide" style={{ margin: 0, fontSize: '1.15rem' }}>{GUIDE.title}</h2>
+      <p className="small dim" style={{ margin: 0, maxWidth: '58ch' }}>{GUIDE.summary}</p>
+      <div className="row" style={{ gap: 8, flexWrap: 'wrap' }}>
+        <Link className="btn" to="/guide">사용법 먼저 보기 →</Link>
+      </div>
+    </section>
   );
 }
 
