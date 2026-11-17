@@ -4587,8 +4587,8 @@
   "moduleId": "m-l1-03-diatonic-harmony",
   "title": "다이어토닉 화성과 로마숫자",
   "summary": "한 조에서 나오는 일곱 개의 7화음을 손으로 만들고, 로마숫자로 조를 지운 뒤, 토닉·서브도미넌트·도미넌트 세 기능으로 묶어 리드시트를 읽는 법",
-  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-03-diatonic-harmony.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-03-diatonic-harmony.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-03-diatonic-harmony.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-03-diatonic-harmony.jpg?v=2",
   "durationSec": 1128,
   "chapters": [
    {
@@ -5427,7 +5427,7 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l1-04-ii-v-i",
