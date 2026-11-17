@@ -18887,8 +18887,8 @@
   "moduleId": "m-l4-01-bebop-scales",
   "title": "비밥 스케일과 강박 정렬",
   "summary": "일곱 음 스케일을 8분음표로 굴리면 강박이 어긋나는 이유, 음 하나를 더해 강박을 코드 톤에 맞추는 비밥 스케일, 6화음-디미니시 관점, 그리고 비밥 스케일을 쓰지 않아야 할 자리",
-  "src": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-01-bebop-scales.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-01-bebop-scales.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-01-bebop-scales.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-01-bebop-scales.jpg?v=2",
   "durationSec": 1061,
   "chapters": [
    {
@@ -19759,7 +19759,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l4-02-transcription",
