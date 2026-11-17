@@ -29951,8 +29951,8 @@
   "moduleId": "m-l6-01-modal-playing",
   "title": "모달 연주와 정적 화성",
   "summary": "코드가 여덟 마디에 한 번 바뀌는 곡에서 리듬·음역·밀도로 시간을 밀고, 특성음과 모달 케이던스로 모드를 들리게 하는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-01-modal-playing.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-01-modal-playing.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-01-modal-playing.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-01-modal-playing.jpg?v=2",
   "durationSec": 1344,
   "chapters": [
    {
@@ -30967,7 +30967,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l6-02-quartal-voicings",
