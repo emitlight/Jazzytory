@@ -22431,8 +22431,8 @@
   "moduleId": "m-l4-05-rhythmic-displacement",
   "title": "리듬 변위",
   "summary": "같은 음형을 반 박 · 한 박 · 두 박씩 밀어 재료를 늘리지 않고 새 문장을 만들고, 3 대 4 폴리리듬으로 긴장을 쌓은 뒤 폼을 잃지 않고 정확히 돌아오는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-05-rhythmic-displacement.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-05-rhythmic-displacement.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-05-rhythmic-displacement.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-05-rhythmic-displacement.jpg?v=2",
   "durationSec": 980,
   "chapters": [
    {
@@ -23231,7 +23231,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l4-06-blues-language",
