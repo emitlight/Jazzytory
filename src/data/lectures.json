@@ -23238,8 +23238,8 @@
   "moduleId": "m-l4-06-blues-language",
   "title": "블루스 어법",
   "summary": "장3도와 단3도가 동시에 사는 블루 노트의 굴절, 리프와 콜 앤 리스폰스의 형식, 그리고 4 · 8 · 12마디 세 번의 착지로 블루스를 코드 진행이 아니라 말투로 연주하는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-06-blues-language.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-06-blues-language.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-06-blues-language.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-06-blues-language.jpg?v=2",
   "durationSec": 1238,
   "chapters": [
    {
@@ -24214,7 +24214,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l5-01-tritone-sub",
