@@ -12838,8 +12838,8 @@
   "moduleId": "m-l2-06-form-navigation",
   "title": "폼 안에서 길 잃지 않기",
   "summary": "네 가지 표준 폼의 골격을 외우고, 코드 나열 대신 랜드마크로 기억하며, 길을 잃었을 때 다음 8마디 경계에서 복귀하는 절차를 몸에 붙인다",
-  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-06-form-navigation.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-06-form-navigation.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-06-form-navigation.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-06-form-navigation.jpg?v=2",
   "durationSec": 1154,
   "chapters": [
    {
@@ -13814,7 +13814,7 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l3-01-chord-scales",
