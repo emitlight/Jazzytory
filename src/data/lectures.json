@@ -11931,8 +11931,8 @@
   "moduleId": "m-l2-05-turnarounds",
   "title": "턴어라운드·인트로·엔딩",
   "summary": "끝을 다시 시작으로 되돌리는 네 코드를 세 가지 변형으로 익히고, 같은 재료를 앞에 붙이면 인트로, 뒤에 붙이면 엔딩이 된다는 것을 손으로 확인한다",
-  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-05-turnarounds.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-05-turnarounds.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-05-turnarounds.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-05-turnarounds.jpg?v=2",
   "durationSec": 1184,
   "chapters": [
    {
@@ -12831,7 +12831,7 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l2-06-form-navigation",
