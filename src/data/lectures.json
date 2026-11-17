@@ -907,8 +907,8 @@
   "moduleId": "m-l0-02-practice-design",
   "title": "연습 설계와 루틴",
   "summary": "하루 45분을 네 블록으로 자르고, 4도권 순환과 템포 사다리라는 두 개의 표준 절차를 몸에 붙인다",
-  "src": "https://emitlight.github.io/jazzytory-media-l0/v/m-l0-02-practice-design.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l0/v/m-l0-02-practice-design.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l0/v/m-l0-02-practice-design.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l0/v/m-l0-02-practice-design.jpg?v=2",
   "durationSec": 1193,
   "chapters": [
    {
@@ -1803,7 +1803,7 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l0-03-keyboard-geography",
