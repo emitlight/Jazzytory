@@ -9022,8 +9022,8 @@
   "moduleId": "m-l2-02-guide-tone-lines",
   "title": "가이드 톤 라인",
   "summary": "코드 진행 속에 숨은 두 선율을 꺼내 한 성부로 노래하고, 그 선율이 컴핑과 솔로의 뼈대가 되는 과정을 손으로 확인한다",
-  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-02-guide-tone-lines.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-02-guide-tone-lines.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-02-guide-tone-lines.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-02-guide-tone-lines.jpg?v=2",
   "durationSec": 1133,
   "chapters": [
    {
@@ -10022,7 +10022,7 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l2-03-tensions",
