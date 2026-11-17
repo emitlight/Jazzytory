@@ -5434,8 +5434,8 @@
   "moduleId": "m-l1-04-ii-v-i",
   "title": "ii-V-I: 재즈의 기본 문장",
   "summary": "3음과 7음이 서로 자리를 바꾸며 해결되는 두 성부의 움직임을 손에 새기고, 4도권 12키로 돌린 뒤 마이너 ii-V-i 까지 확장하는 법",
-  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-04-ii-v-i.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-04-ii-v-i.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-04-ii-v-i.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-04-ii-v-i.jpg?v=2",
   "durationSec": 1165,
   "chapters": [
    {
@@ -6306,7 +6306,7 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l1-05-blues-form",
