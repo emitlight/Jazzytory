@@ -24221,8 +24221,8 @@
   "moduleId": "m-l5-01-tritone-sub",
   "title": "트라이톤 서브스티튜션",
   "summary": "도미넌트의 3음과 7음이 같은 두 코드로 루트를 바꿔, 베이스를 반음으로 걷게 하고 솔로에서는 반음 위 아르페지오로 얼터드 색을 내는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l5/v/m-l5-01-tritone-sub.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l5/v/m-l5-01-tritone-sub.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l5/v/m-l5-01-tritone-sub.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l5/v/m-l5-01-tritone-sub.jpg?v=2",
   "durationSec": 1284,
   "chapters": [
    {
@@ -25177,7 +25177,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l5-02-modal-interchange",
