@@ -8035,8 +8035,8 @@
   "moduleId": "m-l2-01-rootless",
   "title": "루트리스 보이싱 A/B",
   "summary": "루트를 베이스에게 넘기고 왼손을 3·5·7·9 네 음으로 재편한 뒤, 최상성 연결로 A와 B 포지션을 고르는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-01-rootless.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-01-rootless.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-01-rootless.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-01-rootless.jpg?v=2",
   "durationSec": 1158,
   "chapters": [
    {
@@ -9015,7 +9015,7 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l2-02-guide-tone-lines",
