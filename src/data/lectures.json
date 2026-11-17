@@ -10964,8 +10964,8 @@
   "moduleId": "m-l2-04-comping-rhythm",
   "title": "컴핑 리듬과 여백",
   "summary": "찰스턴 리듬으로 컴핑의 골격을 세우고, 쉬는 마디를 미리 정해 여백을 만들고, 앞당김으로 추진력을 만든다",
-  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-04-comping-rhythm.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-04-comping-rhythm.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-04-comping-rhythm.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-04-comping-rhythm.jpg?v=2",
   "durationSec": 1113,
   "chapters": [
    {
@@ -11924,7 +11924,7 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l2-05-turnarounds",
