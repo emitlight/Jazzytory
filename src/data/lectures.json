@@ -4,8 +4,8 @@
   "moduleId": "m-l0-01-placement",
   "title": "나는 지금 어디에 있는가",
   "summary": "스케일 · 코드 심볼 · 귀 세 방향에서 60초짜리 기준선 스캔을 돌려, 앞으로 4주 동안 무엇을 고칠지 숫자로 확정한다",
-  "src": "https://emitlight.github.io/jazzytory-media-l0/v/m-l0-01-placement.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l0/v/m-l0-01-placement.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l0/v/m-l0-01-placement.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l0/v/m-l0-01-placement.jpg?v=2",
   "durationSec": 1102,
   "chapters": [
    {
@@ -900,7 +900,7 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l0-02-practice-design",
