@@ -20677,8 +20677,8 @@
   "moduleId": "m-l4-03-motivic-development",
   "title": "릭에서 언어로: 모티프 전개",
   "summary": "짧은 동기 하나를 반복 · 이조 · 리듬 변형 · 확대와 축소로 밀고 나가 솔로를 이야기로 만들고, 음역 · 밀도 · 리듬 단위 · 여백으로 코러스를 하나의 곡선으로 설계하는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-03-motivic-development.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-03-motivic-development.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-03-motivic-development.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-03-motivic-development.jpg?v=2",
   "durationSec": 1196,
   "chapters": [
    {
@@ -21597,7 +21597,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l4-04-articulation",
