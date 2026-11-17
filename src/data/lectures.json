@@ -19766,8 +19766,8 @@
   "moduleId": "m-l4-02-transcription",
   "title": "채보: 귀로 훔치기",
   "summary": "남의 문장을 귀로 듣고 입으로 부르고 손으로 재현해 자기 어휘로 만드는 절차 — 부르기가 먼저, 고르는 눈과 구조 분석, 그리고 변형과 문맥 배치로 자기 것 만들기",
-  "src": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-02-transcription.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-02-transcription.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-02-transcription.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-02-transcription.jpg?v=2",
   "durationSec": 1113,
   "chapters": [
    {
@@ -20670,7 +20670,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l4-03-motivic-development",
