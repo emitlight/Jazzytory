@@ -16402,8 +16402,8 @@
   "moduleId": "m-l3-04-digital-patterns",
   "title": "디지털 패턴",
   "summary": "1235 · 1345 · 3521 같은 숫자 묶음을 코드마다 자동으로 굴러가게 만들고, 곧바로 변형하고 깨뜨려 프레이즈로 바꾸는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-04-digital-patterns.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-04-digital-patterns.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-04-digital-patterns.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-04-digital-patterns.jpg?v=2",
   "durationSec": 898,
   "chapters": [
    {
@@ -17166,7 +17166,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l3-05-forward-motion",
