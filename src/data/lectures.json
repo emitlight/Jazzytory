@@ -10029,8 +10029,8 @@
   "moduleId": "m-l2-03-tensions",
   "title": "텐션 9·11·13과 어보이드 노트",
   "summary": "코드 톤 위층에 텐션을 쌓고, 어떤 음이 화음을 죽이는지 반음 충돌로 설명한 뒤, 얼터드 도미넌트를 한 덩어리로 손에 붙인다",
-  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-03-tensions.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-03-tensions.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-03-tensions.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-03-tensions.jpg?v=2",
   "durationSec": 1116,
   "chapters": [
    {
@@ -10957,7 +10957,7 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l2-04-comping-rhythm",
