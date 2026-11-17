@@ -28864,8 +28864,8 @@
   "moduleId": "m-l5-06-reharm-ballad",
   "title": "발라드 리하모니제이션",
   "summary": "멜로디는 그대로 두고 아래를 바꾼다 — 한 음 위의 여러 화성, 페달 포인트와 라인 클리셰, 그리고 레벨 5의 도구를 모아 8마디 편곡 한 장을 완성하는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l5/v/m-l5-06-reharm-ballad.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l5/v/m-l5-06-reharm-ballad.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l5/v/m-l5-06-reharm-ballad.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l5/v/m-l5-06-reharm-ballad.jpg?v=2",
   "durationSec": 1323,
   "chapters": [
    {
@@ -29944,7 +29944,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l6-01-modal-playing",
