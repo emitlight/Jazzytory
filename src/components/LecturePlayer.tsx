@@ -29,7 +29,7 @@ function indexAt(list: { t: number }[], t: number): number {
  * 브라우저 기본으로 붙는다. 자동재생은 하지 않는다(iOS 는 소리 있는 자동재생을 막는다).
  * 강의가 바뀌면 상태를 새로 시작하도록 호출부에서 key={lecture.id} 를 준다.
  */
-export default function LecturePlayer({ lecture }: { lecture: Lecture }) {
+export default function LecturePlayer({ lecture, bare = false }: { lecture: Lecture; bare?: boolean }) {
   const { state, markLectureWatched } = useApp();
   const videoRef = useRef<HTMLVideoElement>(null);
   const scriptRef = useRef<HTMLOListElement>(null);
@@ -98,8 +98,8 @@ export default function LecturePlayer({ lecture }: { lecture: Lecture }) {
           {watched && <span className="badge badge-ok tiny">✓ 시청 완료</span>}
         </div>
       </div>
-      <h2 style={{ margin: 0 }}>{lecture.title}</h2>
-      {lecture.summary && <p className="small dim" style={{ margin: 0 }}>{lecture.summary}</p>}
+      {!bare && <h2 style={{ margin: 0 }}>{lecture.title}</h2>}
+      {!bare && lecture.summary && <p className="small dim" style={{ margin: 0 }}>{lecture.summary}</p>}
 
       <div className="lecture-frame">
         <video

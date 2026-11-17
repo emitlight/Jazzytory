@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 1000" width="1000" height="1000" font-family="Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
+<defs>
+<radialGradient id="bg" cx="520" cy="420" r="700" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#F6F0E2"/><stop offset="1" stop-color="#DCCFB4"/></radialGradient>
+<filter id="g" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="5"/></filter>
+<g id="m">
+<path d="M-160 300 C-160 170 -100 110 0 108 C100 110 160 170 160 300Z" fill="#F8F6F0"/>
+<path d="M-160 300 C-156 220 -130 170 -96 140 C-110 200 -112 250 -100 300Z" fill="#DDD7CA"/>
+<path d="M60 150 C90 190 104 240 100 300 L130 300 C128 240 110 180 80 140Z" fill="#E6E0D3"/>
+<rect x="-30" y="56" width="60" height="70" fill="#3A2618"/>
+<path d="M-44 108 L0 168 L44 108 L22 102 L0 132 L-22 102Z" fill="#ECE7DC"/>
+<ellipse cx="-66" cy="0" rx="14" ry="22" fill="#33210F"/>
+<ellipse cx="0" cy="-6" rx="64" ry="78" fill="#45301F"/>
+<path d="M-62 -24 C-60 -70 -30 -88 0 -88 C34 -88 62 -68 64 -26 C40 -52 -30 -54 -62 -24Z" fill="#1E140C"/>
+<path d="M18 -40 C44 -34 58 -10 56 20 C44 4 30 -14 18 -40Z" fill="#6A4A32"/>
+<path d="M-28 36 C-10 46 14 46 30 36 C14 42 -10 42 -28 36Z" fill="#B89878"/>
+</g>
+</defs>
+<rect width="1000" height="1000" fill="url(#bg)"/>
+<use href="#m" xlink:href="#m" transform="translate(150 560) rotate(-38) scale(.92)"/>
+<use href="#m" xlink:href="#m" transform="translate(330 430) rotate(-14) scale(.86)"/>
+<use href="#m" xlink:href="#m" transform="translate(540 390) rotate(10) scale(.8)"/>
+<use href="#m" xlink:href="#m" transform="translate(740 470) rotate(26) scale(.88)"/>
+<use href="#m" xlink:href="#m" transform="translate(400 640) scale(1.12)"/>
+<text x="60" y="118" font-size="58" font-style="italic" font-weight="500" fill="#2A2018">brilliant corners</text>
+<text x="60" y="840" font-size="78" font-weight="600" fill="#4A4852" textLength="880" lengthAdjust="spacingAndGlyphs">THELONIOUS MONK</text>
+<text x="62" y="890" font-size="27" font-style="italic" font-weight="500" fill="#3A3640">with Sonny Rollins, Ernie Henry and Clark Terry</text>
+<path d="M800 52 L948 52 L948 200" fill="none" stroke="#22D3EE" stroke-width="8" opacity=".5" filter="url(#g)"/>
+<path d="M800 52 L948 52 L948 200" fill="none" stroke="#22D3EE" stroke-width="3"/>
+</svg>

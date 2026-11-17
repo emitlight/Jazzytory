@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" font-family="Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
+<defs>
+<filter id="g" x="-300%" y="-5%" width="700%" height="110%"><feGaussianBlur stdDeviation="5"/></filter>
+<clipPath id="sq"><rect x="290" y="380" width="610" height="600"/></clipPath>
+</defs>
+<rect width="1000" height="1000" fill="#0E0B0A"/>
+<text x="150" y="196" font-size="92" font-weight="800" fill="#F08A2C" textLength="560" lengthAdjust="spacingAndGlyphs">GETZ / GILBERTO</text>
+<g font-weight="700" fill="#F3C24E">
+<text x="152" y="250" font-size="40">STAN GETZ</text>
+<text x="152" y="298" font-size="40">JOÃO GILBERTO</text>
+</g>
+<text x="152" y="338" font-size="26" font-weight="500" font-style="italic" fill="#E9D27C">featuring Antonio Carlos Jobim</text>
+<rect x="290" y="380" width="610" height="600" fill="#E8752A"/>
+<g clip-path="url(#sq)">
+<path d="M290 380 L520 380 L440 520 L290 560Z" fill="#F08C3E"/>
+<path d="M520 380 L900 380 L900 470 L700 540 L560 470Z" fill="#DE6420"/>
+<path d="M440 520 L560 470 L700 540 L640 680 L470 660Z" fill="#F29A4E"/>
+<path d="M290 560 L440 520 L470 660 L380 760 L290 740Z" fill="#D85E1C"/>
+<path d="M700 540 L900 470 L900 700 L760 720 L640 680Z" fill="#EE8236"/>
+<path d="M380 760 L470 660 L640 680 L620 860 L420 900Z" fill="#E06A24"/>
+<path d="M640 680 L760 720 L900 700 L900 980 L700 980 L620 860Z" fill="#D45A18"/>
+<path d="M290 740 L380 760 L420 900 L380 980 L290 980Z" fill="#F29440"/>
+<path d="M600 430 L660 410 L690 470 L640 500Z" fill="#F7D04C"/>
+<path d="M360 610 L420 590 L440 640 L380 660Z" fill="#F6C83E"/>
+<path d="M740 610 L800 600 L810 650 L760 670Z" fill="#F8D85A"/>
+<path d="M520 760 L570 740 L590 800 L540 820Z" fill="#F4C640"/>
+<path d="M800 840 L860 820 L870 880 L820 900Z" fill="#F7D04C"/>
+<path d="M480 450 L560 430 L566 444 L486 466Z" fill="#1A1210"/>
+<path d="M700 600 L716 560 L730 566 L716 610Z" fill="#1A1210"/>
+<path d="M430 820 L500 800 L504 816 L436 836Z" fill="#1A1210"/>
+<path d="M820 740 L834 700 L848 706 L834 748Z" fill="#1A1210"/>
+</g>
+<line x1="280" y1="388" x2="280" y2="972" stroke="#22D3EE" stroke-width="7" opacity=".5" filter="url(#g)"/>
+<line x1="280" y1="388" x2="280" y2="972" stroke="#9FEFFF" stroke-width="2"/>
+</svg>

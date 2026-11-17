@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" font-family="Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
+<defs>
+<linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#AFC3C2"/><stop offset=".5" stop-color="#7E9C9E"/><stop offset="1" stop-color="#5E7E80"/></linearGradient>
+<linearGradient id="rock" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9A884"/><stop offset="1" stop-color="#8A6648"/></linearGradient>
+<filter id="g" x="-5%" y="-400%" width="110%" height="900%"><feGaussianBlur stdDeviation="5"/></filter>
+</defs>
+<rect width="1000" height="1000" fill="url(#sea)"/>
+<path d="M0 260 L1000 250 L1000 300 C800 296 600 306 400 300 C250 296 120 306 0 312Z" fill="#8FA9AA"/>
+<g fill="#F4F6F2">
+<path d="M0 360 C80 330 160 350 240 330 C300 318 360 352 420 340 C380 380 300 400 220 396 C140 392 60 410 0 420Z" opacity=".85"/>
+<path d="M60 470 C150 430 260 450 340 420 C420 392 470 440 560 430 C500 480 420 500 330 500 C230 500 140 520 60 520Z" opacity=".9"/>
+<path d="M380 360 C460 340 540 360 600 352 C560 384 480 392 400 388Z" opacity=".6"/>
+<path d="M0 540 C100 520 200 560 300 540 C260 580 160 600 60 600 L0 600Z" opacity=".75"/>
+</g>
+<g fill="#3E312A">
+<path d="M540 420 C570 396 610 400 640 420 L660 452 L530 456Z"/>
+<path d="M660 456 C690 420 740 420 770 440 C800 420 850 430 870 462 L880 500 L650 500Z"/>
+<path d="M440 520 C480 500 520 504 556 522 L566 548 L430 552Z"/>
+<path d="M760 540 C800 516 860 520 900 540 L1000 530 L1000 580 L750 580Z"/>
+</g>
+<path d="M0 640 C120 610 240 630 360 600 C480 572 600 600 720 580 C840 562 930 590 1000 576 L1000 1000 L0 1000Z" fill="url(#rock)"/>
+<path d="M0 720 C140 690 300 720 420 690 C560 660 700 700 820 680 C900 668 960 690 1000 682 L1000 760 C880 770 760 750 620 770 C480 790 300 760 160 790 C90 806 40 800 0 810Z" fill="#B08C68"/>
+<path d="M0 860 C160 830 320 860 480 830 C640 800 820 850 1000 820 L1000 1000 L0 1000Z" fill="#7A5A40"/>
+<path d="M560 900 C640 880 760 900 840 880 L900 920 C800 940 680 930 580 940Z" fill="#9C7A58"/>
+<g fill="#2B3526">
+<path d="M1000 220 L1000 380 C960 372 930 350 900 352 C870 340 860 300 880 280 C860 262 880 232 910 236 C930 214 970 214 1000 220Z"/>
+<path d="M870 300 C840 300 820 286 826 270 C840 256 870 262 884 276Z"/>
+</g>
+<path d="M940 360 C930 420 936 480 950 560" fill="none" stroke="#2B3526" stroke-width="12" stroke-linecap="round"/>
+<g transform="translate(250 806)">
+<path d="M-14 -40 L-34 -86 M14 -40 L34 -86" stroke="#D2302A" stroke-width="9" stroke-linecap="round"/>
+<circle cx="0" cy="-58" r="12" fill="#3A2418"/>
+<path d="M-14 -44 L14 -44 L24 20 L-24 20Z" fill="#D2302A"/>
+<path d="M-8 20 L-12 62 M8 20 L12 62" stroke="#2A1E18" stroke-width="7" stroke-linecap="round"/>
+</g>
+<rect width="1000" height="222" fill="#15161C"/>
+<line x1="0" y1="222" x2="1000" y2="222" stroke="#22D3EE" stroke-width="8" opacity=".5" filter="url(#g)"/>
+<line x1="0" y1="222" x2="1000" y2="222" stroke="#8FEFFF" stroke-width="2"/>
+<text x="40" y="112" font-size="104" font-weight="800" fill="#F07A26" textLength="920" lengthAdjust="spacingAndGlyphs">CONCERT BY THE SEA</text>
+<text x="960" y="200" text-anchor="end" font-size="92" font-weight="800" fill="#BBA7DE" textLength="560" lengthAdjust="spacingAndGlyphs">ERROLL GARNER</text>
+</svg>

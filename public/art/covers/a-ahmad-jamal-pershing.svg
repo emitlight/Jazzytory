@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" font-family="Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6FAAD8"/><stop offset="1" stop-color="#BFE0F2"/></linearGradient>
+<pattern id="chk" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="40" height="40" fill="#F4D23C"/><rect width="20" height="20" fill="#1A1A1A"/><rect x="20" y="20" width="20" height="20" fill="#1A1A1A"/></pattern>
+<filter id="g" x="-300%" y="-10%" width="700%" height="120%"><feGaussianBlur stdDeviation="5"/></filter>
+</defs>
+<rect width="1000" height="1000" fill="url(#sky)"/>
+<line x1="70" y1="0" x2="150" y2="1000" stroke="#22D3EE" stroke-width="10" opacity=".5" filter="url(#g)"/>
+<line x1="70" y1="0" x2="150" y2="1000" stroke="#1C2230" stroke-width="7"/>
+<path d="M130 210 L170 250 L150 270 L112 230Z" fill="#1C2230"/>
+<path d="M0 760 L620 690 L620 1000 L0 1000Z" fill="#141826"/>
+<path d="M0 770 L620 700 L620 726 L0 798Z" fill="#F2F0E8"/>
+<g fill="#141826">
+<rect x="40" y="764" width="16" height="22" transform="skewY(-6.4)"/><rect x="90" y="764" width="16" height="22" transform="skewY(-6.4)"/>
+<rect x="170" y="764" width="16" height="22" transform="skewY(-6.4)"/><rect x="220" y="764" width="16" height="22" transform="skewY(-6.4)"/>
+<rect x="270" y="764" width="16" height="22" transform="skewY(-6.4)"/><rect x="350" y="764" width="16" height="22" transform="skewY(-6.4)"/>
+<rect x="400" y="764" width="16" height="22" transform="skewY(-6.4)"/><rect x="480" y="764" width="16" height="22" transform="skewY(-6.4)"/>
+<rect x="530" y="764" width="16" height="22" transform="skewY(-6.4)"/>
+</g>
+<path d="M200 1000 C190 880 200 760 240 660 C270 580 300 520 360 470 L470 440 C540 450 590 520 610 620 L620 1000Z" fill="#1E2436"/>
+<path d="M330 500 C300 560 280 640 290 720 L200 760 C220 690 250 600 300 520Z" fill="#2A3148"/>
+<path d="M280 690 C250 720 220 740 180 752 L176 772 C220 768 268 748 300 716Z" fill="#5A3A28"/>
+<path d="M400 410 L470 400 L486 460 L420 476Z" fill="#F2F0E8"/>
+<path d="M352 250 C350 200 390 166 440 168 C494 170 528 210 524 268 C522 310 506 350 480 380 C470 410 440 430 410 428 C380 426 360 400 352 370 C340 330 344 290 352 250Z" fill="#6A442C"/>
+<path d="M346 260 C344 196 392 158 446 160 C500 162 532 200 530 250 C510 220 480 206 440 210 C400 214 372 240 346 260Z" fill="#1A1410"/>
+<path d="M352 330 C360 380 384 420 420 430 C450 432 476 410 488 382 C470 396 440 404 410 396 C380 386 364 360 352 330Z" fill="#241A14"/>
+<path d="M352 300 L338 330 L356 336Z" fill="#6A442C"/>
+<rect x="620" y="0" width="56" height="1000" fill="url(#chk)"/>
+<rect x="676" y="0" width="324" height="1000" fill="#D8402A"/>
+<g font-weight="800" fill="#F7D84A">
+<text x="700" y="190" font-size="104" textLength="270" lengthAdjust="spacingAndGlyphs">AHMAD</text>
+<text x="700" y="300" font-size="104" textLength="270" lengthAdjust="spacingAndGlyphs">JAMAL</text>
+<text x="700" y="560" font-size="96" textLength="270" lengthAdjust="spacingAndGlyphs">BUT NOT</text>
+<text x="700" y="664" font-size="96" textLength="270" lengthAdjust="spacingAndGlyphs">FOR ME</text>
+</g>
+<text x="702" y="384" font-size="50" font-style="italic" font-weight="600" fill="#9ED6F6" textLength="266" lengthAdjust="spacingAndGlyphs">at the Pershing</text>
+<text x="702" y="440" font-size="30" font-weight="600" fill="#FCE8C8" letter-spacing="6">TRIO</text>
+</svg>

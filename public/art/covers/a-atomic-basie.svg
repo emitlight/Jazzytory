@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" font-family="Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
+<defs>
+<radialGradient id="sky" cx="500" cy="560" r="760" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#E2622A"/><stop offset=".45" stop-color="#A42A14"/><stop offset="1" stop-color="#2A0805"/></radialGradient>
+<radialGradient id="cap" cx="500" cy="330" r="250" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFF6C8"/><stop offset=".3" stop-color="#FFD36A"/><stop offset=".65" stop-color="#F28A2A"/><stop offset="1" stop-color="#B3301A"/></radialGradient>
+<linearGradient id="stem" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC45C"/><stop offset=".5" stop-color="#E8702A"/><stop offset="1" stop-color="#9C2A14"/></linearGradient>
+<linearGradient id="base" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7A848"/><stop offset=".45" stop-color="#C8461E"/><stop offset="1" stop-color="#4A1008"/></linearGradient>
+<linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A0503" stop-opacity="0"/><stop offset="1" stop-color="#1A0503" stop-opacity=".85"/></linearGradient>
+<filter id="g" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="9"/></filter>
+</defs>
+<rect width="1000" height="1000" fill="url(#sky)"/>
+<path d="M452 900 C460 760 470 600 474 470 L526 470 C530 600 540 760 548 900Z" fill="url(#stem)"/>
+<ellipse cx="500" cy="640" rx="78" ry="20" fill="#F59A40" opacity=".75"/>
+<ellipse cx="500" cy="560" rx="52" ry="14" fill="#FFC060" opacity=".6"/>
+<g fill="url(#cap)">
+<circle cx="500" cy="330" r="128"/><circle cx="385" cy="368" r="96"/><circle cx="615" cy="368" r="96"/>
+<circle cx="430" cy="268" r="86"/><circle cx="572" cy="268" r="86"/><circle cx="500" cy="218" r="66"/>
+<circle cx="318" cy="410" r="58"/><circle cx="682" cy="410" r="58"/><circle cx="500" cy="430" r="80"/>
+</g>
+<ellipse cx="500" cy="452" rx="200" ry="34" fill="#8E2414" opacity=".55"/>
+<g fill="url(#base)">
+<circle cx="70" cy="930" r="110"/><circle cx="210" cy="900" r="100"/><circle cx="340" cy="925" r="95"/>
+<circle cx="500" cy="890" r="110"/><circle cx="660" cy="925" r="95"/><circle cx="790" cy="900" r="100"/><circle cx="935" cy="930" r="110"/>
+</g>
+<rect y="820" width="1000" height="180" fill="url(#shade)"/>
+<text x="955" y="160" text-anchor="end" font-size="158" font-weight="800" fill="#22D3EE" opacity=".55" filter="url(#g)" textLength="420" lengthAdjust="spacingAndGlyphs">BASIE</text>
+<text x="955" y="160" text-anchor="end" font-size="158" font-weight="800" fill="#3CC8F0" textLength="420" lengthAdjust="spacingAndGlyphs">BASIE</text>
+<text x="500" y="918" text-anchor="middle" font-size="56" font-weight="700" fill="#FFF4E6" textLength="640" lengthAdjust="spacingAndGlyphs">The Atomic Mr. Basie</text>
+<text x="500" y="962" text-anchor="middle" font-size="28" font-weight="600" fill="#FFE2C4" letter-spacing="3">COUNT BASIE ORCHESTRA</text>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 700" width="600" height="700">
+<defs>
+<filter id="jz-oscar-peterson-glow" x="-15%" y="-15%" width="130%" height="130%"><feGaussianBlur stdDeviation="7"/></filter>
+<linearGradient id="jz-oscar-peterson-fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0.84" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<mask id="jz-oscar-peterson-fade" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="700"><rect width="600" height="700" fill="url(#jz-oscar-peterson-fg)"/></mask><clipPath id="jz-oscar-peterson-jk"><path d="M255 378 C165 392 75 430 45 520 L32 700 L292 700 L262 452 L232 445 Z M345 378 C435 392 525 430 555 520 L568 700 L308 700 L338 452 L368 445 Z"/></clipPath>
+<g id="jz-oscar-peterson-art" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M212 195 C206 268 232 330 300 348 C368 330 394 268 388 195 C392 130 350 100 300 100 C250 100 208 130 212 195Z" fill="#22D3EE" fill-opacity="0.1" stroke="none"/>
+<path d="M212 190 C208 130 250 100 300 100 C350 100 392 130 388 190 C380 165 368 150 352 140 C335 152 318 146 300 146 C282 146 265 152 248 140 C232 150 220 165 212 190Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M255 378 C165 392 75 430 45 520 L32 700 L292 700 L262 452 L232 445 Z" fill="#22D3EE" fill-opacity="0.15" stroke="none" opacity="0.7"/>
+<path d="M345 378 C435 392 525 430 555 520 L568 700 L308 700 L338 452 L368 445 Z" fill="#22D3EE" fill-opacity="0.15" stroke="none" opacity="0.7"/>
+<g clip-path="url(#jz-oscar-peterson-jk)"><path d="M95 380 L77 700" stroke="#A78BFA" stroke-width="6" opacity="0.35"/>
+<path d="M140 380 L122 700" stroke="#A78BFA" stroke-width="6" opacity="0.35"/>
+<path d="M185 380 L167 700" stroke="#A78BFA" stroke-width="6" opacity="0.35"/>
+<path d="M230 380 L212 700" stroke="#A78BFA" stroke-width="6" opacity="0.35"/>
+<path d="M380 380 L362 700" stroke="#A78BFA" stroke-width="6" opacity="0.35"/>
+<path d="M425 380 L407 700" stroke="#A78BFA" stroke-width="6" opacity="0.35"/>
+<path d="M470 380 L452 700" stroke="#A78BFA" stroke-width="6" opacity="0.35"/>
+<path d="M515 380 L497 700" stroke="#A78BFA" stroke-width="6" opacity="0.35"/></g>
+<path d="M212 190 C220 165 232 150 248 140 C265 152 282 146 300 146 C318 146 335 152 352 140 C368 150 380 165 388 190" stroke="#A78BFA" stroke-width="6"/>
+<path d="M212 195 C206 268 232 330 300 348 C368 330 394 268 388 195" stroke="#22D3EE" stroke-width="8"/>
+<path d="M212 195 C208 130 250 100 300 100 C350 100 392 130 388 195" stroke="#22D3EE" stroke-width="8"/>
+<path d="M213 214 C190 208 186 254 214 262" stroke="#22D3EE" stroke-width="8"/>
+<path d="M387 214 C410 208 414 254 386 262" stroke="#22D3EE" stroke-width="8"/>
+<path d="M236 206 Q256 192 278 201" stroke="#A78BFA" stroke-width="6"/>
+<path d="M322 201 Q344 192 364 206" stroke="#A78BFA" stroke-width="6"/>
+<path d="M242 232 Q258 218 274 232" stroke="#22D3EE" stroke-width="6"/>
+<path d="M326 232 Q342 218 358 232" stroke="#22D3EE" stroke-width="6"/>
+<path d="M240 242 Q248 248 258 246" stroke="#A78BFA" stroke-width="6" opacity="0.7"/>
+<path d="M342 246 Q352 248 360 242" stroke="#A78BFA" stroke-width="6" opacity="0.7"/>
+<path d="M301 226 L297 262" stroke="#22D3EE" stroke-width="6"/>
+<path d="M276 270 Q288 284 300 279 Q312 284 324 270" stroke="#22D3EE" stroke-width="6"/>
+<path d="M262 268 Q246 292 258 314" stroke="#A78BFA" stroke-width="6"/>
+<path d="M338 268 Q354 292 342 314" stroke="#A78BFA" stroke-width="6"/>
+<path d="M254 298 Q300 344 346 298 Q300 310 254 298Z" fill="#22D3EE" fill-opacity="0.14" stroke="none"/>
+<path d="M254 298 Q300 344 346 298 Q300 310 254 298Z" stroke="#F472B6" stroke-width="6"/>
+<path d="M266 306 Q300 318 334 306" stroke="#22D3EE" stroke-width="6"/>
+<path d="M266 336 L263 378" stroke="#22D3EE" stroke-width="8"/>
+<path d="M334 336 L337 378" stroke="#22D3EE" stroke-width="8"/>
+<path d="M255 378 C165 392 75 430 45 520 L32 700" stroke="#22D3EE" stroke-width="8"/>
+<path d="M345 378 C435 392 525 430 555 520 L568 700" stroke="#22D3EE" stroke-width="8"/>
+<path d="M255 378 L232 445 L262 452 L300 600" stroke="#22D3EE" stroke-width="8"/>
+<path d="M345 378 L368 445 L338 452 L300 600" stroke="#22D3EE" stroke-width="8"/>
+<path d="M262 372 L272 410 L300 420 L328 410 L338 372" stroke="#A78BFA" stroke-width="6"/>
+<path d="M262 372 L300 420 L338 372" stroke="#A78BFA" stroke-width="6"/>
+<path d="M288 422 L312 422 L319 520 L300 548 L281 520Z" fill="#22D3EE" fill-opacity="0.14" stroke="none"/>
+<path d="M288 422 L312 422 L319 520 L300 548 L281 520Z" stroke="#F472B6" stroke-width="8"/>
+<path d="M287 440 L313 440" stroke="#F472B6" stroke-width="6"/>
+<path d="M120 532 L196 532" stroke="#22D3EE" stroke-width="6"/>
+<path d="M128 532 L140 506 L154 524 L168 504 L184 532Z" fill="#22D3EE" fill-opacity="0.14" stroke="none"/>
+<path d="M128 532 L140 506 L154 524 L168 504 L184 532" stroke="#F472B6" stroke-width="6"/>
+</g>
+</defs>
+<g mask="url(#jz-oscar-peterson-fade)">
+<use xlink:href="#jz-oscar-peterson-art" filter="url(#jz-oscar-peterson-glow)" opacity="0.55"/>
+<use xlink:href="#jz-oscar-peterson-art"/>
+</g>
+</svg>

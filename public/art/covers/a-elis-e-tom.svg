@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" font-family="Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
+<defs>
+<radialGradient id="bg" cx="500" cy="460" r="700" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2C2C2C"/><stop offset="1" stop-color="#0A0A0A"/></radialGradient>
+<filter id="g" x="-10%" y="-400%" width="120%" height="900%"><feGaussianBlur stdDeviation="5"/></filter>
+</defs>
+<rect width="1000" height="1000" fill="url(#bg)"/>
+<path d="M0 1000 L0 760 C60 700 160 680 250 700 C330 720 380 780 400 860 L420 1000Z" fill="#161616"/>
+<g transform="rotate(8 220 420)">
+<path d="M70 380 C64 270 130 196 230 192 C330 190 396 260 396 370 C396 470 370 560 320 610 C280 650 220 660 170 634 C110 600 76 500 70 380Z" fill="#7C7C7C"/>
+<path d="M230 196 C320 196 392 262 394 370 C394 470 370 560 320 610 C300 630 270 642 240 644 C300 560 320 460 300 340 C290 280 266 230 230 196Z" fill="#9C9C9C"/>
+<path d="M60 380 C40 250 110 150 230 146 C340 142 420 220 410 330 C380 270 320 236 250 240 C170 244 110 290 60 380Z" fill="#363636"/>
+<path d="M60 380 C70 470 90 540 130 590 C100 560 84 500 82 430Z" fill="#555555"/>
+<path d="M236 404 L254 466 L234 476" fill="none" stroke="#585858" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<g fill="#C6C6C6" fill-opacity=".18" stroke="#DADADA" stroke-width="6"><circle cx="170" cy="360" r="42"/><circle cx="306" cy="360" r="42"/></g>
+<path d="M212 358 C228 350 246 350 264 358" fill="none" stroke="#DADADA" stroke-width="6"/>
+<path d="M154 368 C164 362 178 362 188 368 M290 368 C300 362 314 362 324 368" fill="none" stroke="#2A2A2A" stroke-width="7" stroke-linecap="round"/>
+<path d="M196 540 C230 556 286 556 316 534 C296 568 228 574 196 540Z" fill="#3A3A3A"/>
+<path d="M208 546 C236 554 282 554 306 540" fill="none" stroke="#BDBDBD" stroke-width="5" stroke-linecap="round"/>
+</g>
+<path d="M600 1000 C600 900 640 820 720 790 C800 760 900 770 1000 800 L1000 1000Z" fill="#D8D8D8"/>
+<g transform="rotate(-6 790 470)">
+<path d="M620 420 C614 320 680 250 780 248 C880 246 950 320 950 420 C950 520 920 600 860 640 C810 672 740 670 700 630 C650 580 624 510 620 420Z" fill="#A8A8A8"/>
+<path d="M780 250 C880 250 950 320 950 420 C950 520 920 600 860 640 C840 652 818 660 796 662 C860 590 880 500 870 420 C860 340 830 280 780 250Z" fill="#C6C6C6"/>
+<path d="M600 440 C570 300 650 196 780 194 C910 192 990 290 970 430 C960 360 930 320 890 300 C840 280 760 284 700 300 C650 320 616 370 600 440Z" fill="#1C1C1C"/>
+<path d="M940 380 C980 400 990 460 970 520 C960 480 950 440 940 380Z" fill="#1C1C1C"/>
+<path d="M662 404 C690 392 726 392 748 404 M822 400 C846 390 880 392 900 404" fill="none" stroke="#2E2E2E" stroke-width="9" stroke-linecap="round"/>
+<path d="M674 428 C692 418 722 418 738 428 M830 426 C848 416 876 416 892 428" fill="none" stroke="#444444" stroke-width="7" stroke-linecap="round"/>
+<path d="M790 440 C792 470 786 496 778 508 C792 514 810 514 820 506" fill="none" stroke="#7E7E7E" stroke-width="7" stroke-linecap="round"/>
+<path d="M716 548 C752 574 840 576 884 542 C866 596 760 604 716 548Z" fill="#2A2A2A"/>
+<path d="M730 556 C770 570 836 570 872 548 C846 562 768 566 730 556Z" fill="#D6D6D6"/>
+</g>
+<g fill="#8E8E8E" stroke="#6A6A6A" stroke-width="3">
+<rect x="604" y="694" width="118" height="34" rx="17"/><rect x="598" y="726" width="122" height="34" rx="17"/>
+<rect x="596" y="758" width="120" height="34" rx="17"/><rect x="602" y="790" width="108" height="32" rx="16"/>
+</g>
+<path d="M700 700 C730 700 746 730 740 770 C736 800 724 820 704 828" fill="none" stroke="#7E7E7E" stroke-width="18" stroke-linecap="round"/>
+<g fill="#EC8A30" font-weight="700" text-anchor="middle">
+<text x="500" y="392" font-size="86">ELIS</text>
+<text x="500" y="474" font-size="76">&amp;</text>
+<text x="500" y="560" font-size="86">TOM</text>
+</g>
+<line x1="440" y1="592" x2="560" y2="592" stroke="#A78BFA" stroke-width="7" opacity=".6" filter="url(#g)"/>
+<line x1="440" y1="592" x2="560" y2="592" stroke="#C9B8FF" stroke-width="2.5"/>
+<text x="500" y="968" text-anchor="middle" font-size="24" font-weight="600" fill="#9C9C9C" letter-spacing="3">ELIS REGINA · ANTONIO CARLOS JOBIM</text>
+</svg>

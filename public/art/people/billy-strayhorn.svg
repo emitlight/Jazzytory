@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" width="600" height="700">
+<defs><filter id="glow-billy-strayhorn" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#glow-billy-strayhorn)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M295,355 C240,360 190,380 165,420 C148,450 142,520 140,690 L510,690 C510,520 505,455 490,420 C470,380 425,360 375,352 Z" stroke="none" fill="#22D3EE" fill-opacity="0.1"/>
+<path d="M295,355 C240,360 190,380 165,420 C148,450 142,520 140,690" stroke="#22D3EE" stroke-width="8" fill="none"/>
+<path d="M375,352 C425,360 470,380 490,420 C505,455 510,520 510,690" stroke="#22D3EE" stroke-width="8" fill="none"/>
+<path d="M200,420 L197,494" stroke="#A78BFA" stroke-width="4" stroke-opacity="0.55"/>
+<path d="M240,400 L238,486" stroke="#A78BFA" stroke-width="4" stroke-opacity="0.55"/>
+<path d="M420,398 L424,470" stroke="#A78BFA" stroke-width="4" stroke-opacity="0.55"/>
+<path d="M462,410 L468,480" stroke="#A78BFA" stroke-width="4" stroke-opacity="0.55"/>
+<path d="M170,470 L290,470" stroke="#A78BFA" stroke-width="4" stroke-opacity="0.55"/>
+<path d="M392,450 L500,452" stroke="#A78BFA" stroke-width="4" stroke-opacity="0.55"/>
+<path d="M176,440 L292,440" stroke="#A78BFA" stroke-width="4" stroke-opacity="0.55"/>
+<path d="M392,420 L492,424" stroke="#A78BFA" stroke-width="4" stroke-opacity="0.55"/>
+<path d="M470,520 L506,520 M470,560 L508,560 M440,500 L444,690 M478,500 L482,690" stroke="#A78BFA" stroke-width="4" stroke-opacity="0.55"/>
+<path d="M295,353 L318,390 L330,372 L345,392 L375,350" stroke="#22D3EE" stroke-width="6" fill="none"/>
+<path d="M325,385 L332,378 L339,385 L335,398 L344,470 L332,485 L320,470 L328,398 Z" stroke="#F472B6" stroke-width="6" fill="#F472B6" fill-opacity="0.14"/>
+<path d="M300,320 L295,357 M365,312 L375,354" stroke="#22D3EE" stroke-width="7" fill="none"/>
+<path d="M118,520 L338,474 L366,622 L148,676 Z" stroke="#22D3EE" stroke-width="7" fill="#22D3EE" fill-opacity="0.16"/>
+<path d="M142,548 L330,504" stroke="#A78BFA" stroke-width="3.5"/>
+<path d="M142,559 L330,515" stroke="#A78BFA" stroke-width="3.5"/>
+<path d="M142,570 L330,526" stroke="#A78BFA" stroke-width="3.5"/>
+<path d="M142,581 L330,537" stroke="#A78BFA" stroke-width="3.5"/>
+<path d="M142,592 L330,548" stroke="#A78BFA" stroke-width="3.5"/>
+<path d="M154,608 L346,564" stroke="#A78BFA" stroke-width="3.5"/>
+<path d="M154,619 L346,575" stroke="#A78BFA" stroke-width="3.5"/>
+<path d="M154,630 L346,586" stroke="#A78BFA" stroke-width="3.5"/>
+<path d="M154,641 L346,597" stroke="#A78BFA" stroke-width="3.5"/>
+<path d="M154,652 L346,608" stroke="#A78BFA" stroke-width="3.5"/>
+<ellipse cx="176" cy="558" rx="7" ry="5" transform="rotate(-20 176 558)" fill="#F472B6" stroke="#F472B6" stroke-width="3"/><path d="M182,556 L182,532" stroke="#F472B6" stroke-width="4"/>
+<ellipse cx="214" cy="540" rx="7" ry="5" transform="rotate(-20 214 540)" fill="#F472B6" stroke="#F472B6" stroke-width="3"/><path d="M220,538 L220,514" stroke="#F472B6" stroke-width="4"/>
+<ellipse cx="252" cy="538" rx="7" ry="5" transform="rotate(-20 252 538)" fill="#F472B6" stroke="#F472B6" stroke-width="3"/><path d="M258,536 L258,512" stroke="#F472B6" stroke-width="4"/>
+<ellipse cx="290" cy="516" rx="7" ry="5" transform="rotate(-20 290 516)" fill="#F472B6" stroke="#F472B6" stroke-width="3"/><path d="M296,514 L296,490" stroke="#F472B6" stroke-width="4"/>
+<ellipse cx="196" cy="616" rx="7" ry="5" transform="rotate(-20 196 616)" fill="#F472B6" stroke="#F472B6" stroke-width="3"/><path d="M202,614 L202,590" stroke="#F472B6" stroke-width="4"/>
+<ellipse cx="236" cy="604" rx="7" ry="5" transform="rotate(-20 236 604)" fill="#F472B6" stroke="#F472B6" stroke-width="3"/><path d="M242,602 L242,578" stroke="#F472B6" stroke-width="4"/>
+<ellipse cx="282" cy="590" rx="7" ry="5" transform="rotate(-20 282 590)" fill="#F472B6" stroke="#F472B6" stroke-width="3"/><path d="M288,588 L288,564" stroke="#F472B6" stroke-width="4"/>
+<ellipse cx="322" cy="576" rx="7" ry="5" transform="rotate(-20 322 576)" fill="#F472B6" stroke="#F472B6" stroke-width="3"/><path d="M328,574 L328,550" stroke="#F472B6" stroke-width="4"/>
+<path d="M338,474 C356,470 376,478 380,494 C384,512 372,522 352,520" stroke="#22D3EE" stroke-width="6" fill="#22D3EE" fill-opacity="0.1"/>
+<path d="M118,520 C104,524 96,540 104,556 C112,568 128,566 134,556" stroke="#22D3EE" stroke-width="6" fill="#22D3EE" fill-opacity="0.1"/>
+<path d="M376,484 C410,500 450,530 488,556 M372,516 C404,540 438,572 470,600" stroke="#22D3EE" stroke-width="7" fill="none"/>
+<path d="M104,556 C108,600 116,640 126,690 M134,556 C140,600 150,640 162,690" stroke="#22D3EE" stroke-width="7" fill="none"/>
+<path d="M260,190 C262,140 295,110 335,110 C380,110 405,140 405,195 C405,250 392,290 365,312 C345,328 315,330 295,318 C275,305 262,280 258,250 C256,232 256,210 260,190 Z" stroke="#22D3EE" stroke-width="8" fill="#22D3EE" fill-opacity="0.1"/>
+<path d="M255,190 C255,130 292,100 336,100 C385,100 410,135 408,190" stroke="#A78BFA" stroke-width="8" fill="#A78BFA" fill-opacity="0.12"/>
+<path d="M262,165 C285,140 330,135 405,160" stroke="#A78BFA" stroke-width="6" fill="none"/>
+<path d="M405,205 C420,202 422,240 402,246" stroke="#22D3EE" stroke-width="7" fill="none"/>
+<path d="M272,192 Q290,186 306,192 M330,190 Q348,184 364,190" stroke="#A78BFA" stroke-width="6" fill="none"/>
+<circle cx="290" cy="216" r="23" stroke="#F472B6" stroke-width="6" fill="#F472B6" fill-opacity="0.14"/><circle cx="348" cy="214" r="23" stroke="#F472B6" stroke-width="6" fill="#F472B6" fill-opacity="0.14"/>
+<path d="M313,214 Q319,207 325,212 M371,212 L404,204" stroke="#F472B6" stroke-width="6" fill="none"/>
+<path d="M280,222 Q290,226 300,222 M338,220 Q348,224 358,220" stroke="#22D3EE" stroke-width="5" fill="none"/>
+<path d="M320,232 L308,262 Q314,268 324,264" stroke="#22D3EE" stroke-width="6" fill="none"/>
+<path d="M300,290 Q315,296 332,290" stroke="#22D3EE" stroke-width="6" fill="none"/>
+</g>
+</svg>

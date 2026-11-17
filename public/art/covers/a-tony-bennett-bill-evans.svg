@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" font-family="Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3E2C1F"/><stop offset="1" stop-color="#120D09"/></linearGradient>
+<pattern id="tie" width="16" height="16" patternUnits="userSpaceOnUse"><rect width="16" height="16" fill="#5A3E24"/><circle cx="8" cy="8" r="3" fill="#A07A46"/></pattern>
+<filter id="g" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="5"/></filter>
+</defs>
+<rect width="1000" height="1000" fill="url(#bg)"/>
+<g fill="#F3EEE4" font-weight="500">
+<text x="52" y="96" font-size="44">The</text>
+<text x="52" y="156" font-size="58">Tony Bennett</text>
+<text x="52" y="218" font-size="58">Bill Evans</text>
+<text x="52" y="272" font-size="44">Album</text>
+</g>
+<path d="M560 1000 C560 820 580 640 620 520 C650 450 700 420 760 420 C820 420 860 460 870 540 L880 1000Z" fill="#1B1714"/>
+<path d="M720 430 L780 430 L770 520 L740 540Z" fill="#EEE9DE"/>
+<path d="M742 440 L760 440 L770 600 L750 620 L734 600Z" fill="url(#tie)"/>
+<path d="M800 470 C840 470 860 500 870 540 L880 600 L830 610 L820 540 C810 510 800 490 800 470Z" fill="#26201C"/>
+<path d="M680 300 C672 250 704 214 748 212 C796 210 826 246 822 296 C820 340 802 380 770 398 C740 412 706 400 694 370 C686 350 684 330 680 300Z" fill="#B48862"/>
+<path d="M676 300 C664 240 700 200 750 198 C800 196 832 232 828 280 C810 250 780 238 750 238 C716 240 692 262 676 300Z" fill="#1E1510"/>
+<path d="M770 300 C790 300 806 310 812 326" fill="none" stroke="#5A3C28" stroke-width="6" stroke-linecap="round"/>
+<path d="M818 300 L840 334 L816 340Z" fill="#B48862"/>
+<path d="M840 540 L900 500" stroke="#26201C" stroke-width="28" stroke-linecap="round"/>
+<rect x="820" y="400" width="150" height="190" fill="#F2EEE3" transform="rotate(-10 895 495)"/>
+<g stroke="#B8B0A0" stroke-width="2" transform="rotate(-10 895 495)">
+<line x1="836" y1="430" x2="956" y2="430"/><line x1="836" y1="440" x2="956" y2="440"/><line x1="836" y1="450" x2="956" y2="450"/>
+<line x1="836" y1="490" x2="956" y2="490"/><line x1="836" y1="500" x2="956" y2="500"/><line x1="836" y1="510" x2="956" y2="510"/>
+<line x1="836" y1="550" x2="956" y2="550"/><line x1="836" y1="560" x2="956" y2="560"/>
+</g>
+<rect x="820" y="400" width="150" height="190" fill="none" stroke="#22D3EE" stroke-width="7" opacity=".5" filter="url(#g)" transform="rotate(-10 895 495)"/>
+<path d="M330 700 C500 640 760 600 1000 600 L1000 1000 L330 1000Z" fill="#0A0807"/>
+<path d="M330 700 C500 640 760 600 1000 600" fill="none" stroke="#3E3632" stroke-width="5"/>
+<path d="M250 790 L760 712 L770 742 L262 828Z" fill="#EFEBE2"/>
+<g stroke="#0A0807" stroke-width="9">
+<line x1="300" y1="786" x2="302" y2="806"/><line x1="340" y1="780" x2="342" y2="800"/><line x1="410" y1="770" x2="412" y2="790"/>
+<line x1="450" y1="764" x2="452" y2="784"/><line x1="490" y1="758" x2="492" y2="778"/><line x1="560" y1="747" x2="562" y2="767"/>
+<line x1="600" y1="741" x2="602" y2="761"/><line x1="670" y1="730" x2="672" y2="750"/><line x1="710" y1="724" x2="712" y2="744"/>
+</g>
+<path d="M60 1000 C50 860 90 720 170 660 C220 624 300 620 360 650 C410 676 440 720 470 780 L420 810 C400 770 380 740 350 730 C360 820 370 920 380 1000Z" fill="#CBB491"/>
+<path d="M170 660 C200 700 220 760 230 840 C200 790 180 740 150 700Z" fill="#B09A78"/>
+<path d="M420 810 L480 776 L500 800 L440 830Z" fill="#B48862"/>
+<path d="M250 610 L310 610 L300 680 L260 680Z" fill="#EEE9DE"/>
+<path d="M226 520 C220 470 252 436 296 436 C344 436 370 470 366 516 C364 560 346 596 316 610 C284 622 250 608 238 576 C230 556 228 540 226 520Z" fill="#B48862"/>
+<path d="M222 520 C212 462 246 424 298 424 C350 424 376 462 370 500 C350 476 320 464 290 466 C260 468 236 488 222 520Z" fill="#20160F"/>
+<path d="M246 560 C256 600 286 622 316 612 C346 600 362 572 366 540 C350 560 330 572 306 574 C280 574 260 568 246 560Z" fill="#2A1C12"/>
+<g fill="none" stroke="#E2DACA" stroke-width="4"><rect x="290" y="502" width="34" height="24" rx="6"/><rect x="334" y="500" width="28" height="24" rx="6"/><line x1="324" y1="512" x2="334" y2="512"/></g>
+</svg>

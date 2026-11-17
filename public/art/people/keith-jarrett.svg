@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 700" width="600" height="700">
+<defs>
+<filter id="jz-keith-jarrett-glow" x="-15%" y="-15%" width="130%" height="130%"><feGaussianBlur stdDeviation="7"/></filter>
+<linearGradient id="jz-keith-jarrett-fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0.97" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<mask id="jz-keith-jarrett-fade" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="700"><rect width="600" height="700" fill="url(#jz-keith-jarrett-fg)"/></mask><clipPath id="jz-keith-jarrett-armA"><path d="M0 0 L600 0 L600 700 L0 700Z M521 617 L146 525 C120 530 116 566 134 571 L509 663 C530 660 536 630 521 617Z" clip-rule="evenodd"/></clipPath>
+<g id="jz-keith-jarrett-art" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M157 243 Q144 235 151 223 Q140 214 148 203 Q138 193 149 183 Q141 172 152 163 Q146 151 159 144 Q155 131 169 126 Q167 113 182 110 Q182 96 198 95 Q200 82 215 83 Q220 70 235 73 Q241 60 256 66 Q264 54 278 61 Q288 51 300 60 Q312 51 322 61 Q336 54 344 66 Q359 60 365 73 Q380 70 385 83 Q400 82 402 95 Q418 96 418 110 Q433 113 431 126 Q445 131 441 144 Q454 151 448 163 Q459 172 451 183 Q462 193 452 203 Q460 214 449 223 Q456 235 443 243 C454 230 446 262 430 282 C420 240 400 210 370 200 C330 190 270 190 230 200 C200 210 180 240 170 282 C154 262 146 230 150 248Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M228 214 C222 290 244 352 300 364 C356 352 378 290 372 214 C340 200 260 200 228 214Z" fill="#22D3EE" fill-opacity="0.1" stroke="none"/>
+<path d="M250 400 C180 410 130 430 110 470 C90 520 80 560 80 600 L520 610 C520 560 510 520 490 470 C470 430 420 410 350 400 L300 448Z" fill="#22D3EE" fill-opacity="0.15" stroke="none" opacity="0.55"/>
+<path d="M157 243 Q144 235 151 223 Q140 214 148 203 Q138 193 149 183 Q141 172 152 163 Q146 151 159 144 Q155 131 169 126 Q167 113 182 110 Q182 96 198 95 Q200 82 215 83 Q220 70 235 73 Q241 60 256 66 Q264 54 278 61 Q288 51 300 60 Q312 51 322 61 Q336 54 344 66 Q359 60 365 73 Q380 70 385 83 Q400 82 402 95 Q418 96 418 110 Q433 113 431 126 Q445 131 441 144 Q454 151 448 163 Q459 172 451 183 Q462 193 452 203 Q460 214 449 223 Q456 235 443 243" stroke="#22D3EE" stroke-width="8"/>
+<path d="M223 221 Q222 213 235 209 Q238 201 253 200 Q259 192 275 194 Q286 186 300 192 Q314 186 325 194 Q341 192 347 200 Q362 201 365 209 Q378 213 377 221" stroke="#A78BFA" stroke-width="6"/>
+<path d="M206 120 Q216 112 226 120 M366 114 Q378 108 388 118 M170 196 Q180 188 190 196 M410 190 Q420 184 430 194 M290 78 Q300 72 312 78 M246 150 Q256 142 266 150 M334 146 Q344 140 354 146" stroke="#A78BFA" stroke-width="6" opacity="0.6"/>
+<path d="M228 214 C222 290 244 352 300 364 C356 352 378 290 372 214" stroke="#22D3EE" stroke-width="8"/>
+<path d="M228 238 C210 234 208 270 230 276" stroke="#22D3EE" stroke-width="8"/>
+<path d="M372 238 C390 234 392 270 370 276" stroke="#22D3EE" stroke-width="8"/>
+<path d="M244 230 Q264 220 286 228" stroke="#A78BFA" stroke-width="6"/>
+<path d="M314 228 Q336 220 356 230" stroke="#A78BFA" stroke-width="6"/>
+<path d="M250 252 Q266 243 282 252" stroke="#22D3EE" stroke-width="6"/>
+<path d="M318 252 Q334 243 350 252" stroke="#22D3EE" stroke-width="6"/>
+<path d="M253 258 Q266 262 280 258" stroke="#22D3EE" stroke-width="6"/>
+<path d="M320 258 Q334 262 347 258" stroke="#22D3EE" stroke-width="6"/>
+<path d="M301 254 L296 296" stroke="#22D3EE" stroke-width="6"/>
+<path d="M282 302 Q292 310 302 306 Q312 310 320 302" stroke="#22D3EE" stroke-width="6"/>
+<path d="M268 322 Q284 312 300 316 Q316 312 332 322" stroke="#A78BFA" stroke-width="8"/>
+<path d="M268 322 L262 330 M332 322 L338 330" stroke="#A78BFA" stroke-width="6"/>
+<path d="M280 334 Q300 344 322 334" stroke="#F472B6" stroke-width="6"/>
+<path d="M268 356 L266 402" stroke="#22D3EE" stroke-width="8"/>
+<path d="M332 356 L334 402" stroke="#22D3EE" stroke-width="8"/>
+<path d="M250 400 L230 456 L282 450 L300 430 L318 450 L370 456 L350 400" stroke="#22D3EE" stroke-width="8"/>
+<path d="M268 404 L300 430 L332 404" stroke="#A78BFA" stroke-width="6"/>
+<path d="M250 400 C180 410 130 430 110 470 C90 520 80 560 80 600" stroke="#22D3EE" stroke-width="8"/>
+<path d="M350 400 C420 410 470 430 490 470 C510 520 520 560 520 600" stroke="#22D3EE" stroke-width="8"/>
+<path d="M300 448 L300 552" stroke="#22D3EE" stroke-width="6"/>
+<path d="M306 480a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" stroke="#22D3EE" stroke-width="6"/>
+<path d="M306 525a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" stroke="#22D3EE" stroke-width="6"/>
+<path d="M164 486 L254 482 L250 512 L208 522 L168 514Z" stroke="#A78BFA" stroke-width="6"/>
+<path d="M346 482 L436 486 L432 514 L392 522 L350 512Z" stroke="#A78BFA" stroke-width="6"/>
+<path d="M205 510a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" stroke="#22D3EE" stroke-width="6"/>
+<path d="M387 510a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" stroke="#22D3EE" stroke-width="6"/>
+<path d="M150 470 L190 460 L194 474" stroke="#F472B6" stroke-width="6"/>
+<path d="M450 470 L410 460 L406 474" stroke="#F472B6" stroke-width="6"/>
+<g clip-path="url(#jz-keith-jarrett-armA)"><path d="M84 617 L464 522 C480 530 482 560 476 568 L96 663 C78 660 70 630 84 617Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M84 617 L464 522 C480 530 482 560 476 568 L96 663 C78 660 70 630 84 617Z" stroke="#22D3EE" stroke-width="8"/></g>
+<path d="M521 617 L146 525 C120 530 116 566 134 571 L509 663 C530 660 536 630 521 617Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M521 617 L146 525 C120 530 116 566 134 571 L509 663 C530 660 536 630 521 617Z" stroke="#22D3EE" stroke-width="8"/>
+<path d="M150 540 L176 546 M148 556 L174 562" stroke="#22D3EE" stroke-width="6"/>
+<path d="M440 586 L452 640" stroke="#A78BFA" stroke-width="6"/>
+<path d="M80 600 C78 606 80 612 84 617" stroke="#22D3EE" stroke-width="8"/>
+<path d="M520 600 C522 606 522 612 521 617" stroke="#22D3EE" stroke-width="8"/>
+</g>
+</defs>
+<g mask="url(#jz-keith-jarrett-fade)">
+<use xlink:href="#jz-keith-jarrett-art" filter="url(#jz-keith-jarrett-glow)" opacity="0.55"/>
+<use xlink:href="#jz-keith-jarrett-art"/>
+</g>
+</svg>

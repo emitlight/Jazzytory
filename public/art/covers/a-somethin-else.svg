@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" font-family="Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
+<defs>
+<filter id="g" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+<path id="leaf" d="M0 -70 C30 -52 46 -20 40 10 C34 42 14 60 0 72 C-14 60 -34 42 -40 10 C-46 -20 -30 -52 0 -70Z M0 -62 L0 96 M0 -20 L24 -38 M0 6 L-26 -14 M0 30 L22 14"/>
+</defs>
+<rect width="1000" height="1000" fill="#060608"/>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<use href="#leaf" transform="translate(190 300) rotate(-28)" stroke="#22D3EE" stroke-width="9" opacity=".45" filter="url(#g)"/>
+<use href="#leaf" transform="translate(190 300) rotate(-28)" stroke="#7FE6F5" stroke-width="3"/>
+<use href="#leaf" transform="translate(330 560) rotate(38) scale(.8)" stroke="#A78BFA" stroke-width="3.5" opacity=".85"/>
+<use href="#leaf" transform="translate(150 790) rotate(-70) scale(.65)" stroke="#A78BFA" stroke-width="4" opacity=".6"/>
+</g>
+<g font-weight="800">
+<text x="530" y="190" font-size="84" fill="#F4F4F0" textLength="400" lengthAdjust="spacingAndGlyphs">SOMETHIN’</text>
+<text x="530" y="392" font-size="246" fill="#F4F4F0" textLength="400" lengthAdjust="spacingAndGlyphs">ELSE</text>
+<text x="530" y="494" font-size="98" fill="#D5DE4A" textLength="400" lengthAdjust="spacingAndGlyphs">CANNONBALL</text>
+<text x="530" y="592" font-size="98" fill="#D5DE4A" textLength="400" lengthAdjust="spacingAndGlyphs">ADDERLEY</text>
+<g font-size="86" fill="#3F8FE2">
+<text x="530" y="684" textLength="400" lengthAdjust="spacingAndGlyphs">MILES DAVIS</text>
+<text x="530" y="772" textLength="400" lengthAdjust="spacingAndGlyphs">HANK JONES</text>
+<text x="530" y="860" textLength="400" lengthAdjust="spacingAndGlyphs">SAM JONES</text>
+<text x="530" y="948" textLength="400" lengthAdjust="spacingAndGlyphs">ART BLAKEY</text>
+</g>
+</g>
+</svg>

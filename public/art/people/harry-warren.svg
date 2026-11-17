@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" width="600" height="700">
+<defs><filter id="glow-harry-warren" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#glow-harry-warren)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M268,383 C208,389 158,409 133,453 C116,488 105,573 105,690 L497,690 C497,573 486,488 469,453 C444,409 394,389 334,383 Z" stroke="none" fill="#22D3EE" fill-opacity="0.1"/>
+<path d="M268,383 C208,389 158,409 133,453 C116,488 105,573 105,690" stroke="#22D3EE" stroke-width="8" fill="none"/>
+<path d="M334,383 C394,389 444,409 469,453 C486,488 497,573 497,690" stroke="#22D3EE" stroke-width="8" fill="none"/>
+<path d="M274,392 L252,465 L276,475 L300,580 M328,392 L350,465 L326,475 L300,580" stroke="#22D3EE" stroke-width="7" fill="none"/>
+<path d="M268,381 L290,415 L300,400 L310,415 L334,381" stroke="#22D3EE" stroke-width="6" fill="none"/>
+<path d="M292,410 L300,402 L308,410 L305,424 L314,500 L300,520 L286,500 L295,424 Z" stroke="#A78BFA" stroke-width="6" fill="#A78BFA" fill-opacity="0.12"/>
+<path d="M398,500 L412,486 L424,498 M392,504 L440,500" stroke="#F472B6" stroke-width="6" fill="none"/>
+<path d="M270,350 L268,385 M330,350 L334,385" stroke="#22D3EE" stroke-width="7" fill="none"/>
+<path d="M220,212 C220,280 240,330 270,348 C288,358 312,358 330,348 C360,330 380,280 380,212" stroke="#22D3EE" stroke-width="8" fill="#22D3EE" fill-opacity="0.1"/>
+<path d="M222,240 C206,238 204,275 224,280 M378,240 C394,238 396,275 376,280" stroke="#22D3EE" stroke-width="7" fill="none"/>
+<path d="M222,214 L224,240 M378,214 L376,240" stroke="#A78BFA" stroke-width="6" fill="none"/>
+<path d="M215,190 C210,140 225,95 260,85 C282,80 298,94 305,95 C315,88 330,82 350,88 C380,98 392,140 385,188" stroke="#A78BFA" stroke-width="8" fill="#A78BFA" fill-opacity="0.12"/>
+<path d="M215,172 Q300,188 386,172 L386,188 Q300,204 214,190 Z" stroke="#F472B6" stroke-width="6" fill="#F472B6" fill-opacity="0.14"/>
+<path d="M150,198 C180,220 262,230 300,228 C352,226 422,214 452,194 C444,186 420,186 386,188 M150,198 C166,188 190,188 214,190" stroke="#A78BFA" stroke-width="8" fill="none"/>
+<path d="M305,95 C302,110 300,130 300,150" stroke="#A78BFA" stroke-width="4" fill="none"/>
+<path d="M254,234 Q268,229 284,233 M316,233 Q332,229 346,234" stroke="#A78BFA" stroke-width="6" fill="none"/>
+<path d="M258,250 L280,250 M320,250 L342,250" stroke="#22D3EE" stroke-width="6" fill="none"/>
+<path d="M300,252 L292,292 Q300,300 312,294" stroke="#22D3EE" stroke-width="6" fill="none"/>
+<path d="M282,322 Q300,324 318,322" stroke="#22D3EE" stroke-width="6" fill="none"/>
+</g>
+</svg>

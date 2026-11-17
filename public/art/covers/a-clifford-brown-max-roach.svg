@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" font-family="Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
+<defs>
+<radialGradient id="bg" cx="500" cy="520" r="640" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFD98E"/><stop offset=".5" stop-color="#F7A66A"/><stop offset="1" stop-color="#EE6F62"/></radialGradient>
+<linearGradient id="brass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFF0B8"/><stop offset="1" stop-color="#E6A83A"/></linearGradient>
+<filter id="g" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="5"/></filter>
+</defs>
+<rect width="1000" height="1000" fill="url(#bg)"/>
+<text x="120" y="130" font-size="64" font-style="italic" font-weight="600" fill="#FFFFFF">Clifford</text>
+<rect x="110" y="150" width="320" height="96" fill="#2F5FA8"/>
+<text x="130" y="230" font-size="86" font-weight="800" fill="#FFFFFF" textLength="280" lengthAdjust="spacingAndGlyphs">BROWN</text>
+<text x="640" y="130" font-size="64" font-style="italic" font-weight="600" fill="#FFFFFF">Max</text>
+<rect x="580" y="150" width="320" height="96" fill="#2F5FA8"/>
+<text x="600" y="230" font-size="86" font-weight="800" fill="#FFFFFF" textLength="280" lengthAdjust="spacingAndGlyphs">ROACH</text>
+<path d="M505 150 L515 178 L545 178 L521 196 L530 224 L505 207 L480 224 L489 196 L465 178 L495 178Z" fill="#FFFFFF"/>
+<path d="M505 166 L511 182 L528 182 L514 192 L519 208 L505 198 L491 208 L496 192 L482 182 L499 182Z" fill="#D8332A"/>
+<g fill="#C2452E">
+<path d="M70 830 C70 700 110 600 180 560 C220 540 300 536 340 556 C390 590 410 700 410 830Z"/>
+<path d="M232 474 C214 432 218 384 252 360 C286 336 330 344 348 374 L356 398 L372 414 L358 424 L362 446 L354 458 C350 476 342 490 322 496 L310 530 L252 530 C248 508 240 490 232 474Z"/>
+<path d="M590 830 C590 700 620 610 690 580 C740 560 820 556 870 580 C930 616 950 720 950 830Z"/>
+<path d="M800 494 C818 452 814 404 780 380 C746 356 702 364 684 394 L676 418 L660 434 L674 444 L670 466 L678 478 C682 496 690 510 710 516 L722 550 L780 550 C784 528 792 510 800 494Z"/>
+</g>
+<path d="M360 440 L470 404" stroke="url(#brass)" stroke-width="12" stroke-linecap="round"/>
+<path d="M466 396 L556 358 L578 410 L476 418Z" fill="url(#brass)"/>
+<rect x="392" y="414" width="52" height="20" rx="5" fill="#E9B04A" transform="rotate(-18 418 424)"/>
+<path d="M300 570 C330 530 370 480 410 446" stroke="#B23C28" stroke-width="38" stroke-linecap="round" fill="none"/>
+<ellipse cx="560" cy="610" rx="120" ry="24" fill="#FFE8A8" transform="rotate(-8 560 610)"/>
+<ellipse cx="560" cy="610" rx="120" ry="24" fill="none" stroke="#22D3EE" stroke-width="6" opacity=".5" filter="url(#g)" transform="rotate(-8 560 610)"/>
+<line x1="560" y1="620" x2="570" y2="830" stroke="#B53A26" stroke-width="10"/>
+<path d="M700 640 L590 590 M720 610 L630 570" stroke="#7A2A1A" stroke-width="8" stroke-linecap="round"/>
+<path d="M640 650 C670 610 690 600 720 600" stroke="#B23C28" stroke-width="34" stroke-linecap="round" fill="none"/>
+<g fill="#FFFFFF" font-size="26" font-weight="700" text-anchor="middle" letter-spacing="3">
+<text x="500" y="868">JORDU · DAAHOUD · JOY SPRING</text>
+<text x="500" y="910">PARISIAN THOROUGHFARE</text>
+</g>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" font-family="Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E4ECF8"/><stop offset=".42" stop-color="#9DB5DE"/><stop offset=".75" stop-color="#4C6699"/><stop offset="1" stop-color="#1D2A4A"/></linearGradient>
+<linearGradient id="mass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0B0E18"/><stop offset=".6" stop-color="#151B2E"/><stop offset="1" stop-color="#28334F"/></linearGradient>
+<linearGradient id="smear" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6F86B8" stop-opacity="0"/><stop offset=".35" stop-color="#6F86B8" stop-opacity=".45"/><stop offset="1" stop-color="#9DB5DE" stop-opacity="0"/></linearGradient>
+<linearGradient id="lamp" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFB45C"/><stop offset=".4" stop-color="#F0782C"/><stop offset="1" stop-color="#F0782C" stop-opacity="0"/></linearGradient>
+<filter id="g" x="-10%" y="-300%" width="120%" height="700%"><feGaussianBlur stdDeviation="5"/></filter>
+<clipPath id="win"><rect x="135" y="227" width="730" height="638"/></clipPath>
+</defs>
+<rect width="1000" height="1000" fill="#07070A"/>
+<rect x="40" y="30" width="920" height="66" fill="none" stroke="#B9A8DA" stroke-width="3"/>
+<text x="500" y="78" text-anchor="middle" font-size="40" font-weight="600" fill="#DCD0F2" textLength="860" lengthAdjust="spacingAndGlyphs">NIGHT TRAIN: THE OSCAR PETERSON TRIO</text>
+<rect x="30" y="122" width="940" height="850" fill="#86AEE6"/>
+<rect x="100" y="192" width="800" height="710" fill="#9A6ABF"/>
+<g clip-path="url(#win)">
+<rect x="135" y="227" width="730" height="638" fill="url(#sky)"/>
+<path d="M135 700 L865 640 L865 865 L135 865Z" fill="#141A2C"/>
+<path d="M150 865 L150 585 C152 528 178 492 228 476 L430 424 C580 388 730 360 865 334 L865 865Z" fill="url(#mass)"/>
+<path d="M236 498 L430 452 L430 520 L236 556Z" fill="#2B3654" opacity=".8"/>
+<rect x="300" y="470" width="565" height="26" fill="url(#smear)"/>
+<rect x="250" y="610" width="615" height="14" fill="url(#smear)"/>
+<rect x="210" y="700" width="655" height="40" fill="url(#smear)" opacity=".7"/>
+<rect x="330" y="790" width="535" height="10" fill="url(#smear)"/>
+<rect x="345" y="563" width="330" height="9" rx="4" fill="url(#lamp)"/>
+<circle cx="350" cy="567" r="9" fill="#FFD08A"/>
+<path d="M205 486 C260 462 360 440 470 418 C600 392 740 368 860 346" fill="none" stroke="#22D3EE" stroke-width="8" opacity=".55" filter="url(#g)"/>
+<path d="M205 486 C260 462 360 440 470 418 C600 392 740 368 860 346" fill="none" stroke="#BDF4FF" stroke-width="3"/>
+</g>
+</svg>

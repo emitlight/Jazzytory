@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" font-family="Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
+<defs>
+<filter id="g" x="-5%" y="-400%" width="110%" height="900%"><feGaussianBlur stdDeviation="4"/></filter>
+</defs>
+<rect width="1000" height="1000" fill="#F5F2EA"/>
+<text x="40" y="82" font-size="60" font-weight="800" fill="#141414" textLength="230" lengthAdjust="spacingAndGlyphs">COOKIN’</text>
+<text x="290" y="82" font-size="60" font-weight="800" fill="#D3262B" textLength="670" lengthAdjust="spacingAndGlyphs">/ WITH THE MILES DAVIS QUINTET</text>
+<line x1="40" y1="112" x2="960" y2="112" stroke="#22D3EE" stroke-width="6" opacity=".55" filter="url(#g)"/>
+<line x1="40" y1="112" x2="960" y2="112" stroke="#22D3EE" stroke-width="2"/>
+<g fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round">
+<path d="M210 330 C180 250 210 170 290 140 C360 116 430 140 460 196 L478 238 C484 252 480 262 470 268 C486 282 490 300 476 310" stroke-width="22"/>
+<path d="M476 312 C500 330 506 368 488 392" stroke-width="18"/>
+<path d="M470 410 C440 444 390 452 350 434" stroke-width="20"/>
+<path d="M400 226 C414 218 432 220 444 230" stroke-width="10"/>
+<path d="M300 250 C270 262 266 300 292 312" stroke-width="14"/>
+<path d="M230 170 C250 130 300 112 350 118 M206 214 C214 180 236 160 262 150" stroke-width="12"/>
+<path d="M488 392 L560 450 L560 640 C560 700 600 730 650 730 C700 730 730 700 730 650 L730 560" stroke-width="20"/>
+<rect x="520" y="440" width="44" height="200" rx="18" stroke-width="16"/>
+<rect x="584" y="440" width="44" height="200" rx="18" stroke-width="16"/>
+<rect x="648" y="440" width="44" height="200" rx="18" stroke-width="16"/>
+<path d="M542 440 L542 400 M606 440 L606 400 M670 440 L670 400" stroke-width="14"/>
+<circle cx="542" cy="388" r="16" stroke-width="10"/><circle cx="606" cy="388" r="16" stroke-width="10"/><circle cx="670" cy="388" r="16" stroke-width="10"/>
+<path d="M692 520 C760 520 800 560 800 640 L800 760" stroke-width="20"/>
+<path d="M780 760 C760 820 720 860 680 880 M820 760 C840 820 880 860 920 880" stroke-width="18"/>
+<ellipse cx="800" cy="890" rx="130" ry="44" stroke-width="22"/>
+<path d="M470 560 C440 520 450 470 490 460 M470 620 C430 600 420 560 450 540 M480 680 C440 676 420 640 440 610" stroke-width="20"/>
+<path d="M400 560 C380 640 400 740 470 800" stroke-width="26"/>
+<path d="M360 440 C330 500 320 560 330 620" stroke-width="14"/>
+</g>
+</svg>
