@@ -21604,8 +21604,8 @@
   "moduleId": "m-l4-04-articulation",
   "title": "아티큘레이션과 프레이징",
   "summary": "관악기의 혀놀림을 피아노의 타건과 손목으로 옮겨 8분음표 줄에 뒷박 강세를 새기고, 레가토와 논레가토, 짧은 종결과 긴 종결로 문장에 구두점을 찍는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-04-articulation.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-04-articulation.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-04-articulation.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l4/v/m-l4-04-articulation.jpg?v=2",
   "durationSec": 1043,
   "chapters": [
    {
@@ -22424,7 +22424,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l4-05-rhythmic-displacement",
