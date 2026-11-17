@@ -17173,8 +17173,8 @@
   "moduleId": "m-l3-05-forward-motion",
   "title": "목표음 조준과 포워드 모션",
   "summary": "프레이즈를 앞에서부터 만들지 않고 강박에 놓일 목표음을 먼저 정해 거꾸로 설계하고, 여백으로 그 방향을 들리게 하는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-05-forward-motion.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-05-forward-motion.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-05-forward-motion.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-05-forward-motion.jpg?v=2",
   "durationSec": 928,
   "chapters": [
    {
@@ -17981,7 +17981,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l3-06-minor-harmony",
