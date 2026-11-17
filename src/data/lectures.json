@@ -30974,8 +30974,8 @@
   "moduleId": "m-l6-02-quartal-voicings",
   "title": "쿼탈·So What 보이싱",
   "summary": "3도 쌓기를 버리고 4도로 쌓아, 코드 이름을 계산하지 않고 음계 위를 통째로 미끄러뜨리는 보이싱 체계",
-  "src": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-02-quartal-voicings.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-02-quartal-voicings.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-02-quartal-voicings.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-02-quartal-voicings.jpg?v=2",
   "durationSec": 1138,
   "chapters": [
    {
@@ -31854,7 +31854,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l6-03-pentatonic-superimposition",
