@@ -14744,8 +14744,8 @@
   "moduleId": "m-l3-02-guide-tone-improv",
   "title": "가이드 톤으로 솔로하기",
   "summary": "반주의 뼈대로 썼던 3·7음을 오른손 선율의 뼈대로 옮기고, 반음으로 이어지는 두 음의 길 위에 장식을 붙여 솔로로 키우는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-02-guide-tone-improv.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-02-guide-tone-improv.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-02-guide-tone-improv.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-02-guide-tone-improv.jpg?v=2",
   "durationSec": 930,
   "chapters": [
    {
@@ -15516,7 +15516,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l3-03-approach-notes",
