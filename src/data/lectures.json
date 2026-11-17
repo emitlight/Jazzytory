@@ -13821,8 +13821,8 @@
   "moduleId": "m-l3-01-chord-scales",
   "title": "코드 스케일 이론",
   "summary": "스케일을 먼저 외우고 코드에 붙이는 순서를 뒤집어, 보이싱의 빈칸을 메워 스케일을 만들고 코드의 기능을 근거로 스케일을 고르는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-01-chord-scales.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-01-chord-scales.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-01-chord-scales.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-01-chord-scales.jpg?v=2",
   "durationSec": 1124,
   "chapters": [
    {
@@ -14737,7 +14737,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l3-02-guide-tone-improv",
