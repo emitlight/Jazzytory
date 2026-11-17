@@ -6313,8 +6313,8 @@
   "moduleId": "m-l1-05-blues-form",
   "title": "12마디 블루스: 첫 즉흥",
   "summary": "12마디 지도를 4+4+4 로 나눠 외우고, 블루 노트의 마찰이 왜 블루스 소리를 만드는지 확인한 뒤, 세 음만으로 첫 코러스를 끝까지 연주하는 법",
-  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-05-blues-form.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-05-blues-form.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-05-blues-form.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-05-blues-form.jpg?v=2",
   "durationSec": 1194,
   "chapters": [
    {
@@ -7185,15 +7185,15 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l1-06-swing-feel",
   "moduleId": "m-l1-06-swing-feel",
   "title": "스윙 8분음표와 타임",
   "summary": "스윙 8분음표의 비율이 템포에 따라 변한다는 것을 손과 귀로 확인하고, 메트로놈을 2·4박에 놓아 자기 타임을 진단하며, 업비트 액센트로 재즈 특유의 추진력을 만드는 법",
-  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-06-swing-feel.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-06-swing-feel.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-06-swing-feel.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-06-swing-feel.jpg?v=2",
   "durationSec": 1060,
   "chapters": [
    {
@@ -8028,7 +8028,7 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l2-01-rootless",
