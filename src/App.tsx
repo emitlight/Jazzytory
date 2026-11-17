@@ -25,12 +25,12 @@ const MORE = [
   { to: '/guide', label: '사용법 영상', d: '6분 — 이 서비스 쓰는 법' },
   { to: '/library/listening', label: '필청 명반 전체', d: '38장 — 이유와 청취 과제' },
 ];
-const isCurriculum = (p: string) => p === '/' || p.startsWith('/l/') || p.startsWith('/lv/');
+const isCurriculum = (p: string) => p === '/' || p === '/bm' || p.startsWith('/l/') || p.startsWith('/lv/');
 
 function BookmarkButton() {
   const [bm] = useBookmark();
-  if (!bm) return <span className="btn btn-sm btn-ghost bm-btn" aria-disabled="true" title="강의 옆 🔖 로 책갈피를 꽂아 두세요">🔖<span className="bm-btn-t">책갈피</span></span>;
-  return <Link className="btn btn-sm bm-btn on" to={`/l/${bm.moduleId}`} replace title="책갈피로 이동">🔖<span className="bm-btn-t">책갈피</span></Link>;
+  if (!bm) return <span className="btn btn-sm btn-ghost bm-btn" aria-disabled="true" title="글에 마우스를 올리거나 「🔖 꽂기」로 책갈피를 꽂아 두세요">🔖<span className="bm-btn-t">책갈피</span></span>;
+  return <Link className="btn btn-sm bm-btn on" to="/bm" replace title={`책갈피로 이동${bm.label ? ` — ${bm.label}` : ''}`}>🔖<span className="bm-btn-t">책갈피</span></Link>;
 }
 
 function MoreMenu() {
@@ -154,6 +154,7 @@ export default function App() {
             <Route path="/" element={<Curriculum />} />
             <Route path="/l/:moduleId" element={<Curriculum />} />
             <Route path="/lv/:levelId" element={<Curriculum />} />
+            <Route path="/bm" element={<Curriculum />} />
             <Route path="/guide" element={<Guide />} />
 
             {/* 강의실 · 강좌 · 차시 */}

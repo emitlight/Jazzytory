@@ -2042,3 +2042,28 @@ a, button, summary, label, [role='button'] { touch-action: manipulation; }
   .nav a { padding-inline: 10px; }
 }
 .cv-body .lecture.card { background: none; border: 0; box-shadow: none; padding: 0; }
+
+/* ── 책갈피: 어느 글에든 (11-17) ─────────────────────────────────────────── */
+[data-bm] { position: relative; scroll-margin-top: calc(62px + 80px + env(safe-area-inset-top)); scroll-margin-bottom: 120px; }
+.bm-here { box-shadow: inset 4px 0 0 var(--accent-2); background-image: linear-gradient(90deg, var(--accent-2-soft), transparent 70%); border-radius: 6px; }
+.bm-here::before { content: '🔖'; position: absolute; left: -30px; top: 6px; font-size: 1.05rem; filter: drop-shadow(0 0 8px var(--accent-2-glow)); pointer-events: none; }
+.cv-item-head.bm-here::before { left: -30px; }
+.bm-flash { animation: bmFlash 1.8s ease-out; }
+@keyframes bmFlash { 0%, 30% { box-shadow: 0 0 0 3px var(--accent-2), 0 0 30px var(--accent-2-glow); } 100% { box-shadow: inset 4px 0 0 var(--accent-2); } }
+.bm-gutter { position: fixed; z-index: 45; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; cursor: pointer;
+  background: var(--surface-2); border: 1px solid var(--accent-2-border); font-size: .95rem; box-shadow: 0 6px 16px -6px rgb(0 0 0 / .6);
+  animation: cvToast .15s ease-out; }
+.bm-gutter:hover { background: var(--accent-2-soft); transform: scale(1.08); }
+.bm-fab { position: fixed; right: max(18px, env(safe-area-inset-right)); bottom: calc(18px + env(safe-area-inset-bottom)); z-index: 55;
+  padding: 11px 16px; border-radius: var(--radius-pill); font: inherit; font-weight: 800; font-size: .9rem; cursor: pointer;
+  color: var(--text); background: var(--surface-3); border: 1px solid var(--accent-2-border); box-shadow: 0 12px 30px -10px rgb(0 0 0 / .7); }
+.bm-fab:hover { background: var(--accent-2-soft); }
+.bm-fab.on { color: var(--on-accent-2); background: var(--accent-2); border-color: var(--accent-2); }
+body.bm-picking .cv [data-bm] { cursor: copy; }
+body.bm-picking .cv [data-bm]:hover { outline: 2px dashed var(--accent-2); outline-offset: 3px; border-radius: 6px; background-color: var(--accent-2-soft); }
+.cv-resume-quote { display: block; margin-top: 3px; font-weight: 500; font-size: .82rem; color: var(--text-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cv-resume-title { display: flex; flex-direction: column; }
+.cv-inside { font-size: .8rem; }
+.cv-toast { bottom: calc(78px + env(safe-area-inset-bottom)); }
+@media (max-width: 720px) { .bm-here::before { left: auto; right: 8px; top: 6px; } }
+.lecture-script .bm-here::before, .lecture-chapters .bm-here::before { left: auto; right: 8px; }

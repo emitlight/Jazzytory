@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { formatTime, type Lecture } from '../data/lectures';
 import { useApp } from '../state';
+import { OPEN_SCRIPT_EVT } from '../lib/bookmark';
 
 const POS_KEY = (id: string) => `jazzytory:lecture-pos:${id}`;
 /** 이 비율 이상 보면 시청 완료로 친다 — 끝 크레딧까지 기다리게 하지 않는다 */
@@ -72,6 +73,13 @@ export default function LecturePlayer({ lecture, bare = false }: { lecture: Lect
     markLectureWatched(lecture.id);
   };
 
+  // 원고 문장에 꽂힌 책갈피로 오면 스크립트를 펼친다
+  useEffect(() => {
+    const on = (e: Event) => { if ((e as CustomEvent).detail === lecture.moduleId) setScriptOpen(true); };
+    window.addEventListener(OPEN_SCRIPT_EVT, on);
+    return () => window.removeEventListener(OPEN_SCRIPT_EVT, on);
+  }, [lecture.moduleId]);
+
   const chapterIdx = indexAt(lecture.chapters, time);
   const lineIdx = indexAt(lecture.transcript, time);
 
@@ -132,7 +140,7 @@ export default function LecturePlayer({ lecture, bare = false }: { lecture: Lect
         <nav aria-label="챕터">
           <ol className="lecture-chapters">
             {lecture.chapters.map((c, i) => (
-              <li key={i}>
+              <li key={i} data-bm={`ch:${lecture.moduleId}:${i}`}>
                 <button
                   type="button"
                   className={i === chapterIdx ? 'active' : ''}
@@ -162,7 +170,7 @@ export default function LecturePlayer({ lecture, bare = false }: { lecture: Lect
           {scriptOpen && (
             <ol id={`script-${lecture.id}`} ref={scriptRef} className="lecture-script">
               {lecture.transcript.map((l, i) => (
-                <li key={i}>
+                <li key={i} data-bm={`ln:${lecture.moduleId}:${i}`}>
                   <button
                     type="button"
                     className={i === lineIdx ? 'active' : ''}

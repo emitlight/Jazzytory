@@ -118,6 +118,16 @@ await page.locator('.bm-btn.on').click();
 await page.waitForTimeout(600);
 filterOk = filterOk && (await page.locator('.cv-item.open.bm').count()) === 1;
 
+// 어느 글에든 책갈피 — 「🔖 꽂기」 → 레벨 소개 누르기 → 다른 화면 → 상단 책갈피로 그 글에 돌아온다
+await page.goto(`http://localhost:${PORT}/#/`, { waitUntil: 'networkidle' });
+await page.locator('.bm-fab').click();
+await page.locator('[data-bm="lv:L2"]').click();
+await page.waitForTimeout(200);
+await page.goto(`http://localhost:${PORT}/#/lab`, { waitUntil: 'networkidle' });
+await page.locator('.bm-btn.on').click();
+await page.waitForTimeout(1200);
+filterOk = filterOk && (await page.locator('.bm-here[data-bm="lv:L2"]').count()) === 1 && page.url().endsWith('#/');
+
 // 명반 책장 → 상세(왜 필청인가 · 청취 과제)
 let moduleOk = false;
 const shelf = page.locator('.cv-level-shelf .shelf-item').first();
