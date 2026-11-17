@@ -1810,8 +1810,8 @@
   "moduleId": "m-l0-03-keyboard-geography",
   "title": "건반 지형과 재즈식 운지",
   "summary": "검은건반 묶음을 지도 삼아 12개 루트를 보지 않고 찾고, 엄지 넘기기 대신 위치 이동으로 움직이는 재즈식 손을 만든다. 손 건강 원칙도 여기서 정한다",
-  "src": "https://emitlight.github.io/jazzytory-media-l0/v/m-l0-03-keyboard-geography.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l0/v/m-l0-03-keyboard-geography.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l0/v/m-l0-03-keyboard-geography.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l0/v/m-l0-03-keyboard-geography.jpg?v=2",
   "durationSec": 1034,
   "chapters": [
    {
@@ -2674,15 +2674,15 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l1-01-chord-symbols",
   "moduleId": "m-l1-01-chord-symbols",
   "title": "코드 심볼 읽기: 3화음에서 7화음까지",
   "summary": "3화음 위에 한 음을 얹어 다섯 개의 7화음 퀄리티를 만들고, 각 퀄리티의 소리를 인터벌로 설명한 뒤, 심볼을 보고 3초 안에 손이 움직이게 만든다",
-  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-01-chord-symbols.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-01-chord-symbols.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-01-chord-symbols.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-01-chord-symbols.jpg?v=2",
   "durationSec": 1252,
   "chapters": [
    {
@@ -3697,7 +3697,7 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l1-02-shell-voicings",
