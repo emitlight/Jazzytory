@@ -44575,8 +44575,8 @@
   "moduleId": "m-l8-05-gig-readiness",
   "title": "잼 세션과 무대 준비",
   "summary": "곡을 부르고 세는 규약 — 다섯 가지 정보를 10초 안에, 선율을 속으로 부르며 카운트 인 — 그리고 폼을 놓쳤을 때 화성 좌표로 돌아오는 복구 절차",
-  "src": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-05-gig-readiness.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-05-gig-readiness.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-05-gig-readiness.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-05-gig-readiness.jpg?v=2",
   "durationSec": 870,
   "chapters": [
    {
@@ -45339,7 +45339,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l8-06-recital",
