@@ -34490,8 +34490,8 @@
   "moduleId": "m-l6-06-contemporary-voicings",
   "title": "컨템포러리 보이싱과 슬래시 화성",
   "summary": "트라이어드를 낯선 베이스 위에 얹고, 2도를 일부러 부딪히게 두고, 최상성을 선율로 관리하는 컨템포러리 피아노의 재료",
-  "src": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-06-contemporary-voicings.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-06-contemporary-voicings.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-06-contemporary-voicings.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-06-contemporary-voicings.jpg?v=2",
   "durationSec": 1277,
   "chapters": [
    {
@@ -35442,7 +35442,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l7-01-solo-piano",
