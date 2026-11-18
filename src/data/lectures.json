@@ -41127,8 +41127,8 @@
   "moduleId": "m-l8-01-personal-vocabulary",
   "title": "자기 어휘 목록 만들기",
   "summary": "자기 솔로 녹음에서 반복되는 프레이즈를 꺼내 1~2마디 단위의 목록으로 만들고, 리듬 변경·음역 이동·생략·접합으로 하나의 어휘를 여덟 가지로 바꾸는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-01-personal-vocabulary.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-01-personal-vocabulary.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-01-personal-vocabulary.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-01-personal-vocabulary.jpg?v=2",
   "durationSec": 941,
   "chapters": [
    {
@@ -41987,7 +41987,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l8-02-composition",
