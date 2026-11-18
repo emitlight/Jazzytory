@@ -39257,8 +39257,8 @@
   "moduleId": "m-l7-05-interplay",
   "title": "트레이딩과 인터플레이",
   "summary": "4마디씩 주고받는 형식을 정확히 실행하고, 형식 밖에서도 상대의 재료를 받아 되돌려 주는 대화를 만든다.",
-  "src": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-05-interplay.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-05-interplay.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-05-interplay.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-05-interplay.jpg?v=2",
   "durationSec": 1071,
   "chapters": [
    {
@@ -40097,7 +40097,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l7-06-arrangement",
