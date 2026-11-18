@@ -31861,8 +31861,8 @@
   "moduleId": "m-l6-03-pentatonic-superimposition",
   "title": "펜타토닉 중첩",
   "summary": "다섯 음짜리 도구 하나를 코드 위 여러 자리에 옮겨 얹어, 스케일을 새로 외우지 않고 색을 바꾸는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-03-pentatonic-superimposition.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-03-pentatonic-superimposition.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-03-pentatonic-superimposition.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-03-pentatonic-superimposition.jpg?v=2",
   "durationSec": 1148,
   "chapters": [
    {
@@ -32753,7 +32753,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l6-04-intervallic",
