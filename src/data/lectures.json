@@ -35449,8 +35449,8 @@
   "moduleId": "m-l7-01-solo-piano",
   "title": "솔로 피아노: 세 층을 동시에",
   "summary": "베이스·화성·선율을 한 사람이 맡되 세 층이 서로 먹히지 않게 한다. 음역·리듬·세기를 층마다 다르게 배정하는 구체적 절차.",
-  "src": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-01-solo-piano.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-01-solo-piano.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-01-solo-piano.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-01-solo-piano.jpg?v=2",
   "durationSec": 1221,
   "chapters": [
    {
@@ -36429,7 +36429,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l7-02-stride",
