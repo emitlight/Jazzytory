@@ -41994,8 +41994,8 @@
   "moduleId": "m-l8-02-composition",
   "title": "작곡과 컨트라팩트",
   "summary": "리듬 체인지 위에 새 선율을 얹는 컨트라팩트에서 시작해, 화성 리듬부터 설계하는 오리지널, 그리고 리드시트와 솔로 피아노 편곡까지 — 피아노로 칠 것을 전제로 쓰는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-02-composition.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-02-composition.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-02-composition.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-02-composition.jpg?v=2",
   "durationSec": 1061,
   "chapters": [
    {
@@ -42846,15 +42846,15 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l8-03-repertoire-building",
   "moduleId": "m-l8-03-repertoire-building",
   "title": "레퍼토리 구축과 암보",
   "summary": "한 곡을 화성 골격 · 형식 · 선율 · 운지의 네 층으로 외우고, 이조로 확인하고, 30곡을 3등급과 6~8주 회전표로 유지하는 시스템",
-  "src": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-03-repertoire-building.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-03-repertoire-building.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-03-repertoire-building.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-03-repertoire-building.jpg?v=2",
   "durationSec": 941,
   "chapters": [
    {
@@ -43717,7 +43717,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l8-04-self-critique",
