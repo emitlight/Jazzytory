@@ -40104,8 +40104,8 @@
   "moduleId": "m-l7-06-arrangement",
   "title": "셀프 어레인지먼트",
   "summary": "리드시트 한 장을 5분짜리 연주로 설계한다. 코러스마다 무엇이 달라지는지 미리 정하고, 그것을 적어 재현 가능하게 만든다.",
-  "src": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-06-arrangement.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-06-arrangement.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-06-arrangement.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-06-arrangement.jpg?v=2",
   "durationSec": 1226,
   "chapters": [
    {
@@ -41120,7 +41120,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l8-01-personal-vocabulary",
