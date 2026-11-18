@@ -32760,8 +32760,8 @@
   "moduleId": "m-l6-04-intervallic",
   "title": "인터발릭 어프로치",
   "summary": "음계를 순차로 걷지 않고 음정을 재료로 선을 짓고, 트라이어드 두 개를 짝지어 코드 스케일을 대신하는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-04-intervallic.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-04-intervallic.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-04-intervallic.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-04-intervallic.jpg?v=2",
   "durationSec": 1103,
   "chapters": [
    {
@@ -33596,7 +33596,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l6-05-odd-meters",
