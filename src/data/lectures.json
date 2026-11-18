@@ -38330,8 +38330,8 @@
   "moduleId": "m-l7-04-trio-comping",
   "title": "트리오에서 컴핑하기",
   "summary": "혼자 다 하던 손을 다시 비운다. 베이스와 드럼이 이미 하고 있는 일을 하지 않고, 솔리스트가 방금 친 것에 반응하는 절차.",
-  "src": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-04-trio-comping.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-04-trio-comping.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-04-trio-comping.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-04-trio-comping.jpg?v=2",
   "durationSec": 1159,
   "chapters": [
    {
@@ -39250,7 +39250,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l7-05-interplay",
