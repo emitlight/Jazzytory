@@ -33603,8 +33603,8 @@
   "moduleId": "m-l6-05-odd-meters",
   "title": "변박과 메트릭 모듈레이션",
   "summary": "5/4 · 7/4 를 세지 않고 묶어서 느끼고, 박을 다시 정의해 실제 시간은 그대로 둔 채 속도감을 바꾸는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-05-odd-meters.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-05-odd-meters.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-05-odd-meters.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l6/v/m-l6-05-odd-meters.jpg?v=2",
   "durationSec": 1119,
   "chapters": [
    {
@@ -34483,7 +34483,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l6-06-contemporary-voicings",
