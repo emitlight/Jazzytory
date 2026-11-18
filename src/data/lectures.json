@@ -37359,8 +37359,8 @@
   "moduleId": "m-l7-03-rubato-ballad",
   "title": "루바토 발라드와 인트로",
   "summary": "박을 늘이고 줄이되 잃지 않는다. 무반주로 시작해 곡으로 착륙하는 인트로와, 음악을 끝내는 엔딩 절차.",
-  "src": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-03-rubato-ballad.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-03-rubato-ballad.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-03-rubato-ballad.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-03-rubato-ballad.jpg?v=2",
   "durationSec": 1206,
   "chapters": [
    {
@@ -38323,7 +38323,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l7-04-trio-comping",
