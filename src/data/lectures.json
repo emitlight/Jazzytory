@@ -45346,8 +45346,8 @@
   "moduleId": "m-l8-06-recital",
   "title": "졸업 연주 프로그램",
   "summary": "45분 프로그램을 조성 · 템포 · 스타일 · 편성의 분포부터 설계하고, 통 연주 리허설 · 곡 사이 전환 · 당일 운영까지 문서로 만들어 실행하는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-06-recital.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-06-recital.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-06-recital.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-06-recital.jpg?v=2",
   "durationSec": 935,
   "chapters": [
    {
@@ -46142,6 +46142,6 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  }
 ]
