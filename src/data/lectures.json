@@ -36436,8 +36436,8 @@
   "moduleId": "m-l7-02-stride",
   "title": "스트라이드와 좌수 전통",
   "summary": "왼손이 베이스와 화성을 번갈아 맡는 가장 오래된 해법. 도약을 정확히 만드는 절차와, 현대적으로 희석해 쓰는 법.",
-  "src": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-02-stride.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-02-stride.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-02-stride.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-02-stride.jpg?v=2",
   "durationSec": 1143,
   "chapters": [
    {
@@ -37352,7 +37352,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l7-03-rubato-ballad",
