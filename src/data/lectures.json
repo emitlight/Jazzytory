@@ -43724,8 +43724,8 @@
   "moduleId": "m-l8-04-self-critique",
   "title": "녹음과 자기 비평",
   "summary": "녹음하고 하루 뒤 한 항목씩 듣고, 다섯 항목 루브릭으로 셀 수 있게 채점하고, 다음 녹음까지 한 가지만 고치는 루프",
-  "src": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-04-self-critique.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-04-self-critique.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-04-self-critique.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l8/v/m-l8-04-self-critique.jpg?v=2",
   "durationSec": 1013,
   "chapters": [
    {
@@ -44568,7 +44568,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l8-05-gig-readiness",
