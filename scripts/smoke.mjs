@@ -53,7 +53,7 @@ page.on('console', (m) => { if (m.type() === 'error') errors.push(`[console] ${m
 page.on('pageerror', (e) => errors.push(`[pageerror] ${e.message}`));
 
 const ROUTES = [
-  '/#/', '/#/guide', '/#/courses', '/#/course/L1', '/#/course/L1/lesson/1', '/#/course/L4/lesson/2',
+  '/#/', '/#/l/m-l1-02-shell-voicings', '/#/lv/L5', '/#/guide', '/#/courses', '/#/course/L1', '/#/course/L1/lesson/1', '/#/course/L4/lesson/2',
   '/#/lab/voicing', '/#/lab/progression', '/#/lab/keyboard', '/#/lab/ear',
   '/#/lab/design', '/#/lab/metronome',
   '/#/library/lectures', '/#/library/tunes', '/#/library/listening', '/#/library/videos',
@@ -92,56 +92,51 @@ async function checkLeaks(label) {
   if (found.length) deepLeaks.push(`${label}: ${found.join(' ')}`);
 }
 
-// 강의 페이지 — 영상이 있는 차시(L1 2차시)는 16:9 프레임 안에 <video> 하나, 없는 차시는 <video> 가 없어야 한다.
-// "없는 차시"는 게시 파이프라인이 lectures.json 을 채울 때마다 바뀌므로 데이터에서 고른다 (모듈 id = m-l{레벨}-{차시}-…).
+// 커리큘럼 한 페이지 — 9개 레벨 · 51편 목록, 옛 차시 주소는 그 강의를 연 채로 이어진다
 const lectureIds = JSON.parse(await readFile(resolve(import.meta.dirname, '../src/data/lectures.json'), 'utf8')).map((l) => l.moduleId);
-let noLecture = null;
-for (let lv = 1; lv <= 8 && !noLecture; lv++) {
-  for (let n = 1; n <= 6; n++) {
-    if (!lectureIds.some((id) => id.startsWith(`m-l${lv}-${String(n).padStart(2, '0')}-`))) { noLecture = `/#/course/L${lv}/lesson/${n}`; break; }
-  }
-}
 await page.goto(`http://localhost:${PORT}/#/course/L1/lesson/2`, { waitUntil: 'networkidle' });
-await page.waitForTimeout(300);
-let lectureOk = (await page.locator('.lecture-frame video').count()) === 1;
-if (noLecture) {
-  await page.goto(`http://localhost:${PORT}${noLecture}`, { waitUntil: 'networkidle' });
-  await page.waitForTimeout(300);
-  const h1NoLecture = ((await page.locator('h1').first().textContent()) ?? '').trim();
-  if ((await page.locator('video').count()) !== 0 || h1NoLecture === '없는 차시입니다') lectureOk = false;
-}
+await page.waitForTimeout(500);
+let lectureOk = page.url().includes('#/l/m-l1-02') && (await page.locator('.cv-item.open .lecture-frame video').count()) === 1;
 
-// 강의 목록 — 레벨 필터 바: 기본은 한 레벨만, 「전체」를 누르면 9개 섹션, 「곧 게시」는 접혀 있다가 토글로 펼쳐진다
-await page.goto(`http://localhost:${PORT}/#/?level=L1`, { waitUntil: 'networkidle' });
+// 펼치기 · 접기 · 책갈피 · 레벨 레일
+await page.goto(`http://localhost:${PORT}/#/`, { waitUntil: 'networkidle' });
 await page.waitForTimeout(300);
-let filterOk = (await page.locator('.lvl-section').count()) === 1
-  && (await page.locator('.lvl-chip[aria-checked="true"] .lvl-chip-id').textContent()) === 'L1';
-await page.locator('.lvl-chip', { hasText: '전체' }).click();
+let filterOk = (await page.locator('.cv-level').count()) === 9 && (await page.locator('.cv-item').count()) >= lectureIds.length;
+await page.locator('.cv-row').nth(2).click();
+await page.waitForTimeout(400);
+filterOk = filterOk && (await page.locator('.cv-item.open').count()) === 1 && page.url().includes('#/l/');
+await page.locator('.cv-item.open .cv-bm').click();
+await page.waitForTimeout(200);
+filterOk = filterOk && (await page.locator('.bm-btn.on').count()) === 1 && (await page.locator('.cv-item.bm').count()) === 1;
+await page.locator('.cv-item.open .cv-row').click();
 await page.waitForTimeout(300);
-filterOk = filterOk && (await page.locator('.lvl-section').count()) === 9 && page.url().includes('level=all')
-  && (await page.locator('.lecture-upcoming').count()) === 0;
-const pendingToggle = page.locator('.lvl-pending-toggle').first();
-if (await pendingToggle.count()) {
-  await pendingToggle.click();
-  await page.waitForTimeout(200);
-  filterOk = filterOk && (await page.locator('.lecture-upcoming li').count()) > 0;
-}
+filterOk = filterOk && (await page.locator('.cv-item.open').count()) === 0;
+await page.locator('.cv-chip', { hasText: 'L5' }).click();
+await page.waitForTimeout(600);
+filterOk = filterOk && page.url().includes('#/lv/L5');
+await page.locator('.bm-btn.on').click();
+await page.waitForTimeout(600);
+filterOk = filterOk && (await page.locator('.cv-item.open.bm').count()) === 1;
 
-// 핵심 인터랙션
-await page.goto(`http://localhost:${PORT}/#/course/L1`, { waitUntil: 'networkidle' });
-const modLink = page.locator('a[href*="/lesson/"]').first();
+// 어느 글에든 책갈피 — 「🔖 꽂기」 → 레벨 소개 누르기 → 다른 화면 → 상단 책갈피로 그 글에 돌아온다
+await page.goto(`http://localhost:${PORT}/#/`, { waitUntil: 'networkidle' });
+await page.locator('.bm-fab').click();
+await page.locator('[data-bm="lv:L2"]').click();
+await page.waitForTimeout(200);
+await page.goto(`http://localhost:${PORT}/#/lab`, { waitUntil: 'networkidle' });
+await page.locator('.bm-btn.on').click();
+await page.waitForTimeout(1200);
+filterOk = filterOk && (await page.locator('.bm-here[data-bm="lv:L2"]').count()) === 1 && page.url().endsWith('#/');
+
+// 명반 책장 → 상세(왜 필청인가 · 청취 과제)
 let moduleOk = false;
-if (await modLink.count()) {
-  await modLink.click();
-  await page.waitForTimeout(600);
-  moduleOk = ((await page.locator('h1').first().textContent()) ?? '').trim().length > 0;
-  const kb = page.locator('button', { hasText: '건반에서 보기' }).first();
-  if (await kb.count()) {
-    await kb.click();
-    await page.waitForTimeout(500);
-    moduleOk = moduleOk && (await page.locator('.keyboard').count()) > 0;
-  }
-  await checkLeaks('차시 상세');
+const shelf = page.locator('.cv-level-shelf .shelf-item').first();
+if (await shelf.count()) {
+  await shelf.click();
+  await page.waitForTimeout(400);
+  moduleOk = (await page.locator('.album-dialog[open] .album-dlg-tracks li').count()) > 0;
+  await checkLeaks('명반 상세');
+  await page.keyboard.press('Escape');
 }
 
 // 필청 — 청취 지시문 펼친 상태
@@ -171,30 +166,29 @@ if (await tuneLink.count()) {
 // 모바일 375px (iPhone) — 터치 기기로 띄운다
 const mp = await (await browser.newContext({ viewport: { width: 375, height: 812 }, isMobile: true, hasTouch: true })).newPage();
 const mobileOverflow = [];
-for (const route of ['/#/', '/#/lab/voicing', '/#/lab/keyboard', '/#/library/tunes', '/#/library/pedagogy', '/#/courses', '/#/course/L1/lesson/1', '/#/tunes/t-autumn-leaves']) {
+for (const route of ['/#/', '/#/l/m-l0-01-placement', '/#/lv/L8', '/#/lab/voicing', '/#/lab/keyboard', '/#/library/tunes', '/#/library/pedagogy', '/#/tunes/t-autumn-leaves']) {
   await mp.goto(`http://localhost:${PORT}${route}`, { waitUntil: 'networkidle' });
   await mp.waitForTimeout(250);
   if (await mp.evaluate(() => Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) > window.innerWidth + 1)) mobileOverflow.push(route);
 }
-// 폰 메뉴 — 열고, 항목을 누르면 이동하고 닫힌다
+// 폰 메뉴 — 메뉴가 두 개라 접지 않고 바로 보인다. 누르면 이동한다
 await mp.goto(`http://localhost:${PORT}/#/`, { waitUntil: 'networkidle' });
 let menuOk = false;
-if (await mp.locator('.menu-toggle').isVisible()) {
-  await mp.locator('.menu-toggle').tap();
+if (await mp.locator('#main-nav a', { hasText: '연습 랩' }).isVisible()) {
   await mp.locator('#main-nav a', { hasText: '연습 랩' }).tap();
   await mp.waitForTimeout(400);
-  menuOk = mp.url().includes('#/lab') && !(await mp.locator('#main-nav').isVisible());
+  menuOk = mp.url().includes('#/lab');
 }
 
 console.log('\n=== 라우트 ===');
 console.log(rows.join('\n'));
 console.log('\n=== 인터랙션 ===');
-console.log(`강의 페이지 프레임:  ${lectureOk ? 'ok' : 'FAIL'}`);
-console.log(`강의 레벨 필터·곧 게시 토글: ${filterOk ? 'ok' : 'FAIL'}`);
-console.log(`차시 → 건반 예제: ${moduleOk ? 'ok' : 'FAIL'}`);
+console.log(`옛 차시 주소 → 강의 펼침·영상: ${lectureOk ? 'ok' : 'FAIL'}`);
+console.log(`커리큘럼 펼침·책갈피·레벨 레일: ${filterOk ? 'ok' : 'FAIL'}`);
+console.log(`명반 책장 → 상세: ${moduleOk ? 'ok' : 'FAIL'}`);
 console.log(`곡 → 리드시트:    ${bars > 0 ? `ok (${bars}마디)` : 'FAIL'}`);
 console.log(`모바일 375px 가로 스크롤: ${mobileOverflow.length ? mobileOverflow.join(', ') : '없음'}`);
-console.log(`폰 메뉴 열기 → 이동 → 닫힘: ${menuOk ? 'ok' : 'FAIL'}`);
+console.log(`폰 메뉴 → 이동: ${menuOk ? 'ok' : 'FAIL'}`);
 console.log('\n=== 마크다운 누출 (펼친 상태) ===');
 console.log(deepLeaks.length ? deepLeaks.join('\n') : '없음');
 

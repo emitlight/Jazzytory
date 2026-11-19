@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 700" width="600" height="700">
+<defs>
+<filter id="jz-ahmad-jamal-glow" x="-15%" y="-15%" width="130%" height="130%"><feGaussianBlur stdDeviation="7"/></filter>
+<linearGradient id="jz-ahmad-jamal-fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0.84" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<mask id="jz-ahmad-jamal-fade" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="700"><rect width="600" height="700" fill="url(#jz-ahmad-jamal-fg)"/></mask>
+<g id="jz-ahmad-jamal-art" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M214 230 C205 140 248 95 302 95 C356 95 396 140 388 230 C386 300 360 372 302 378 C244 372 216 300 214 230Z" fill="#22D3EE" fill-opacity="0.1" stroke="none"/>
+<path d="M250 404 C180 418 110 440 80 500 L66 700 L536 700 L522 500 C492 440 422 418 352 404 C322 416 280 416 250 404Z" fill="#22D3EE" fill-opacity="0.15" stroke="none" opacity="0.55"/>
+<path d="M214 232 C205 140 248 95 302 95 C356 95 396 140 388 232" stroke="#22D3EE" stroke-width="8"/>
+<path d="M244 136 Q258 114 284 106" stroke="#F472B6" stroke-width="6"/>
+<path d="M214 232 C214 262 218 286 226 306" stroke="#22D3EE" stroke-width="8"/>
+<path d="M388 232 C388 262 384 286 376 306" stroke="#22D3EE" stroke-width="8"/>
+<path d="M215 220 C192 214 190 262 217 268" stroke="#22D3EE" stroke-width="8"/>
+<path d="M207 234 Q202 244 208 254" stroke="#22D3EE" stroke-width="6"/>
+<path d="M387 220 C410 214 412 262 385 268" stroke="#22D3EE" stroke-width="8"/>
+<path d="M395 234 Q400 244 394 254" stroke="#22D3EE" stroke-width="6"/>
+<path d="M218 262 C224 322 252 372 302 378 C352 372 380 322 384 262 C378 290 366 306 350 312 C335 300 318 296 302 298 C286 296 268 300 254 312 C238 306 224 290 218 262Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M218 262 C224 322 252 372 302 378 C352 372 380 322 384 262" stroke="#A78BFA" stroke-width="6"/>
+<path d="M254 312 C268 300 286 296 302 298 C318 296 335 300 350 312" stroke="#A78BFA" stroke-width="6"/>
+<path d="M240 330 L246 342 M262 350 L266 362 M338 350 L334 362 M360 330 L354 342 M296 362 L298 372 M312 362 L310 372" stroke="#A78BFA" stroke-width="6" opacity="0.7"/>
+<path d="M284 328 Q302 333 320 327" stroke="#22D3EE" stroke-width="6"/>
+<path d="M246 205 Q264 197 284 203" stroke="#A78BFA" stroke-width="6"/>
+<path d="M320 203 Q340 197 358 205" stroke="#A78BFA" stroke-width="6"/>
+<path d="M250 225 Q266 216 283 225" stroke="#22D3EE" stroke-width="6"/>
+<path d="M254 229 Q267 233 280 229" stroke="#22D3EE" stroke-width="6"/>
+<path d="M321 225 Q338 216 354 225" stroke="#22D3EE" stroke-width="6"/>
+<path d="M324 229 Q337 233 350 229" stroke="#22D3EE" stroke-width="6"/>
+<path d="M303 224 L299 268" stroke="#22D3EE" stroke-width="6"/>
+<path d="M284 276 Q296 287 307 282 Q317 287 324 276" stroke="#22D3EE" stroke-width="6"/>
+<path d="M262 368 L262 402" stroke="#22D3EE" stroke-width="8"/>
+<path d="M342 368 L342 402" stroke="#22D3EE" stroke-width="8"/>
+<path d="M250 402 C280 414 322 414 352 402 L353 426 C322 438 280 438 249 426Z" stroke="#A78BFA" stroke-width="8"/>
+<path d="M262 418 L270 410 L278 420 L286 412 L294 421 M310 421 L318 412 L326 420 L334 410 L342 418" stroke="#F472B6" stroke-width="6"/>
+<path d="M250 404 C180 418 110 440 80 500 L66 700" stroke="#22D3EE" stroke-width="8"/>
+<path d="M352 404 C422 418 492 440 522 500 L536 700" stroke="#22D3EE" stroke-width="8"/>
+<path d="M301 436 L301 700" stroke="#22D3EE" stroke-width="6"/>
+<path d="M313 480a5 5 0 1 0 10 0a5 5 0 1 0 -10 0Z" stroke="#F472B6" stroke-width="6"/>
+<path d="M313 545a5 5 0 1 0 10 0a5 5 0 1 0 -10 0Z" stroke="#F472B6" stroke-width="6"/>
+<path d="M313 610a5 5 0 1 0 10 0a5 5 0 1 0 -10 0Z" stroke="#F472B6" stroke-width="6"/>
+<path d="M150 470 C170 520 172 600 166 700" stroke="#A78BFA" stroke-width="6"/>
+<path d="M452 470 C432 520 430 600 436 700" stroke="#A78BFA" stroke-width="6"/>
+</g>
+</defs>
+<g mask="url(#jz-ahmad-jamal-fade)">
+<use xlink:href="#jz-ahmad-jamal-art" filter="url(#jz-ahmad-jamal-glow)" opacity="0.55"/>
+<use xlink:href="#jz-ahmad-jamal-art"/>
+</g>
+</svg>

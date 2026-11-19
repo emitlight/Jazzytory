@@ -1,13 +1,13 @@
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
-import { Routes, Route, NavLink, useLocation, Link, Navigate } from 'react-router-dom';
+import { Routes, Route, NavLink, useLocation, Link, Navigate, useParams } from 'react-router-dom';
 import { useApp } from './state';
 import { SIMPLE_UI } from './config';
+import { useBookmark } from './lib/bookmark';
+import { LEVELS, lessonAt } from './data';
+import type { LevelId } from './data/types';
 
-const Home           = lazy(() => import('./routes/Home'));
+const Curriculum     = lazy(() => import('./routes/Curriculum'));
 const Guide          = lazy(() => import('./routes/Guide'));
-const Courses        = lazy(() => import('./routes/Courses'));
-const CourseHome     = lazy(() => import('./routes/CourseHome'));
-const Lesson         = lazy(() => import('./routes/Lesson'));
 const Library        = lazy(() => import('./routes/Library'));
 const Lab            = lazy(() => import('./routes/Lab'));
 const TunePage       = lazy(() => import('./routes/TunePage'));
@@ -15,20 +15,45 @@ const Progress       = lazy(() => import('./routes/Progress'));
 const Placement      = lazy(() => import('./routes/Placement'));
 const ModuleRedirect = lazy(() => import('./routes/ModuleRedirect'));
 
-/** 메뉴는 네 개다. 학습자가 고를 것이 많을수록 아무것도 고르지 않는다. */
-const NAV = SIMPLE_UI
-  ? [
-    { to: '/',                  label: '강의', end: true },
-    { to: '/library/listening', label: '필청 명반' },
-    { to: '/lab',               label: '연습 랩' },
-    { to: '/progress',          label: '내 진도' },
-  ]
-  : [
-    { to: '/courses',  label: '강의실' },
-    { to: '/lab',      label: '연습 랩' },
-    { to: '/library',  label: '자료실' },
-    { to: '/progress', label: '내 진도' },
-  ];
+/** 메뉴는 두 개다 — 배우는 곳(커리큘럼 한 페이지)과 손으로 치는 곳(연습 랩). 나머지는 책갈피 · 더 보기에 접어 둔다. */
+const NAV = [
+  { to: '/', label: '커리큘럼' },
+  { to: '/lab', label: '연습 랩' },
+];
+const MORE = [
+  { to: '/progress', label: '내 진도', d: '본 강의 · 연습 시간 · 8개 축 · 데이터 백업' },
+  { to: '/guide', label: '사용법 영상', d: '6분 — 이 서비스 쓰는 법' },
+  { to: '/library/listening', label: '필청 명반 전체', d: '38장 — 이유와 청취 과제' },
+];
+const isCurriculum = (p: string) => p === '/' || p === '/bm' || p.startsWith('/l/') || p.startsWith('/lv/');
+
+function BookmarkButton() {
+  const [bm] = useBookmark();
+  if (!bm) return <span className="btn btn-sm btn-ghost bm-btn" aria-disabled="true" title="글에 마우스를 올리거나 「🔖 꽂기」로 책갈피를 꽂아 두세요">🔖<span className="bm-btn-t">책갈피</span></span>;
+  return <Link className="btn btn-sm bm-btn on" to="/bm" replace title={`책갈피로 이동${bm.label ? ` — ${bm.label}` : ''}`}>🔖<span className="bm-btn-t">책갈피</span></Link>;
+}
+
+function MoreMenu() {
+  const [open, setOpen] = useState(false);
+  const loc = useLocation();
+  useEffect(() => { setOpen(false); }, [loc.pathname]);
+  return (
+    <div className="more">
+      <button type="button" className="btn btn-sm btn-ghost" aria-expanded={open} aria-haspopup="true" onClick={() => setOpen((o) => !o)} aria-label="더 보기">⋯</button>
+      {open && (
+        <>
+          <div className="more-scrim" aria-hidden="true" onClick={() => setOpen(false)} />
+          <ul className="more-pop" role="menu">
+            {MORE.map((m) => (
+              <li key={m.to} role="none"><Link role="menuitem" to={m.to}><strong>{m.label}</strong><span className="tiny muted">{m.d}</span></Link></li>
+            ))}
+            <li role="none" className="more-theme"><span className="small">테마</span><ThemeToggle /></li>
+          </ul>
+        </>
+      )}
+    </div>
+  );
+}
 
 function ThemeToggle() {
   const { state, update } = useApp();
@@ -67,7 +92,11 @@ export default function App() {
   // 라우트 전환 시 스크롤 최상단 + 포커스 이동 (접근성)
   // 첫 진입에는 포커스를 옮기지 않는다 — Safari 는 이때 h1 에 포커스 링을 그린다.
   const firstRoute = useRef(true);
+  const lastPath = useRef(location.pathname);
   useEffect(() => {
+    const from = lastPath.current; lastPath.current = location.pathname;
+    // 커리큘럼 안에서 강의 · 레벨을 여닫을 때는 그 페이지가 스스로 스크롤한다
+    if (isCurriculum(from) && isCurriculum(location.pathname) && !firstRoute.current) return;
     window.scrollTo(0, 0);
     if (firstRoute.current) { firstRoute.current = false; return; }
     const h1 = mainRef.current?.querySelector('h1');
@@ -89,7 +118,7 @@ export default function App() {
           </Link>
           <nav id="main-nav" className="nav" aria-label="주요 메뉴">
             {NAV.map((n) => (
-              <NavLink key={n.to} to={n.to} end={'end' in n && n.end} className={({ isActive }) => (isActive ? 'active' : '')}>
+              <NavLink key={n.to} to={n.to} className={({ isActive }) => (isActive || (n.to === '/' && isCurriculum(location.pathname)) ? 'active' : '')}>
                 {n.label}
               </NavLink>
             ))}
@@ -103,7 +132,8 @@ export default function App() {
             )}
           </nav>
           <span className="spacer" />
-          <ThemeToggle />
+          <BookmarkButton />
+          <MoreMenu />
           <button
             type="button"
             className="btn btn-sm btn-ghost menu-toggle"
@@ -121,13 +151,17 @@ export default function App() {
       <main id="main" ref={mainRef} className="page wrap">
         <Suspense fallback={<p className="muted" role="status">불러오는 중…</p>}>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Curriculum />} />
+            <Route path="/l/:moduleId" element={<Curriculum />} />
+            <Route path="/lv/:levelId" element={<Curriculum />} />
+            <Route path="/bm" element={<Curriculum />} />
             <Route path="/guide" element={<Guide />} />
 
             {/* 강의실 · 강좌 · 차시 */}
-            <Route path="/courses" element={<Courses />} />
-            <Route path="/course/:levelId" element={<CourseHome />} />
-            <Route path="/course/:levelId/lesson/:lessonNo" element={<Lesson />} />
+            {/* 구 강의실 · 강좌 · 차시 → 커리큘럼 한 페이지의 그 자리 */}
+            <Route path="/courses" element={<Navigate to="/" replace />} />
+            <Route path="/course/:levelId" element={<LevelRedirect />} />
+            <Route path="/course/:levelId/lesson/:lessonNo" element={<LessonRedirect />} />
 
             {/* 자료실 */}
             <Route path="/library" element={<Library />} />
@@ -187,6 +221,19 @@ export default function App() {
       </footer>
     </div>
   );
+}
+
+/** 구 /course/:levelId → 커리큘럼의 그 레벨 */
+function LevelRedirect() {
+  const { levelId } = useParams();
+  return <Navigate to={LEVELS.some((l) => l.id === levelId) ? `/lv/${levelId}` : '/'} replace />;
+}
+
+/** 구 /course/:levelId/lesson/:n → 커리큘럼에서 그 강의를 연 채로 */
+function LessonRedirect() {
+  const { levelId, lessonNo } = useParams();
+  const ls = levelId && LEVELS.some((l) => l.id === levelId) ? lessonAt(levelId as LevelId, Number(lessonNo)) : null;
+  return <Navigate to={ls ? `/l/${ls.module.id}` : '/'} replace />;
 }
 
 /** 구 /curriculum/:levelId → /course/:levelId */

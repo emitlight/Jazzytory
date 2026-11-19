@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 700" width="600" height="700">
+<defs>
+<filter id="jz-andrew-hill-glow" x="-15%" y="-15%" width="130%" height="130%"><feGaussianBlur stdDeviation="7"/></filter>
+<linearGradient id="jz-andrew-hill-fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0.84" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<mask id="jz-andrew-hill-fade" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="700"><rect width="600" height="700" fill="url(#jz-andrew-hill-fg)"/></mask>
+<g id="jz-andrew-hill-art" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M200 232 C196 150 240 110 296 110 C356 110 396 150 390 222 C392 236 394 244 390 250 C386 256 392 266 404 288 C400 294 394 296 388 296 C392 302 392 306 390 310 C388 314 392 318 390 322 C392 334 388 344 382 350 C360 370 320 374 300 372 C262 362 236 340 232 320Z" fill="#22D3EE" fill-opacity="0.1" stroke="none"/>
+<path d="M210 380 C150 392 100 430 80 490 L66 700 L528 700 L516 490 C500 440 460 410 404 400 C350 440 240 430 210 380Z" fill="#22D3EE" fill-opacity="0.15" stroke="none" opacity="0.55"/>
+<path d="M200 232 C192 150 240 110 296 110 C356 110 396 150 392 222 C386 200 376 186 362 178 C330 170 290 172 260 168 C236 172 214 196 200 232Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M200 232 C192 150 240 110 296 110 C356 110 396 150 392 222" stroke="#22D3EE" stroke-width="8"/>
+<path d="M201 230 C214 196 236 172 260 168 C290 172 330 170 362 178 C376 186 386 200 391 222" stroke="#A78BFA" stroke-width="6"/>
+<path d="M236 140 L240 150 M268 126 L272 136 M304 122 L306 132 M340 130 L340 140 M368 150 L366 160 M222 178 L228 186 M252 154 L256 164 M288 146 L290 156 M322 148 L322 158 M352 160 L350 170" stroke="#A78BFA" stroke-width="6" opacity="0.8"/>
+<path d="M391 222 C392 236 394 244 390 250 C386 256 392 266 404 288 C400 294 394 296 388 296 C392 302 392 306 390 310 C388 314 392 318 390 322 C392 334 388 344 382 350" stroke="#22D3EE" stroke-width="8"/>
+<path d="M382 350 C360 370 320 374 300 372 C262 362 236 340 230 318" stroke="#22D3EE" stroke-width="8"/>
+<path d="M222 240 C200 236 198 282 224 288" stroke="#22D3EE" stroke-width="8"/>
+<path d="M214 254 Q209 264 215 274" stroke="#22D3EE" stroke-width="6"/>
+<path d="M228 214 L232 238" stroke="#A78BFA" stroke-width="6"/>
+<path d="M274 238 Q298 228 322 236" stroke="#A78BFA" stroke-width="6"/>
+<path d="M346 234 Q362 229 380 234" stroke="#A78BFA" stroke-width="6"/>
+<path d="M280 256 Q298 244 316 254 Q298 264 280 256Z" stroke="#22D3EE" stroke-width="6"/>
+<path d="M296 251a5 5 0 1 0 10 0a5 5 0 1 0 -10 0Z" fill="#22D3EE" fill-opacity="1" stroke="none"/>
+<path d="M350 254 Q362 246 375 252 Q362 260 350 254Z" stroke="#22D3EE" stroke-width="6"/>
+<path d="M362 251a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#22D3EE" fill-opacity="1" stroke="none"/>
+<path d="M372 294 Q381 300 389 296" stroke="#22D3EE" stroke-width="6"/>
+<path d="M352 318 Q370 323 388 316" stroke="#22D3EE" stroke-width="6"/>
+<path d="M318 286 Q330 300 346 304" stroke="#A78BFA" stroke-width="6" opacity="0.7"/>
+<path d="M228 336 C252 378 342 390 394 358 L406 400 C350 442 240 432 208 382Z" fill="#22D3EE" fill-opacity="0.1" stroke="none"/>
+<path d="M228 336 C252 378 342 390 394 358 L406 400 C350 442 240 432 208 382 Z" stroke="#22D3EE" stroke-width="8"/>
+<path d="M236 356 L226 392 M262 372 L254 408 M292 380 L288 418 M322 382 L322 420 M352 376 L356 414 M380 366 L388 404" stroke="#A78BFA" stroke-width="6"/>
+<path d="M210 380 C150 392 100 430 80 490 L66 700" stroke="#22D3EE" stroke-width="8"/>
+<path d="M404 400 C460 410 500 440 516 490 L528 700" stroke="#22D3EE" stroke-width="8"/>
+<path d="M284 450 L316 476 L284 502 L316 528 L284 554 L316 580 L284 606 L316 632 L284 658 L316 684" stroke="#F472B6" stroke-width="8"/>
+<path d="M284 463 L316 489 L284 515 L316 541 L284 567 L316 593 L284 619 L316 645 L284 671 L316 697" stroke="#F472B6" stroke-width="8"/>
+<path d="M168 450 L192 472 L168 494 L192 516 L168 538 L192 560 L168 582 L192 604 L168 626 L192 648 L168 670 L192 692" stroke="#A78BFA" stroke-width="6"/>
+<path d="M408 450 L432 472 L408 494 L432 516 L408 538 L432 560 L408 582 L432 604 L408 626 L432 648 L408 670 L432 692" stroke="#A78BFA" stroke-width="6"/>
+<path d="M236 440 L236 700 M364 440 L364 700 M124 470 L118 700 M476 470 L482 700" stroke="#A78BFA" stroke-width="6" opacity="0.6"/>
+</g>
+</defs>
+<g mask="url(#jz-andrew-hill-fade)">
+<use xlink:href="#jz-andrew-hill-art" filter="url(#jz-andrew-hill-glow)" opacity="0.55"/>
+<use xlink:href="#jz-andrew-hill-art"/>
+</g>
+</svg>

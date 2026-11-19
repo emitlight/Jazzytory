@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 700" width="600" height="700">
+<defs>
+<filter id="jz-tommy-flanagan-glow" x="-15%" y="-15%" width="130%" height="130%"><feGaussianBlur stdDeviation="7"/></filter>
+<linearGradient id="jz-tommy-flanagan-fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0.84" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<mask id="jz-tommy-flanagan-fade" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="700"><rect width="600" height="700" fill="url(#jz-tommy-flanagan-fg)"/></mask>
+<g id="jz-tommy-flanagan-art" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M222 220 C216 140 252 90 302 90 C352 90 386 140 380 220 C378 290 352 350 302 360 C250 350 224 290 222 220Z" fill="#22D3EE" fill-opacity="0.1" stroke="none"/>
+<path d="M262 392 C200 404 150 430 128 480 L118 700 L482 700 L472 480 C450 430 400 404 338 392 L354 440 L310 430 L300 455 L290 430 L246 440Z" fill="#22D3EE" fill-opacity="0.15" stroke="none" opacity="0.55"/>
+<path d="M222 214 C218 190 220 176 228 162 L238 166 C232 180 232 196 234 214Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M380 214 C384 190 382 176 374 162 L364 166 C370 180 370 196 368 214Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M222 222 C216 140 252 90 302 90 C352 90 386 140 380 222" stroke="#22D3EE" stroke-width="8"/>
+<path d="M222 214 C218 190 220 176 228 162" stroke="#A78BFA" stroke-width="6"/>
+<path d="M234 212 C232 196 232 180 238 166" stroke="#A78BFA" stroke-width="6"/>
+<path d="M380 214 C384 190 382 176 374 162" stroke="#A78BFA" stroke-width="6"/>
+<path d="M368 212 C370 196 370 180 364 166" stroke="#A78BFA" stroke-width="6"/>
+<path d="M270 118 Q290 108 312 108" stroke="#F472B6" stroke-width="6"/>
+<path d="M222 222 C224 290 250 350 302 360 C352 350 378 290 380 222" stroke="#22D3EE" stroke-width="8"/>
+<path d="M223 214 C202 210 200 254 225 260" stroke="#22D3EE" stroke-width="8"/>
+<path d="M379 214 C400 210 402 254 377 260" stroke="#22D3EE" stroke-width="8"/>
+<path d="M248 202 Q266 194 286 200" stroke="#A78BFA" stroke-width="6"/>
+<path d="M316 200 Q336 194 354 202" stroke="#A78BFA" stroke-width="6"/>
+<path d="M244 214 L290 214 Q292 238 284 244 L250 244 Q242 236 244 214Z" stroke="#22D3EE" stroke-width="6"/>
+<path d="M312 214 L358 214 Q360 236 352 244 L318 244 Q310 238 312 214Z" stroke="#22D3EE" stroke-width="6"/>
+<path d="M290 220 Q301 214 312 220" stroke="#22D3EE" stroke-width="6"/>
+<path d="M244 218 L224 214" stroke="#22D3EE" stroke-width="6"/>
+<path d="M358 218 L378 214" stroke="#22D3EE" stroke-width="6"/>
+<path d="M254 233 Q267 226 280 233" stroke="#22D3EE" stroke-width="6"/>
+<path d="M322 233 Q335 226 348 233" stroke="#22D3EE" stroke-width="6"/>
+<path d="M301 238 L296 282" stroke="#22D3EE" stroke-width="6"/>
+<path d="M284 290 Q296 298 306 294 Q314 298 320 290" stroke="#22D3EE" stroke-width="6"/>
+<path d="M270 306 Q300 296 330 306 Q300 313 270 306Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M270 306 Q300 296 330 306 Q300 313 270 306Z" stroke="#A78BFA" stroke-width="6"/>
+<path d="M278 320 Q300 334 322 320" stroke="#22D3EE" stroke-width="6"/>
+<path d="M272 352 L270 394" stroke="#22D3EE" stroke-width="8"/>
+<path d="M330 352 L332 394" stroke="#22D3EE" stroke-width="8"/>
+<path d="M262 392 L246 440 L290 430 L300 455 L310 430 L354 440 L338 392" stroke="#F472B6" stroke-width="8"/>
+<path d="M278 398 L300 455 L322 398" stroke="#A78BFA" stroke-width="6"/>
+<path d="M300 455 L300 640" stroke="#22D3EE" stroke-width="6"/>
+<path d="M302 500a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" stroke="#22D3EE" stroke-width="6"/>
+<path d="M302 560a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" stroke="#22D3EE" stroke-width="6"/>
+<path d="M262 392 C200 404 150 430 128 480 L118 700" stroke="#22D3EE" stroke-width="8"/>
+<path d="M338 392 C400 404 450 430 472 480 L482 700" stroke="#22D3EE" stroke-width="8"/>
+<path d="M262 394 L248 474 L276 484 L292 640" stroke="#22D3EE" stroke-width="8"/>
+<path d="M338 394 L352 474 L324 484 L308 640" stroke="#22D3EE" stroke-width="8"/>
+<path d="M380 560 L440 556" stroke="#22D3EE" stroke-width="6"/>
+</g>
+</defs>
+<g mask="url(#jz-tommy-flanagan-fade)">
+<use xlink:href="#jz-tommy-flanagan-art" filter="url(#jz-tommy-flanagan-glow)" opacity="0.55"/>
+<use xlink:href="#jz-tommy-flanagan-art"/>
+</g>
+</svg>

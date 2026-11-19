@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" font-family="Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
+<defs>
+<radialGradient id="bg" cx="380" cy="420" r="700" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#3A3D18"/><stop offset="1" stop-color="#12150A"/></radialGradient>
+<filter id="g" x="-10%" y="-400%" width="120%" height="900%"><feGaussianBlur stdDeviation="5"/></filter>
+</defs>
+<rect width="1000" height="1000" fill="url(#bg)"/>
+<path d="M0 860 C80 800 200 790 300 820 L420 840 C520 830 620 830 700 880 L740 1000 L0 1000Z" fill="#1A1D0C"/>
+<path d="M250 760 L420 760 L440 900 L230 900Z" fill="#43441C"/>
+<path d="M200 850 L300 880 L330 1000 L250 1000Z" fill="#D9D45A"/>
+<path d="M470 860 L380 885 L360 1000 L450 1000Z" fill="#C2BD48"/>
+<g transform="rotate(-6 340 450)">
+<ellipse cx="160" cy="470" rx="36" ry="64" fill="#2A2C11"/>
+<path d="M170 330 C175 190 270 110 370 110 C480 110 560 190 565 320 C570 430 560 560 520 660 C485 745 420 800 350 800 C280 800 220 760 195 690 C165 610 165 450 170 330Z" fill="#3A3C17"/>
+<path d="M175 320 C180 185 270 112 370 112 C478 112 556 186 562 300 C530 250 470 222 390 216 C300 210 220 250 175 320Z" fill="#1C1E0B"/>
+<path d="M370 238 C440 236 510 250 548 280 C556 320 556 360 550 404 C510 380 470 362 430 336 C400 316 380 290 370 238Z" fill="#A9A53D"/>
+<path d="M200 300 C230 270 280 250 330 246 C290 270 250 300 230 340Z" fill="#4E5020"/>
+<path d="M200 382 C252 360 320 360 362 382 C392 366 452 358 528 372 L530 428 C478 414 428 420 384 440 C340 424 268 418 205 432Z" fill="#1A1C0A"/>
+<path d="M244 420 C268 432 300 434 326 424" fill="none" stroke="#7A782C" stroke-width="7" stroke-linecap="round"/>
+<path d="M418 424 C442 434 474 434 498 422" fill="none" stroke="#7A782C" stroke-width="7" stroke-linecap="round"/>
+<path d="M384 440 C398 476 410 510 414 540 L440 540 C430 500 414 466 396 436Z" fill="#B5B140"/>
+<path d="M370 548 C380 528 412 522 440 528 C468 532 488 546 484 566 C470 582 440 586 418 582 C396 586 372 578 370 548Z" fill="#5E5D23"/>
+<path d="M418 548 C434 540 458 542 470 556 C454 562 434 562 418 548Z" fill="#C2BE4A"/>
+<path d="M384 572 C392 564 404 566 408 576Z M450 576 C456 566 470 566 476 574Z" fill="#14160A"/>
+<path d="M496 440 C534 452 552 484 550 530 C546 590 528 640 502 684 C492 630 482 540 496 440Z" fill="#A9A53D"/>
+<path d="M200 470 C226 520 236 600 260 660 C230 640 206 590 196 520Z" fill="#2A2C11"/>
+<path d="M314 628 C352 612 424 610 474 626 C434 644 352 646 314 628Z" fill="#1A1C0A"/>
+<path d="M326 636 C364 664 432 664 466 634 C432 654 364 656 326 636Z" fill="#6E6C28"/>
+<path d="M400 716 C430 712 460 700 480 684 C474 716 448 742 410 750Z" fill="#8F8C31"/>
+</g>
+<g font-weight="800" text-anchor="end">
+<g font-size="70" fill="#F2F2EC">
+<text x="955" y="112">ART</text><text x="955" y="186">BLAKEY</text>
+</g>
+<g font-size="70" fill="#E3D94C">
+<text x="955" y="260">AND</text><text x="955" y="334">THE</text><text x="955" y="408">JAZZ</text>
+<text x="955" y="482">MES</text><text x="955" y="556">SEN</text><text x="955" y="630">GERS</text>
+</g>
+<line x1="700" y1="690" x2="955" y2="690" stroke="#22D3EE" stroke-width="8" opacity=".5" filter="url(#g)"/>
+<line x1="700" y1="690" x2="955" y2="690" stroke="#9FEFFF" stroke-width="3"/>
+<text x="955" y="780" font-size="80" fill="#F2F2EC">MOANIN’</text>
+</g>
+</svg>

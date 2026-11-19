@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" font-family="Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
+<defs>
+<radialGradient id="pink" cx="460" cy="470" r="560" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#F8DDF0"/><stop offset=".55" stop-color="#EBB7DC"/><stop offset="1" stop-color="#C98CBA"/></radialGradient>
+<filter id="g" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="5"/></filter>
+<clipPath id="pc"><rect x="40" y="200" width="920" height="650"/></clipPath>
+</defs>
+<rect width="1000" height="1000" fill="#09090B"/>
+<rect x="40" y="200" width="920" height="650" fill="url(#pink)"/>
+<g clip-path="url(#pc)">
+<path d="M60 640 C140 600 260 640 300 720 C330 790 250 850 120 850 L40 850 L40 660Z" fill="#F6D6EC" opacity=".22"/>
+<path d="M780 210 C880 230 950 300 960 380 L960 210Z" fill="#C487B5" opacity=".25"/>
+<path d="M860 860 C820 780 860 700 960 690 L960 860Z" fill="#D8A0CA" opacity=".28"/>
+<path d="M500 860 L506 772 C496 748 474 736 468 714 C463 698 462 688 454 680 C449 670 458 662 454 655 C450 646 458 638 452 630 C445 620 438 610 440 598 C444 586 456 576 460 560 C463 544 460 528 466 512 C478 432 546 382 630 378 C724 374 792 438 802 532 C810 612 790 684 774 724 C764 750 728 766 688 766 L680 860Z" fill="#070708"/>
+<path d="M466 512 C463 528 463 544 460 560 C456 576 444 586 440 598 C438 610 445 620 452 630 C458 638 450 646 454 655 C458 662 449 670 454 680 C462 688 463 698 468 714" fill="none" stroke="#22D3EE" stroke-width="7" opacity=".45" filter="url(#g)"/>
+<path d="M466 512 C463 528 463 544 460 560 C456 576 444 586 440 598 C438 610 445 620 452 630 C458 638 450 646 454 655 C458 662 449 670 454 680 C462 688 463 698 468 714" fill="none" stroke="#A6F0FA" stroke-width="2.5"/>
+</g>
+<text x="110" y="318" font-size="60" font-weight="500" fill="#8E2236" textLength="420" lengthAdjust="spacingAndGlyphs">Waltz for Debby</text>
+<text x="180" y="384" font-size="50" font-weight="500" fill="#8E2236" textLength="330" lengthAdjust="spacingAndGlyphs">Bill Evans Trio</text>
+<text x="182" y="422" font-size="22" font-weight="500" fill="#8E2236" letter-spacing="1">with Scott LaFaro, Paul Motian</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 700" width="600" height="700">
+<defs>
+<filter id="jz-antonio-carlos-jobim-glow" x="-15%" y="-15%" width="130%" height="130%"><feGaussianBlur stdDeviation="7"/></filter>
+<linearGradient id="jz-antonio-carlos-jobim-fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0.84" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<mask id="jz-antonio-carlos-jobim-fade" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="700"><rect width="600" height="700" fill="url(#jz-antonio-carlos-jobim-fg)"/></mask>
+<g id="jz-antonio-carlos-jobim-art" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M226 226 C220 240 218 252 224 262 C212 280 202 296 204 302 C210 306 218 308 222 308 C220 316 222 322 224 326 C222 340 224 352 232 362 C260 384 300 386 330 380 C356 368 372 340 380 312 L396 236 C390 180 360 140 300 138 C250 140 228 180 226 226Z" fill="#22D3EE" fill-opacity="0.1" stroke="none"/>
+<path d="M248 412 C180 420 120 445 92 500 L80 700 L534 700 L522 495 C500 440 440 412 368 404 L396 462 L330 456 L305 500 L288 458 L224 470Z" fill="#22D3EE" fill-opacity="0.15" stroke="none" opacity="0.45"/>
+<path d="M206 232 C196 160 245 104 312 106 C378 108 414 150 410 214 C408 240 400 258 394 266 C392 230 380 200 358 186 C330 196 300 192 276 182 C268 206 250 224 224 232 C240 214 246 196 244 178 C232 196 220 214 206 232Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M206 232 C196 160 245 104 312 106 C378 108 414 150 410 214 C408 240 400 258 394 266" stroke="#22D3EE" stroke-width="8"/>
+<path d="M206 232 C220 214 232 196 244 178 C246 196 240 214 224 232 C250 224 268 206 276 182 C300 192 330 196 358 186 C380 200 392 230 394 266" stroke="#A78BFA" stroke-width="6"/>
+<path d="M250 130 C280 120 300 140 330 128 C350 120 370 128 386 140" stroke="#A78BFA" stroke-width="6"/>
+<path d="M236 158 C262 146 286 166 318 154 C344 146 368 158 394 176" stroke="#A78BFA" stroke-width="6"/>
+<path d="M224 234 C220 244 218 254 224 262 C212 280 202 296 204 302 C210 306 218 308 222 308" stroke="#22D3EE" stroke-width="8"/>
+<path d="M224 326 C222 340 224 352 232 362 C260 384 300 386 330 380 C356 368 372 340 380 312" stroke="#22D3EE" stroke-width="8"/>
+<path d="M382 272 C404 268 406 314 380 320" stroke="#22D3EE" stroke-width="8"/>
+<path d="M389 284 Q394 294 388 306" stroke="#22D3EE" stroke-width="6"/>
+<path d="M276 248 Q296 238 318 245" stroke="#A78BFA" stroke-width="6"/>
+<path d="M230 250 Q240 245 252 249" stroke="#A78BFA" stroke-width="6"/>
+<path d="M281 266 Q297 259 314 266" stroke="#22D3EE" stroke-width="6"/>
+<path d="M284 270 Q297 275 311 270" stroke="#22D3EE" stroke-width="6"/>
+<path d="M233 266 Q242 262 252 266" stroke="#22D3EE" stroke-width="6"/>
+<path d="M222 308 C228 311 230 315 226 318 C231 322 231 326 224 328" stroke="#22D3EE" stroke-width="8"/>
+<path d="M227 318 L250 321" stroke="#22D3EE" stroke-width="6"/>
+<path d="M262 292 Q256 306 262 318" stroke="#A78BFA" stroke-width="6"/>
+<path d="M244 346 Q254 352 266 350" stroke="#A78BFA" stroke-width="6"/>
+<path d="M262 372 L262 418" stroke="#22D3EE" stroke-width="8"/>
+<path d="M352 362 L360 408" stroke="#22D3EE" stroke-width="8"/>
+<path d="M248 412 L224 470 L288 458 L302 430" stroke="#22D3EE" stroke-width="8"/>
+<path d="M368 404 L396 462 L330 456 L314 430" stroke="#22D3EE" stroke-width="8"/>
+<path d="M288 458 L305 500 L330 456" stroke="#22D3EE" stroke-width="8"/>
+<path d="M305 500 L307 700" stroke="#22D3EE" stroke-width="6"/>
+<path d="M313 560a5 5 0 1 0 10 0a5 5 0 1 0 -10 0Z" stroke="#22D3EE" stroke-width="6"/>
+<path d="M313 630a5 5 0 1 0 10 0a5 5 0 1 0 -10 0Z" stroke="#22D3EE" stroke-width="6"/>
+<path d="M248 412 C180 420 120 445 92 500 L80 700" stroke="#22D3EE" stroke-width="8"/>
+<path d="M368 404 C440 412 500 440 522 495 L534 700" stroke="#22D3EE" stroke-width="8"/>
+<path d="M360 560 L440 556 L444 630 L364 634Z" stroke="#A78BFA" stroke-width="6"/>
+<path d="M402 556 L420 500" stroke="#F472B6" stroke-width="8"/>
+<path d="M418 500 L424 486" stroke="#F472B6" stroke-width="6"/>
+<path d="M150 520 C170 560 168 620 160 700" stroke="#A78BFA" stroke-width="6"/>
+<path d="M210 600 C230 620 240 660 236 700" stroke="#A78BFA" stroke-width="6"/>
+</g>
+</defs>
+<g mask="url(#jz-antonio-carlos-jobim-fade)">
+<use xlink:href="#jz-antonio-carlos-jobim-art" filter="url(#jz-antonio-carlos-jobim-glow)" opacity="0.55"/>
+<use xlink:href="#jz-antonio-carlos-jobim-art"/>
+</g>
+</svg>

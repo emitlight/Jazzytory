@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" font-family="Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
+<defs>
+<linearGradient id="room" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5A4230"/><stop offset=".6" stop-color="#2A1E16"/><stop offset="1" stop-color="#120E0C"/></linearGradient>
+<linearGradient id="brass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8A6424"/><stop offset=".45" stop-color="#E6BE62"/><stop offset="1" stop-color="#A27A30"/></linearGradient>
+<filter id="g" x="-30%" y="-10%" width="160%" height="120%"><feGaussianBlur stdDeviation="5"/></filter>
+<clipPath id="ph"><rect x="120" y="250" width="760" height="640"/></clipPath>
+</defs>
+<rect width="1000" height="1000" fill="#F2EEE3"/>
+<text x="30" y="118" font-size="96" font-weight="800" fill="#E2462C" textLength="420" lengthAdjust="spacingAndGlyphs">JOHN COLTRANE</text>
+<path d="M466 118 L466 98 L488 98 L488 78 L510 78 L510 58 L532 58 L532 118Z" fill="#E2462C"/>
+<text x="560" y="118" font-size="96" font-weight="800" fill="#E2462C" textLength="410" lengthAdjust="spacingAndGlyphs">GIANT STEPS</text>
+<rect x="30" y="140" width="940" height="5" fill="#E2462C"/>
+<rect x="37" y="167" width="926" height="796" fill="none" stroke="#E2462C" stroke-width="14"/>
+<rect x="120" y="250" width="760" height="640" fill="url(#room)"/>
+<g clip-path="url(#ph)">
+<path d="M380 900 C400 760 460 640 560 600 C660 570 780 590 860 660 L900 900Z" fill="#1E2A44"/>
+<path d="M560 600 L620 600 L600 700Z" fill="#E8E4DA"/>
+<path d="M490 330 C500 280 550 254 600 262 C656 272 690 320 684 380 C680 430 650 480 610 500 C570 516 520 500 500 460 C486 430 484 380 490 330Z" fill="#33231A"/>
+<path d="M600 280 C640 290 668 330 668 380 C650 350 630 320 600 300Z" fill="#5A4030"/>
+<path d="M560 600 C540 560 540 520 556 496 L620 496 C630 530 628 570 620 600Z" fill="#2A1C14"/>
+<path d="M664 360 C690 360 700 390 688 412 C680 424 668 420 664 410Z" fill="#2A1C14"/>
+<path d="M496 380 L478 404 L494 412 L488 428 L500 436 L506 452 C520 470 540 480 560 480" fill="none" stroke="#4E3828" stroke-width="5" stroke-linejoin="round"/>
+<path d="M300 300 C330 270 400 270 450 300 C476 316 492 360 500 410" fill="none" stroke="url(#brass)" stroke-width="22" stroke-linecap="round"/>
+<path d="M290 300 C280 420 270 560 280 700 C286 790 320 850 380 860 C430 866 460 830 470 780 L500 690 L560 700 L520 800 C500 880 440 920 370 912 C290 900 240 830 236 720 C230 560 246 420 262 300Z" fill="url(#brass)"/>
+<ellipse cx="530" cy="694" rx="34" ry="12" fill="#2E2010" transform="rotate(10 530 694)"/>
+<g fill="#6E4E1C"><circle cx="270" cy="420" r="12"/><circle cx="266" cy="480" r="12"/><circle cx="264" cy="540" r="12"/><circle cx="266" cy="620" r="12"/><circle cx="276" cy="690" r="12"/></g>
+<path d="M330 470 C380 470 440 520 470 580 L400 610 C380 560 350 520 320 520Z" fill="#1E2A44"/>
+<path d="M620 760 C540 720 440 690 340 680 L330 640 C440 640 560 670 660 700Z" fill="#24314E"/>
+<g fill="#3A261A">
+<ellipse cx="300" cy="494" rx="40" ry="30" transform="rotate(-20 300 494)"/>
+<ellipse cx="316" cy="662" rx="40" ry="30" transform="rotate(10 316 662)"/>
+</g>
+<g stroke="#3A261A" stroke-width="13" stroke-linecap="round">
+<path d="M270 480 L236 462 M268 500 L232 494 M276 518 L242 524"/>
+<path d="M290 650 L252 640 M290 670 L250 668 M296 688 L258 694"/>
+</g>
+<path d="M296 304 C286 420 276 560 284 700" fill="none" stroke="#22D3EE" stroke-width="8" opacity=".5" filter="url(#g)"/>
+<path d="M296 304 C286 420 276 560 284 700" fill="none" stroke="#A6F0FA" stroke-width="2.5"/>
+</g>
+</svg>

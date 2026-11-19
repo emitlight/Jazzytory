@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" width="600" height="700">
+<defs><filter id="glow-john-coltrane" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#glow-john-coltrane)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M298,380 C240,385 190,405 160,450 C140,490 135,580 135,690 L535,690 C535,580 530,490 510,450 C490,410 440,388 392,380 Z" stroke="none" fill="#22D3EE" fill-opacity="0.1"/>
+<path d="M298,380 C240,385 190,405 160,450 C140,490 135,580 135,690" stroke="#22D3EE" stroke-width="8" fill="none"/>
+<path d="M392,380 C440,388 490,410 510,450 C530,490 535,580 535,690" stroke="#22D3EE" stroke-width="8" fill="none"/>
+<path d="M298,378 L320,420 L340,396 M392,378 L370,425" stroke="#22D3EE" stroke-width="6" fill="none"/>
+<path d="M328,416 L330,520" stroke="#A78BFA" stroke-width="4" fill="none"/>
+<path d="M342,420 L344,520" stroke="#A78BFA" stroke-width="4" fill="none"/>
+<path d="M356,425 L358,520" stroke="#A78BFA" stroke-width="4" fill="none"/>
+<path d="M310,392 L290,470 L345,620 M385,390 L405,460 L368,610" stroke="#22D3EE" stroke-width="7" fill="none"/>
+<path d="M306,292 C292,298 276,306 262,322" stroke="#22D3EE" stroke-width="8" fill="none"/>
+<path d="M300,286 L312,298" stroke="#F472B6" stroke-width="8" fill="none"/>
+<path d="M246,320 C222,410 190,510 160,594 C146,636 156,672 190,674 C222,676 244,652 254,618" stroke="#22D3EE" stroke-width="8" fill="#22D3EE" fill-opacity="0.1"/>
+<path d="M276,330 C252,418 222,506 196,584 C190,606 196,622 210,620 C220,618 226,606 230,594" stroke="#22D3EE" stroke-width="8" fill="none"/>
+<path d="M230,594 C236,578 262,566 288,576 C294,600 278,622 254,618" stroke="#22D3EE" stroke-width="8" fill="#22D3EE" fill-opacity="0.1"/>
+<path d="M230,594 L254,618" stroke="#22D3EE" stroke-width="5" fill="none"/>
+<circle cx="252" cy="396" r="9" stroke="#F472B6" stroke-width="5" fill="#F472B6" fill-opacity="0.14"/>
+<circle cx="240" cy="432" r="9" stroke="#F472B6" stroke-width="5" fill="#F472B6" fill-opacity="0.14"/>
+<circle cx="228" cy="468" r="9" stroke="#F472B6" stroke-width="5" fill="#F472B6" fill-opacity="0.14"/>
+<circle cx="214" cy="506" r="9" stroke="#F472B6" stroke-width="5" fill="#F472B6" fill-opacity="0.14"/>
+<circle cx="202" cy="542" r="9" stroke="#F472B6" stroke-width="5" fill="#F472B6" fill-opacity="0.14"/>
+<path d="M268,346 L284,350" stroke="#F472B6" stroke-width="5" fill="none"/>
+<path d="M160,450 C150,500 160,540 190,548 M236,512 C220,530 210,546 214,560" stroke="#22D3EE" stroke-width="7" fill="none"/>
+<path d="M190,548 C200,530 214,512 236,512" stroke="#22D3EE" stroke-width="6" fill="none"/>
+<path d="M300,420 C280,420 262,416 252,404 M244,380 C238,392 240,404 250,410" stroke="#22D3EE" stroke-width="6" fill="none"/>
+<path d="M300,345 L298,382 M385,330 L392,382" stroke="#22D3EE" stroke-width="7" fill="none"/>
+<path d="M245,210 C240,140 280,105 330,105 C385,105 415,145 415,205 C415,260 405,300 385,322 C365,342 340,348 318,345 C290,340 265,320 255,295 C248,275 245,240 245,210 Z" stroke="#22D3EE" stroke-width="8" fill="#22D3EE" fill-opacity="0.1"/>
+<path d="M240,200 C236,128 280,96 330,96 C388,96 422,138 420,200" stroke="#A78BFA" stroke-width="8" fill="#A78BFA" fill-opacity="0.12"/>
+<path d="M246,172 C275,152 330,146 416,166" stroke="#A78BFA" stroke-width="6" fill="none"/>
+<path d="M415,215 C430,212 432,250 412,256" stroke="#22D3EE" stroke-width="7" fill="none"/>
+<path d="M268,196 L298,206 M330,206 L362,196" stroke="#A78BFA" stroke-width="7" fill="none"/>
+<path d="M312,186 L314,200 M320,184 L320,198" stroke="#A78BFA" stroke-width="4" fill="none"/>
+<path d="M272,220 L296,221 M334,221 L358,218" stroke="#22D3EE" stroke-width="6" fill="none"/>
+<path d="M312,214 L300,255 Q308,262 320,258" stroke="#22D3EE" stroke-width="6" fill="none"/>
+<path d="M288,278 Q310,271 336,278" stroke="#A78BFA" stroke-width="6" fill="none"/>
+<path d="M292,293 L300,293 M316,293 L330,293" stroke="#22D3EE" stroke-width="5" fill="none"/>
+<path d="M372,300 L380,322" stroke="#22D3EE" stroke-width="4" fill="none"/>
+</g>
+</svg>

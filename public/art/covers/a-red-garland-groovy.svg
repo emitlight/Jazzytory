@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" font-family="Apple SD Gothic Neo, Helvetica Neue, Arial, sans-serif">
+<defs>
+<pattern id="brick" width="96" height="64" patternUnits="userSpaceOnUse" x="772" y="70">
+<rect width="96" height="64" fill="#8E8A82"/>
+<rect x="3" y="3" width="90" height="26" fill="#4B4844"/>
+<rect x="-45" y="35" width="90" height="26" fill="#3F3C39"/><rect x="51" y="35" width="90" height="26" fill="#55514C"/>
+</pattern>
+<filter id="g" x="-300%" y="-5%" width="700%" height="110%"><feGaussianBlur stdDeviation="5"/></filter>
+</defs>
+<rect width="1000" height="1000" fill="#77756F"/>
+<rect width="1000" height="66" fill="#8F8D86"/>
+<rect y="60" width="1000" height="10" fill="#4E4C48"/>
+<rect x="40" y="70" width="716" height="930" fill="#2F2F2D"/>
+<path d="M40 70 L320 70 C300 160 220 210 140 230 C90 245 60 300 40 330Z" fill="#3A3A37"/>
+<path d="M756 520 C690 560 650 650 600 700 C560 760 500 800 420 830 C360 850 320 900 300 1000 L756 1000Z" fill="#262624"/>
+<path d="M40 640 C110 620 160 680 150 760 C142 840 90 880 40 900Z" fill="#383835"/>
+<ellipse cx="560" cy="210" rx="140" ry="60" fill="#363633"/>
+<rect x="756" y="70" width="18" height="930" fill="#A3A098"/>
+<rect x="774" y="70" width="226" height="930" fill="url(#brick)"/>
+<rect x="774" y="70" width="226" height="930" fill="#1E1E1C" opacity=".18"/>
+<line x1="765" y1="80" x2="765" y2="990" stroke="#22D3EE" stroke-width="7" opacity=".5" filter="url(#g)"/>
+<line x1="765" y1="80" x2="765" y2="990" stroke="#9FEFFF" stroke-width="2"/>
+<g fill="#ECEBE4" font-weight="300">
+<text x="96" y="320" font-size="168" transform="rotate(-2 96 320)" textLength="610" lengthAdjust="spacingAndGlyphs">GROOVY</text>
+<text x="300" y="440" font-size="70" transform="rotate(-1.5 300 440)" textLength="420" lengthAdjust="spacingAndGlyphs">RED GARLAND</text>
+<text x="420" y="520" font-size="70" transform="rotate(1 420 520)" textLength="190" lengthAdjust="spacingAndGlyphs">TRIO</text>
+<text x="350" y="610" font-size="48" transform="rotate(-1 350 610)">WITH</text>
+<text x="300" y="680" font-size="54" transform="rotate(2 300 680)" textLength="410" lengthAdjust="spacingAndGlyphs">PAUL CHAMBERS</text>
+<text x="390" y="748" font-size="60" transform="rotate(-3 390 748)">+</text>
+<text x="420" y="820" font-size="60" transform="rotate(-2 420 820)" textLength="300" lengthAdjust="spacingAndGlyphs">ART TAYLOR</text>
+</g>
+<path d="M110 345 C260 336 470 332 690 322" fill="none" stroke="#ECEBE4" stroke-width="5" stroke-linecap="round" opacity=".7"/>
+</svg>

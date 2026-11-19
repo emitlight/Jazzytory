@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" width="600" height="700">
+<defs><filter id="glow-victor-young" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g filter="url(#glow-victor-young)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M110.0,76.0 L122.7,106.5 L155.7,109.2 L130.5,130.7 L138.2,162.8 L110.0,145.6 L81.8,162.8 L89.5,130.7 L64.3,109.2 L97.3,106.5 Z" stroke="#F472B6" stroke-width="7" fill="#F472B6" fill-opacity="0.15"/>
+<path d="M226.0,46.0 L230.8,57.4 L243.1,58.4 L233.7,66.5 L236.6,78.6 L226.0,72.1 L215.4,78.6 L218.3,66.5 L208.9,58.4 L221.2,57.4 Z" stroke="#A78BFA" stroke-width="5" fill="#A78BFA" fill-opacity="0.15"/>
+<path d="M56.0,248.0 L59.7,256.9 L69.3,257.7 L62.0,263.9 L64.2,273.3 L56.0,268.3 L47.8,273.3 L50.0,263.9 L42.7,257.7 L52.3,256.9 Z" stroke="#22D3EE" stroke-width="5" fill="#22D3EE" fill-opacity="0.15"/>
+<path d="M372.0,80.0 L375.2,87.6 L383.4,88.3 L377.1,93.7 L379.1,101.7 L372.0,97.4 L364.9,101.7 L366.9,93.7 L360.6,88.3 L368.8,87.6 Z" stroke="#A78BFA" stroke-width="5" fill="#A78BFA" fill-opacity="0.15"/>
+<path d="M300,33 L300,47 M293,40 L307,40" stroke="#F472B6" stroke-width="5"/>
+<path d="M170,214 L170,226 M164,220 L176,220" stroke="#22D3EE" stroke-width="5"/>
+<path d="M246,390 C186,396 136,416 111,460 C94,495 80,580 80,690 L520,690 C520,580 470,495 453,460 C428,416 378,396 318,390 Z" stroke="none" fill="#22D3EE" fill-opacity="0.1"/>
+<path d="M246,390 C186,396 136,416 111,460 C94,495 80,580 80,690" stroke="#22D3EE" stroke-width="8" fill="none"/>
+<path d="M318,390 C378,396 428,416 453,460 C470,495 520,580 520,690" stroke="#22D3EE" stroke-width="8" fill="none"/>
+<path d="M252,398 L232,466 L256,478 L284,590 M312,398 L334,466 L310,478 L284,590" stroke="#22D3EE" stroke-width="7" fill="none"/>
+<path d="M246,388 L268,420 L282,406 L296,420 L318,388" stroke="#22D3EE" stroke-width="6" fill="none"/>
+<path d="M276,416 L282,410 L288,416 L285,430 L294,500 L282,516 L270,500 L279,430 Z" stroke="#F472B6" stroke-width="6" fill="#F472B6" fill-opacity="0.14"/>
+<path d="M240,360 L246,392 M314,356 L318,390" stroke="#22D3EE" stroke-width="7" fill="none"/>
+<path d="M432,450 C474,420 506,362 500,304 C496,262 486,232 480,210 L446,216 C452,260 462,300 462,336 C462,384 430,428 388,470" stroke="#22D3EE" stroke-width="7" fill="none"/>
+<path d="M432,450 C474,420 506,362 500,304 C496,262 486,232 480,210 L446,216 C452,260 462,300 462,336 C462,384 430,428 388,470 Z" stroke="none" fill="#22D3EE" fill-opacity="0.1"/>
+<path d="M446,216 L480,210" stroke="#A78BFA" stroke-width="6" fill="none"/>
+<path d="M446,214 C438,196 446,174 466,172 C486,172 494,190 486,208" stroke="#22D3EE" stroke-width="6" fill="#22D3EE" fill-opacity="0.1"/>
+<path d="M474,178 L566,58" stroke="#F472B6" stroke-width="6" fill="none"/>
+<circle cx="566" cy="58" r="4" fill="#F472B6"/>
+<path d="M200,250 C198,190 230,158 272,158 C318,158 345,192 345,250 C345,305 325,345 296,360 C280,368 258,368 244,360 C215,342 202,300 200,250 Z" stroke="#22D3EE" stroke-width="8" fill="#22D3EE" fill-opacity="0.1"/>
+<path d="M194,246 C188,184 226,150 272,150 C320,150 352,184 350,240" stroke="#A78BFA" stroke-width="8" fill="#A78BFA" fill-opacity="0.12"/>
+<path d="M206,196 C222,182 236,180 250,186 C270,176 300,172 330,180 C340,190 346,206 348,220" stroke="#A78BFA" stroke-width="6" fill="none"/>
+<path d="M345,258 C360,256 362,292 342,296" stroke="#22D3EE" stroke-width="7" fill="none"/>
+<path d="M222,226 Q236,216 252,222 M276,222 Q292,216 306,226" stroke="#A78BFA" stroke-width="6" fill="none"/>
+<path d="M226,244 L246,244 M280,244 L300,244" stroke="#22D3EE" stroke-width="6" fill="none"/>
+<circle cx="230" cy="244" r="3.5" fill="#22D3EE"/><circle cx="284" cy="244" r="3.5" fill="#22D3EE"/>
+<path d="M258,248 L248,288 Q256,295 268,290" stroke="#22D3EE" stroke-width="6" fill="none"/>
+<path d="M244,320 Q262,328 282,320" stroke="#22D3EE" stroke-width="6" fill="none"/>
+</g>
+</svg>

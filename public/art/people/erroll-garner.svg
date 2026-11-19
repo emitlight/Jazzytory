@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 700" width="600" height="700">
+<defs>
+<filter id="jz-erroll-garner-glow" x="-15%" y="-15%" width="130%" height="130%"><feGaussianBlur stdDeviation="7"/></filter>
+<linearGradient id="jz-erroll-garner-fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0.92" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<mask id="jz-erroll-garner-fade" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="700"><rect width="600" height="700" fill="url(#jz-erroll-garner-fg)"/></mask>
+<g id="jz-erroll-garner-art" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M296 378 C240 388 200 420 180 460 C160 510 140 550 110 590 L150 612 C190 572 220 532 240 482 L330 600 L345 560 L370 450 L400 440 L386 378 C450 390 500 420 520 470 L535 700 L240 700 L240 482Z" fill="#22D3EE" fill-opacity="0.15" stroke="none" opacity="0.55"/>
+<g transform="rotate(-7 340 260)"><path d="M268 188 C262 200 260 214 264 224 C252 244 244 258 246 266 C252 270 262 270 268 268 C262 280 262 288 268 294 C262 304 266 318 276 330 C300 348 345 345 375 328 C395 315 405 300 410 285 L428 200 C430 150 400 114 350 112 C300 110 262 140 268 188Z" fill="#22D3EE" fill-opacity="0.1" stroke="none"/>
+<path d="M262 192 C262 140 300 110 350 112 C400 114 430 150 428 202 C420 182 405 170 390 166 C350 160 300 168 270 186Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M262 192 C262 140 300 110 350 112 C400 114 430 150 428 204" stroke="#22D3EE" stroke-width="8"/>
+<path d="M270 186 C300 168 350 160 390 166 C405 170 420 182 428 204" stroke="#A78BFA" stroke-width="6"/>
+<path d="M292 158 C330 144 380 144 414 164" stroke="#A78BFA" stroke-width="6"/>
+<path d="M300 174 C340 162 384 165 420 184" stroke="#A78BFA" stroke-width="6"/>
+<path d="M318 127 Q354 118 386 131" stroke="#F472B6" stroke-width="6"/>
+<path d="M268 188 C262 200 260 214 264 224 C252 244 244 258 246 266 C252 270 262 270 268 268 C262 280 262 288 268 294 C262 304 266 318 276 330" stroke="#22D3EE" stroke-width="8"/>
+<path d="M276 330 C300 348 345 345 375 328 C395 315 405 300 410 285" stroke="#22D3EE" stroke-width="8"/>
+<path d="M410 226 C434 222 438 270 410 277" stroke="#22D3EE" stroke-width="8"/>
+<path d="M418 240 Q424 250 418 262" stroke="#22D3EE" stroke-width="6"/>
+<path d="M428 204 L425 226" stroke="#22D3EE" stroke-width="8"/>
+<path d="M316 204 Q338 194 360 203" stroke="#A78BFA" stroke-width="6"/>
+<path d="M270 206 Q283 199 297 205" stroke="#A78BFA" stroke-width="6"/>
+<path d="M320 230 Q338 218 356 230" stroke="#22D3EE" stroke-width="6"/>
+<path d="M274 230 Q285 222 296 229" stroke="#22D3EE" stroke-width="6"/>
+<path d="M352 238 L362 244" stroke="#22D3EE" stroke-width="6"/>
+<path d="M262 266 Q275 273 289 266" stroke="#22D3EE" stroke-width="6"/>
+<path d="M262 282 Q292 275 332 283" stroke="#A78BFA" stroke-width="6"/>
+<path d="M262 290 C282 300 322 304 346 292 C332 324 290 326 268 306Z" fill="#22D3EE" fill-opacity="0.14" stroke="none"/>
+<path d="M262 290 C282 300 322 304 346 292 C332 324 290 326 268 306Z" stroke="#F472B6" stroke-width="6"/>
+<path d="M268 296 C292 303 320 303 340 297" stroke="#22D3EE" stroke-width="6"/>
+<path d="M354 254 Q368 282 352 304" stroke="#A78BFA" stroke-width="6"/></g>
+<path d="M300 342 L296 380" stroke="#22D3EE" stroke-width="8"/>
+<path d="M382 330 L390 380" stroke="#22D3EE" stroke-width="8"/>
+<path d="M296 378 L330 410 L388 378" stroke="#A78BFA" stroke-width="6"/>
+<path d="M323 410 L339 410 L346 480 L332 497 L320 480Z" fill="#22D3EE" fill-opacity="0.14" stroke="none"/>
+<path d="M323 410 L339 410 L346 480 L332 497 L320 480Z" stroke="#F472B6" stroke-width="8"/>
+<path d="M296 378 C240 388 200 420 180 460 C160 510 140 550 110 590" stroke="#22D3EE" stroke-width="8"/>
+<path d="M240 482 C220 532 190 572 150 612" stroke="#22D3EE" stroke-width="8"/>
+<path d="M240 482 L240 700" stroke="#22D3EE" stroke-width="8"/>
+<path d="M110 590 C90 600 78 616 90 627 C108 635 134 627 150 612" stroke="#22D3EE" stroke-width="8"/>
+<path d="M96 628 L92 646" stroke="#22D3EE" stroke-width="6"/>
+<path d="M112 630 L110 650" stroke="#22D3EE" stroke-width="6"/>
+<path d="M388 378 C450 390 500 420 520 470 L535 700" stroke="#22D3EE" stroke-width="8"/>
+<path d="M296 378 L285 450 L312 456 L332 600" stroke="#22D3EE" stroke-width="8"/>
+<path d="M388 378 L402 440 L372 450 L347 560" stroke="#22D3EE" stroke-width="8"/>
+<path d="M420 520 L432 500 L444 516 L456 500 L466 520Z" fill="#22D3EE" fill-opacity="0.14" stroke="none"/>
+<path d="M420 520 L432 500 L444 516 L456 500 L466 520" stroke="#F472B6" stroke-width="6"/>
+<path d="M414 522 L472 522" stroke="#22D3EE" stroke-width="6"/>
+<path d="M-10 702 L240 702 L232 656 L-10 640 Z" stroke="#22D3EE" stroke-width="8"/>
+<path d="M26 702 L25 678" stroke="#A78BFA" stroke-width="6"/>
+<path d="M61 702 L61 679" stroke="#A78BFA" stroke-width="6"/>
+<path d="M97 702 L96 680" stroke="#A78BFA" stroke-width="6"/>
+<path d="M133 702 L128 649" stroke="#A78BFA" stroke-width="6"/>
+<path d="M169 702 L166 682" stroke="#A78BFA" stroke-width="6"/>
+<path d="M204 702 L202 683" stroke="#A78BFA" stroke-width="6"/>
+<path d="M15 642 L34 643 L35 678 L15 678 Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M15 642 L34 643 L35 678 L15 678 Z" stroke="#A78BFA" stroke-width="6"/>
+<path d="M49 644 L69 645 L70 679 L51 679 Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M49 644 L69 645 L70 679 L51 679 Z" stroke="#A78BFA" stroke-width="6"/>
+<path d="M84 646 L103 647 L106 680 L86 680 Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M84 646 L103 647 L106 680 L86 680 Z" stroke="#A78BFA" stroke-width="6"/>
+<path d="M153 651 L173 652 L176 682 L156 682 Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M153 651 L173 652 L176 682 L156 682 Z" stroke="#A78BFA" stroke-width="6"/>
+<path d="M188 653 L207 654 L211 683 L192 682 Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M188 653 L207 654 L211 683 L192 682 Z" stroke="#A78BFA" stroke-width="6"/>
+</g>
+</defs>
+<g mask="url(#jz-erroll-garner-fade)">
+<use xlink:href="#jz-erroll-garner-art" filter="url(#jz-erroll-garner-glow)" opacity="0.55"/>
+<use xlink:href="#jz-erroll-garner-art"/>
+</g>
+</svg>

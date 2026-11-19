@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 700" width="600" height="700">
+<defs>
+<filter id="jz-red-garland-glow" x="-15%" y="-15%" width="130%" height="130%"><feGaussianBlur stdDeviation="7"/></filter>
+<linearGradient id="jz-red-garland-fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0.84" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<mask id="jz-red-garland-fade" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="700"><rect width="600" height="700" fill="url(#jz-red-garland-fg)"/></mask>
+<g id="jz-red-garland-art" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<g transform="translate(-46 0)"><path d="M330 148 C300 120 228 122 208 178 C196 214 206 256 236 284 C240 300 242 318 238 340 L316 326 C326 322 338 324 350 318 C358 312 360 304 358 292 C364 288 364 282 360 276 C364 270 362 264 358 258 C364 258 372 258 380 252 C378 244 368 232 358 216 C362 210 358 206 356 198 C354 178 346 160 330 148Z" fill="#22D3EE" fill-opacity="0.1" stroke="none"/>
+<path d="M318 148 C270 128 214 140 208 185 C206 210 212 230 222 245 C228 220 238 196 258 178 C276 162 298 154 324 152Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M238 340 C200 360 170 400 158 460 C150 520 152 600 150 700 L420 700 L420 600 C380 590 330 570 300 520 L318 420 L330 382 Z" fill="#22D3EE" fill-opacity="0.15" stroke="none" opacity="0.6"/>
+<path d="M330 148 C300 120 228 122 208 178 C196 214 206 256 236 284 C240 300 242 318 238 340" stroke="#22D3EE" stroke-width="8"/>
+<path d="M330 148 C346 160 354 178 356 198 C358 206 362 210 358 216 C368 232 378 244 380 252 C372 258 364 258 358 258 C362 264 364 270 360 276 C364 282 364 288 358 292 C360 304 358 312 350 318 C338 324 326 322 316 326" stroke="#22D3EE" stroke-width="8"/>
+<path d="M316 326 C318 342 322 362 330 382" stroke="#22D3EE" stroke-width="8"/>
+<path d="M302 150 C270 154 240 172 224 206" stroke="#A78BFA" stroke-width="6"/>
+<path d="M298 164 C268 176 248 198 238 226" stroke="#A78BFA" stroke-width="6"/>
+<path d="M270 212 C250 210 246 250 268 254" stroke="#22D3EE" stroke-width="8"/>
+<path d="M262 224 Q258 232 263 240" stroke="#22D3EE" stroke-width="6"/>
+<path d="M322 205 L358 204 C358 216 354 226 344 228 C330 230 324 222 322 205Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M322 205 L358 204 C358 216 354 226 344 228 C330 230 324 222 322 205Z" stroke="#22D3EE" stroke-width="6"/>
+<path d="M322 209 L272 219" stroke="#22D3EE" stroke-width="6"/>
+<path d="M326 194 Q342 188 356 193" stroke="#A78BFA" stroke-width="6"/>
+<path d="M343 263 C352 262 359 264 364 269" stroke="#A78BFA" stroke-width="6"/>
+<path d="M348 281 L357 281" stroke="#22D3EE" stroke-width="6"/>
+<path d="M340 248 Q336 260 344 270" stroke="#A78BFA" stroke-width="6"/>
+<path d="M316 324 C300 316 288 302 276 288" stroke="#22D3EE" stroke-width="6"/>
+<path d="M238 340 C200 360 170 400 158 460 C150 520 152 600 150 700" stroke="#22D3EE" stroke-width="8"/>
+<path d="M316 344 L338 372 L314 394" stroke="#A78BFA" stroke-width="6"/>
+<path d="M330 384 L345 452" stroke="#F472B6" stroke-width="8"/>
+<path d="M300 352 L318 420 L300 520" stroke="#22D3EE" stroke-width="8"/>
+<path d="M252 386 C292 430 302 470 300 520" stroke="#22D3EE" stroke-width="8"/>
+<path d="M205 422 C228 482 252 540 290 562" stroke="#22D3EE" stroke-width="8"/>
+<path d="M300 520 C360 518 420 522 462 528" stroke="#22D3EE" stroke-width="8"/>
+<path d="M290 562 C360 568 420 566 462 562" stroke="#22D3EE" stroke-width="8"/>
+<path d="M456 527 L456 563" stroke="#F472B6" stroke-width="6"/>
+<path d="M462 528 C490 526 510 534 516 548 C506 560 486 565 462 562" stroke="#22D3EE" stroke-width="8"/>
+<path d="M500 556 L507 574" stroke="#22D3EE" stroke-width="6"/></g>
+<path d="M410 580 L600 580 L600 602 L410 602Z" fill="#22D3EE" fill-opacity="0.1" stroke="none"/>
+<path d="M410 580 L600 580" stroke="#22D3EE" stroke-width="8"/>
+<path d="M410 580 L410 602 L600 602" stroke="#22D3EE" stroke-width="8"/>
+<path d="M452 580 L452 566 L600 566 L600 580Z" fill="#22D3EE" fill-opacity="0.15" stroke="none"/>
+<path d="M452 580 L452 566 L600 566" stroke="#A78BFA" stroke-width="6"/>
+<path d="M540 566 L540 520 L600 520" stroke="#22D3EE" stroke-width="8"/>
+<path d="M540 520 L600 440" stroke="#A78BFA" stroke-width="6"/>
+<path d="M470 602 L470 700" stroke="#22D3EE" stroke-width="6"/>
+<path d="M434 582 L434 600" stroke="#A78BFA" stroke-width="6"/>
+<path d="M480 582 L480 600" stroke="#A78BFA" stroke-width="6"/>
+<path d="M520 582 L520 600" stroke="#A78BFA" stroke-width="6"/>
+<path d="M560 582 L560 600" stroke="#A78BFA" stroke-width="6"/>
+</g>
+</defs>
+<g mask="url(#jz-red-garland-fade)">
+<use xlink:href="#jz-red-garland-art" filter="url(#jz-red-garland-glow)" opacity="0.55"/>
+<use xlink:href="#jz-red-garland-art"/>
+</g>
+</svg>
