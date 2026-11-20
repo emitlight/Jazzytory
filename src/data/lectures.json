@@ -3704,8 +3704,8 @@
   "moduleId": "m-l1-02-shell-voicings",
   "title": "셸 보이싱: 세 음으로 만드는 재즈",
   "summary": "근음·3음·7음 세 음만으로 모든 7화음을 잡고, A/B 교대로 왼손 도약을 줄이고, 저음역의 진흙 구간을 피하는 법",
-  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-02-shell-voicings.mp4?v=2",
-  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-02-shell-voicings.jpg?v=2",
+  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-02-shell-voicings.mp4?v=3",
+  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-02-shell-voicings.jpg?v=3",
   "durationSec": 1094,
   "chapters": [
    {
@@ -4580,15 +4580,15 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 2
+  "version": 3
  },
  {
   "id": "lec-m-l1-03-diatonic-harmony",
   "moduleId": "m-l1-03-diatonic-harmony",
   "title": "다이어토닉 화성과 로마숫자",
   "summary": "한 조에서 나오는 일곱 개의 7화음을 손으로 만들고, 로마숫자로 조를 지운 뒤, 토닉·서브도미넌트·도미넌트 세 기능으로 묶어 리드시트를 읽는 법",
-  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-03-diatonic-harmony.mp4?v=2",
-  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-03-diatonic-harmony.jpg?v=2",
+  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-03-diatonic-harmony.mp4?v=3",
+  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-03-diatonic-harmony.jpg?v=3",
   "durationSec": 1128,
   "chapters": [
    {
@@ -5427,15 +5427,15 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 2
+  "version": 3
  },
  {
   "id": "lec-m-l1-04-ii-v-i",
   "moduleId": "m-l1-04-ii-v-i",
   "title": "ii-V-I: 재즈의 기본 문장",
   "summary": "3음과 7음이 서로 자리를 바꾸며 해결되는 두 성부의 움직임을 손에 새기고, 4도권 12키로 돌린 뒤 마이너 ii-V-i 까지 확장하는 법",
-  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-04-ii-v-i.mp4?v=2",
-  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-04-ii-v-i.jpg?v=2",
+  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-04-ii-v-i.mp4?v=3",
+  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-04-ii-v-i.jpg?v=3",
   "durationSec": 1165,
   "chapters": [
    {
@@ -6306,7 +6306,7 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 2
+  "version": 3
  },
  {
   "id": "lec-m-l1-05-blues-form",
@@ -8035,8 +8035,8 @@
   "moduleId": "m-l1-07-secondary-dominants",
   "title": "세컨더리 도미넌트와 키 센터",
   "summary": "조 밖의 도미넌트를 보면 완전4도 위에서 목표를 찾고, 연관 II-7 과 묶어 ii-V 한 덩어리로 읽은 뒤, 화살표 · 꺾쇠와 키 센터 줄로 리드시트 한 장을 외우는 법",
-  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-07-secondary-dominants.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-07-secondary-dominants.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media/v/m-l1-07-secondary-dominants.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media/v/m-l1-07-secondary-dominants.jpg?v=2",
   "durationSec": 1410,
   "chapters": [
    {
@@ -8907,15 +8907,15 @@
    }
   ],
   "publishedAt": "2026-11-21",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l2-01-rootless",
   "moduleId": "m-l2-01-rootless",
   "title": "루트리스 보이싱 A/B",
   "summary": "루트를 베이스에게 넘기고 왼손을 3·5·7·9 네 음으로 재편한 뒤, 최상성 연결로 A와 B 포지션을 고르는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-01-rootless.mp4?v=2",
-  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-01-rootless.jpg?v=2",
+  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-01-rootless.mp4?v=3",
+  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-01-rootless.jpg?v=3",
   "durationSec": 1158,
   "chapters": [
    {
@@ -9894,7 +9894,7 @@
    }
   ],
   "publishedAt": "2026-10-17",
-  "version": 2
+  "version": 3
  },
  {
   "id": "lec-m-l2-02-guide-tone-lines",
@@ -14700,8 +14700,8 @@
   "moduleId": "m-l2-07-lead-sheet-head",
   "title": "리얼북 한 장 완주: 헤드 연주",
   "summary": "리드시트 한 장을 치기 전에 로드맵으로 그리고, 오른손 멜로디와 왼손 셸·루트리스를 음역으로 나누며, 적힌 선율을 스윙·앞당김·숨으로 읽어 헤드 인부터 엔딩까지 한 곡을 완주합니다.",
-  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-07-lead-sheet-head.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-07-lead-sheet-head.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-07-lead-sheet-head.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-07-lead-sheet-head.jpg?v=2",
   "durationSec": 1364,
   "chapters": [
    {
@@ -15644,15 +15644,15 @@
    }
   ],
   "publishedAt": "2026-11-21",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l2-08-straight-eighths-waltz",
   "moduleId": "m-l2-08-straight-eighths-waltz",
   "title": "보사노바 · 라틴 · 재즈 왈츠",
   "summary": "스윙 비율을 걷어 낸 곧은 8분음표 위에 보사 2마디 셀을 세우고, 손 클라베를 리듬의 열쇠로 삼아 몬투노를 맞추며, 3/4에서 두 마디를 한 단위로 느끼는 재즈 왈츠 컴핑을 익힌다",
-  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-08-straight-eighths-waltz.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-08-straight-eighths-waltz.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-08-straight-eighths-waltz.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l2/v/m-l2-08-straight-eighths-waltz.jpg?v=2",
   "durationSec": 1360,
   "chapters": [
    {
@@ -16583,15 +16583,15 @@
    }
   ],
   "publishedAt": "2026-11-21",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l3-01-chord-scales",
   "moduleId": "m-l3-01-chord-scales",
   "title": "코드 스케일 이론",
   "summary": "스케일을 먼저 외우고 코드에 붙이는 순서를 뒤집어, 보이싱의 빈칸을 메워 스케일을 만들고 코드의 기능을 근거로 스케일을 고르는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-01-chord-scales.mp4?v=2",
-  "poster": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-01-chord-scales.jpg?v=2",
+  "src": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-01-chord-scales.mp4?v=3",
+  "poster": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-01-chord-scales.jpg?v=3",
   "durationSec": 1124,
   "chapters": [
    {
@@ -17506,7 +17506,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 2
+  "version": 3
  },
  {
   "id": "lec-m-l3-02-guide-tone-improv",
@@ -21656,8 +21656,8 @@
   "moduleId": "m-l3-07-melodic-paraphrase",
   "title": "멜로디 패러프레이즈: 헤드에서 솔로로",
   "summary": "헤드를 치던 손이 솔로로 넘어가는 다리로, 선율을 첫 재료 삼아 리듬 바꾸기 · 장식 · 빈칸 채우기 · 윤곽 남기기의 사다리를 한 코러스에 한 칸씩 오르고, 솔로하는 동안 속으로 선율을 불러 폼을 지키는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-07-melodic-paraphrase.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-07-melodic-paraphrase.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-07-melodic-paraphrase.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-07-melodic-paraphrase.jpg?v=2",
   "durationSec": 1337,
   "chapters": [
    {
@@ -22584,15 +22584,15 @@
    }
   ],
   "publishedAt": "2026-11-21",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l3-08-two-hand-coordination",
   "moduleId": "m-l3-08-two-hand-coordination",
   "title": "솔로하는 동안의 왼손 — 첫 완주",
   "summary": "오른손이 솔로하는 동안 왼손을 짧은 타점으로 줄여 오른손의 쉼에서 대답하게 하고, 네 단계 사다리로 두 손을 떼어 낸 뒤, 헤드 · 솔로 두 코러스 · 헤드 · 엔딩까지, 솔로가 들어간 한 곡을 처음으로 끝까지 가는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-08-two-hand-coordination.mp4?v=1",
-  "poster": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-08-two-hand-coordination.jpg?v=1",
+  "src": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-08-two-hand-coordination.mp4?v=2",
+  "poster": "https://emitlight.github.io/jazzytory-media-l3/v/m-l3-08-two-hand-coordination.jpg?v=2",
   "durationSec": 1350,
   "chapters": [
    {
@@ -23515,7 +23515,7 @@
    }
   ],
   "publishedAt": "2026-11-21",
-  "version": 1
+  "version": 2
  },
  {
   "id": "lec-m-l4-01-bebop-scales",
@@ -28856,8 +28856,8 @@
   "moduleId": "m-l5-01-tritone-sub",
   "title": "트라이톤 서브스티튜션",
   "summary": "도미넌트의 3음과 7음이 같은 두 코드로 루트를 바꿔, 베이스를 반음으로 걷게 하고 솔로에서는 반음 위 아르페지오로 얼터드 색을 내는 법",
-  "src": "https://emitlight.github.io/jazzytory-media-l5/v/m-l5-01-tritone-sub.mp4?v=2",
-  "poster": "https://emitlight.github.io/jazzytory-media-l5/v/m-l5-01-tritone-sub.jpg?v=2",
+  "src": "https://emitlight.github.io/jazzytory-media-l5/v/m-l5-01-tritone-sub.mp4?v=3",
+  "poster": "https://emitlight.github.io/jazzytory-media-l5/v/m-l5-01-tritone-sub.jpg?v=3",
   "durationSec": 1284,
   "chapters": [
    {
@@ -29812,7 +29812,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 2
+  "version": 3
  },
  {
   "id": "lec-m-l5-02-modal-interchange",
@@ -40084,8 +40084,8 @@
   "moduleId": "m-l7-01-solo-piano",
   "title": "솔로 피아노: 세 층을 동시에",
   "summary": "베이스·화성·선율을 한 사람이 맡되 세 층이 서로 먹히지 않게 한다. 음역·리듬·세기를 층마다 다르게 배정하는 구체적 절차.",
-  "src": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-01-solo-piano.mp4?v=2",
-  "poster": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-01-solo-piano.jpg?v=2",
+  "src": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-01-solo-piano.mp4?v=3",
+  "poster": "https://emitlight.github.io/jazzytory-media-l7/v/m-l7-01-solo-piano.jpg?v=3",
   "durationSec": 1221,
   "chapters": [
    {
@@ -41064,7 +41064,7 @@
    }
   ],
   "publishedAt": "2026-10-18",
-  "version": 2
+  "version": 3
  },
  {
   "id": "lec-m-l7-02-stride",
