@@ -18,6 +18,7 @@ import { MODULES_L0L2 } from './modules.l0l2';
 import { MODULES_L2B } from './modules.l2b';
 import { MODULES_L3L5 } from './modules.l3l5';
 import { MODULES_L6L8 } from './modules.l6l8';
+import { MODULES_BRIDGE } from './modules.bridge';
 import { TUNES } from './tunes';
 import { ALBUMS } from './albums';
 import { VIDEOS, CHANNELS } from './videos';
@@ -30,7 +31,7 @@ import { METHOD_APPLICATIONS } from './pedagogyMap';
 
 /* ───────────────── 원본 컬렉션 ───────────────── */
 
-const RAW_MODULES: Module[] = [...MODULES_L0L2, ...MODULES_L2B, ...MODULES_L3L5, ...MODULES_L6L8];
+const RAW_MODULES: Module[] = [...MODULES_L0L2, ...MODULES_L2B, ...MODULES_L3L5, ...MODULES_L6L8, ...MODULES_BRIDGE];
 
 /** 모듈 id → 역참조로 모인 항목들 */
 function reverseIndex<T extends { id: string; relatedModules?: string[] }>(items: T[]): Map<string, string[]> {

@@ -1715,7 +1715,7 @@ export const MODULES_L0L2: Module[] = [
         sources: [
           { citation: SRC_CROOK, note: '스윙 8분음표의 타임 필과 템포별 처리에 관한 서술' },
           { citation: SRC_AEBERSOLD, note: '스윙 8분음표를 셋잇단 근사로 가르치되 템포에 따라 조정한다는 지침' },
-          { citation: SRC_COKER, note: '재즈 8분음표의 길이와 액센트 관계를 다루는 어법 서술' },
+          { citation: SRC_COKER, note: '녹음에서 자주 쓰이는 재즈 선율 어휘를 정리한 어법 서술' },
         ],
       },
       {
@@ -1778,7 +1778,7 @@ export const MODULES_L0L2: Module[] = [
           '액센트를 연습하느라 템포가 흔들린다. 액센트는 타임이 안정된 뒤에 얹는다.',
         ],
         sources: [
-          { citation: SRC_COKER, note: '재즈 아티큘레이션에서 업비트 강세와 프레이즈 종료 위치를 다루는 서술' },
+          { citation: SRC_COKER, note: '재즈 선율 어휘와 프레이즈 구성을 다루는 어법 서술' },
           { citation: SRC_CROOK, note: '프레이즈 단위로 액센트와 리듬을 설계하는 훈련 방식' },
           { citation: SRC_SANTISI, note: '건반에서 팔 무게로 강세를 만드는 타건 지침' },
         ],

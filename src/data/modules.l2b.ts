@@ -785,7 +785,7 @@ export const MODULES_L2B: Module[] = [
           '복구 절차를 실전에서 처음 시도한다. 준비된 상태에서 일부러 겪어 두어야 작동한다.',
         ],
         sources: [
-          { citation: SRC_CROOK, note: '연주 중 폼 유지와 이탈 시 대응을 훈련 항목으로 다루는 설계' },
+          { citation: SRC_CROOK, note: '정해진 마디 수로 연주와 쉼을 번갈아 두며 폼 감각을 유지하는 훈련' },
           { citation: SRC_AEBERSOLD, note: '잼 세션 상황에서의 폼 유지와 복귀에 관한 실무 권고' },
           { citation: SRC_LEVINE, note: '표준 폼의 8마디 구조와 섹션 경계에 관한 서술' },
         ],

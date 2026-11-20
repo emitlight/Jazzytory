@@ -11,6 +11,7 @@
  */
 
 import type { MethodApplication } from './types';
+import { APPLICATIONS_BRIDGE } from './modules.bridge';
 
 export const METHOD_APPLICATIONS: MethodApplication[] = [
   /* ═══════════════  L0 — 진단과 준비  ═══════════════ */
@@ -1290,4 +1291,5 @@ export const METHOD_APPLICATIONS: MethodApplication[] = [
     expectedShift:
       '한 곡에서 실수가 나와도 다음 곡이 함께 무너지지 않게 되고, 프로그램 전체 소요 시간이 리허설마다 비슷해진다.',
   },
+  ...APPLICATIONS_BRIDGE,
 ];
