@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { LEVELS, ALL_LESSONS, lessonsOfCourse, albumsOfModule, albumsOfLevel, videosOfModule } from '../data';
+import { LEVELS, ALL_LESSONS, lessonsOfCourse, albumsOfModule, albumsOfLevel, videosOfModule, tunesOfModule } from '../data';
+import { tuneSourceLabel } from '../lib/realBook';
 import type { LevelId } from '../data/types';
 import { lectureOfModule, formatTime, LECTURES } from '../data/lectures';
 import { useApp } from '../state';
@@ -336,9 +337,23 @@ function BookmarkLayer({ rootRef, onPlace }: { rootRef: React.RefObject<HTMLDivE
 function LessonExtras({ moduleId }: { moduleId: string }) {
   const albums = albumsOfModule(moduleId);
   const videos = videosOfModule(moduleId);
-  if (!albums.length && !videos.length) return null;
+  const tunes = tunesOfModule(moduleId);
+  if (!albums.length && !videos.length && !tunes.length) return null;
   return (
     <div className="cv-extras stack stack-16">
+      {tunes.length > 0 && (
+        <div className="stack stack-8" data-bm={`tn:${moduleId}`}>
+          <h3 className="cv-sub-h">이 강의의 곡</h3>
+          <ul className="cv-tunes small" style={{ margin: 0, paddingLeft: '1.1em' }}>
+            {tunes.map((t) => (
+              <li key={t.id}>
+                <Link to={`/tunes/${t.id}`}>{t.title}</Link>
+                <span className="muted"> — {tuneSourceLabel(t)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       {albums.length > 0 && (
         <div className="stack stack-8" data-bm={`al:${moduleId}`}>
           <h3 className="cv-sub-h">이 강의의 필청 명반</h3>

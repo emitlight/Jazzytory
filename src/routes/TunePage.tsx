@@ -8,10 +8,12 @@ import ChordInspector from '../components/ChordInspector';
 import ReviewCard from '../components/ReviewCard';
 import { flattenChart } from '../lib/playalong';
 import { summarizeCadences, analyzeProgression } from '../lib/analysis';
+import { tuneSourceLabel } from '../lib/realBook';
 import { RichText } from '../components/Prose';
 
 const KEY_SEMITONE: Record<string, number> = { C: 0, Db: 1, D: 2, Eb: 3, E: 4, F: 5, Gb: 6, G: 7, Ab: 8, A: 9, Bb: 10, B: 11 };
 const KEYS = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
+
 
 export default function TunePage() {
   const { tuneId } = useParams();
@@ -60,6 +62,7 @@ export default function TunePage() {
           <span>· {tune.style}</span>
           <span>· ♩{tune.tempo[0]}–{tune.tempo[1]}</span>
           <span>· {bars.length}마디</span>
+          {(tune.realBook || tune.realBookSameForm) && <span>· {tuneSourceLabel(tune)}</span>}
         </div>
         {tune.publicDomainOrOriginal && (
           <span className="badge badge-ok">

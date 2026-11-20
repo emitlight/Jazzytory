@@ -272,6 +272,13 @@ export interface Tune {
   difficulty: 1 | 2 | 3 | 4 | 5;
   /** 최초 학습 권장 레벨 */
   levelId: LevelId;
+  /**
+   * 리얼북(The Real Book, Hal Leonard · C 악보) 수록 위치. 판마다 페이지가 달라 판을 함께 적는다.
+   * page 는 공개 색인 두 곳(aspiers/book-indices · ndp/musicindex)이 일치한 것만 — 한 곳뿐이면 권만 적는다(2026-11-20).
+   */
+  realBook?: { volume: 1 | 2 | 3 | 4 | 5 | 6; edition?: string; page?: number };
+  /** 특정 곡이 아닌 기본 폼(블루스 · 리듬 체인지)일 때 — 리얼북에서 같은 폼 · 같은 조로 연습할 곡 */
+  realBookSameForm?: { title: string; volume: 1 | 2 | 3 | 4 | 5 | 6; edition?: string; page: number }[];
   sections: TuneSection[];
   /** 이 곡으로 배우는 것 */
   teaches: string[];
